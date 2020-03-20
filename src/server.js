@@ -25,13 +25,13 @@ app.set('view engine', '.hbs')
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 app.use(methodOverride('_method'))
-// const storage = multer.diskStorage({
-//     destination: path.join(__dirname, "public/uploads"),
-//     filename(req, file, cb) {
-//       cb(null, new Date().getTime() + path.extname(file.originalname)); //Error y nombre de la imagen con la fecha y la extension
-//     }
-//   });
-//   app.use(multer({ storage }).single("image"));
+const storage = multer.diskStorage({
+    destination: path.join(__dirname, "public/uploads"),
+    filename(req, file, cb) {
+      cb(null, new Date().getTime() + path.extname(file.originalname)); //Error y nombre de la imagen con la fecha y la extension
+    }
+  });
+  app.use(multer({ storage }).single("image"));
 
 //global variables
 

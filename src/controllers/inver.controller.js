@@ -22,14 +22,11 @@ inverCtrl.createNewInver = async (req,res)=>{
         hobby
       });
       
-     
-     // res.send(req.file)
-    //   if (typeof req.file === undefined || req.file === '') {
-    //     newInversionista.imagePath = "../public/uploads/sinfoto.png";
-    //   } else {
-    //     newInversionista.imagePath  = "../public/uploads/" + req.file.filename;
-    //   }
-      
+      if (typeof req.file === 'undefined') {
+        newInversionista.imagePath = "/uploads/sinfoto.png";
+      } else {
+        newInversionista.imagePath  = "/uploads/" + req.file.filename;
+      }
       
       await newInversionista.save();
     res.render('menuppal')

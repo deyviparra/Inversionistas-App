@@ -1,14 +1,7 @@
 const { Router } = require("express");
 const router = Router();
-const { unlink } = require("fs-extra");
-const path = require("path");
-var multer = require("multer");
-var upload = multer({
-  destination: path.join(__dirname, "public/uploads"),
-  filename(req, file, cb) {
-    cb(null, new Date().getTime() + path.extname(file.originalname));
-  }
-});
+
+
 
 const {
   renderProyForm,
@@ -22,7 +15,7 @@ const {
 
 router.get("/proy/add", renderProyForm);
 
-router.post("/proy/add",upload.single('image'), createNewProy);
+router.post("/proy/add",createNewProy);
 
 //Get All proys
 router.get("/proy", renderProy);

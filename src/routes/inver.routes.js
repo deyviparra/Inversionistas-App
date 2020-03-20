@@ -1,14 +1,7 @@
 const { Router } = require("express");
 const router = Router();
-const { unlink } = require("fs-extra");
-const path = require("path");
-var multer = require("multer");
-var upload = multer({
-  destination: path.join(__dirname, "public/uploads"),
-  filename(req, file, cb) {
-    cb(null, new Date().getTime() + path.extname(file.originalname));
-  }
-});
+
+
 
 const {
   renderInverForm,
@@ -21,7 +14,7 @@ const {
 } = require("../controllers/inver.controller");
 
 router.get("/inver/add", renderInverForm);
-router.post("/inver/add", upload.single("image"), createNewInver);
+router.post("/inver/add",  createNewInver);
 
 router.get("/inver", renderInver);
 

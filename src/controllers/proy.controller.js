@@ -7,7 +7,6 @@ proyCtrl.renderProyForm =(req,res)=>{
 }
 proyCtrl.createNewProy =async (req,res)=>{
   const { nombre, tipo, direccion, rango, municipio, departamento} = req.body;
-  //const imagePath = "/uploads/" + req.file.filename;
   const newProyecto = new Proyecto({
     nombre,
     tipo,
@@ -15,8 +14,13 @@ proyCtrl.createNewProy =async (req,res)=>{
     rango,
     municipio,
     departamento
-  //  imagePath 
   });
+  if (typeof req.file === 'undefined') {
+    newProyecto.imagePath = "/uploads/sinfotop.png";
+  } else {
+    newProyecto.imagePath  = "/uploads/" + req.file.filename;
+  }
+  
   await newProyecto.save();
     res.render('menuppal')
 }
