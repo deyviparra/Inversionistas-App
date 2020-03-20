@@ -1,0 +1,40 @@
+.info-ppal{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    height: 300px;
+    background: $negro;
+    p{
+        margin: 20px;
+        &::before{
+            content: 'prueba de texto';
+        }
+    }
+    button{
+        color: $blanco;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin: 20px;
+        padding: 10px 20px;
+        &:hover{
+            background: $verde;
+            color: $negro;
+        }
+    }
+}
+.info-secun{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    height: 200px;
+    background: $verde;
+    color: &negro;
+    p{
+        margin: 20px;
+        &::before{
+            content: 'prueba de texto';
+        }
+    }
+}

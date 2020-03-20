@@ -1,0 +1,42 @@
+@media (min-width: 1024px) {
+    header {
+        //header
+        .fa-bars {
+            display: none;
+        }
+        nav {
+            justify-content: space-between;
+            margin: 0 6.9%;
+            height: 80px;
+
+            .logo {
+                width: 200px;
+            }
+            .listas-nav {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                li {
+                    padding: 0;
+                    margin-left: 48px;
+
+                    a {
+                        color: #060A24;
+                        font-size: 16px;
+                        letter-spacing: 0;
+                        line-height: 28px;
+                        &:hover{
+                            color: rgb(80, 80, 80) ;
+                        }
+                        &:active{
+                           color: #060a248f;
+                        }
+                    }
+                }
+            }
+        }
+
+        
+    }
+}

@@ -1,0 +1,57 @@
+.list-inversionistas{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 7.5%;
+    .cont-width{
+
+        width: 30%;
+        .cuadro-inver{
+            padding: 20px;
+            .cuadro-interno{
+                border-radius: 5px;
+                background: linear-gradient(145deg, #2a2a2a, #232323);
+                box-shadow:  9px 9px 18px #1c1c1c, 
+                -9px -9px 18px #323232;
+                border: none;
+                display: flex;
+                justify-content: space-between;
+                .div-imagen{
+                    width: 40%;
+                    padding: 10px;
+                    img{
+
+                        border-radius: 10px;
+                    }
+                }
+                .texto-cuadro-inver{
+                    width: 60%;
+                    padding: 10px;
+                }
+            }
+        }
+    }
+}
+.up2 {
+    border-radius: 2px;
+    margin-top: 10px;
+    border: 1px solid black;
+    padding-left: 10px;
+                background: linear-gradient(145deg, #2a2a2a, #232323);
+                box-shadow:  9px 9px 18px #1c1c1c, 
+                -9px -9px 18px #323232;
+}
+.cont-botones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .ver-ficha{
+        width: 50%;
+        margin-top: 10px;
+    }
+    .delete{
+        width: 50%;
+        margin-top: 10px;
+    }
+}
+

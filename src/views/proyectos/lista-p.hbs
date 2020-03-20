@@ -1,0 +1,35 @@
+
+<h1 id="titulo1-h1">Proyectos</h1>
+<div class="list-inversionistas" id="list-proyectos">
+    {{#each proyectos}}
+    <div class='cuadro-inver'>
+      <div class='cuadro-interno'>
+        {{!-- <div class='div-imagen'>
+              <img src='{{imagePath}}' alt='' class='img-fluid'>  
+        </div> --}}
+        <div class='texto-cuadro-inver'>
+          <div class='card-block px-2'>
+          <p class='card-title'></p>
+          <p class='up2 titulo'>{{nombre}}</p>
+          <p class='up2 card-text'>Dirección: {{dirrecion}}</p>
+            <p class='up2 card-text'>Tipo: {{tipo}}</p>
+            <p class='up2 card-text'>Rango: {{rango}}</p>
+            <p class='up2 card-text'>Municipio: {{municipio}}</p>
+            <p class='up2 card-text'>Departamento: {{departamento}}</p>
+            </div>
+            <div class="cont-botones">
+              
+              <form action="/ficha-p">
+              <button class="btn btn-success" type="submit">Ver ficha</button>
+              </form>
+              <form action="/proy/delete/{{_id}}?_method=DELETE" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="btn btn-danger" type="submit">Eliminar</button>
+              </form>
+            </div>
+        </div>
+      </div>
+  </div>
+    {{/each}}
+
+</div>

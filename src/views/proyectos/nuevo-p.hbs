@@ -1,0 +1,39 @@
+<div class="form-nuevo-inver" id="form-nuevo-proy">
+        <div class="columna">
+            <form action="/proy/add" method="POST" id="proy-form" class="inver-form">
+                <h1 id="titulo3-h1">Nuevo proyecto</h1>
+                <div class="contenedor-form">
+                    <div class="columna-1">
+                        <div class="form-div">
+                            <input type="text" name="nombre" id="nombre_p" placeholder="Nombre: " class="input-inver" autofocus>
+                        </div>
+                        <div class="form-div">
+                            <input type="text" name="tipo" id="tipo_p" placeholder="Tipo de inmueble: " class="input-inver">
+                        </div>
+                        <div class="form-div">
+                            <input type="text" name="direccion" id="direccion_p" placeholder="Dirección: " class="input-inver">
+                        </div>
+                        <div class="form-div">
+                            <input type="text" name="rango" id="rango_p" placeholder="Rango de precios: " class="input-inver">
+                        </div>
+                    </div>
+                    <div class="columna-1">
+                        <div class="form-div">
+                            <input type="text" name="municipio" id="municipio_p" placeholder="Municipio: " class="input-inver">
+                        </div>
+                        <div class="form-div">
+                            <input type="text" name="departamento" id="departamento_p" placeholder="Departamento: " class="input-inver">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="file" class="custom-file-input" name="image" id="image_p">
+                            <label for="image" class="custom-file-label">Subir imágen</label>
+                            <output id="list-img-p"></output>
+                        </div>
+                    </div>
+                </div>
+                <button class="boton">
+                    Guardar proyecto
+                </button>
+            </form>
+        </div>
+    </div>

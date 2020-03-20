@@ -1,0 +1,36 @@
+
+  <h1 id="titulo1-h1">Inversionistas</h1>
+<div class="list-inversionistas">
+    {{#each inversionistas}}
+    <div class='cuadro-inver'>
+      <div class='cuadro-interno'>
+        <div class='div-imagen'>
+        {{!-- <object class="img-fluid" data="${
+          imagePath
+        }" type="image/png">
+      <img src="/uploads/sinfoto.png" class="img-fluid" alt=""> --}}
+    {{!-- </object> --}}
+        </div> 
+        <div class='texto-cuadro-inver'>
+          <div class='card-block px-2'>
+          <p class='card-title'></p>
+          <p class='up2 titulo'>{{nombre}} {{apellido}}</p>
+          <p class='up2 card-text'>Cel: {{telefono}}</p>
+            <p class='up2 card-text'>Correo: {{correo}}</p>
+            <p class='up2 card-text'>CC: {{cedula}}</p>
+            </div>
+            <div class="cont-botones">
+              <form action="/ficha-i">
+              <button class="btn btn-success" type="submit">Ver ficha</button>
+              </form>
+              <form action="/inver/delete/{{_id}}?_method=DELETE" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="btn btn-danger" type="submit">Eliminar</button>
+              </form>
+            </div>
+        </div>
+      </div>
+  </div>
+    {{/each}}
+</div>
+

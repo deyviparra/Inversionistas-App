@@ -1,0 +1,70 @@
+input{
+    color: $blanco;
+    border-radius: 5px;
+background: linear-gradient(145deg, #2a2a2a, #232323);
+box-shadow:  9px 9px 18px #1c1c1c, 
+             -9px -9px 18px #323232;
+             border: none;
+          &:target{
+              border: none;
+          }
+}
+.form-nuevo-inver{
+    color: $blanco;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    .columna{
+        margin-top: 30px;
+        background: #272727;
+        display: flex;
+        justify-content: center;
+        width: 80%;
+        .inver-form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            .contenedor-form{
+                display: flex;
+            width: 100%;
+            align-items: flex-start;
+                justify-content: center;
+            }
+            .columna-1{
+            width: 100%;
+            padding: 3%;
+            }
+            input{
+                width: 100%;
+                margin: 10px;
+                height: 40px;
+                padding: 10px;
+            }
+            .input-group{
+                margin:10px ;
+               
+            }
+            button{
+                max-width: 200px;
+            }
+        }
+        
+    }
+}
+.form-login{ 
+    color: $blanco;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }

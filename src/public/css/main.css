@@ -1,0 +1,352 @@
+* {
+  text-decoration: none;
+  color: #f3f3f3;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+
+body {
+  background: #272727 !important; }
+
+ul, ol {
+  list-style: none; }
+
+h1 {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 600;
+  margin: 20px; }
+
+@-webkit-keyframes autofill {
+  to {
+    color: #f3f3f3;
+    background: transparent; } }
+input::placeholder {
+  color: #f3f3f3; }
+
+input:-webkit-autofill {
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both; }
+
+input {
+  width: 100%;
+  margin: 10px;
+  height: 40px;
+  padding: 10px; }
+
+@media (min-width: 900px) {
+  h1 {
+    font-size: 40px;
+    font-weight: 700; } }
+p {
+  margin: 0; }
+
+.titulo {
+  font-size: 24px;
+  font-weight: 500; }
+
+.hide {
+  display: none !important; }
+
+.boton {
+  border-radius: 5px;
+  background: #ced423;
+  color: #272727;
+  padding: 5px 10px;
+  margin: 10px; }
+
+header {
+  width: 100%;
+  z-index: 1;
+  background-color: #ced423;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px; }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  height: 20px; }
+  nav .logo {
+    width: 150px;
+    margin-left: 10px;
+    background: #f3f3f3; }
+  nav .btncontrol {
+    display: none; }
+  @media (max-width: 1024px) {
+    nav .listas-nav {
+      display: none;
+      box-sizing: border-box;
+      width: 100%; }
+      nav .listas-nav li {
+        height: 35px;
+        display: flex;
+        align-items: center; }
+        nav .listas-nav li a {
+          font-size: 24px;
+          color: #ffffff;
+          line-height: 28px; }
+        nav .listas-nav li a:target {
+          color: rgba(6, 10, 36, 0.56); }
+    nav .btncontrol:checked ~ .listas-nav {
+      position: absolute;
+      top: 80px;
+      left: 0px;
+      display: block;
+      width: 100%;
+      background: #ced423;
+      z-index: 1;
+      padding-top: 16px; }
+      nav .btncontrol:checked ~ .listas-nav li {
+        margin-bottom: 24px;
+        margin-left: 5%; }
+        nav .btncontrol:checked ~ .listas-nav li a {
+          font-size: 16px;
+          color: #f3f3f3;
+          letter-spacing: 0;
+          line-height: 28px; }
+    nav .btncontrol:checked + .btn .fa-bars {
+      display: none; }
+    nav .btncontrol:checked + .btn .fa-times {
+      display: block; } }
+  nav .btn {
+    display: inline; }
+    nav .btn .fa-bars {
+      font-size: 24px;
+      color: white; }
+    nav .btn .fa-times {
+      color: white;
+      font-size: 24px;
+      display: none; }
+
+input {
+  color: #f3f3f3;
+  border-radius: 5px;
+  background: linear-gradient(145deg, #2a2a2a, #232323);
+  box-shadow: 9px 9px 18px #1c1c1c,  -9px -9px 18px #323232;
+  border: none; }
+  input:target {
+    border: none; }
+
+.form-nuevo-inver {
+  color: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 100%; }
+  .form-nuevo-inver .columna {
+    margin-top: 30px;
+    background: #272727;
+    display: flex;
+    justify-content: center;
+    width: 80%; }
+    .form-nuevo-inver .columna .inver-form {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%; }
+      .form-nuevo-inver .columna .inver-form .contenedor-form {
+        display: flex;
+        width: 100%;
+        align-items: flex-start;
+        justify-content: center; }
+      .form-nuevo-inver .columna .inver-form .columna-1 {
+        width: 100%;
+        padding: 3%; }
+      .form-nuevo-inver .columna .inver-form input {
+        width: 100%;
+        margin: 10px;
+        height: 40px;
+        padding: 10px; }
+      .form-nuevo-inver .columna .inver-form .input-group {
+        margin: 10px; }
+      .form-nuevo-inver .columna .inver-form button {
+        max-width: 200px; }
+
+.form-login {
+  color: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%; }
+
+.thumb {
+  height: 75px;
+  border: 1px solid #000;
+  margin: 10px 5px 0 0; }
+
+.info-ppal {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 300px;
+  background: #272727; }
+  .info-ppal p {
+    margin: 20px; }
+    .info-ppal p::before {
+      content: 'prueba de texto'; }
+  .info-ppal button {
+    color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+    padding: 10px 20px; }
+    .info-ppal button:hover {
+      background: #ced423;
+      color: #272727; }
+
+.info-secun {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 200px;
+  background: #ced423;
+  color: .info-secun negro; }
+  .info-secun p {
+    margin: 20px; }
+    .info-secun p::before {
+      content: 'prueba de texto'; }
+
+.up {
+  border-radius: 20px;
+  background: #272727;
+  box-shadow: 18px 18px 35px #212121, -18px -18px 35px #2d2d2d; }
+
+.contenedor {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  min-height: 70vh; }
+
+.cajon {
+  margin: 10px 5%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px; }
+  .cajon h2 {
+    padding: 0 20px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 400; }
+  .cajon div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around; }
+    .cajon div p {
+      background: #4c5c68;
+      border-radius: 0 0 20px 20px;
+      text-align: center;
+      width: 100%;
+      color: #f3f3f3;
+      padding: 10px;
+      border-left: 1px solid #272727;
+      border-right: 1px solid #272727; }
+      .cajon div p:hover {
+        cursor: pointer;
+        border-radius: 0 0 20px 20px;
+        box-shadow: inset 31px 31px 62px #252525, inset -31px -31px 62px #313131; }
+    .cajon div .btn-izq, .cajon div .btn-izq:hover {
+      border-radius: 0 0 0 20px; }
+    .cajon div .btn-der, .cajon div .btn-der:hover {
+      border-radius: 0 0 20px 0; }
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+
+@media (min-width: 900px) {
+  .contenedor {
+    width: auto;
+    margin: 0 90px 90px;
+    height: calc(100vh-270px); }
+
+  .cajon {
+    width: 25%;
+    margin: 10px 2.5%;
+    padding-top: 30px;
+    height: 25vh; }
+    .cajon h2 {
+      font-size: 30px;
+      font-weight: 600; } }
+@media (min-width: 1024px) {
+  header .fa-bars {
+    display: none; }
+  header nav {
+    justify-content: space-between;
+    margin: 0 6.9%;
+    height: 80px; }
+    header nav .logo {
+      width: 200px; }
+    header nav .listas-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between; }
+      header nav .listas-nav li {
+        padding: 0;
+        margin-left: 48px; }
+        header nav .listas-nav li a {
+          color: #060A24;
+          font-size: 16px;
+          letter-spacing: 0;
+          line-height: 28px; }
+          header nav .listas-nav li a:hover {
+            color: #505050; }
+          header nav .listas-nav li a:active {
+            color: #060a248f; } }
+.list-inversionistas {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 7.5%; }
+  .list-inversionistas .cont-width {
+    width: 30%; }
+    .list-inversionistas .cont-width .cuadro-inver {
+      padding: 20px; }
+      .list-inversionistas .cont-width .cuadro-inver .cuadro-interno {
+        border-radius: 5px;
+        background: linear-gradient(145deg, #2a2a2a, #232323);
+        box-shadow: 9px 9px 18px #1c1c1c,  -9px -9px 18px #323232;
+        border: none;
+        display: flex;
+        justify-content: space-between; }
+        .list-inversionistas .cont-width .cuadro-inver .cuadro-interno .div-imagen {
+          width: 40%;
+          padding: 10px; }
+          .list-inversionistas .cont-width .cuadro-inver .cuadro-interno .div-imagen img {
+            border-radius: 10px; }
+        .list-inversionistas .cont-width .cuadro-inver .cuadro-interno .texto-cuadro-inver {
+          width: 60%;
+          padding: 10px; }
+
+.up2 {
+  border-radius: 2px;
+  margin-top: 10px;
+  border: 1px solid black;
+  padding-left: 10px;
+  background: linear-gradient(145deg, #2a2a2a, #232323);
+  box-shadow: 9px 9px 18px #1c1c1c,  -9px -9px 18px #323232; }
+
+.cont-botones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; }
+  .cont-botones .ver-ficha {
+    width: 50%;
+    margin-top: 10px; }
+  .cont-botones .delete {
+    width: 50%;
+    margin-top: 10px; }
