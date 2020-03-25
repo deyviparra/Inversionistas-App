@@ -35,11 +35,16 @@ inverCtrl.renderInver=async (req,res)=>{
     const inversionistas= await Inversionista.find()
     res.render('inversionistas/lista-i', {inversionistas})
 }
-inverCtrl.renderEditFormInver=(req,res)=>{
-    res.send('inver form edit')
+inverCtrl.renderEditFormInver=async (req,res)=>{
+   const inver = await Inversionista.findById(req.params.id)
+
+    res.render('inversionistas/edit-inver',{inver})
 }
-inverCtrl.updateInver=(req,res)=>{
-    res.send('inver form update')
+inverCtrl.updateInver=async (req,res)=>{
+const {nombre,apellido,telefono,correo,cedula,direccion,nacimiento,estado_civil,n_hijos,n_mascotas,hobby}=req.body;
+   const imagePath  = "/uploads/" + req.file.filename;
+    await Inversionista.findByIdAndUpdate(req.params.id, {nombre,apellido,telefono,correo,cedula,direccion,nacimiento,estado_civil,n_hijos,n_mascotas,hobby,imagePath} )
+    res.redirect('/inver')
 }
 inverCtrl.deleteInver=async (req,res)=>{
 
@@ -47,8 +52,9 @@ inverCtrl.deleteInver=async (req,res)=>{
     res.redirect('/inver')
     
 }
-inverCtrl.renderFichaI = (req,res)=>{
-    res.render('inversionistas/ficha-i')
+inverCtrl.renderFichaI =async (req,res)=>{
+   const inversionista = await Inversionista.findById(req.params.id)
+    res.render('inversionistas/ficha-i',{inversionista})
 }  
 
 

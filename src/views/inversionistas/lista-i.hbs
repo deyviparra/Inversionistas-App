@@ -4,7 +4,7 @@
   <div class='cuadro-inver'>
     <div class='cuadro-interno'>
       <div class='div-imagen'>
-              <img src='{{imagePath}}' alt='' class='img-fluid'>  
+              <img src='{{imagePath}}' alt='' class=''>  
         </div>
       <div class='texto-cuadro-inver'>
         <div class='card-block px-2'>
@@ -15,7 +15,8 @@
           <p class='up2 card-text'>CC: {{cedula}}</p>
         </div>
         <div class="cont-botones">
-          <form action="/ficha-i">
+          <form action="/ficha-i/{{_id}}?_method=GET" method="GET">
+            <input type="hidden" name="_method" value="GET">
             <button class="btn btn-success" type="submit">Ver ficha</button>
           </form>
           <form action="/inver/delete/{{_id}}?_method=DELETE" method="POST">

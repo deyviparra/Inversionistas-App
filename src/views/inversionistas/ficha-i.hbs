@@ -1,58 +1,67 @@
-<section id="info-ppal" class="info-ppal">
-        <img id="fi_img" src="/" alt="Foto Inversionista">
-        <ul>
-            <li>
-                <p></p>
-            </li>
-            <li>
-                <p></p>
-            </li>
-            <li>
-                <p></p>
-            </li>
-        </ul>
-        <div class="botones">
-            <button class="up"> Modificar</button>
-            <button class="up"> Eliminar</button>
-        </div>
-    </section>
-
-    <section  id="info-secun" class="info-secun">
-        <ul>
-            <li>
-                <p></p>
-            </li>
-            <li>
-                <p></p>
-            </li>
-            <li>
-                <p></p>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <p></p>
-            </li>
-            <li>
-                <p></p>
-            </li>
-            <li>
-                <p></p>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <p></p>
-            </li>
-            <li>
-                <p></p>
-            </li>
-            <li>
-                <p></p>
-            </li>
-        </ul>
-    </section>
-
-    <section id="sec-inversiones" class="sec-inversiones">
-        <h2>Inversiones</h2>
-    </section>
+<div>
+    <section id="info-ppal" class="info-ppal">
+            <img id="imgldsd" src="{{inversionista.imagePath}}" alt="Foto Inversionista">
+            <ul>
+                <li>
+                    <p > {{inversionista.nombre}} {{inversionista.apellido}}</p>
+                </li>
+                <li>
+                    <p>{{inversionista.telefono}}</p>
+                </li>
+                <li>
+                    <p>{{inversionista.correo}}</p>
+                </li>
+                <li>
+                    <p>{{inversionista.cedula}}</p>
+                </li>
+            </ul>
+            <div class="botones">
+                <form action="/edit-inver/{{inversionista._id}}?_method=GET" method="GET">
+            <input type="hidden" name="_method" value="GET">
+            <button class="up" type="submit">Modificar</button>
+          </form>
+                
+                
+            </div>
+        </section>
+    
+        <section  id="info-secun" class="info-secun">
+            <ul>
+                
+                <li>
+                    <p>{{inversionista.direccion}}</p>
+                </li>
+                <li>
+                    <p>{{inversionista.nacimiento}}</p>
+                </li>
+                <li>
+                    <p>{{inversionista.estado_civil}}</p>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <p>{{inversionista.n_hijos}}</p>
+                </li>
+                <li>
+                    <p>{{inversionista.n_mascotas}}</p>
+                </li>
+                <li>
+                    <p>{{inversionista.hobby}}</p>
+                </li>
+            </ul>
+            <ul>
+                
+                <li>
+                    <p></p>
+                </li>
+                <li>
+                    <p></p>
+                </li>
+            </ul>
+        </section>
+    
+        <section id="sec-inversiones" class="sec-inversiones">
+            <h2>Inversiones</h2>
+        </section>
+</div>
+  

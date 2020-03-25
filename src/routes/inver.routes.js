@@ -19,12 +19,14 @@ router.post("/inver/add",  createNewInver);
 router.get("/inver", renderInver);
 
 //Edits
-router.get("/inver/edit/:id", renderEditFormInver);
+router.get("/edit-inver/:id", renderEditFormInver);
+
+router.get("/ficha-i/:id", renderFichaI);
 router.put("/inver/edit/:id", updateInver);
 
 //Delete
 router.delete("/inver/delete/:id", deleteInver);
 
-router.get("/ficha-i", renderFichaI);
+
 
 module.exports = router;

@@ -4,11 +4,11 @@
     align-items: center;
     height: 300px;
     background: $negro;
+    img{
+        width: 25%;
+    }
     p{
         margin: 20px;
-        &::before{
-            content: 'prueba de texto';
-        }
     }
     button{
         color: $blanco;
@@ -30,11 +30,9 @@
     align-items: center;
     height: 200px;
     background: $verde;
-    color: &negro;
-    p{
-        margin: 20px;
-        &::before{
-            content: 'prueba de texto';
-        }
+    ul li p{
+        color: $negro;
+        margin: 20px;  
+        
     }
 }
