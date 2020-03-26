@@ -1,5 +1,7 @@
 const inverCtrl = {}
 const Inversionista = require("../models/Inversionista");
+const { unlink } = require("fs-extra");
+const path = require("path");
 
 
 inverCtrl.renderInverForm =(req,res)=>{
@@ -29,6 +31,7 @@ inverCtrl.createNewInver = async (req,res)=>{
       }
       
       await newInversionista.save();
+      req.flash('success_msg', 'Inversionista creado')
     res.render('menuppal')
 }
 inverCtrl.renderInver=async (req,res)=>{
@@ -37,20 +40,29 @@ inverCtrl.renderInver=async (req,res)=>{
 }
 inverCtrl.renderEditFormInver=async (req,res)=>{
    const inver = await Inversionista.findById(req.params.id)
-
     res.render('inversionistas/edit-inver',{inver})
 }
 inverCtrl.updateInver=async (req,res)=>{
 const {nombre,apellido,telefono,correo,cedula,direccion,nacimiento,estado_civil,n_hijos,n_mascotas,hobby}=req.body;
-   const imagePath  = "/uploads/" + req.file.filename;
+if (typeof req.file === 'undefined') {
+    await Inversionista.findByIdAndUpdate(req.params.id, {nombre,apellido,telefono,correo,cedula,direccion,nacimiento,estado_civil,n_hijos,n_mascotas,hobby} )
+}else{
+    const imagePath  = "/uploads/" + req.file.filename;
+    const inver = await Inversionista.findById(req.params.id)
+    unlink(path.resolve(path.join(__dirname, '../public'+ inver.imagePath)))
     await Inversionista.findByIdAndUpdate(req.params.id, {nombre,apellido,telefono,correo,cedula,direccion,nacimiento,estado_civil,n_hijos,n_mascotas,hobby,imagePath} )
+}
+
+    req.flash('success_msg', 'Inversionista actualizado')
     res.redirect('/inver')
 }
 inverCtrl.deleteInver=async (req,res)=>{
 
+    const inver = await Inversionista.findById(req.params.id)
     await Inversionista.findByIdAndDelete(req.params.id)
-    res.redirect('/inver')
-    
+    unlink(path.resolve(path.join(__dirname, '../public'+inver.imagePath)))
+    req.flash('error_msg', 'Inversionista eliminado')
+    res.redirect('/inver')  
 }
 inverCtrl.renderFichaI =async (req,res)=>{
    const inversionista = await Inversionista.findById(req.params.id)

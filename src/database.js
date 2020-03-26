@@ -5,7 +5,8 @@ const MONGODB_URI = `mongodb://${INVERSIONISTAS_MONGODB_HOST}/${INVERSIONISTAS_M
 
 mongoose.connect(MONGODB_URI,{
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex:true
 })
 .then(db => console.log("Db is connect"))
   .catch(err => console.error(err));

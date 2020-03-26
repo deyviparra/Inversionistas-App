@@ -55,70 +55,23 @@ p {
 
 header {
   width: 100%;
-  z-index: 1;
   background-color: #ced423;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 80px; }
 
-nav {
+header nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
   align-items: center;
-  height: 20px; }
-  nav .logo {
-    width: 150px;
+  height: 80px; }
+  header nav .logo {
+    height: 80px;
+    width: auto;
     margin-left: 10px;
     background: #f3f3f3; }
-  nav .btncontrol {
-    display: none; }
-  @media (max-width: 1024px) {
-    nav .listas-nav {
-      display: none;
-      box-sizing: border-box;
-      width: 100%; }
-      nav .listas-nav li {
-        height: 35px;
-        display: flex;
-        align-items: center; }
-        nav .listas-nav li a {
-          font-size: 24px;
-          color: #ffffff;
-          line-height: 28px; }
-        nav .listas-nav li a:target {
-          color: rgba(6, 10, 36, 0.56); }
-    nav .btncontrol:checked ~ .listas-nav {
-      position: absolute;
-      top: 80px;
-      left: 0px;
-      display: block;
-      width: 100%;
-      background: #ced423;
-      z-index: 1;
-      padding-top: 16px; }
-      nav .btncontrol:checked ~ .listas-nav li {
-        margin-bottom: 24px;
-        margin-left: 5%; }
-        nav .btncontrol:checked ~ .listas-nav li a {
-          font-size: 16px;
-          color: #f3f3f3;
-          letter-spacing: 0;
-          line-height: 28px; }
-    nav .btncontrol:checked + .btn .fa-bars {
-      display: none; }
-    nav .btncontrol:checked + .btn .fa-times {
-      display: block; } }
-  nav .btn {
-    display: inline; }
-    nav .btn .fa-bars {
-      font-size: 24px;
-      color: white; }
-    nav .btn .fa-times {
-      color: white;
-      font-size: 24px;
-      display: none; }
 
 input {
   color: #f3f3f3;
@@ -280,31 +233,6 @@ input {
     .cajon h2 {
       font-size: 30px;
       font-weight: 600; } }
-@media (min-width: 1024px) {
-  header .fa-bars {
-    display: none; }
-  header nav {
-    justify-content: space-between;
-    margin: 0 6.9%;
-    height: 80px; }
-    header nav .logo {
-      width: 200px; }
-    header nav .listas-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between; }
-      header nav .listas-nav li {
-        padding: 0;
-        margin-left: 48px; }
-        header nav .listas-nav li a {
-          color: #060A24;
-          font-size: 16px;
-          letter-spacing: 0;
-          line-height: 28px; }
-          header nav .listas-nav li a:hover {
-            color: #505050; }
-          header nav .listas-nav li a:active {
-            color: #060a248f; } }
 .list-inversionistas {
   display: flex;
   flex-wrap: wrap;

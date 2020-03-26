@@ -1,16 +1,17 @@
 <nav>
-            <a href="/menuppal">
-                <img src="/uploads/logo.png" class="logo" alt="Logo FNF">
-            </a>
-            <input id="btncontrol" class="btncontrol" type="checkbox" />
-            <label class="btn" for="btncontrol">
-                <img class="fas fa-bars"></img>
-                <img class="fas fa-times"></img>
-            </label>
-            <ul id="crear_u" class="listas-nav">
-                <li><a href="#">Crear Usuario</a></li>
-            </ul>
-            <ul id="logout" class="listas-nav hide">
-                <li><a href="#">Cerrar sesión</a></li>
-            </ul>
-        </nav>
+    <a href="/menuppal">
+        <img src="/uploads/logo.png" class="logo" alt="Logo FNF">
+    </a>
+    {{#if user}}
+    <div>
+        <a href="/usuarios/registro">Crear usuario</a>
+        <a href="/">Cerrar sesión</a>
+    </div>
+    {{else}}
+    <div>
+        <a href="/client/login">Iniciar sesión</a>
+        <a href="/usuarios/login">Login administrador</a>
+    </div>
+    {{/if}}
+
+</nav>

@@ -4,10 +4,14 @@ const exphbs =require('express-handlebars')
 const morgan =require('morgan')
 const multer = require("multer");
 const methodOverride = require('method-override')
+const flash = require('connect-flash')
+const session =require('express-session')
+const passport = require('passport')
 
 
 //inicializations
 const app = express()
+require('./config/passport')
 
 
 //settings
@@ -31,14 +35,31 @@ const storage = multer.diskStorage({
       cb(null, new Date().getTime() + path.extname(file.originalname)); //Error y nombre de la imagen con la fecha y la extension
     }
   });
-  app.use(multer({ storage }).single("image"));
+app.use(multer({ storage }).single("image"));
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 //global variables
+app.use((req,res,next)=>{
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.error_msg = req.flash('error_msg')
+  res.locals.error = req.flash('error')
+  res.locals.user = req.user || null;
+  next()
+})
+
 
 //routes
 app.use(require('./routes/index.routes'));
 app.use(require('./routes/inver.routes'));
 app.use(require('./routes/proy.routes'));
+app.use(require('./routes/user.routes'));
 
 
 

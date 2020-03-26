@@ -1,91 +1,17 @@
-nav {
+header nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
     align-items: center;
-    height: 20px;
+    height: 80px;
+  
 
     .logo {
-        width: 150px;
+        height: 80px;
+        width: auto;
         margin-left: 10px;
         background: $blanco;
     }
 
-    .btncontrol {
-        display: none;
-    }
 
-    @media (max-width:1024px) {
-        .listas-nav {
-            display: none;
-            box-sizing: border-box;
-            width: 100%;
-
-            li {
-                height: 35px;
-                display: flex;
-                align-items: center;
-
-                a {
-                    font-size: 24px;
-                    color: #ffffff;
-                    line-height: 28px;
-                }
-
-                a:target {
-                    color: rgba(6, 10, 36, 0.56);
-                }
-
-
-            }
-        }
-
-        .btncontrol:checked~.listas-nav {
-            position: absolute;
-            top: 80px;
-            left: 0px;
-            display: block;
-            width: 100%;
-            background: $verde;
-            z-index: 1;
-            padding-top: 16px;
-
-            li {
-                margin-bottom: 24px;
-                margin-left: 5%;
-
-                a {
-                    font-size: 16px;
-                    color: $blanco;
-                    letter-spacing: 0;
-                    line-height: 28px;
-                }
-            }
-        }
-
-        .btncontrol:checked+.btn .fa-bars {
-            display: none;
-        }
-
-        .btncontrol:checked+.btn .fa-times {
-            display: block;
-        }
-    }
-
-    .btn {
-        display: inline;
-
-        .fa-bars {
-            font-size: 24px;
-            color: white;
-
-        }
-
-        .fa-times {
-
-            color: white;
-            font-size: 24px;
-            display: none;
-        }
-    }
 }
