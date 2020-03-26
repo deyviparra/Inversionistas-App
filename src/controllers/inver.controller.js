@@ -30,9 +30,9 @@ inverCtrl.createNewInver = async (req,res)=>{
         newInversionista.imagePath  = "/uploads/" + req.file.filename;
       }
       
-      await newInversionista.save();
-      req.flash('success_msg', 'Inversionista creado')
-    res.render('menuppal')
+    await newInversionista.save();
+    req.flash('success_msg', 'Inversionista creado')
+    res.redirect('/menuppal')
 }
 inverCtrl.renderInver=async (req,res)=>{
     const inversionistas= await Inversionista.find()
@@ -52,7 +52,6 @@ if (typeof req.file === 'undefined') {
     unlink(path.resolve(path.join(__dirname, '../public'+ inver.imagePath)))
     await Inversionista.findByIdAndUpdate(req.params.id, {nombre,apellido,telefono,correo,cedula,direccion,nacimiento,estado_civil,n_hijos,n_mascotas,hobby,imagePath} )
 }
-
     req.flash('success_msg', 'Inversionista actualizado')
     res.redirect('/inver')
 }

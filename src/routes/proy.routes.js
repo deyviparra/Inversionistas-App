@@ -21,13 +21,13 @@ router.post("/proy/add",createNewProy);
 router.get("/proy", renderProy);
 
 //Edit
-router.get("/proy/edit/:id", renderEditFormProy);
+router.get("/edit-proy/:id", renderEditFormProy);
+router.get("/ficha-p/:id", renderFichaP);
 router.put("/proy/edit/:id", updateProy);
 
 //Delete
 router.delete("/proy/delete/:id", deleteProy);
 
-router.get("/ficha-p", renderFichaP);
 
 
 module.exports = router;

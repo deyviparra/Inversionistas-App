@@ -1,0 +1,40 @@
+<div class="form-nuevo-inver" id="form-edit-proy">
+        <div class="columna">
+            <form action="/proy/edit/{{proy.id}}?_method=PUT" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="_method" value="PUT">
+                <h1 id="titulo3-h1">Actualizar proyecto</h1>
+                <div class="contenedor-form">
+                    <div class="columna-1">
+                        <div class="form-div">
+                            <input type="text" name="nombre" value="{{proy.nombre}}" id="nombre_p" placeholder="Nombre: " class="input-inver" autofocus>
+                        </div>
+                        <div class="form-div">
+                            <input type="text" name="tipo" value="{{proy.tipo}}" id="tipo_p" placeholder="Tipo de inmueble: " class="input-inver">
+                        </div>
+                        <div class="form-div">
+                            <input type="text" name="direccion" value="{{proy.direccion}}" id="direccion_p" placeholder="Dirección: " class="input-inver">
+                        </div>
+                        <div class="form-div">
+                            <input type="text" name="rango" value="{{proy.rango}}" id="rango_p" placeholder="Rango de precios: " class="input-inver">
+                        </div>
+                    </div>
+                    <div class="columna-1">
+                        <div class="form-div">
+                            <input type="text" name="municipio" value="{{proy.municipio}}" id="municipio_p" placeholder="Municipio: " class="input-inver">
+                        </div>
+                        <div class="form-div">
+                            <input type="text" name="departamento" value="{{proy.departamento}}" id="departamento_p" placeholder="Departamento: " class="input-inver">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="file" class="custom-file-input" name="image" id="image_p">
+                            <label for="image" class="custom-file-label">Subir imágen</label>
+                            <output id="list-img-p"></output>
+                        </div>
+                    </div>
+                </div>
+                <button class="boton" type="submit">
+                    Guardar proyecto
+                </button>
+            </form>
+        </div>
+    </div>

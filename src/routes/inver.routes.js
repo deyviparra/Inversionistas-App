@@ -20,7 +20,6 @@ router.get("/inver", renderInver);
 
 //Edits
 router.get("/edit-inver/:id", renderEditFormInver);
-
 router.get("/ficha-i/:id", renderFichaI);
 router.put("/inver/edit/:id", updateInver);
 

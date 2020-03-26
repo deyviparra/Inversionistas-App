@@ -17,11 +17,11 @@
             <p class='up2 card-text'>Municipio: {{municipio}}</p>
             <p class='up2 card-text'>Departamento: {{departamento}}</p>
             </div>
-            <div class="cont-botones">
-              
-              <form action="/ficha-p">
-              <button class="btn btn-success" type="submit">Ver ficha</button>
-              </form>
+            <div class="cont-botones">  
+            <form action="/ficha-p/{{_id}}?_method=GET" method="GET">
+            <input type="hidden" name="_method" value="GET">
+            <button class="btn btn-success" type="submit">Ver ficha</button>
+          </form>
               <form action="/proy/delete/{{_id}}?_method=DELETE" method="POST">
               <input type="hidden" name="_method" value="DELETE">
               <button class="btn btn-danger" type="submit">Eliminar</button>

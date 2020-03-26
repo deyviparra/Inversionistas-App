@@ -2,52 +2,33 @@
         <img id="img" src="{{proyecto.imagePath}}"  alt="Foto Proyecto">
         <ul>
             <li>
-                <p></p>
+                <p>{{proyecto.nombre}}</p>
             </li>
             <li>
-                <p></p>
+                <p>{{proyecto.tipo}}</p>
             </li>
             <li>
-                <p></p>
+                <p>{{proyecto.direccion}}</p>
             </li>
         </ul>
         <div class="botones">
-            <button class="up"> Modificar</button>
+            <form action="/edit-proy/{{proyecto._id}}?_method=GET" method="GET">
+            <input type="hidden" name="_method" value="GET">
+            <button class="up" type="submit">Modificar</button>
         </div>
     </section>
 
     <section  id="info-secun" class="info-secun">
         <ul>
             <li>
-                <p></p>
+                <p>{{proyecto.rango}}</p>
             </li>
             <li>
-                <p></p>
+                <p>{{proyecto.municipio}}</p>
             </li>
             <li>
-                <p></p>
+                <p>{{proyecto.departamento}}</p>
             </li>
         </ul>
-        <ul>
-            <li>
-                <p></p>
-            </li>
-            <li>
-                <p></p>
-            </li>
-            <li>
-                <p></p>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <p></p>
-            </li>
-            <li>
-                <p></p>
-            </li>
-            <li>
-                <p></p>
-            </li>
-        </ul>
+    
     </section>

@@ -22,19 +22,30 @@ proyCtrl.createNewProy =async (req,res)=>{
   } else {
     newProyecto.imagePath  = "/uploads/" + req.file.filename;
   }
-  
   await newProyecto.save();
-    res.render('menuppal')
+    req.flash('success_msg', 'Proyecto creado')
+    res.redirect('/menuppal')
 }
 proyCtrl.renderProy= async (req,res)=>{
     const proyectos= await Proyecto.find()
     res.render('proyectos/lista-p', {proyectos})
 }
-proyCtrl.renderEditFormProy=(req,res)=>{ // NO SE SI DA VALOR EDITAR PROYECTOS
-    res.send('proy form edit')
+proyCtrl.renderEditFormProy= async (req,res)=>{ 
+  const proy = await Proyecto.findById(req.params.id)
+  res.render('proyectos/edit-proy',{proy})
 }
-proyCtrl.updateProy=(req,res)=>{
-    res.send('proy form update')
+proyCtrl.updateProy= async(req,res)=>{
+  const {nombre,tipo,direccion,rango,municipio,departamento}=req.body;
+  if (typeof req.file === 'undefined') {
+      await Proyecto.findByIdAndUpdate(req.params.id, {nombre,tipo,direccion,rango,municipio,departamento} )
+  }else{
+      const imagePath  = "/uploads/" + req.file.filename;
+      const proy = await Proyecto.findById(req.params.id)
+      unlink(path.resolve(path.join(__dirname, '../public'+ proy.imagePath)))
+      await Proyecto.findByIdAndUpdate(req.params.id, {nombre,tipo,direccion,rango,municipio,departamento,imagePath} )
+  }
+      req.flash('success_msg', 'Proyecto actualizado')
+      res.redirect('/proy')
 }
 proyCtrl.deleteProy= async (req,res)=>{
     const proy = await Proyecto.findById(req.params.id)
