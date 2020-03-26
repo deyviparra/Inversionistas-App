@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 
-
+const {isAuthenticated} = require ('../helpers/auth')
 
 const {
   renderProyForm,
@@ -13,20 +13,20 @@ const {
   renderFichaP
 } = require("../controllers/proy.controller");
 
-router.get("/proy/add", renderProyForm);
+router.get("/proy/add", isAuthenticated, renderProyForm);
 
-router.post("/proy/add",createNewProy);
+router.post("/proy/add", isAuthenticated, createNewProy);
 
 //Get All proys
-router.get("/proy", renderProy);
+router.get("/proy", isAuthenticated, renderProy);
 
 //Edit
-router.get("/edit-proy/:id", renderEditFormProy);
-router.get("/ficha-p/:id", renderFichaP);
-router.put("/proy/edit/:id", updateProy);
+router.get("/edit-proy/:id", isAuthenticated, renderEditFormProy);
+router.get("/ficha-p/:id", isAuthenticated, renderFichaP);
+router.put("/proy/edit/:id", isAuthenticated, updateProy);
 
 //Delete
-router.delete("/proy/delete/:id", deleteProy);
+router.delete("/proy/delete/:id", isAuthenticated, deleteProy);
 
 
 

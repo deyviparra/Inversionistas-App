@@ -1,6 +1,8 @@
 const { Router } = require("express");
 const router = Router();
 
+const {isAuthenticated} = require ('../helpers/auth')
+
 const {
   renderIndex,
   renderLogin,
@@ -9,8 +11,6 @@ const {
 } = require("../controllers/index.controller");
 
 router.get("/", renderIndex);
-router.get("/login", renderLogin);
-router.get("/menuppal", renderMenuppal);
-router.get("/registro", renderRegistro);
+router.get("/menuppal", isAuthenticated, renderMenuppal);
 
 module.exports = router;

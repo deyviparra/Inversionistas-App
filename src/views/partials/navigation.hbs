@@ -4,8 +4,9 @@
     </a>
     {{#if user}}
     <div>
+        <a href=""> Hola, {{user.nombre}}{{user.apellido}}</a>
         <a href="/usuarios/registro">Crear usuario</a>
-        <a href="/">Cerrar sesión</a>
+        <a href="/usuarios/logout">Cerrar sesión</a>
     </div>
     {{else}}
     <div>

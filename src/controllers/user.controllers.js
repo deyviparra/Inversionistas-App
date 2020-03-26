@@ -46,8 +46,8 @@ userCtrl.login = passport.authenticate('local',{
 
 userCtrl.logout=(req,res)=>{
     req.logout()
-    req.flash('success_msg','ha cerrado sesión')
-    res.redirect('./usuarios/login')
+    req.flash('success_msg','Ha cerrado sesión')
+    res.redirect('/')
 }
 
 module.exports = userCtrl
