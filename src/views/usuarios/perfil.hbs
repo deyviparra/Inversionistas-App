@@ -1,0 +1,22 @@
+<div>
+    <h1> Perfil de usuario</h1>
+    <section id="info-ppal" class="info-ppal">
+        <img id="img" src="{{user.imagePath}}" alt="Foto ursuario">
+        <ul>
+            <li>
+                <p> Nombre: {{user.nombre}} {{user.apellido}}</p>
+            </li>
+            <li>
+                <p> Teléfono: {{user.telefono}}</p>
+            </li>
+            <li>
+                <p> Correo: {{user.correo}}</p>
+            </li>
+        </ul>
+        <div class="botones">
+            <form action="/edit-inver/{{inversionista._id}}?_method=GET" method="GET">
+                <input type="hidden" name="_method" value="GET">
+                <button class="up" type="submit">Modificar</button>
+            </form>
+        </div>
+    </section>

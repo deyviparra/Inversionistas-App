@@ -29,7 +29,7 @@ inverCtrl.createNewInver = async (req,res)=>{
       } else {
         newInversionista.imagePath  = "/uploads/" + req.file.filename;
       }
-      
+      newInversionista.edad = calcularedad(nacimiento);
     await newInversionista.save();
     req.flash('success_msg', 'Inversionista creado')
     res.redirect('/menuppal')
@@ -68,6 +68,12 @@ inverCtrl.renderFichaI =async (req,res)=>{
     res.render('inversionistas/ficha-i',{inversionista})
 }  
 
-
+function calcularedad(edad) {
+    var edad_arr = edad.split("-");
+    var edad_fecha = new Date(edad_arr[0], edad_arr[1] - 1, edad_arr[2]);
+    var edad_Dif = Date.now() - edad_fecha.getTime();
+    var edad_Final = new Date(edad_Dif);
+    return Math.abs(edad_Final.getUTCFullYear() - 1970);
+}
 
 module.exports = inverCtrl;

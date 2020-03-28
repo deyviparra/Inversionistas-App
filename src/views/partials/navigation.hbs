@@ -4,14 +4,14 @@
     </a>
     {{#if user}}
     <div>
-        <a href=""> Hola, {{user.nombre}}{{user.apellido}}</a>
+        <a href="/usuarios/perfil"> Hola, {{user.nombre}}{{user.apellido}}</a>
         <a href="/usuarios/registro">Crear usuario</a>
         <a href="/usuarios/logout">Cerrar sesión</a>
     </div>
     {{else}}
     <div>
-        <a href="/client/login">Iniciar sesión</a>
-        <a href="/usuarios/login">Login administrador</a>
+        <a href="/client/login">Inversionista</a>
+        <a href="/usuarios/login">Administrador</a>
     </div>
     {{/if}}
 

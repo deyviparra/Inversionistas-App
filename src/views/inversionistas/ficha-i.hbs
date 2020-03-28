@@ -1,67 +1,67 @@
 <div>
+    <h1> Datos inversionista</h1>
     <section id="info-ppal" class="info-ppal">
-            <img id="img" src="{{inversionista.imagePath}}" alt="Foto Inversionista">
-            <ul>
-                <li>
-                    <p > {{inversionista.nombre}} {{inversionista.apellido}}</p>
-                </li>
-                <li>
-                    <p>{{inversionista.telefono}}</p>
-                </li>
-                <li>
-                    <p>{{inversionista.correo}}</p>
-                </li>
-                <li>
-                    <p>{{inversionista.cedula}}</p>
-                </li>
-            </ul>
-            <div class="botones">
-                <form action="/edit-inver/{{inversionista._id}}?_method=GET" method="GET">
-            <input type="hidden" name="_method" value="GET">
-            <button class="up" type="submit">Modificar</button>
-          </form>
-                
-                
-            </div>
-        </section>
-    
-        <section  id="info-secun" class="info-secun">
-            <ul>
-                
-                <li>
-                    <p>{{inversionista.direccion}}</p>
-                </li>
-                <li>
-                    <p>{{inversionista.nacimiento}}</p>
-                </li>
-                <li>
-                    <p>{{inversionista.estado_civil}}</p>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <p>{{inversionista.n_hijos}}</p>
-                </li>
-                <li>
-                    <p>{{inversionista.n_mascotas}}</p>
-                </li>
-                <li>
-                    <p>{{inversionista.hobby}}</p>
-                </li>
-            </ul>
-            <ul>
-                
-                <li>
-                    <p></p>
-                </li>
-                <li>
-                    <p></p>
-                </li>
-            </ul>
-        </section>
-    
-        <section id="sec-inversiones" class="sec-inversiones">
-            <h2>Inversiones</h2>
-        </section>
+        <img id="img" src="{{inversionista.imagePath}}" alt="Foto Inversionista">
+        <ul>
+            <li>
+                <p> Nombre: {{inversionista.nombre}} {{inversionista.apellido}}</p>
+            </li>
+            <li>
+                <p> Teléfono: {{inversionista.telefono}}</p>
+            </li>
+            <li>
+                <p> Correo: {{inversionista.correo}}</p>
+            </li>
+            <li>
+                <p> Cédula: {{inversionista.cedula}}</p>
+            </li>
+            <li>
+                <p> Edad: {{inversionista.edad}} Años</p>
+            </li>
+        </ul>
+        <div class="botones">
+            <form action="/edit-inver/{{inversionista._id}}?_method=GET" method="GET">
+                <input type="hidden" name="_method" value="GET">
+                <button class="up" type="submit">Modificar</button>
+            </form>
+            <p>Habilitar inversionista: </p>
+                <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+
+
+        </div>
+    </section>
+
+    <section id="info-secun" class="info-secun">
+        <ul>
+
+            <li>
+                <p> Dirección: {{inversionista.direccion}}</p>
+            </li>
+            <li>
+                <p> Nacimiento: {{inversionista.nacimiento}}</p>
+            </li>
+            <li>
+                <p> Estado Civil:{{inversionista.estado_civil}}</p>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <p> Hijos: {{inversionista.n_hijos}}</p>
+            </li>
+            <li>
+                <p> Mascotas: {{inversionista.n_mascotas}}</p>
+            </li>
+            <li>
+                <p> Hobby: {{inversionista.hobby}}</p>
+            </li>
+        </ul>
+        <ul>
+    </section>
+
+    <section id="sec-inversiones" class="sec-inversiones">
+        <h1>Inversiones</h1>
+    </section>
 </div>
-  
