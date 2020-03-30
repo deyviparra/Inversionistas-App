@@ -33,14 +33,12 @@ userCtrl.registro = async (req, res) => {
     }
 }
 userCtrl.renderLogin = (req, res) => {
-
     res.render('usuarios/login')
 }
 
 userCtrl.login = passport.authenticate('local', {
     successRedirect: '../menuppal',
     failureRedirect: '/usuarios/login',
-    badRequestMessage: 'Your message you want to change.',
     failureFlash: true
 })
 
@@ -53,5 +51,17 @@ userCtrl.logout = (req, res) => {
 userCtrl.renderFichaU = (req, res) => {
     res.render('usuarios/perfil')
 }
+
+userCtrl.renderEditFormUser=async (req,res)=>{
+    const user = await User.findById(req.params.id)
+     res.render('usuarios/edit-user',{user})
+ }
+
+userCtrl.updateUser=async (req,res)=>{
+    const {nombre,apellido,telefono,correo}=req.body;
+    await User.findByIdAndUpdate(req.params.id, {nombre,apellido,telefono,correo} )
+        req.flash('success_msg', 'Usuario actualizado')
+        res.redirect('/menuppal')
+    }
 
 module.exports = userCtrl

@@ -78,6 +78,10 @@ header nav {
     width: auto;
     margin-left: 10px;
     background: #f3f3f3; }
+  header nav .img_usuario {
+    height: 30px;
+    width: auto;
+    border-radius: 15px; }
 
 input {
   color: #f3f3f3;
