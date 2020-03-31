@@ -1,21 +1,21 @@
 <h1> Fondo de inversión FNF</h1>
 <div class="contenedor up" id="usuario-form">
     <form id="form2" class="form-login" action="/user/edit/{{user.id}}?_method=PUT" method="POST"
-        enctype="multipart/form-data" id="inver-form" class="inver-form">
+        enctype="multipart/form-data" id="user-form" class="form-forms">
         <input type="hidden" name="_method" value="PUT">
         <h2>Modificar usuario</h2>
         <div class="login">
-            <input id="nombre_u" class="input-inver" type="text" name="nombre" placeholder="Nombre"
+            <input id="nombre_u" class="input-form" type="text" name="nombre" placeholder="Nombre"
                 value="{{user.nombre}}" autofocus>
-            <input id="apellido_u" class="input-inver" type="text" name="apellido" placeholder="Apellido"
+            <input id="apellido_u" class="input-form" type="text" name="apellido" placeholder="Apellido"
                 value="{{user.apellido}}" autofocus>
-            <input id="telefono_u" class="input-inver" type="text" name="telefono" placeholder="Teléfono"
+            <input id="telefono_u" class="input-form" type="text" name="telefono" placeholder="Teléfono"
                 value="{{user.telefono}}" autofocus>
-            <input id="correo_u" class="input-inver" type="email" name="correo" placeholder="Correo"
+            <input id="correo_u" class="input-form" type="email" name="correo" placeholder="Correo"
                 value="{{user.correo}}" autofocus>
             <div class="hide">
-                <input id="contrasena_u" class="input-inver" type="password" name="contrasena" placeholder="Contraseña">
-                <input id="contrasena2_u" class="input-inver" type="password" name="confirm_contrasena"
+                <input id="contrasena_u" class="input-form" type="password" name="contrasena" placeholder="Contraseña">
+                <input id="contrasena2_u" class="input-form" type="password" name="confirm_contrasena"
                     placeholder="Repita la contraseña">
             </div>
             <button type='submit' id="crear_u" class="boton">

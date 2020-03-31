@@ -1,9 +1,9 @@
-.list-inversionistas {
+.list {
   display: flex;
   flex-wrap: wrap;
   margin-left: 2%;
 
-  .cuadro-inver {
+  .cuadro {
     width: 50%;
     padding: 20px;
     .cuadro-interno {
@@ -22,7 +22,7 @@
           border-radius: 10px;
         }
       }
-      .texto-cuadro-inver {
+      .texto-cuadro {
         width: 50%;
         padding: 10px 10px 10px -10px;
         .card-block {

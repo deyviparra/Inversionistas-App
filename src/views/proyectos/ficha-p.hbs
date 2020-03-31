@@ -1,38 +1,62 @@
+<div>
 <section id="info-ppal" class="info-ppal">
-        <img id="img" src="{{proyecto.imagePath}}"  alt="Foto Proyecto">
-        <ul>
-            <li>
-                <p> Nombre del proyecto: {{proyecto.nombre}}</p>
-            </li>
-            <li>
-                <p> Tipo de inmueble: {{proyecto.tipo}}</p>
-            </li>
-            <li>
-                <p> Dirección: {{proyecto.direccion}}</p>
-            </li>
-        </ul>
-        <div class="botones">
-            <form action="/edit-proy/{{proyecto._id}}?_method=GET" method="GET">
+    <img id="img" src="{{proyecto.imagePath}}" alt="Foto Proyecto">
+    <ul>
+        <li>
+            <p> Nombre del proyecto: {{proyecto.nombre}}</p>
+        </li>
+        <li>
+            <p> Tipo de inmueble: {{proyecto.tipo}}</p>
+        </li>
+        <li>
+            <p> Dirección: {{proyecto.direccion}}</p>
+        </li>
+    </ul>
+    <div class="botones">
+        <form action="/edit-proy/{{proyecto._id}}?_method=GET" method="GET">
             <input type="hidden" name="_method" value="GET">
             <button class="up" type="submit">Modificar</button>
+        </form>
+        <form action="/tipos" class="panel">
+                <input type="hidden" value="{{proyecto._id}}" name="id">
+                <button class="up" type="submit">Añadir tipo de {{proyecto.tipo}}</button>
+            </form>
+    </div>
+</section>
+
+<section id="info-secun" class="info-secun">
+    <ul>
+        <li>
+            <p> Precios desde: {{proyecto.rango}}</p>
+        </li>
+        <li>
+            <p> Municipio: {{proyecto.municipio}}</p>
+        </li>
+        <li>
+            <p> Departamento: {{proyecto.departamento}}</p>
+        </li>
+        <li>
+            <p> Estrato: {{proyecto.estrato}}</p>
+        </li>
+    </ul>
+
+</section>
+    <section id="sec-inversiones" class="sec-inversiones">
+        <h1> Tipos de {{proyecto.tipo}}</h1>
+        <div class="inversiones">
+            <ul>
+                {{#each proyecto.tipos}}
+                {{!-- {{#if_eq modelo 1}} --}}
+                {{!-- <h2>Modelo 1</h2> --}}
+                <li>
+                    <p class='up2'> Tipo: {{nombre}}</p>
+                    <p> valor: {{valor}}</p>
+                    <p> Metraje: {{metraje}}</p>
+                    <p>Unidades: {{unidades}}</p>
+                </li>
+                {{!-- {{/if_eq}} --}}
+                {{/each}}
+            </ul>
         </div>
     </section>
-
-    <section  id="info-secun" class="info-secun">
-        <ul>
-            <li>
-                <p> Precios desde: {{proyecto.rango}}</p>
-            </li>
-            <li>
-                <p> Municipio: {{proyecto.municipio}}</p>
-            </li>
-            <li>
-                <p> Departamento: {{proyecto.departamento}}</p>
-            </li>
-            
-            <li>
-                <p> Estrato: {{proyecto.estrato}}</p>
-            </li>
-        </ul>
-    
-    </section>
+</div>

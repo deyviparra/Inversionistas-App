@@ -30,7 +30,7 @@ router.delete("/inver/delete/:id", deleteInver);
 
 // Add Investment
 router.get("/modelos-inversion/", isAuthenticated, renderModelo)
-router.put("/inversion/add/:id", updateInvestment)
+router.put("/inversion/add/:id", isAuthenticated, updateInvestment)
 
 
 module.exports = router;

@@ -10,7 +10,9 @@ const {
   renderEditFormProy,
   updateProy,
   deleteProy,
-  renderFichaP
+  renderFichaP,
+  renderTipo,
+  updateType
 } = require("../controllers/proy.controller");
 
 router.get("/proy/add", isAuthenticated, renderProyForm);
@@ -27,6 +29,10 @@ router.put("/proy/edit/:id", isAuthenticated, updateProy);
 
 //Delete
 router.delete("/proy/delete/:id", isAuthenticated, deleteProy);
+
+// Add type 
+router.get("/tipos/", isAuthenticated, renderTipo)
+router.put("/tipos/add/:id", isAuthenticated, updateType)
 
 
 

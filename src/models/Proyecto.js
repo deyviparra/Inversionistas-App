@@ -1,14 +1,16 @@
 const {Schema,model} =require('mongoose');
 
 const projectSchema = new Schema ({
-    nombre:{type: String, required: true},
-    tipo:{type: String, required: true},
-    direccion:{type: String, required: true},
-    rango:{type: String, required: true},
-    municipio:{type: String, required: true},
-    departamento:{type: String, required: true},
-    estrato:{type:String, required:true},
+    nombre:{type: String},
+    tipo:{type: String},
+    direccion:{type: String},
+    rango:{type: String},
+    municipio:{type: String},
+    departamento:{type: String},
+    estrato:{type:String},
     imagePath:{type: String},
+    tipos:{type: Array},
+    galeria:{type: Array},
  },{ timestamps:true
 })
 

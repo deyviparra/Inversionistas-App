@@ -1,0 +1,35 @@
+<div class="form" id="form-nuevo-proy">
+    <div class="columna">
+        <form action="/tipos/add/{{proyecto.id}}?_method=PUT" method="POST" id="tipo" class="form-forms">
+            <h1 id="titulo3-h1">Nuevo tipo </h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                    <div class="form-div">
+                        <input type="text" name="nombre" id="nombre" placeholder="Nombre: " class="input-form"
+                            autofocus>
+                    </div>
+                    <div class="form-div">
+                        <input type="text" name="valor" id="valor" placeholder="Valor: " class="input-form"
+                            autofocus>
+                    </div>
+                </div>
+                <div class="columna-1">
+                    <div class="form-div">
+                        <input type="text" name="metraje" id="metraje" placeholder="Metraje (metros cuadrados): " class="input-form"
+                            autofocus>
+                    </div>
+                    <div class="form-div">
+                        <select name="unidades" class="lista-sel" id="unidades">
+                    <option value="mt2"> Metros cuadrados</option>
+                    <option value="km2"> Kilómetro cuadrado</option>
+                    <option value="hectarea"> Hectárea</option>
+                </select>
+                    </div>
+                </div>
+            </div>
+        <button class="boton" type="submit">
+                Guardar tipo
+            </button>
+        </form>
+    </div>
+</div>

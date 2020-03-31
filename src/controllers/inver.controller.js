@@ -77,7 +77,7 @@ inverCtrl.renderFichaI = async (req, res) => {
 inverCtrl.renderModelo = async (req, res) => {
     const proyecto = await Proyecto.find()
     const inversionista = await Inversionista.findById(req.query.id)
-    res.render('modelos-inversion/' + req.query.Modelo, { proyecto, inversionista })
+    res.render('modelos-inversion/' + req.query.modelo, { proyecto, inversionista })
 }
 
 inverCtrl.updateInvestment = async (req, res) => {
