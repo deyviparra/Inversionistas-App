@@ -4,10 +4,15 @@ const { unlink } = require("fs-extra");
 const path = require("path");
 const {uploadFile}=require('../upload.js')
 
-
+var tipos = [];
 
 proyCtrl.renderProyForm =(req,res)=>{
     res.render('proyectos/nuevo-p')
+    // const tipo = req.query
+    
+    // tipos.push(tipo)
+    // console.log (tipos)
+
 }
 proyCtrl.createNewProy =async (req,res)=>{
   const { nombre, tipo, direccion, rango, municipio, departamento, estrato} = req.body;
@@ -27,6 +32,8 @@ proyCtrl.createNewProy =async (req,res)=>{
     await uploadFile(path.join(__dirname, '../public/uploads/' + req.file.filename),req.file.filename)
 
   }
+  newProyecto.galeria = [""];
+  newProyecto.tipos = [""];
   await newProyecto.save();
     req.flash('success_msg', 'Proyecto creado')
     res.redirect('/menuppal')
@@ -64,4 +71,17 @@ proyCtrl.renderFichaP = async (req,res)=>{
     res.render('proyectos/ficha-p',{proyecto})
 }  
 
+proyCtrl.renderTipo = async (req, res) => {
+  const proyecto = await Proyecto.findById(req.query.id)
+  res.render('proyectos/tipos',{proyecto})
+ 
+}
+proyCtrl.updateType = async (req, res) => {
+  const { tipos } = await Proyecto.findById(req.params.id)
+  const tipo = req.body
+  tipos.push(tipo)
+  await Proyecto.findByIdAndUpdate(req.params.id, { tipos })
+  req.flash('success_msg', 'Tipo añadido')
+  res.redirect('/proy')
+}
 module.exports = proyCtrl;

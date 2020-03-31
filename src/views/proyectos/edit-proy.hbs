@@ -1,36 +1,42 @@
-<div class="form-nuevo-inver" id="form-edit-proy">
+<div class="form" id="form-edit-proy">
     <div class="columna">
-        <form action="/proy/edit/{{proy.id}}?_method=PUT" method="POST" enctype="multipart/form-data" id="inver-form"
-            class="inver-form">
+        <form action="/proy/edit/{{proy.id}}?_method=PUT" method="POST" enctype="multipart/form-data" id="proy-form"
+            class="form-forms">
             <input type="hidden" name="_method" value="PUT">
             <h1 id="titulo3-h1">Actualizar proyecto</h1>
             <div class="contenedor-form">
                 <div class="columna-1">
                     <div class="form-div">
                         <input type="text" name="nombre" value="{{proy.nombre}}" id="nombre_p" placeholder="Nombre: "
-                            class="input-inver" autofocus>
+                            class="input-form" autofocus>
                     </div>
                     <div class="form-div">
-                        <input type="text" name="tipo" value="{{proy.tipo}}" id="tipo_p"
-                            placeholder="Tipo de inmueble: " class="input-inver">
+                        <p> Tipo de inmueble:</p>
+                        <select name="tipo" class="lista-sel" id="tipo">
+                            <option value="apartamento"> Apartamento</option>
+                            <option value="casa"> Casa</option>
+                            <option value="suite"> Suite</option>
+                            <option value="local"> Local</option>
+                            <option value="lote"> Lote</option>
+                        </select>
                     </div>
                     <div class="form-div">
                         <input type="text" name="direccion" value="{{proy.direccion}}" id="direccion_p"
-                            placeholder="Dirección: " class="input-inver">
+                            placeholder="Dirección: " class="input-form">
                     </div>
                     <div class="form-div">
                         <input type="text" name="rango" value="{{proy.rango}}" id="rango_p"
-                            placeholder="Rango de precios: " class="input-inver">
+                            placeholder="Rango de precios: " class="input-form">
                     </div>
                 </div>
                 <div class="columna-1">
                     <div class="form-div">
                         <input type="text" name="municipio" value="{{proy.municipio}}" id="municipio_p"
-                            placeholder="Municipio: " class="input-inver">
+                            placeholder="Municipio: " class="input-form">
                     </div>
                     <div class="form-div">
                         <input type="text" name="departamento" value="{{proy.departamento}}" id="departamento_p"
-                            placeholder="Departamento: " class="input-inver">
+                            placeholder="Departamento: " class="input-form">
                     </div>
                     <div class="form-div">
                         <input type="text" name="estrato" value="{{proy.estrato}}" id="estrato_p"

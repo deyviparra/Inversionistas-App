@@ -92,50 +92,50 @@ input {
   input:target {
     border: none; }
 
-.form-nuevo-inver {
+.form {
   color: #f3f3f3;
   display: flex;
   justify-content: center;
   align-self: center;
   width: 100%; }
-  .form-nuevo-inver .columna {
+  .form .columna {
     margin-top: 30px;
     background: #272727;
     display: flex;
     justify-content: center;
     width: 80%; }
-    .form-nuevo-inver .columna .inver-form {
+    .form .columna .form-forms {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       width: 100%; }
-      .form-nuevo-inver .columna .inver-form .contenedor-form {
+      .form .columna .form-forms .contenedor-form {
         display: flex;
         width: 100%;
         align-items: flex-start;
         justify-content: center; }
-      .form-nuevo-inver .columna .inver-form .columna-1 {
+      .form .columna .form-forms .columna-1 {
         width: 100%;
         padding: 3%; }
-        .form-nuevo-inver .columna .inver-form .columna-1 .form-div {
+        .form .columna .form-forms .columna-1 .form-div {
           display: flex;
           flex-direction: row;
           justify-content: space-between; }
-          .form-nuevo-inver .columna .inver-form .columna-1 .form-div p {
+          .form .columna .form-forms .columna-1 .form-div p {
             padding-top: 20px;
             padding-left: 20px;
             width: 80%; }
-      .form-nuevo-inver .columna .inver-form input {
+      .form .columna .form-forms input {
         width: 100%;
         margin: 10px;
         height: 40px;
         padding: 10px; }
-      .form-nuevo-inver .columna .inver-form .input-group {
+      .form .columna .form-forms .input-group {
         margin: 10px; }
-      .form-nuevo-inver .columna .inver-form button {
+      .form .columna .form-forms button {
         max-width: 200px; }
-      .form-nuevo-inver .columna .inver-form .lista-sel {
+      .form .columna .form-forms .lista-sel {
         margin-top: 20px;
         color: black;
         height: 30px; }
@@ -350,14 +350,14 @@ input:checked + .slider:before {
     .cajon h2 {
       font-size: 30px;
       font-weight: 600; } }
-.list-inversionistas {
+.list {
   display: flex;
   flex-wrap: wrap;
   margin-left: 2%; }
-  .list-inversionistas .cuadro-inver {
+  .list .cuadro {
     width: 50%;
     padding: 20px; }
-    .list-inversionistas .cuadro-inver .cuadro-interno {
+    .list .cuadro .cuadro-interno {
       height: 370px;
       border-radius: 5px;
       background: linear-gradient(145deg, #2a2a2a, #232323);
@@ -365,16 +365,16 @@ input:checked + .slider:before {
       border: none;
       display: flex;
       justify-content: space-between; }
-      .list-inversionistas .cuadro-inver .cuadro-interno .div-imagen {
+      .list .cuadro .cuadro-interno .div-imagen {
         padding: 10px; }
-        .list-inversionistas .cuadro-inver .cuadro-interno .div-imagen img {
+        .list .cuadro .cuadro-interno .div-imagen img {
           width: 200px;
           height: auto;
           border-radius: 10px; }
-      .list-inversionistas .cuadro-inver .cuadro-interno .texto-cuadro-inver {
+      .list .cuadro .cuadro-interno .texto-cuadro {
         width: 50%;
         padding: 10px 10px 10px -10px; }
-        .list-inversionistas .cuadro-inver .cuadro-interno .texto-cuadro-inver .card-block {
+        .list .cuadro .cuadro-interno .texto-cuadro .card-block {
           height: 60%; }
 
 .up2 {
