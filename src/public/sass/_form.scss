@@ -36,6 +36,16 @@ box-shadow:  9px 9px 18px #1c1c1c,
             .columna-1{
             width: 100%;
             padding: 3%;
+            .form-div{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                p{
+                    padding-top: 20px;
+                    padding-left: 20px;
+                    width: 80%;
+                }
+            }
             }
             input{
                 width: 100%;
@@ -49,6 +59,11 @@ box-shadow:  9px 9px 18px #1c1c1c,
             }
             button{
                 max-width: 200px;
+            }
+            .lista-sel{
+                margin-top: 20px;
+                color: black;
+                height: 30px;
             }
         }
         

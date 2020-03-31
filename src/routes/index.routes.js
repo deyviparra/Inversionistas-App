@@ -5,10 +5,9 @@ const {isAuthenticated} = require ('../helpers/auth')
 
 const {
   renderIndex,
-  renderLogin,
-  renderMenuppal,
-  renderRegistro
+  renderMenuppal
 } = require("../controllers/index.controller");
+
 
 router.get("/", renderIndex);
 router.get("/menuppal", isAuthenticated, renderMenuppal);

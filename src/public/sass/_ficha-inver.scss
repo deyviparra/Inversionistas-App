@@ -31,8 +31,16 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    p{
+    p {
       margin: 10px;
+    }
+    .panel {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    .lista-sel {
+      color: black;
     }
   }
 }
@@ -45,6 +53,25 @@
   ul li p {
     color: $negro;
     margin: 20px;
+  }
+}
+
+.sec-inversiones {
+  .inversiones {
+    width: 100%;
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    li {
+      width: 30%;
+      margin: 20px;
+      border-radius: 5px;
+      background: linear-gradient(145deg, #2a2a2a, #232323);
+      box-shadow: 9px 9px 18px #1c1c1c, -9px -9px 18px #323232;
+      border: none;
+    }
   }
 }
 
