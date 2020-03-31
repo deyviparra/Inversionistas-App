@@ -1,11 +1,11 @@
 const { Schema, model } = require('mongoose')
 
 const inverSchema = new Schema({
-  nombre: { type: String, required: true },
-  apellido: { type: String, required: true },
-  telefono: { type: String, required: true },
-  correo: { type: String, required: true },
-  cedula: { type: String, required: true },
+  nombre: { type: String },
+  apellido: { type: String },
+  telefono: { type: String },
+  correo: { type: String },
+  cedula: { type: String },
   direccion: { type: String },
   nacimiento: { type: String },
   estado_civil: { type: String },
@@ -13,6 +13,7 @@ const inverSchema = new Schema({
   n_mascotas: { type: String },
   hobby: { type: String },
   edad: { type: String },
+  profesion: {type: String},
   imagePath: { type: String }
 }, {
   timestamps: true

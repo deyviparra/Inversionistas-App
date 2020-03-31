@@ -11,7 +11,7 @@ inverCtrl.renderInverForm = (req, res) => {
 }
 
 inverCtrl.createNewInver = async (req, res) => {
-    const { nombre, apellido, telefono, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby } = req.body;
+    const { nombre, apellido, telefono, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion } = req.body;
     const newInversionista = new Inversionista({
         nombre,
         apellido,
@@ -23,7 +23,8 @@ inverCtrl.createNewInver = async (req, res) => {
         estado_civil,
         n_hijos,
         n_mascotas,
-        hobby
+        hobby,
+        profesion
     });
 
     if (typeof req.file === 'undefined') {
