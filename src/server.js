@@ -7,7 +7,9 @@ const methodOverride = require('method-override')
 const flash = require('connect-flash')
 const session =require('express-session')
 const passport = require('passport')
-
+const imagemin = require("imagemin");
+const imageminJpegtran = require("imagemin-jpegtran");
+const imageminPngquant = require("imagemin-pngquant");
 
 //inicializations
 const app = express()
@@ -35,6 +37,34 @@ const storage = multer.diskStorage({
       cb(null, new Date().getTime() + path.extname(file.originalname)); //Error y nombre de la imagen con la fecha y la extension
     }
   });
+
+  // const compress= async (req,res)=>{
+
+  //   const files = await imagemin(["/src/public/uploads/logo"], {
+  //     destination: "output",
+  //     plugins: [
+  //       //imageminJpegtran(),
+  //       imageminPngquant({
+  //         quality: [0.6, 0.8]
+  //       })
+  //     ]
+  //   });
+  //   await console.log(files)
+  //   // res.download(files[0].destinationPath);
+  //   return files
+  // }
+  // let files=compress()
+  // (async () => {
+  //   const files = await imagemin(['images/*.{jpg,png}'], {
+  //       destination: 'build/images',
+  //       plugins: [
+  //           imageminJpegtran(),
+  //           imageminPngquant({
+  //               quality: [0.6, 0.8]
+  //           })
+  //       ]
+  //   });
+
 app.use(multer({ storage }).single("image"));
 app.use(session({
   secret: 'secret',

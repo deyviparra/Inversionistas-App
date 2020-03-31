@@ -2,6 +2,8 @@ const proyCtrl = {}
 const Proyecto = require("../models/Proyecto");
 const { unlink } = require("fs-extra");
 const path = require("path");
+const {uploadFile}=require('../upload.js')
+
 
 
 proyCtrl.renderProyForm =(req,res)=>{
@@ -20,7 +22,9 @@ proyCtrl.createNewProy =async (req,res)=>{
   if (typeof req.file === 'undefined') {
     newProyecto.imagePath = "/uploads/sinfotop.png";
   } else {
-    newProyecto.imagePath  = "/uploads/" + req.file.filename;
+    newProyecto.imagePath  = "https://inversionistas-bucket.s3-sa-east-1.amazonaws.com/" + req.file.filename;
+    await uploadFile(path.join(__dirname, '../public/uploads/' + req.file.filename),req.file.filename)
+
   }
   await newProyecto.save();
     req.flash('success_msg', 'Proyecto creado')

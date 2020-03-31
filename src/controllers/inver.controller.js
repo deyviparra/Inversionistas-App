@@ -2,6 +2,8 @@ const inverCtrl = {}
 const Inversionista = require("../models/Inversionista");
 const { unlink } = require("fs-extra");
 const path = require("path");
+const {uploadFile}=require('../upload.js')
+
 
 
 inverCtrl.renderInverForm =(req,res)=>{
@@ -27,7 +29,10 @@ inverCtrl.createNewInver = async (req,res)=>{
       if (typeof req.file === 'undefined') {
         newInversionista.imagePath = "/uploads/sinfoto.png";
       } else {
-        newInversionista.imagePath  = "/uploads/" + req.file.filename;
+        newInversionista.imagePath  = "https://inversionistas-bucket.s3-sa-east-1.amazonaws.com/" + req.file.filename;
+            
+         await uploadFile(path.join(__dirname, '../public/uploads/' + req.file.filename),req.file.filename)
+    
       }
       newInversionista.edad = calcularedad(nacimiento);
     await newInversionista.save();
