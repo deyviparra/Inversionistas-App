@@ -2,10 +2,11 @@
 const path = require("path");
 const fs = require('fs');
 const AWS = require('aws-sdk');
+const {AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY}=process.env
 
 // Enter copied or downloaded access ID and secret key here
-const ID = 'AKIAJV3KKZJEB3S6NF2Q';
-const SECRET = '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';
+const ID = AWS_ACCESS_KEY_ID;
+const SECRET = AWS_SECRET_ACCESS_KEY;
 
 // The name of the bucket that you have created
 const BUCKET_NAME = 'inversionistas-bucket';
