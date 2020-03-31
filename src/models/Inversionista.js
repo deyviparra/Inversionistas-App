@@ -13,8 +13,7 @@ const inverSchema = new Schema({
   n_mascotas: { type: String },
   hobby: { type: String },
   edad: { type: String },
-  imagePath: { type: String },
-  inversiones: { type: Array },
+  imagePath: { type: String }
 }, {
   timestamps: true
 })

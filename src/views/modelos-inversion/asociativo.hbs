@@ -1,0 +1,48 @@
+<div class="form-nuevo-inver" id="form-nuevo-inver">
+    <div class="columna">
+        <form action="/inversion/add/{{inversionista.id}}?_method=PUT" method="POST" id="inver-form" class="inver-form">
+            <h1 id="titulo1-h1">Modelo asociativo</h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                    <div class="form-div">
+                        <p> Proyecto:</p>
+                        <input type="hidden" name="modelo" value="1">
+                        <select name="proyecto" class="lista-sel">
+                            {{#each proyecto}}
+                            <option value="{{nombre}}">{{nombre}}</option>
+                            {{/each}}
+                        </select> 
+                    </div>
+                    <div class="form-div">
+                        <p> Fecha de creación:</p>
+                        <input type="date" name="fecha_inicio" placeholder="Fecha de inicio: " class="input-inver">
+                    </div>
+                    <div class="form-div">
+                        <p> Fecha de cierre: </p>
+                        <input type="date" name="fecha_cierre" placeholder="Fecha de cierre: " class="input-inver">
+                    </div>
+                    <div class="form-div">
+                        <p> Numero de acciones: </p>
+                        <input type="text" name="n_acciones" placeholder="Número de acciones: "
+                            class="input-inver">
+                    </div>            
+                    <div class="form-div">
+                        <p> Valor de compra: </p>
+                        <input type="text" name="valor_compra" placeholder="Valor de compra: " class="input-inver">
+                    </div>
+                    <div class="form-div">
+                        <p>Fecha de entrega: </p>
+                        <input type="text" name="fecha_entrega_prometida" placeholder="Fecha de entrega: " class="input-inver">
+                    </div>
+                    <div class="form-div">
+                        <p>Tir prometida: </p>
+                        <input type="text" name="tir_prometida" placeholder="Tir prometida: " class="input-inver">
+                    </div>
+                </div>
+            </div>
+            <button class="boton" type="submit">
+                Crear plan de pagos
+            </button>
+        </form>
+    </div>
+</div>

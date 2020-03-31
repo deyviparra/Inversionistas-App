@@ -35,7 +35,7 @@ inverCtrl.createNewInver = async (req, res) => {
     
       }
       newInversionista.edad = calcularedad(nacimiento);
-    newInversionista.inversiones = ["defautl"];
+
     await newInversionista.save();
     req.flash('success_msg', 'Inversionista creado')
     res.redirect('/menuppal')
@@ -80,14 +80,14 @@ inverCtrl.renderModelo = async (req, res) => {
     res.render('modelos-inversion/' + req.query.Modelo, { proyecto, inversionista })
 }
 
-inverCtrl.updateInvestment = async (req, res) => {
-    const { inversiones } = await Inversionista.findById(req.params.id)
-    const inversion = req.body
-    inversiones.push(inversion)
-    await Inversionista.findByIdAndUpdate(req.params.id, { inversiones })
-    req.flash('success_msg', 'Inversión añadida')
-    res.redirect('/inver')
-}
+// inverCtrl.updateInvestment = async (req, res) => {
+//     const { inversiones } = await Inversionista.findById(req.params.id)
+//     const inversion = req.body
+//     inversiones.push(inversion)
+//     await Inversionista.findByIdAndUpdate(req.params.id, { inversiones })
+//     req.flash('success_msg', 'Inversión añadida')
+//     res.redirect('/inver')
+// }
 
 
 function calcularedad(edad) {
