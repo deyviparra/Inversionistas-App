@@ -25,12 +25,20 @@
                 <button class="up" type="submit">Modificar</button>
             </form>
             <p>Habilitar inversionista: </p>
-                <label class="switch">
-                    <input type="checkbox">
-                    <span class="slider round"></span>
-                </label>
-
-
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <form action="/modelos-inversion" class="panel">
+                <input type="hidden" value="{{inversionista._id}}" name="id">
+                <select name="Modelo" class="lista-sel" id="tipo-modelo">
+                    <option value="modelo1"> Modelo 1</option>
+                    <option value="modelo2"> Modelo 2</option>
+                    <option value="modelo3"> Modelo 3</option>
+                    <option value="asociativo"> Asociativo</option>
+                </select>
+                <button class="up" type="submit">Añadir inversión</button>
+            </form>
         </div>
     </section>
 
@@ -63,5 +71,20 @@
 
     <section id="sec-inversiones" class="sec-inversiones">
         <h1>Inversiones</h1>
+        <div class="inversiones">
+            <ul>
+                {{#each inversionista.inversiones}}
+                {{!-- {{#if_eq modelo 1}} --}}
+                {{!-- <h2>Modelo 1</h2> --}}
+                <li>
+                    <p class='up2'> Modelo: {{modelo}}</p>
+                    <p> Proyecto: {{proyecto}}</p>
+                    <p> Fecha de creación: {{fecha_creacion}}</p>
+                    <p> Fecha de cierre: {{fecha_cierre}}</p>
+                </li>
+                {{!-- {{/if_eq}} --}}
+                {{/each}}
+            </ul>
+        </div>
     </section>
 </div>

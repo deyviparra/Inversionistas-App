@@ -1,57 +1,58 @@
 <div class="form-nuevo-inver" id="form-edit-inver">
-        <div class="columna">
-            <form action="/inver/edit/{{inver.id}}?_method=PUT" method="POST" enctype="multipart/form-data">
+    <div class="columna">
+        <form action="/inver/edit/{{inver.id}}?_method=PUT" method="POST" enctype="multipart/form-data" id="inver-form"
+            class="inver-form">
             <input type="hidden" name="_method" value="PUT">
 
-                <h1 id="titulo1-h1">Actualizar inversionista</h1>
-                <div class="contenedor-form">
-                    <div class="columna-1">
-                        <div class="form-div">
-                            <input type="text" name="nombre" value="{{inver.nombre}}" class="input-inver" autofocus
-                                required>
-                        </div>
-                        <div class="form-div">
-                            <input type="text" name="apellido" value="{{inver.apellido}}" class="input-inver" required>
-                        </div>
-                        <div class="form-div">
-                            <input type="text" name="telefono" value="{{inver.telefono}}" class="input-inver" required>
-                        </div>
-                        <div class="form-div">
-                            <input type="email" name="correo" value="{{inver.correo}}" class="input-inver" required>
-                        </div>
-                        <div class="form-div">
-                            <input type="text" name="cedula" value="{{inver.cedula}}" class="input-inver" required>
-                        </div>
-                        <div class="form-div">
-                            <input type="text" name="direccion" value="{{inver.direccion}}" class="input-inver">
-                        </div>
+            <h1 id="titulo1-h1">Actualizar inversionista</h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                    <div class="form-div">
+                        <input type="text" name="nombre" value="{{inver.nombre}}" class="input-inver" autofocus
+                            required>
                     </div>
-                    <div class="columna-1">
-                        <div class="form-div">
-                            <input type="date" name="nacimiento" value="{{inver.nacimiento}}"  class="input-inver">
-                        </div>
-                        <div class="form-div">
-                            <input type="text" name="estado_civil" value="{{inver.estado_civil}}" class="input-inver">
-                        </div>
-                        <div class="form-div">
-                            <input type="text" name="n_hijos" value="{{inver.n_hijos}}"  class="input-inver">
-                        </div>
-                        <div class="form-div">
-                            <input type="text" name="n_mascotas" value="{{inver.n_mascotas}}" class="input-inver">
-                        </div>
-                        <div class="form-div">
-                            <input type="text" name="hobby" value="{{inver.hobby}}" class="input-inver">
-                        </div>
-                        <div class="input-group mb-3">
-                            <input type="file" name='image' class="custom-file-input" id="image" >
-                            <label for="image" class="custom-file-label">Subir imágen</label>
-                            <output id="list-img-edit"></output>
-                        </div>
+                    <div class="form-div">
+                        <input type="text" name="apellido" value="{{inver.apellido}}" class="input-inver" required>
+                    </div>
+                    <div class="form-div">
+                        <input type="text" name="telefono" value="{{inver.telefono}}" class="input-inver" required>
+                    </div>
+                    <div class="form-div">
+                        <input type="email" name="correo" value="{{inver.correo}}" class="input-inver" required>
+                    </div>
+                    <div class="form-div">
+                        <input type="text" name="cedula" value="{{inver.cedula}}" class="input-inver" required>
+                    </div>
+                    <div class="form-div">
+                        <input type="text" name="direccion" value="{{inver.direccion}}" class="input-inver">
                     </div>
                 </div>
-                <button class="boton" type="submit">
-                    Guardar inversionita
-                </button>
-            </form>
-        </div>
+                <div class="columna-1">
+                    <div class="form-div">
+                        <input type="date" name="nacimiento" value="{{inver.nacimiento}}" class="input-inver">
+                    </div>
+                    <div class="form-div">
+                        <input type="text" name="estado_civil" value="{{inver.estado_civil}}" class="input-inver">
+                    </div>
+                    <div class="form-div">
+                        <input type="text" name="n_hijos" value="{{inver.n_hijos}}" class="input-inver">
+                    </div>
+                    <div class="form-div">
+                        <input type="text" name="n_mascotas" value="{{inver.n_mascotas}}" class="input-inver">
+                    </div>
+                    <div class="form-div">
+                        <input type="text" name="hobby" value="{{inver.hobby}}" class="input-inver">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="file" name='image' class="custom-file-input" id="image">
+                        <label for="image" class="custom-file-label">Subir imágen</label>
+                        <output id="list-img-edit"></output>
+                    </div>
+                </div>
+            </div>
+            <button class="boton" type="submit">
+                Guardar inversionita
+            </button>
+        </form>
     </div>
+</div>

@@ -3,15 +3,15 @@ const Inversionista = require("../models/Inversionista");
 const { unlink } = require("fs-extra");
 const path = require("path");
 const {uploadFile}=require('../upload.js')
+const Proyecto = require("../models/Proyecto");
 
 
-
-inverCtrl.renderInverForm =(req,res)=>{
+inverCtrl.renderInverForm = (req, res) => {
     res.render('inversionistas/nuevo-i')
 }
 
-inverCtrl.createNewInver = async (req,res)=>{
-    const { nombre, apellido, telefono, correo, cedula,direccion,nacimiento, estado_civil, n_hijos, n_mascotas, hobby } = req.body;
+inverCtrl.createNewInver = async (req, res) => {
+    const { nombre, apellido, telefono, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby } = req.body;
     const newInversionista = new Inversionista({
         nombre,
         apellido,
@@ -24,9 +24,9 @@ inverCtrl.createNewInver = async (req,res)=>{
         n_hijos,
         n_mascotas,
         hobby
-      });
-      
-      if (typeof req.file === 'undefined') {
+    });
+
+    if (typeof req.file === 'undefined') {
         newInversionista.imagePath = "/uploads/sinfoto.png";
       } else {
         newInversionista.imagePath  = "https://inversionistas-bucket.s3-sa-east-1.amazonaws.com/" + req.file.filename;
@@ -35,43 +35,60 @@ inverCtrl.createNewInver = async (req,res)=>{
     
       }
       newInversionista.edad = calcularedad(nacimiento);
+    newInversionista.inversiones = ["defautl"];
     await newInversionista.save();
     req.flash('success_msg', 'Inversionista creado')
     res.redirect('/menuppal')
 }
-inverCtrl.renderInver=async (req,res)=>{
-    const inversionistas= await Inversionista.find()
-    res.render('inversionistas/lista-i', {inversionistas})
+inverCtrl.renderInver = async (req, res) => {
+    const inversionistas = await Inversionista.find()
+    res.render('inversionistas/lista-i', { inversionistas })
 }
-inverCtrl.renderEditFormInver=async (req,res)=>{
-   const inver = await Inversionista.findById(req.params.id)
-    res.render('inversionistas/edit-inver',{inver})
-}
-inverCtrl.updateInver=async (req,res)=>{
-const {nombre,apellido,telefono,correo,cedula,direccion,nacimiento,estado_civil,n_hijos,n_mascotas,hobby}=req.body;
-if (typeof req.file === 'undefined') {
-    await Inversionista.findByIdAndUpdate(req.params.id, {nombre,apellido,telefono,correo,cedula,direccion,nacimiento,estado_civil,n_hijos,n_mascotas,hobby} )
-}else{
-    const imagePath  = "/uploads/" + req.file.filename;
+inverCtrl.renderEditFormInver = async (req, res) => {
     const inver = await Inversionista.findById(req.params.id)
-    unlink(path.resolve(path.join(__dirname, '../public'+ inver.imagePath)))
-    await Inversionista.findByIdAndUpdate(req.params.id, {nombre,apellido,telefono,correo,cedula,direccion,nacimiento,estado_civil,n_hijos,n_mascotas,hobby,imagePath} )
+    res.render('inversionistas/edit-inver', { inver })
 }
+inverCtrl.updateInver = async (req, res) => {
+    const { nombre, apellido, telefono, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby } = req.body;
+    if (typeof req.file === 'undefined') {
+        await Inversionista.findByIdAndUpdate(req.params.id, { nombre, apellido, telefono, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby })
+    } else {
+        const imagePath = "/uploads/" + req.file.filename;
+        const inver = await Inversionista.findById(req.params.id)
+        unlink(path.resolve(path.join(__dirname, '../public' + inver.imagePath)))
+        await Inversionista.findByIdAndUpdate(req.params.id, { nombre, apellido, telefono, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, imagePath })
+    }
     req.flash('success_msg', 'Inversionista actualizado')
     res.redirect('/inver')
 }
-inverCtrl.deleteInver=async (req,res)=>{
+inverCtrl.deleteInver = async (req, res) => {
 
     const inver = await Inversionista.findById(req.params.id)
     await Inversionista.findByIdAndDelete(req.params.id)
-    unlink(path.resolve(path.join(__dirname, '../public'+inver.imagePath)))
+    unlink(path.resolve(path.join(__dirname, '../public' + inver.imagePath)))
     req.flash('error_msg', 'Inversionista eliminado')
-    res.redirect('/inver')  
+    res.redirect('/inver')
 }
-inverCtrl.renderFichaI =async (req,res)=>{
-   const inversionista = await Inversionista.findById(req.params.id)
-    res.render('inversionistas/ficha-i',{inversionista})
-}  
+inverCtrl.renderFichaI = async (req, res) => {
+    const inversionista = await Inversionista.findById(req.params.id)
+    res.render('inversionistas/ficha-i', { inversionista })
+}
+
+inverCtrl.renderModelo = async (req, res) => {
+    const proyecto = await Proyecto.find()
+    const inversionista = await Inversionista.findById(req.query.id)
+    res.render('modelos-inversion/' + req.query.Modelo, { proyecto, inversionista })
+}
+
+inverCtrl.updateInvestment = async (req, res) => {
+    const { inversiones } = await Inversionista.findById(req.params.id)
+    const inversion = req.body
+    inversiones.push(inversion)
+    await Inversionista.findByIdAndUpdate(req.params.id, { inversiones })
+    req.flash('success_msg', 'Inversión añadida')
+    res.redirect('/inver')
+}
+
 
 function calcularedad(edad) {
     var edad_arr = edad.split("-");
