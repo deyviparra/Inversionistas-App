@@ -10,14 +10,15 @@ proyCtrl.renderProyForm =(req,res)=>{
     res.render('proyectos/nuevo-p')
 }
 proyCtrl.createNewProy =async (req,res)=>{
-  const { nombre, tipo, direccion, rango, municipio, departamento} = req.body;
+  const { nombre, tipo, direccion, rango, municipio, departamento, estrato} = req.body;
   const newProyecto = new Proyecto({
     nombre,
     tipo,
     direccion,
     rango,
     municipio,
-    departamento
+    departamento,
+    estrato
   });
   if (typeof req.file === 'undefined') {
     newProyecto.imagePath = "/uploads/sinfotop.png";
@@ -39,14 +40,14 @@ proyCtrl.renderEditFormProy= async (req,res)=>{
   res.render('proyectos/edit-proy',{proy})
 }
 proyCtrl.updateProy= async(req,res)=>{
-  const {nombre,tipo,direccion,rango,municipio,departamento}=req.body;
+  const {nombre,tipo,direccion,rango,municipio,departamento,estrato}=req.body;
   if (typeof req.file === 'undefined') {
-      await Proyecto.findByIdAndUpdate(req.params.id, {nombre,tipo,direccion,rango,municipio,departamento} )
+      await Proyecto.findByIdAndUpdate(req.params.id, {nombre,tipo,direccion,rango,municipio,departamento,estrato} )
   }else{
       const imagePath  = "/uploads/" + req.file.filename;
       const proy = await Proyecto.findById(req.params.id)
       unlink(path.resolve(path.join(__dirname, '../public'+ proy.imagePath)))
-      await Proyecto.findByIdAndUpdate(req.params.id, {nombre,tipo,direccion,rango,municipio,departamento,imagePath} )
+      await Proyecto.findByIdAndUpdate(req.params.id, {nombre,tipo,direccion,rango,municipio,departamento,estrato,imagePath} )
   }
       req.flash('success_msg', 'Proyecto actualizado')
       res.redirect('/proy')

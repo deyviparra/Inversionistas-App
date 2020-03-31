@@ -1,14 +1,13 @@
 <div class="form-nuevo-inver" id="form-nuevo-inver">
     <div class="columna">
         <form action="/inversion/add/{{inversionista.id}}?_method=PUT" method="POST" id="inver-form" class="inver-form">
-            <h1 id="titulo1-h1">Modelo de inversión 3</h1>
+            <h1 id="titulo1-h1">Modelo compra de inmueble</h1>
             <div class="contenedor-form">
                 <div class="columna-1">
                     <div class="form-div">
-                        <p> Garantía - Proyecto:</p>
-                        <input type="hidden" name="modelo" value="3">
+                        <p> Proyecto:</p>
+                        <input type="hidden" name="modelo" value="1">
                         <select name="proyecto" class="lista-sel">
-                            <option selected value="0"> Elige una opción </option>
                             {{#each proyecto}}
                             <option value="{{nombre}}">{{nombre}}</option>
                             {{/each}}
@@ -29,30 +28,23 @@
                     <div class="form-div">
                         <input type="text" name="n_apto" placeholder="Número de apartamento: " class="input-inver">
                     </div>
+                </div>
+                <div class="columna-1">
                     <div class="form-div">
                         <input type="text" name="n_parqueadero" placeholder="Número de parqueadero: "
                             class="input-inver">
                     </div>
-                </div>
-                <div class="columna-1">
                     <div class="form-div">
                         <input type="text" name="n_util" placeholder="Número de cuarto útil: " class="input-inver">
                     </div>
                     <div class="form-div">
-                        <input type="text" name="valor" placeholder="Valor de la inversión: " class="input-inver">
+                        <input type="text" name="valor" placeholder="Valor de inversion: " class="input-inver">
                     </div>
                     <div class="form-div">
-                        <input type="text" name="periodo" placeholder="Periodo de liquidación: " class="input-inver">
+                        <input type="text" name="fecha_entrega" placeholder="Fecha de entrega: " class="input-inver">
                     </div>
                     <div class="form-div">
-                        <input type="text" name="tasa_interes" placeholder="Tasa de interés: " class="input-inver">
-                    </div>
-                    <div class="form-div">
-                        <input type="text" name="tasa_anual" placeholder="Tasa anual: " class="input-inver">
-                    </div>
-                    <div class="form-div">
-                        <input type="text" name="periodo_interes" placeholder="Periodo pago intereses: "
-                            class="input-inver">
+                        <input type="text" name="tir" placeholder="TIR: " class="input-inver">
                     </div>
                 </div>
             </div>

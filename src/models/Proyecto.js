@@ -7,6 +7,7 @@ const projectSchema = new Schema ({
     rango:{type: String, required: true},
     municipio:{type: String, required: true},
     departamento:{type: String, required: true},
+    estrato:{type:String, required:true},
     imagePath:{type: String},
  },{ timestamps:true
 })
