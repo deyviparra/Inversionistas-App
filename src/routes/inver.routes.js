@@ -12,8 +12,6 @@ const {
   deleteInver,
   renderFichaI,
   renderModelo,
-  updateInvestment,
-  createNewAso
 } = require("../controllers/inver.controller");
 
 router.get("/inver/add", isAuthenticated, renderInverForm);

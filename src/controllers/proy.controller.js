@@ -82,6 +82,6 @@ proyCtrl.updateType = async (req, res) => {
   tipos.push(tipo)
   await Proyecto.findByIdAndUpdate(req.params.id, { tipos })
   req.flash('success_msg', 'Tipo añadido')
-  res.redirect('/proy')
+  res.redirect('/ficha-p/' + req.params.id)
 }
 module.exports = proyCtrl;
