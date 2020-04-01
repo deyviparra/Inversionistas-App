@@ -9,6 +9,7 @@ const i_fnfSchema = new Schema({
   periodo_liquidacion:{type:String},
   lega_mutuo_fidu:{type:String},
   valor_mutuo:{type: String},
+  observaciones:{typr: String},
   tasa_interes:{type: String},
   tasa_anual:{type: String},
   pago_intereses_mensual:{type: Array},

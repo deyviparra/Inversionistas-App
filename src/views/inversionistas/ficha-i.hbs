@@ -36,11 +36,11 @@
             <form action="/inversion/add" class="panel">
                 <input type="hidden" value="{{inversionista._id}}" name="id">
                 <select name="modelo" class="lista-sel" id="tipo-modelo">
+                    <option value="asociativo"> Asociativo</option>
                     <option value="c_inmueble"> Compra de inmueble</option>
+                    <option value="fcp_fnf"> FCP-FNF</option>
                     <option value="fnf"> FNF</option>
                     <option value="g_inmueble"> Inmueble en garantía</option>
-                    <option value="asociativo"> Asociativo</option>
-                    <option value="fcp_fnf"> FCP-FNF</option>
                 </select>
                 <button class="up" type="submit">Añadir inversión</button>
             </form>
@@ -86,8 +86,7 @@
                         <p>Proyecto: {{proyecto}}</p>
                         <p>Inver ID: {{inver_id}}</p>
                         <p>ID: {{_id}}</p>
-                        <a href=""> Modificar</a>
-                        <a href="">Eliminar</a>
+                        <a href=""> Ver inversión</a>
                     </li>
                     {{/each}}
                 </ul>
@@ -103,8 +102,7 @@
                         <p>Proyecto: {{proyecto}}</p>
                         <p>Inver ID: {{inver_id}}</p>
                         <p>ID: {{_id}}</p>
-                        <a href=""> Modificar</a>
-                        <a href="">Eliminar</a>
+                        <a href=""> Ver inversión</a>
                     </li>
                     {{/each}}
                 </ul>
@@ -120,8 +118,7 @@
                         <p>Proyecto: {{proyecto}}</p>
                         <p>Inver ID: {{inver_id}}</p>
                         <p>ID: {{_id}}</p>
-                        <a href=""> Modificar</a>
-                        <a href="">Eliminar</a>
+                        <a href=""> Ver inversión</a>
                     </li>
                     {{/each}}
                 </ul>
@@ -134,8 +131,7 @@
                         <p>Proyecto: {{proyecto}}</p>
                         <p>Inver ID: {{inver_id}}</p>
                         <p>ID: {{_id}}</p>
-                        <a href=""> Modificar</a>
-                        <a href="">Eliminar</a>
+                        <a href=""> Ver inversión</a>
                     </li>
                     {{/each}}
                 </ul>

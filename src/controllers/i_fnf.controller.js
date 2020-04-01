@@ -12,7 +12,8 @@ ifnfCtrl.createNewFnf = async (req, res) => {
     fecha_inicio,
     fecha_cierre,
     n_acciones,
-    valor_compra,
+    valor_mutuo,
+    observaciones,
     fecha_entrega_prometida,
     tir_prometida
   } = req.body;
@@ -22,7 +23,8 @@ ifnfCtrl.createNewFnf = async (req, res) => {
     fecha_inicio,
     fecha_cierre,
     n_acciones,
-    valor_compra,
+    valor_mutuo,
+    observaciones,
     fecha_entrega_prometida,
     tir_prometida
   });
