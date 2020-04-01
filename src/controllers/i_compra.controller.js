@@ -28,4 +28,10 @@ icompraCtrl.createIcompra = async (req, res) => {
     res.redirect('/ficha-i/' + req.params.id)
 }
 
+icompraCtrl.renderFichaInvCompra = async (req,res) => {
+    const icompra = await Icompra.findById(req.params.id)
+    const inversionista = await Inversionista.findById(icompra.inver_id)
+    res.render('modelos-inversion/ficha-inversion', { inversionista, icompra})
+}
+
 module.exports = icompraCtrl;

@@ -1,0 +1,69 @@
+<h1>Datos inversionista</h1>
+<section id="info-ppal" class="info-ppal">
+    <img id="img" src="{{inversionista.imagePath}}" alt="Foto Inversionista">
+    <ul>
+        <li>
+            <p> Nombre: {{inversionista.nombre}} {{inversionista.apellido}}</p>
+        </li>
+        <li>
+            <p> Teléfono: {{inversionista.telefono}}</p>
+        </li>
+        <li>
+            <p> Correo: {{inversionista.correo}}</p>
+        </li>
+        <li>
+            <p> Cédula: {{inversionista.cedula}}</p>
+        </li>
+    </ul>
+</section>
+{{#if icompra}}
+<h2>Inversión compra de inmbuele</h2>
+<section class="info-ppal">
+    <ul>
+        <li>
+            <p> Proyecto: {{icompra.proyecto}}</p>
+        </li>
+        <li>
+            <p> Fecha de inicio: {{icompra.fecha_inicio}}</p>
+        </li>
+        <li>
+            <p> Fecha de cierre: {{icompra.fecha_cierre}}</p>
+        </li>
+        <li>
+            <p> Valor de compra: {{icompra.valor_compra}}</p>
+        </li>
+        <li>
+            <p>Fecha de entrega: {{icompra.fecha_entrega}}</p>
+        </li>
+        <li>
+            <p>TIR prometida: {{icompra.tir_prometida}}</p>
+        </li>
+    </ul>
+    <div class="botones">
+
+        <button class="boton" type="submit">
+            Modificar
+        </button>
+
+        <button class="boton" type="submit">
+            Asociar inmueble
+        </button>
+
+        <button class="boton" type="submit">
+            Eliminar
+        </button>
+    </div>
+</section>
+
+<section>
+    <div class="botones">
+        <button class="boton" type="submit">
+            Modificar plan de pagos
+        </button>
+    </div>
+</section>
+{{/if}}
+
+{{#if igarantia}}
+<h2>Inversión garantía de inmbuele</h2>
+{{/if}}

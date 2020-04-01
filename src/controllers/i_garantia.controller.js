@@ -30,4 +30,9 @@ igarantiaCtrl.createIgarantia = async (req, res) => {
     res.redirect('/ficha-i/' + req.params.id)
 }
 
+igarantiaCtrl.renderFichaInvGarantia = async (req,res) => {
+    const igarantia = await Igarantia.findById(req.params.id)
+    const inversionista = await Inversionista.findById(igarantia.inver_id)
+    res.render('modelos-inversion/ficha-inversion', { inversionista, igarantia})
+}
 module.exports = igarantiaCtrl;
