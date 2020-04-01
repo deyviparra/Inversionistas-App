@@ -4,6 +4,7 @@ const { unlink } = require("fs-extra");
 const path = require("path");
 const {uploadFile}=require('../upload.js')
 const Proyecto = require("../models/Proyecto");
+const Icompra = require("../models/i_compra");
 
 
 inverCtrl.renderInverForm = (req, res) => {
@@ -72,7 +73,8 @@ inverCtrl.deleteInver = async (req, res) => {
 }
 inverCtrl.renderFichaI = async (req, res) => {
     const inversionista = await Inversionista.findById(req.params.id)
-    res.render('inversionistas/ficha-i', { inversionista })
+    const icompra = await Icompra.find({inver_id:req.params.id})
+    res.render('inversionistas/ficha-i', { inversionista, icompra })
 }
 
 inverCtrl.renderModelo = async (req, res) => {
@@ -80,16 +82,6 @@ inverCtrl.renderModelo = async (req, res) => {
     const inversionista = await Inversionista.findById(req.query.id)
     res.render('modelos-inversion/' + req.query.modelo, { proyecto, inversionista })
 }
-
-// inverCtrl.updateInvestment = async (req, res) => {
-//     const { inversiones } = await Inversionista.findById(req.params.id)
-//     const inversion = req.body
-//     inversiones.push(inversion)
-//     await Inversionista.findByIdAndUpdate(req.params.id, { inversiones })
-//     req.flash('success_msg', 'Inversión añadida')
-//     res.redirect('/inver')
-// }
-
 
 function calcularedad(edad) {
     var edad_arr = edad.split("-");

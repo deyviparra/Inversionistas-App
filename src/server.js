@@ -61,6 +61,7 @@ app.use(require('./routes/index.routes'));
 app.use(require('./routes/inver.routes'));
 app.use(require('./routes/proy.routes'));
 app.use(require('./routes/user.routes'));
+app.use(require('./routes/i_compra.routes'));
 
 
 

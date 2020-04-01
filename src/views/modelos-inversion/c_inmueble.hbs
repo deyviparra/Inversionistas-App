@@ -1,55 +1,46 @@
-<div class="form" id="form-nuevo-inver">
+<div class="form" >
     <div class="columna">
-        <form action="/inversion/add/{{inversionista.id}}?_method=PUT" method="POST" id="inver-form" class="form-forms">
+        <form action="/inversion/add/{{inversionista.id}}" method="POST" class="form-forms">
             <h1 id="titulo1-h1">Modelo compra de inmueble</h1>
             <div class="contenedor-form">
                 <div class="columna-1">
                     <div class="form-div">
                         <p> Proyecto:</p>
-                        <input type="hidden" name="modelo" value="c_inmueble">
                         <select name="proyecto" class="lista-sel">
                             {{#each proyecto}}
                             <option value="{{nombre}}">{{nombre}}</option>
                             {{/each}}
-                        </select>
+                        </select> 
                     </div>
                     <div class="form-div">
                         <p> Fecha de creación:</p>
-                        <input type="date" name="fecha_creacion" placeholder="Fecha de creación: " class="input-form">
+                        <input type="date" name="fecha_inicio" placeholder="Fecha de inicio: " class="input-form">
                     </div>
                     <div class="form-div">
                         <p> Fecha de cierre: </p>
                         <input type="date" name="fecha_cierre" placeholder="Fecha de cierre: " class="input-form">
                     </div>
                     <div class="form-div">
-                        <input type="text" name="n_encargo" placeholder="Número de encargo fiduciario: "
+                        <p> Numero de encargo fiduciario: </p>
+                        <input type="text" name="n_encargo_fidu" placeholder="Número de encargo fiduciario: "
                             class="input-form">
+                    </div>            
+                    <div class="form-div">
+                        <p> Valor de compra: </p>
+                        <input type="text" name="valor_compra" placeholder="Valor de compra: " class="input-form">
                     </div>
                     <div class="form-div">
-                        <input type="text" name="n_apto" placeholder="Número de apartamento: " class="input-form">
-                    </div>
-                </div>
-                <div class="columna-1">
-                    <div class="form-div">
-                        <input type="text" name="n_parqueadero" placeholder="Número de parqueadero: "
-                            class="input-form">
+                        <p>Fecha de entrega: </p>
+                        <input type="text" name="fecha_entrega_prometida" placeholder="Fecha de entrega: " class="input-form">
                     </div>
                     <div class="form-div">
-                        <input type="text" name="n_util" placeholder="Número de cuarto útil: " class="input-form">
-                    </div>
-                    <div class="form-div">
-                        <input type="text" name="valor" placeholder="Valor de inversion: " class="input-form">
-                    </div>
-                    <div class="form-div">
-                        <input type="text" name="fecha_entrega" placeholder="Fecha de entrega: " class="input-form">
-                    </div>
-                    <div class="form-div">
-                        <input type="text" name="tir" placeholder="TIR: " class="input-form">
+                        <p>TIR prometida: </p>
+                        <input type="text" name="tir_prometida" placeholder="Tir prometida: " class="input-form">
                     </div>
                 </div>
             </div>
             <button class="boton" type="submit">
-                Guardar inversión
+                Crear inversión
             </button>
         </form>
     </div>
