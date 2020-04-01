@@ -75,7 +75,7 @@ inverCtrl.renderFichaI = async (req, res) => {
     const inversionista = await Inversionista.findById(req.params.id)
     const icompra = await Icompra.find({inver_id:req.params.id})
     const asociativo = await Asociativo.find({inver_id:req.params.id})
-    res.render('inversionistas/ficha-i', { inversionista,asociativo })
+    res.render('inversionistas/ficha-i', { inversionista,asociativo,icompra })
 }
 
 
