@@ -79,22 +79,43 @@
         <div class="inversiones">
             <div class='cuadro'>
                 <ul>
-                        {{#each asociativo}}
+                    {{#if asociativo}}
+                    <h2>Modelo Asociativo</h2>
+                    {{#each asociativo}}
                     <li>
                         <p>{{proyecto}}</p>
                         <p>{{inver_id}}</p>
                         <a href=""> Modificar</a>
                         <a href="">Eliminar</a>
                     </li>
-                        {{/each}}
-                        {{#each icompra}}
-                        <li>
+                    {{/each}}
+                    {{/if}}
+                    <br>
+                    <br>
+                    {{#if icompra}}
+                    <h2>Modelo Compra</h2>
+                    {{#each icompra}}
+                    <li>
                         <p>{{proyecto}}</p>
                         <p>{{inver_id}}</p>
                         <a href=""> Modificar</a>
                         <a href="">Eliminar</a>
-                        {{/each}}
                     </li>
+                    {{/each}}
+                    {{/if}}
+                    <br>
+                    <br>
+                    {{#if ifnf}}
+                    <h2>Modelo FNF</h2>
+                    {{#each ifnf}}
+                    <li>
+                        <p>{{proyecto}}</p>
+                        <p>{{inver_id}}</p>
+                        <a href=""> Modificar</a>
+                        <a href="">Eliminar</a>
+                    </li>
+                    {{/each}}
+                    {{/if}}
                 </ul>
             </div>
         </div>

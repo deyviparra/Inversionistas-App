@@ -1,62 +1,54 @@
 <div class="form" id="form-nuevo-inver">
     <div class="columna">
-        <form action="/inversion/add/{{inversionista.id}}?_method=PUT" method="POST" id="inver-form" class="form-forms">
-            <h1 id="titulo1-h1">Modelo de FNF</h1>
+        <form action="/inversion/fnf" method="POST" id="inver-form" class="form-forms">
+            <h1 id="titulo1-h1">Modelo FNF</h1>
             <div class="contenedor-form">
                 <div class="columna-1">
                     <div class="form-div">
-                        <p> Garantía - Proyecto:</p>
-                        <input type="hidden" name="modelo" value="fnf">
+                        <p> Proyecto:</p>
+                        <input type="hidden" name="inver_id" value="{{inversionista._id}}">
                         <select name="proyecto" class="lista-sel">
                             {{#each proyecto}}
                             <option value="{{nombre}}">{{nombre}}</option>
                             {{/each}}
-                        </select>
+                        </select> 
                     </div>
                     <div class="form-div">
-                        <p> Fecha de creación:</p>
-                        <input type="date" name="fecha_creacion" placeholder="Fecha de creación: " class="input-form">
+                        <p> Fecha de inicio:</p>
+                        <input type="date" name="fecha_inicio" placeholder="Fecha de inicio" class="input-form">
                     </div>
+                    
                     <div class="form-div">
-                        <p> Fecha de cierre: </p>
-                        <input type="date" name="fecha_cierre" placeholder="Fecha de cierre: " class="input-form">
-                    </div>
-                    <div class="form-div">
-                        <input type="text" name="n_encargo" placeholder="Número de encargo fiduciario: "
+                        <p>Periodo de liquidación: </p>
+                        <input type="text" name="periodo_liquidacion" placeholder="Periodo de liquidación"
                             class="input-form">
-                    </div>
+                    </div>            
                     <div class="form-div">
-                        <input type="text" name="n_apto" placeholder="Número de apartamento: " class="input-form">
-                    </div>
-                    <div class="form-div">
-                        <input type="text" name="n_parqueadero" placeholder="Número de parqueadero: "
+                        <p>Fecha de legalización mutuo en fiducia: </p>
+                        <input type="date" name="lega_mutuo_fidu" placeholder="Fecha de legalización mutuo en fiducia"
                             class="input-form">
-                    </div>
-                </div>
-                <div class="columna-1">
+                    </div>            
                     <div class="form-div">
-                        <input type="text" name="n_util" placeholder="Número de cuarto útil: " class="input-form">
-                    </div>
-                    <div class="form-div">
-                        <input type="text" name="valor" placeholder="Valor de la inversión: " class="input-form">
+                        <p> Valor del mutuo: </p>
+                        <input type="text" name="valor_mutuo" placeholder="Observaciones " class="input-form">
                     </div>
                     <div class="form-div">
-                        <input type="text" name="periodo" placeholder="Periodo de liquidación: " class="input-form">
+                        <p>Tasa de interés: </p>
+                        <input type="text" name="tasa_interes" placeholder="Tasa de interés " class="input-form">
                     </div>
                     <div class="form-div">
-                        <input type="text" name="tasa_interes" placeholder="Tasa de interés: " class="input-form">
+                        <p>Tasa de anual: </p>
+                        <input type="text" name="tasa_anual" placeholder="Tasa anual " class="input-form">
+                    </div>
+                   
+                    <div class="form-div">
+                        <p>Porcentaje cliente: </p>
+                        <input type="text" name="porcentaje_cliente" placeholder="Porcentaje cliente " class="input-form">
                     </div>
                     <div class="form-div">
-                        <input type="text" name="tasa_anual" placeholder="Tasa anual: " class="input-form">
-                    </div>
-                    <div class="form-div">
-                        <input type="text" name="pago_interes" placeholder="Pago de interéses al cliente: "
-                            class="input-form">
-                    </div>
-                    <div class="form-div">
-                        <input type="text" name="pago_interes_garantia" placeholder="Pago de interéses a la garantía: "
-                            class="input-form">
-                    </div>
+                        <p>Porcentaje garantía: </p>
+                        <input type="text" name="porcentaje_garantia" placeholder="Porcentaje garantía " class="input-form">
+                    </div>                    
                 </div>
             </div>
             <button class="boton" type="submit">

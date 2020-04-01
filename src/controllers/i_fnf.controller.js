@@ -1,11 +1,11 @@
-const asociativoCtrl = {};
+const ifnfCtrl = {};
 const Inversionista = require("../models/Inversionista");
 const Proyecto = require("../models/Proyecto");
-const I_asociativo = require("../models/I_asociativo");
+const I_fnf = require("../models/I_fnf");
 
 
 
-asociativoCtrl.createNewAso = async (req, res) => {
+ifnfCtrl.createNewFnf = async (req, res) => {
   const {
     inver_id,
     proyecto,
@@ -16,7 +16,7 @@ asociativoCtrl.createNewAso = async (req, res) => {
     fecha_entrega_prometida,
     tir_prometida
   } = req.body;
-  const newAsociativo = new I_asociativo({
+  const newFnf = new I_fnf({
     inver_id,
     proyecto,
     fecha_inicio,
@@ -28,9 +28,9 @@ asociativoCtrl.createNewAso = async (req, res) => {
   });
 
 
-  await newAsociativo.save();
+  await newFnf.save();
   req.flash('success_msg', 'Inversión creada')
   res.redirect('/ficha-i/' + inver_id)
 };
 
-module.exports = asociativoCtrl;
+module.exports = ifnfCtrl;

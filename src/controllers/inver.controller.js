@@ -5,7 +5,8 @@ const { unlink } = require("fs-extra");
 const path = require("path");
 const {uploadFile}=require('../upload.js')
 const Proyecto = require("../models/Proyecto");
-const Icompra = require("../models/i_compra");
+const Icompra = require("../models/I_compra");
+const Ifnf = require("../models/I_fnf");
 
 
 inverCtrl.renderInverForm = (req, res) => {
@@ -74,8 +75,9 @@ inverCtrl.deleteInver = async (req, res) => {
 inverCtrl.renderFichaI = async (req, res) => {
     const inversionista = await Inversionista.findById(req.params.id)
     const icompra = await Icompra.find({inver_id:req.params.id})
+    const ifnf = await Ifnf.find({inver_id:req.params.id})
     const asociativo = await Asociativo.find({inver_id:req.params.id})
-    res.render('inversionistas/ficha-i', { inversionista,asociativo,icompra })
+    res.render('inversionistas/ficha-i', { inversionista,asociativo,icompra,ifnf })
 }
 
 

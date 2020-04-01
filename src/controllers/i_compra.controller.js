@@ -1,7 +1,7 @@
 const icompraCtrl = {}
 const Inversionista = require("../models/Inversionista");
 const Proyecto = require("../models/Proyecto");
-const Icompra = require("../models/i_compra");
+const Icompra = require("../models/I_compra");
 
 icompraCtrl.createInvestment = async (req, res) => {
 

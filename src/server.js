@@ -63,6 +63,7 @@ app.use(require('./routes/proy.routes'));
 app.use(require('./routes/user.routes'));
 app.use(require('./routes/asociativo.routes'));
 app.use(require('./routes/i_compra.routes'));
+app.use(require('./routes/i_fnf.routes'));
 
 
 
