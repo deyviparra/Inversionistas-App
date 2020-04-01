@@ -33,7 +33,7 @@ asociativoCtrl.createNewAso = async (req, res) => {
 
   await newAsociativo.save();
   req.flash('success_msg', 'Inversión creada')
-  res.redirect("/menuppal");
+  res.redirect('/ficha-i/' + inver_id)
 };
 
 module.exports = asociativoCtrl;

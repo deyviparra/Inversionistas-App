@@ -18,7 +18,7 @@
             <li>
                 <p> Edad: {{inversionista.edad}} Años</p>
             </li>
-            
+
             <li>
                 <p> Profesión: {{inversionista.profesion}}</p>
             </li>
@@ -77,17 +77,26 @@
     <section id="sec-inversiones" class="sec-inversiones">
         <h1>Inversiones</h1>
         <div class="inversiones">
-            <ul>
-                {{#each asociativo}}
-                <p>{{proyecto}}</p>
-                <p>{{inver_id}}</p>
-                {{/each}}
-                {{#each icompra}}
-                <p>{{proyecto}}</p>
-                <p>{{inver_id}}</p>
-                {{/each}}
-
-            </ul>
+            <div class='cuadro'>
+                <ul>
+                        {{#each asociativo}}
+                    <li>
+                        <p>{{proyecto}}</p>
+                        <p>{{inver_id}}</p>
+                        <a href=""> Modificar</a>
+                        <a href="">Eliminar</a>
+                    </li>
+                        {{/each}}
+                        {{#each icompra}}
+                        <li>
+                        <p>{{proyecto}}</p>
+                        <p>{{inver_id}}</p>
+                        <a href=""> Modificar</a>
+                        <a href="">Eliminar</a>
+                        {{/each}}
+                    </li>
+                </ul>
+            </div>
         </div>
     </section>
 </div>
