@@ -12,7 +12,8 @@ const {
   deleteInver,
   renderFichaI,
   renderModelo,
-  updateInvestment
+  updateInvestment,
+  createNewAso
 } = require("../controllers/inver.controller");
 
 router.get("/inver/add", isAuthenticated, renderInverForm);
@@ -29,8 +30,8 @@ router.put("/inver/edit/:id", isAuthenticated, updateInver);
 router.delete("/inver/delete/:id", deleteInver);
 
 // Add Investment
-router.get("/modelos-inversion/", isAuthenticated, renderModelo)
-// router.put("/inversion/add/:id", updateInvestment)
+router.get("/inversion/add", isAuthenticated, renderModelo)
+
 
 
 module.exports = router;

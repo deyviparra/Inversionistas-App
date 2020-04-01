@@ -1,5 +1,6 @@
 const inverCtrl = {}
 const Inversionista = require("../models/Inversionista");
+const Asociativo = require("../models/I_asociativo");
 const { unlink } = require("fs-extra");
 const path = require("path");
 const {uploadFile}=require('../upload.js')
@@ -11,7 +12,7 @@ inverCtrl.renderInverForm = (req, res) => {
 }
 
 inverCtrl.createNewInver = async (req, res) => {
-    const { nombre, apellido, telefono, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion } = req.body;
+    const { nombre, apellido, telefono, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby } = req.body;
     const newInversionista = new Inversionista({
         nombre,
         apellido,
@@ -23,8 +24,7 @@ inverCtrl.createNewInver = async (req, res) => {
         estado_civil,
         n_hijos,
         n_mascotas,
-        hobby,
-        profesion
+        hobby
     });
 
     if (typeof req.file === 'undefined') {
@@ -36,7 +36,7 @@ inverCtrl.createNewInver = async (req, res) => {
     
       }
       newInversionista.edad = calcularedad(nacimiento);
-
+    
     await newInversionista.save();
     req.flash('success_msg', 'Inversionista creado')
     res.redirect('/menuppal')
@@ -72,24 +72,17 @@ inverCtrl.deleteInver = async (req, res) => {
 }
 inverCtrl.renderFichaI = async (req, res) => {
     const inversionista = await Inversionista.findById(req.params.id)
-    res.render('inversionistas/ficha-i', { inversionista })
+    const asociativo = await Asociativo.find({inver_id:req.params.id})
+    res.render('inversionistas/ficha-i', { inversionista,asociativo })
 }
+
+
 
 inverCtrl.renderModelo = async (req, res) => {
     const proyecto = await Proyecto.find()
     const inversionista = await Inversionista.findById(req.query.id)
     res.render('modelos-inversion/' + req.query.modelo, { proyecto, inversionista })
 }
-
-// inverCtrl.updateInvestment = async (req, res) => {
-//     const { inversiones } = await Inversionista.findById(req.params.id)
-//     const inversion = req.body
-//     inversiones.push(inversion)
-//     await Inversionista.findByIdAndUpdate(req.params.id, { inversiones })
-//     req.flash('success_msg', 'Inversión añadida')
-//     res.redirect('/inver')
-// }
-
 
 function calcularedad(edad) {
     var edad_arr = edad.split("-");

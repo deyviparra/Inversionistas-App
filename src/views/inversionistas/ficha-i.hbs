@@ -33,7 +33,7 @@
                 <input type="checkbox">
                 <span class="slider round"></span>
             </label>
-            <form action="/modelos-inversion" class="panel">
+            <form action="/inversion/add" class="panel">
                 <input type="hidden" value="{{inversionista._id}}" name="id">
                 <select name="modelo" class="lista-sel" id="tipo-modelo">
                     <option value="c_inmueble"> Compra de inmueble</option>
@@ -78,7 +78,9 @@
         <h1>Inversiones</h1>
         <div class="inversiones">
             <ul>
-                {{#each inversionista.inversiones}}
+                {{#each asociativo}}
+                <p>{{proyecto}}</p>
+                <p>{{inver_id}}</p>
                 {{!-- {{#if_eq modelo 1}} --}}
                 {{!-- <h2>Modelo 1</h2> --}}
                 <li>
