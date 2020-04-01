@@ -1,7 +1,7 @@
 const igarantiaCtrl = {}
 const Inversionista = require("../models/Inversionista");
 const Proyecto = require("../models/Proyecto");
-const Igarantia = require("../models/i_garantia");
+const Igarantia = require("../models/I_garantia");
 
 igarantiaCtrl.createIgarantia = async (req, res) => {
 

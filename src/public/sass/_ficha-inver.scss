@@ -54,23 +54,32 @@
     color: $negro;
     margin: 20px;
   }
-}
+} 
 
 .sec-inversiones {
   .inversiones {
-    width: 100%;
-    ul {
+    div{
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       justify-content: space-around;
-    }
-    li {
-      width: 30%;
-      margin: 20px;
-      border-radius: 5px;
-      background: linear-gradient(145deg, #2a2a2a, #232323);
-      box-shadow: 9px 9px 18px #1c1c1c, -9px -9px 18px #323232;
-      border: none;
+      width: 100%;
+      h2{
+        margin-top: 60px;
+        text-align: center;
+      }
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+      }
+      li { 
+        width: 30%;
+        margin: 20px;
+        border-radius: 5px;
+        background: linear-gradient(145deg, #2a2a2a, #232323);
+        box-shadow: 9px 9px 18px #1c1c1c, -9px -9px 18px #323232;
+        border: none;
+      }
     }
   }
 }
