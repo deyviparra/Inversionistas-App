@@ -1,63 +1,49 @@
-<div class="form" id="form-nuevo-inver">
+<div class="form" >
     <div class="columna">
-        <form action="/inversion/add/{{inversionista.id}}?_method=PUT" method="POST" id="inver-form" class="form-forms">
-            <h1 id="titulo1-h1">Modelo inmueble en garantía</h1>
+        <form action="/inversion/garantia/{{inversionista.id}}" method="POST" class="form-forms">
+            <h1 id="titulo1-h1">Modelo compra de inmueble</h1>
             <div class="contenedor-form">
                 <div class="columna-1">
                     <div class="form-div">
                         <p> Garantía - Proyecto:</p>
-                        <input type="hidden" name="modelo" value="g_inmueble">
                         <select name="proyecto" class="lista-sel">
-                            <option selected value="0"> Elige una opción </option>
                             {{#each proyecto}}
                             <option value="{{nombre}}">{{nombre}}</option>
                             {{/each}}
-                        </select>
+                        </select> 
                     </div>
                     <div class="form-div">
-                        <p> Fecha de creación:</p>
-                        <input type="date" name="fecha_creacion" placeholder="Fecha de creación: " class="input-form">
+                        <p> Fecha de inicio:</p>
+                        <input type="date" name="fecha_inicio" placeholder="Fecha de inicio: " class="input-form">
                     </div>
                     <div class="form-div">
                         <p> Fecha de cierre: </p>
                         <input type="date" name="fecha_cierre" placeholder="Fecha de cierre: " class="input-form">
                     </div>
                     <div class="form-div">
-                        <input type="text" name="n_encargo" placeholder="Número de encargo fiduciario: "
-                            class="input-form">
+                        <p> Periodo de liquidación: </p>
+                        <input type="text" name="periodo_liq" placeholder="Periodo de liquidación: " class="input-form">
+                    </div>         
+                    <div class="form-div">
+                        <p> Valor de inversión: </p>
+                        <input type="text" name="valor_inversion" placeholder="Valor de inversión: " class="input-form">
                     </div>
                     <div class="form-div">
-                        <input type="text" name="n_apto" placeholder="Número de apartamento: " class="input-form">
+                        <p>Tasa de interés mensual: </p>
+                        <input type="text" name="tasa_int_men" placeholder="Tasa de interés mensual: " class="input-form">
                     </div>
                     <div class="form-div">
-                        <input type="text" name="n_parqueadero" placeholder="Número de parqueadero: "
-                            class="input-form">
-                    </div>
-                </div>
-                <div class="columna-1">
-                    <div class="form-div">
-                        <input type="text" name="n_util" placeholder="Número de cuarto útil: " class="input-form">
+                        <p>Tasa de interés anual: </p>
+                        <input type="text" name="tasa_int_anual" placeholder="Tasa de interés anual: " class="input-form">
                     </div>
                     <div class="form-div">
-                        <input type="text" name="valor" placeholder="Valor de la inversión: " class="input-form">
-                    </div>
-                    <div class="form-div">
-                        <input type="text" name="periodo" placeholder="Periodo de liquidación: " class="input-form">
-                    </div>
-                    <div class="form-div">
-                        <input type="text" name="tasa_interes" placeholder="Tasa de interés: " class="input-form">
-                    </div>
-                    <div class="form-div">
-                        <input type="text" name="tasa_anual" placeholder="Tasa anual: " class="input-form">
-                    </div>
-                    <div class="form-div">
-                        <input type="text" name="periodo_interes" placeholder="Periodo pago intereses: "
-                            class="input-form">
+                        <p>Periodo pago intereses: </p>
+                        <input type="text" name="periodo_int" placeholder="Periodo de pago intereses: " class="input-form">
                     </div>
                 </div>
             </div>
             <button class="boton" type="submit">
-                Guardar inversión
+                Crear inversión
             </button>
         </form>
     </div>

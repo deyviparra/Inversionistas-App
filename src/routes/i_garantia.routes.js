@@ -4,10 +4,10 @@ const router = Router();
 const { isAuthenticated } = require('../helpers/auth')
 
 const {
-  createIcompra
-} = require("../controllers/i_compra.controller");
+  createIgarantia
+} = require("../controllers/i_garantia.controller");
 
 
-router.post("/inversion/compra/:id", isAuthenticated, createIcompra)
+router.post("/inversion/garantia/:id", isAuthenticated, createIgarantia)
 
 module.exports = router;
