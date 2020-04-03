@@ -14,7 +14,7 @@ ifnfCtrl.createNewFnf = async (req, res) => {
     valor_mutuo,
     observaciones,
     tasa_interes,
-    tasa_anual,
+    // tasa_anual,
     porcentaje_cliente,
     porcentaje_garantia,
     fecha_pago
@@ -27,14 +27,14 @@ ifnfCtrl.createNewFnf = async (req, res) => {
     valor_mutuo,
     observaciones,
     tasa_interes,
-    tasa_anual,
+    // tasa_anual,
     porcentaje_cliente,
     porcentaje_garantia
   });
-
+  // let tasa_anual = pendiente
   newFnf.fecha_cierre = crearFechacierre(fecha_inicio);
   newFnf.plan_pago_intereses = crearPlan_pagos(fecha_inicio,tasa_interes, porcentaje_cliente, porcentaje_garantia, fecha_pago, valor_mutuo);
-  //await newFnf.save();
+  await newFnf.save();
   req.flash('success_msg', 'Inversión creada')
   res.redirect('/ficha-i/' + inver_id)
 };
@@ -46,6 +46,12 @@ ifnfCtrl.renderFichaInvFnf = async (req, res) => {
     inversionista,
     ifnf
   });
+};
+
+ifnfCtrl.renderEditInvFnf = async (req,res) => {
+  const ifnf = await Ifnf.findById(req.params.id);
+  const inversionista = await Inversionista.findById(ifnf.inver_id);
+    res.render('modelos-inversion/edit-inversion', { inversionista, ifnf })
 };
 
 function crearFechacierre(fecha_inicio) {
@@ -66,7 +72,7 @@ function crearPlan_pagos(fecha_inicio,tasa_interes, porcentaje_cliente, porcenta
   let inicio = fecha_inicio.split("-");
   let inicio_date = new Date(inicio[0], inicio[1]-1, inicio[2]);
   let plan_pagos = []
-  let tasa = (Number(tasa_interes)/100) + 1;
+  let tasa = (Number(tasa_interes)/100);
   let porcentaje_c = (Number(porcentaje_cliente))/100;
   let porcentaje_g = (Number(porcentaje_garantia))/100;
   let valor = Number(valor_mutuo);
@@ -82,16 +88,15 @@ function crearPlan_pagos(fecha_inicio,tasa_interes, porcentaje_cliente, porcenta
     let dia = fecha_pago;
     let fecha = dia + "/" + mes+ "/" + ano;
    
-    let couta_cliente = (((valor/24)*tasa)*porcentaje_c);
-    let couta_garantia = (((valor/24)*tasa)*porcentaje_g);
+    let couta_cliente = (((valor)*tasa)*porcentaje_c);
+    let couta_garantia = (((valor)*tasa)*porcentaje_g);
 
     plan_pagos[i] = { fecha, couta_cliente, couta_garantia };
 
     inicio[1] = parseInt(inicio[1]) + 1;
     inicio[1] = String(inicio[1]);
   }
-  console.log(plan_pagos);
-  //return plan_pagos;
+  return plan_pagos;
 }
 
 module.exports = ifnfCtrl;

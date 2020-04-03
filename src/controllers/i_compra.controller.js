@@ -37,6 +37,11 @@ icompraCtrl.renderFichaInvCompra = async (req, res) => {
   res.render("modelos-inversion/ficha-inversion", { inversionista, icompra });
 };
 
+icompraCtrl.renderEditInvCompra = async (req,res) => {
+  const icompra = await Icompra.findById(req.params.id);
+  const inversionista = await Inversionista.findById(icompra.inver_id);
+    res.render('modelos-inversion/edit-inversion', { inversionista, icompra })
+};
 
 function crearPlan_pagos(fecha_cierre, fecha_inicio, valor_compra,fecha_pago){
     let cierre = fecha_cierre.split("-");

@@ -15,24 +15,24 @@ const {
   updateType
 } = require("../controllers/proy.controller");
 
-router.get("/proy/add", isAuthenticated, renderProyForm);
+router.get("/proy/add",  renderProyForm);
 
-router.post("/proy/add", isAuthenticated, createNewProy);
+router.post("/proy/add",  createNewProy);
 
 //Get All proys
-router.get("/proy", isAuthenticated, renderProy);
+router.get("/proy",  renderProy);
 
 //Edit
-router.get("/edit-proy/:id", isAuthenticated, renderEditFormProy);
-router.get("/ficha-p/:id", isAuthenticated, renderFichaP);
-router.put("/proy/edit/:id", isAuthenticated, updateProy);
+router.get("/edit-proy/:id",  renderEditFormProy);
+router.get("/ficha-p/:id",  renderFichaP);
+router.put("/proy/edit/:id",  updateProy);
 
 //Delete
-router.delete("/proy/delete/:id", isAuthenticated, deleteProy);
+router.delete("/proy/delete/:id",  deleteProy);
 
 // Add type 
-router.get("/tipos/", isAuthenticated, renderTipo)
-router.put("/tipos/add/:id", isAuthenticated, updateType)
+router.get("/tipos/",  renderTipo)
+router.put("/tipos/add/:id",  updateType)
 
 
 

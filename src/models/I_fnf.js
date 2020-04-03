@@ -9,7 +9,7 @@ const i_fnfSchema = new Schema({
   inmuebles:{type:Array},
   lega_mutuo_fidu:{type:String},
   valor_mutuo:{type: String},
-  observaciones:{typr: String},
+  observaciones:{type: String},
   tasa_interes:{type: String},
   tasa_anual:{type: String},
   plan_pago_intereses:{type: Array},

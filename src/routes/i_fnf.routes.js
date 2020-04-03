@@ -5,12 +5,12 @@ const { isAuthenticated } = require("../helpers/auth");
 
 const {
   createNewFnf,
-  renderFichaInvFnf
+  renderFichaInvFnf,renderEditInvFnf
 } = require("../controllers/i_fnf.controller");
 
-// router.put("/inversion/add/:id", updateInvestment)
-router.post("/inversion/fnf", isAuthenticated, createNewFnf);
+router.post("/inversion/fnf",  createNewFnf);
+router.get("/ficha-inversion/:id/fnf",  renderFichaInvFnf);
+router.get("/edit-inversion/:id/fnf", renderEditInvFnf );
 
-router.get("/ficha-inversion/:id/fnf", isAuthenticated, renderFichaInvFnf);
 
 module.exports = router;

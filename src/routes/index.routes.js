@@ -10,6 +10,6 @@ const {
 
 
 router.get("/", renderIndex);
-router.get("/menuppal", isAuthenticated, renderMenuppal);
+router.get("/menuppal",  renderMenuppal);
 
 module.exports = router;

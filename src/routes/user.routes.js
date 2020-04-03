@@ -6,11 +6,11 @@ const { isAuthenticated } = require('../helpers/auth')
 
 router.get('/usuarios/login', renderLogin)
 router.post('/usuarios/login', login)
-router.get('/usuarios/registro', isAuthenticated, renderRegistro)
-router.post('/usuarios/registro', isAuthenticated, registro)
-router.get('/usuarios/logout', isAuthenticated, logout)
-router.get('/usuarios/perfil', isAuthenticated, renderFichaU)
-router.get("/edit-user/:id", isAuthenticated, renderEditFormUser);
-router.put("/user/edit/:id", isAuthenticated, updateUser);
+router.get('/usuarios/registro',  renderRegistro)
+router.post('/usuarios/registro',  registro)
+router.get('/usuarios/logout',  logout)
+router.get('/usuarios/perfil',  renderFichaU)
+router.get("/edit-user/:id",  renderEditFormUser);
+router.put("/user/edit/:id",  updateUser);
 
 module.exports = router;

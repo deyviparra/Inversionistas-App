@@ -12,7 +12,7 @@ const i_garantiaSchema = new Schema({
   tasa_int_men: { type: String},
   tasa_int_anual: { type: String },
   plan_pago_intereses:{type: Array},
-  pago_realizado_intereses:{type: Array}
+  pagos_realizados:{type: Array}
 })
 
 module.exports = model('I_garantia', i_garantiaSchema)

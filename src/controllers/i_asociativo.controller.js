@@ -40,6 +40,13 @@ asociativoCtrl.renderFichaInvAsociativo = async (req, res) => {
   });
 };
 
+asociativoCtrl.renderEditInvAsociativo = async (req,res) => {
+  const iasociativo = await Iasociativo.findById(req.params.id);
+  const inversionista = await Inversionista.findById(iasociativo.inver_id);
+    res.render('modelos-inversion/edit-inversion', { inversionista, iasociativo })
+};
+
+
 function crearPlan_pagos(fecha_cierre, fecha_inicio, valor_compra, fecha_pago) {
   let cierre = fecha_cierre.split("-");
   let inicio = fecha_inicio.split("-");

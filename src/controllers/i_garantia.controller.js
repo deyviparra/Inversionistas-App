@@ -8,25 +8,29 @@ igarantiaCtrl.createIgarantia = async (req, res) => {
     const inver_id = req.params.id;
     const { proyecto,
         fecha_inicio,
-        fecha_cierre,
+        // fecha_cierre,
+        duracion,
         periodo_liquidacion,
         valor_inversion,
-        tasa_int_men,
-        tasa_int_anual,
-        fecha_pago,
-        duracion } = req.body;
+        tasa_int_men
+        // tasa_int_anual
+        // fecha_pago 
+    } = req.body;
     const newIgarantia = new Igarantia({
         inver_id,
         proyecto,
         fecha_inicio,
-        fecha_cierre,
+        // fecha_cierre,
         periodo_liquidacion,
         valor_inversion,
-        tasa_int_men,
-        tasa_int_anual
+        tasa_int_men
+        // tasa_int_anual
     })
+    let fecha_pago=19
+    // newIgarantia.tasa_int_anual = Number(tasa_int_men)*12
     newIgarantia.plan_pago_intereses = crearPlan_pagos(fecha_inicio, tasa_int_men, fecha_pago, valor_inversion, periodo_liquidacion, duracion);
-    //await newIgarantia.save();
+    newIgarantia.pagos_realizados = new Array(newIgarantia.plan_pago_intereses.length)
+    await newIgarantia.save();
     req.flash('success_msg', 'Inversión creada')
     res.redirect('/ficha-i/' + req.params.id)
 }
@@ -37,7 +41,11 @@ igarantiaCtrl.renderFichaInvGarantia = async (req, res) => {
     res.render('modelos-inversion/ficha-inversion', { inversionista, igarantia })
 }
 
-
+igarantiaCtrl.renderEditInvgarantia = async (req,res) => {
+    const igarantia = await Igarantia.findById(req.params.id)
+    const inversionista = await Inversionista.findById(igarantia.inver_id)
+    res.render('modelos-inversion/edit-inversion', { inversionista, igarantia })
+  };
 
 function crearPlan_pagos(fecha_inicio, tasa_int_men, fecha_pago, valor_inversiono, periodo_liquidacion,duracion) {
     let inicio = fecha_inicio.split("-");
@@ -53,7 +61,7 @@ function crearPlan_pagos(fecha_inicio, tasa_int_men, fecha_pago, valor_inversion
 
     for (let i = 0; i < meses / periodo; i++) {
         if (i == 0) {
-            fecha_ant = new Date(inicio[0], inicio[1] - 1, fecha_pago);
+            fecha_ant = new Date(inicio[0], inicio[1] - 1,inicio[2]);
             inicio[1] = parseInt(inicio[1]) + periodo;
             inicio[1] = String(inicio[1]);
             inicio_date = new Date(inicio[0], inicio[1] - 1, fecha_pago);
@@ -72,12 +80,11 @@ function crearPlan_pagos(fecha_inicio, tasa_int_men, fecha_pago, valor_inversion
 
         let couta = (valor) * (((Math.pow(tasa, dias / 30)) - 1));
 
-        plan_pagos[i] = { fecha, dias, couta, i };
+        plan_pagos[i] = { fecha, couta};
 
         inicio[1] = parseInt(inicio[1]) + periodo;
         inicio[1] = String(inicio[1]);
     }
-    console.log(plan_pagos);
-    //return plan_pagos;
+    return plan_pagos;
 }
 module.exports = igarantiaCtrl;

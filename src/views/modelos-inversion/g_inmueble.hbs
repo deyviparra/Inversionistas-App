@@ -1,7 +1,7 @@
 <div class="form" >
     <div class="columna">
         <form action="/inversion/garantia/{{inversionista.id}}" method="POST" class="form-forms">
-            <h1 id="titulo1-h1">Modelo compra de inmueble</h1>
+            <h1 id="titulo1-h1">Modelo garantía inmueble</h1>
             <div class="contenedor-form">
                 <div class="columna-1">
                     <div class="form-div">
@@ -16,11 +16,14 @@
                         <p> Fecha de inicio:</p>
                         <input type="date" name="fecha_inicio" placeholder="Fecha de inicio: " class="input-form">
                     </div>
-                    <div class="form-div">
+                    {{!-- <div class="form-div">
                         <p> Fecha de cierre: </p>
                         <input type="date" name="fecha_cierre" placeholder="Fecha de cierre: " class="input-form">
+                    </div> --}}
+                    <div class="form-div">
+                        <p> Duración de la inversión: </p>
+                        <input type="text" name="duracion" placeholder="Escriba SOLO el número en meses: " class="input-form">
                     </div>
-                    
                     <div class="form-div">
                         <p>Periodo de liquidación: </p>
                         <select name="periodo_liquidacion" class="lista-sel">
@@ -34,22 +37,19 @@
                         <p> Valor de inversión: </p>
                         <input type="text" name="valor_inversion" placeholder="Valor de inversión: " class="input-form">
                     </div>
-                    <div class="form-div">
-                        <p> Duración de la inversión: </p>
-                        <input type="text" name="duracion" placeholder="Escriba SOLO el número en meses: " class="input-form">
-                    </div>
+                    
                     <div class="form-div">
                         <p>Tasa de interés mensual: </p>
                         <input type="text" name="tasa_int_men" placeholder="Tasa de interés mensual: " class="input-form">
                     </div>
-                    <div class="form-div">
+                    {{!-- <div class="form-div">
                         <p>Tasa de interés anual: </p>
                         <input type="text" name="tasa_int_anual" placeholder="Tasa de interés anual: " class="input-form">
-                    </div>
-                    <div class="form-div">
+                    </div> --}}
+                    {{!-- <div class="form-div">
                         <p>Escoger fecha de pago: </p>
                         <input type="radio" name="fecha_pago" class="radio" value="19"> Día 19 del mes
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <button class="boton" type="submit">
