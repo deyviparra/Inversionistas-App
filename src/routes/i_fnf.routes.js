@@ -5,12 +5,31 @@ const { isAuthenticated } = require("../helpers/auth");
 
 const {
   createNewFnf,
-  renderFichaInvFnf,renderEditInvFnf
+  renderFichaInvFnf,
+  renderEditInvFnf,
+  renderInmuebleFnf,
+  renderInversionistaFnf,
+  deleteInversionFnf,
+  updateInversionFnf,
+  AsociarInmuebleFnf,
+  AsociarInversionistaFnf,
+  renderEditPPFnf
 } = require("../controllers/i_fnf.controller");
 
 router.post("/inversion/fnf",  createNewFnf);
 router.get("/ficha-inversion/:id/fnf",  renderFichaInvFnf);
 router.get("/edit-inversion/:id/fnf", renderEditInvFnf );
+router.get("/asociar-inmueble/:id/fnf", renderInmuebleFnf );
+router.get("/asociar-inversionista/:id/fnf", renderInversionistaFnf );
 
+router.delete("/eliminar-inversion/:id/fnf", deleteInversionFnf);
+
+router.put("/inversion/edit/:id/fnf",  updateInversionFnf);
+
+router.put("/inmueble/add/:id/fnf",  AsociarInmuebleFnf);
+
+router.put("/inversionista/add/:id/fnf",  AsociarInversionistaFnf);
+
+router.get("/edit-plan_pagos/:id/fnf", renderEditPPFnf );
 
 module.exports = router;

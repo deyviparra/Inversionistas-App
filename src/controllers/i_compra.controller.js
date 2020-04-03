@@ -40,7 +40,81 @@ icompraCtrl.renderFichaInvCompra = async (req, res) => {
 icompraCtrl.renderEditInvCompra = async (req,res) => {
   const icompra = await Icompra.findById(req.params.id);
   const inversionista = await Inversionista.findById(icompra.inver_id);
-    res.render('modelos-inversion/edit-inversion', { inversionista, icompra })
+  const proyecto = await Proyecto.find();
+    res.render('modelos-inversion/edit-inversion', { inversionista, icompra, proyecto })
+};
+
+icompraCtrl.renderInmuebleCompra = async (req,res) => {
+  const icompra = await Icompra.findById(req.params.id);
+  const inversionista = await Inversionista.findById(icompra.inver_id);
+    res.render('modelos-inversion/asociar-inmueble', { inversionista, icompra })
+};
+
+icompraCtrl.renderInversionistaCompra = async (req,res) => {
+  const icompra = await Icompra.findById(req.params.id);
+  const inversionista = await Inversionista.findById(icompra.inver_id);
+  const inversionistas = await Inversionista.find();
+    res.render('modelos-inversion/asociar-inversionista', { inversionista, icompra, inversionistas })
+};
+
+icompraCtrl.deleteInversionCompra = async (req, res) => {
+  const icompra = await Icompra.findById(req.params.id);
+  const inversionista = await Inversionista.findById(icompra.inver_id);
+  await Icompra.findByIdAndDelete(req.params.id)
+  req.flash('error_msg', 'Inversión eliminada');
+  res.redirect('/ficha-i/' + inversionista._id)
+}
+
+icompraCtrl.updateInversionCompra = async (req, res) => {
+  console.log(req.params.id)
+  const {
+    proyecto,
+    fecha_inicio,
+    fecha_cierre,
+    n_encargo_fidu,
+    valor_compra,
+    fecha_entrega_prometida,
+    tir_prometida
+  } = req.body;  
+  const icompra = await Icompra.findById(req.params.id)
+  const inversionista = await Inversionista.findById(icompra.inver_id);
+   await Icompra.findByIdAndUpdate(req.params.id,{
+    proyecto,
+    fecha_inicio,
+    fecha_cierre,
+    n_encargo_fidu,
+    valor_compra,
+    fecha_entrega_prometida,
+    tir_prometida
+  })  
+  req.flash('success_msg', 'Inversion actualizada')
+  res.redirect('/ficha-i/' + inversionista._id)
+}
+
+icompraCtrl.AsociarInmuebleCompra = async (req, res) => {
+  const { inmuebles } = await Icompra.findById(req.params.id)
+  const icompra = await Icompra.findById(req.params.id)
+  const inmueble = req.body;
+  inmuebles.push(inmueble)
+  await Icompra.findByIdAndUpdate(req.params.id, { inmuebles })
+  req.flash('success_msg', 'Inmueble añadido')
+  res.redirect('/ficha-inversion/'+ icompra._id+'/compra')
+}
+
+icompraCtrl.AsociarInversionistaCompra = async (req, res) => {
+  const { co_inversionista } = await Icompra.findById(req.params.id)
+  const icompra = await Icompra.findById(req.params.id)
+  const inversionista = req.body;
+  co_inversionista.push(inversionista)
+  await Icompra.findByIdAndUpdate(req.params.id, { co_inversionista })
+  req.flash('success_msg', 'Inversionista añadido')
+  res.redirect('/ficha-inversion/'+ icompra._id+'/compra')
+}
+
+icompraCtrl.renderEditPPCompra = async (req,res) => {
+  const icompra = await Icompra.findById(req.params.id);
+  const inversionista = await Inversionista.findById(icompra.inver_id);
+    res.render('modelos-inversion/edit-plan_pagos', { inversionista, icompra })
 };
 
 function crearPlan_pagos(fecha_cierre, fecha_inicio, valor_compra,fecha_pago){

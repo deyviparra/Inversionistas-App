@@ -5,12 +5,26 @@ const { isAuthenticated } = require("../helpers/auth");
 
 const {
   createIgarantia,
-  renderFichaInvGarantia,renderEditInvgarantia
+  renderFichaInvGarantia,
+  renderEditInvGarantia,
+  renderInversionistaGarantia,
+  deleteInversionGarantia,
+  updateInversionGarantia,
+  AsociarInversionistaGarantia,
+  renderEditPPGarantia
 } = require("../controllers/i_garantia.controller");
 
 router.post("/inversion/garantia/:id",  createIgarantia);
 router.get("/ficha-inversion/:id/garantia",renderFichaInvGarantia);
-router.get("/edit-inversion/:id/garantia", renderEditInvgarantia );
+router.get("/edit-inversion/:id/garantia", renderEditInvGarantia );
+router.get("/asociar-inversionista/:id/garantia", renderInversionistaGarantia );
 
+router.delete("/eliminar-inversion/:id/garantia", deleteInversionGarantia);
+
+router.put("/inversion/edit/:id/garantia",  updateInversionGarantia);
+
+router.put("/inversionista/add/:id/garantia",  AsociarInversionistaGarantia);
+
+router.get("/edit-plan_pagos/:id/garantia", renderEditPPGarantia );
 
 module.exports = router;

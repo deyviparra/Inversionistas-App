@@ -43,9 +43,82 @@ asociativoCtrl.renderFichaInvAsociativo = async (req, res) => {
 asociativoCtrl.renderEditInvAsociativo = async (req,res) => {
   const iasociativo = await Iasociativo.findById(req.params.id);
   const inversionista = await Inversionista.findById(iasociativo.inver_id);
-    res.render('modelos-inversion/edit-inversion', { inversionista, iasociativo })
+  const proyecto = await Proyecto.find();
+    res.render('modelos-inversion/edit-inversion', { inversionista, iasociativo, proyecto })
 };
 
+asociativoCtrl.renderInmuebleAsociativo = async (req,res) => {
+  const iasociativo = await Iasociativo.findById(req.params.id);
+  const inversionista = await Inversionista.findById(iasociativo.inver_id);
+    res.render('modelos-inversion/asociar-inmueble', { inversionista, iasociativo })
+};
+
+asociativoCtrl.renderInversionistaAsociativo = async (req,res) => {
+  const iasociativo = await Iasociativo.findById(req.params.id);
+  const inversionista = await Inversionista.findById(iasociativo.inver_id);
+  const inversionistas = await Inversionista.find();
+    res.render('modelos-inversion/asociar-inversionista', { inversionista, iasociativo, inversionistas })
+};
+
+asociativoCtrl.deleteInversionAsociativo = async (req, res) => {
+  const iasociativo = await Iasociativo.findById(req.params.id);
+  const inversionista = await Inversionista.findById(iasociativo.inver_id);
+  await Iasociativo.findByIdAndDelete(req.params.id)
+  req.flash('error_msg', 'Inversión eliminada');
+  res.redirect('/ficha-i/' + inversionista._id)
+}
+
+asociativoCtrl.updateInversionAsociativo = async (req, res) => {
+  console.log(req.params.id)
+  const {
+    proyecto,
+    fecha_inicio,
+    fecha_cierre,
+    n_acciones,
+    valor_compra,
+    fecha_entrega_prometida,
+    tir_prometida
+  } = req.body;  
+  const iasociativo = await Iasociativo.findById(req.params.id)
+  const inversionista = await Inversionista.findById(iasociativo.inver_id);
+   await Iasociativo.findByIdAndUpdate(req.params.id,{
+    proyecto,
+    fecha_inicio,
+    fecha_cierre,
+    n_acciones,
+    valor_compra,
+    fecha_entrega_prometida,
+    tir_prometida
+  })  
+  req.flash('success_msg', 'Inversion actualizada')
+  res.redirect('/ficha-i/' + inversionista._id)
+}
+
+asociativoCtrl.AsociarInmuebleAsociativo = async (req, res) => {
+  const { inmuebles } = await Iasociativo.findById(req.params.id)
+  const iasociativo = await Iasociativo.findById(req.params.id)
+  const inmueble = req.body;
+  inmuebles.push(inmueble)
+  await Iasociativo.findByIdAndUpdate(req.params.id, { inmuebles })
+  req.flash('success_msg', 'Inmueble añadido')
+  res.redirect('/ficha-inversion/'+ iasociativo._id+'/asociativo')
+}
+
+asociativoCtrl.AsociarInversionistaAsociativo = async (req, res) => {
+  const { co_inversionista } = await Iasociativo.findById(req.params.id)
+  const iasociativo = await Iasociativo.findById(req.params.id)
+  const inversionista = req.body;
+  co_inversionista.push(inversionista)
+  await Iasociativo.findByIdAndUpdate(req.params.id, { co_inversionista })
+  req.flash('success_msg', 'Inversionista añadido')
+  res.redirect('/ficha-inversion/'+ iasociativo._id+'/asociativo')
+}
+
+asociativoCtrl.renderEditPPAsociativo = async (req,res) => {
+  const iasociativo = await Iasociativo.findById(req.params.id);
+  const inversionista = await Inversionista.findById(iasociativo.inver_id);
+    res.render('modelos-inversion/edit-plan_pagos', { inversionista, iasociativo})
+};
 
 function crearPlan_pagos(fecha_cierre, fecha_inicio, valor_compra, fecha_pago) {
   let cierre = fecha_cierre.split("-");

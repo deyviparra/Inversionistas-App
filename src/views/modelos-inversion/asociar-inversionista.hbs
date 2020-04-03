@@ -1,0 +1,99 @@
+{{#if icompra}}
+<div class="form">
+    <div class="columna">
+        <form action="/inversionista/add/{{icompra.id}}/compra?_method=PUT" method="POST" class="form-forms">
+            <h1> Añadir co-inversionista en modelo compra</h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                    <div class="form-div">
+                        <p> Co-inversionista:</p>
+                        <select name="co_inversionista" class="lista-sel">
+                            {{#each inversionistas}}
+                            <option value="{{nombre}} {{apellido}}" > {{nombre}} {{apellido}}</option>
+                            {{/each}}
+                        </select> 
+                    </div>
+                </div>
+            </div>
+            <button class="boton" type="submit">
+                Agregar co-inversionista
+            </button>
+        </form>
+    </div>
+</div>
+{{/if}}
+
+{{#if iasociativo}}
+<div class="form">
+    <div class="columna">
+        <form action="/inversionista/add/{{iasociativo.id}}/asociativo?_method=PUT" method="POST" class="form-forms">
+            <h1> Añadir co-inversionista en modelo asociativo</h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                   <div class="form-div">
+                        <p> Co-inversionista:</p>
+                        <select name="co_inversionista" class="lista-sel">
+                            {{#each inversionistas}}
+                            <option value="{{nombre}} {{apellido}}" > {{nombre}} {{apellido}}</option>
+                            {{/each}}
+                        </select> 
+                    </div>
+                </div>
+            </div>
+            <button class="boton" type="submit">
+                Agregar co-inversionista
+            </button>
+        </form>
+    </div>
+</div>
+{{/if}}
+
+{{#if ifnf}}
+<div class="form">
+    <div class="columna">
+        <form action="/inversionista/add/{{ifnf.id}}/fnf?_method=PUT" method="POST" class="form-forms">
+            <h1> Añadir co-inversionista en modelo FNF</h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                    <div class="form-div">
+                        <p> Co-inversionista:</p>
+                        <select name="co_inversionista" class="lista-sel">
+                            {{#each inversionistas}}
+                            <option value="{{nombre}} {{apellido}}" > {{nombre}} {{apellido}}</option>
+                            {{/each}}
+                        </select> 
+                    </div>
+                </div>
+            </div>
+            <button class="boton" type="submit">
+                Agregar co-inversionista
+            </button>
+        </form>
+    </div>
+</div>
+{{/if}}
+
+{{#if igarantia}}
+<div class="form">
+    <div class="columna">
+        <form action="/inversionista/add/{{igarantia.id}}/garantia?_method=PUT" method="POST" class="form-forms">
+            <h1> Añadir co-inversionista en modelo garantía</h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                   <div class="form-div">
+                        <p> Co-inversionista:</p>
+                        <select name="co_inversionista" class="lista-sel">
+                            {{#each inversionistas}}
+                            <option value="{{nombre}} {{apellido}}" > {{nombre}} {{apellido}}</option>
+                            {{/each}}
+                        </select> 
+                    </div>
+                </div>
+            </div>
+            <button class="boton" type="submit">
+                Agregar co-inversionista
+            </button>
+        </form>
+    </div>
+</div>
+{{/if}}

@@ -1,0 +1,119 @@
+{{#if icompra}}
+<div class="form">
+    <div class="columna">
+        <form action="/inmueble/add/{{icompra.id}}/compra?_method=PUT" method="POST" class="form-forms">
+            <h1> Añadir inmueble en Inversión compra de inmueble</h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                    <div class="form-div">
+                        <p> Proyecto: {{icompra.proyecto}}</p>
+                    </div>
+                    <div class="form-div">
+                        <p> Torre:</p>
+                        <input type="text" name="torre" placeholder="Ingrese la torre " class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Apartamento: </p>
+                        <input type="text" name="apartamento" placeholder="Ingrese el apartamento " class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Parqueadero </p>
+                        <input type="text" name="parqueadero" placeholder="Parqueadero " class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Cuarto útil </p>
+                        <input type="text" name="cuarto_util" placeholder="Cuarto útil " class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Valor: </p>
+                        <input type="text" name="valor" placeholder="Valor " class="input-form">
+                    </div>
+                </div>
+            </div>
+            <button class="boton" type="submit">
+                Agregar inmueble
+            </button>
+        </form>
+    </div>
+</div>
+{{/if}}
+
+{{#if iasociativo}}
+<div class="form">
+    <div class="columna">
+        <form action="/inmueble/add/{{iasociativo.id}}/asociativo?_method=PUT" method="POST" class="form-forms">
+            <h1> Añadir inmueble en Inversión asociativo</h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                    <div class="form-div">
+                        <p> Proyecto: {{iasociativo.proyecto}}</p>
+                    </div>
+                    <div class="form-div">
+                        <p> Torre:</p>
+                        <input type="text" name="torre" placeholder="Ingrese la torre " class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Apartamento: </p>
+                        <input type="text" name="apartamento" placeholder="Ingrese el apartamento " class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Parqueadero </p>
+                        <input type="text" name="parqueadero" placeholder="Parqueadero " class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Cuarto útil </p>
+                        <input type="text" name="cuarto_util" placeholder="Cuarto útil " class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Valor: </p>
+                        <input type="text" name="valor" placeholder="Valor " class="input-form">
+                    </div>
+                </div>
+            </div>
+            <button class="boton" type="submit">
+                Agregar inmueble
+            </button>
+        </form>
+    </div>
+</div>
+{{/if}}
+
+{{#if ifnf}}
+<div class="form">
+    <div class="columna">
+        <form action="/inmueble/add/{{ifnf.id}}/fnf?_method=PUT" method="POST" class="form-forms">
+            <h1> Añadir inmueble en Inversión FNF</h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                    <div class="form-div">
+                        <p> Proyecto: {{ifnf.proyecto}}</p>
+                    </div>
+                    <div class="form-div">
+                        <p> Torre:</p>
+                        <input type="text" name="torre" placeholder="Ingrese la torre " class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Apartamento: </p>
+                        <input type="text" name="apartamento" placeholder="Ingrese el apartamento " class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Parqueadero </p>
+                        <input type="text" name="parqueadero" placeholder="Parqueadero " class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Cuarto útil </p>
+                        <input type="text" name="cuarto_util" placeholder="Cuarto útil " class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Valor: </p>
+                        <input type="text" name="valor" placeholder="Valor " class="input-form">
+                    </div>
+                </div>
+            </div>
+            <button class="boton" type="submit">
+                Agregar inmueble
+            </button>
+        </form>
+    </div>
+</div>
+{{/if}}

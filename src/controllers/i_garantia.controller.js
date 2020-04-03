@@ -20,6 +20,7 @@ igarantiaCtrl.createIgarantia = async (req, res) => {
         inver_id,
         proyecto,
         fecha_inicio,
+        duracion,
         // fecha_cierre,
         periodo_liquidacion,
         valor_inversion,
@@ -41,10 +42,65 @@ igarantiaCtrl.renderFichaInvGarantia = async (req, res) => {
     res.render('modelos-inversion/ficha-inversion', { inversionista, igarantia })
 }
 
-igarantiaCtrl.renderEditInvgarantia = async (req,res) => {
+igarantiaCtrl.renderEditInvGarantia = async (req,res) => {
     const igarantia = await Igarantia.findById(req.params.id)
     const inversionista = await Inversionista.findById(igarantia.inver_id)
-    res.render('modelos-inversion/edit-inversion', { inversionista, igarantia })
+    const proyecto = await Proyecto.find();
+    res.render('modelos-inversion/edit-inversion', { inversionista, igarantia, proyecto })
+  };
+
+igarantiaCtrl.renderInversionistaGarantia = async (req,res) => {
+    const igarantia = await Igarantia.findById(req.params.id)
+    const inversionista = await Inversionista.findById(igarantia.inver_id)
+    const inversionistas = await Inversionista.find();
+      res.render('modelos-inversion/asociar-inversionista', { inversionista, igarantia, inversionistas })
+  };
+
+igarantiaCtrl.deleteInversionGarantia = async (req, res) => {
+    const igarantia = await Igarantia.findById(req.params.id)
+    const inversionista = await Inversionista.findById(igarantia.inver_id)
+    await Igarantia.findByIdAndDelete(req.params.id)
+    req.flash('error_msg', 'Inversión eliminada');
+    res.redirect('/ficha-i/' + inversionista._id)
+  }
+
+igarantiaCtrl.updateInversionGarantia = async (req, res) => {
+    console.log(req.params.id)
+    const {proyecto,
+        fecha_inicio,
+        duracion,
+        periodo_liquidacion,
+        valor_inversion,
+        tasa_int_men
+    } = req.body;  
+    const igarantia = await Igarantia.findById(req.params.id)
+    const inversionista = await Inversionista.findById(igarantia.inver_id);
+     await Igarantia.findByIdAndUpdate(req.params.id,{
+        proyecto,
+        fecha_inicio,
+        duracion,
+        periodo_liquidacion,
+        valor_inversion,
+        tasa_int_men
+    })  
+    req.flash('success_msg', 'Inversion actualizada')
+    res.redirect('/ficha-i/' + inversionista._id)
+  }
+
+igarantiaCtrl.AsociarInversionistaGarantia = async (req, res) => {
+    const { co_inversionista } = await Igarantia.findById(req.params.id)
+    const igarantia = await Igarantia.findById(req.params.id)
+    const inversionista = req.body;
+    co_inversionista.push(inversionista)
+    await Igarantia.findByIdAndUpdate(req.params.id, { co_inversionista })
+    req.flash('success_msg', 'Inversionista añadido')
+    res.redirect('/ficha-inversion/'+ igarantia._id+'/garantia')
+  }
+
+igarantiaCtrl.renderEditPPGarantia = async (req,res) => {
+    const igarantia = await Igarantia.findById(req.params.id);
+    const inversionista = await Inversionista.findById(igarantia.inver_id);
+      res.render('modelos-inversion/edit-plan_pagos', { inversionista, igarantia })
   };
 
 function crearPlan_pagos(fecha_inicio, tasa_int_men, fecha_pago, valor_inversiono, periodo_liquidacion,duracion) {

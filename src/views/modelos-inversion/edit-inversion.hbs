@@ -1,1 +1,216 @@
-<h1>hola</h1>
+{{#if icompra}}
+<div class="form">
+    <div class="columna">
+        <form action="/inversion/edit/{{icompra.id}}/compra?_method=PUT" method="POST" class="form-forms">
+            <h1> Editar Inversión compra de inmueble</h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                    <div class="form-div">
+                        <p> Proyecto:</p>
+                        <select name="proyecto" class="lista-sel">
+                            {{#each proyecto}}
+                            <option value="{{nombre}}">{{nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-div">
+                        <p> Fecha de inicio:</p>
+                        <input type="date" name="fecha_inicio" value="{{icompra.fecha_inicio}}" class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Fecha de cierre: </p>
+                        <input type="date" name="fecha_cierre" value="{{icompra.fecha_cierre}}" class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Valor de compra: </p>
+                        <input type="text" name="valor_compra" value="{{icompra.valor_compra}}" class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p>Fecha de entrega: </p>
+                        <input type="date" name="fecha_entrega_prometida" value="{{icompra.fecha_entrega_prometida}}"
+                            class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p>TIR prometida: </p>
+                        <input type="text" name="tir_prometida" value="{{icompra.tir_prometida}}" class="input-form">
+                    </div>
+
+                </div>
+            </div>
+            <button class="boton" type="submit">
+                Actualizar inversión
+            </button>
+        </form>
+    </div>
+</div>
+{{/if}}
+
+
+
+{{#if igarantia}}
+<div class="form">
+    <div class="columna">
+        <form action="/inversion/edit/{{igarantia.id}}/garantia?_method=PUT" method="POST" class="form-forms">
+            <h1> Editar Inversión inmueble en garantía</h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                    <div class="form-div">
+                        <p> Garantía - Proyecto:</p>
+                        <select name="proyecto" class="lista-sel">
+                            {{#each proyecto}}
+                            <option value="{{nombre}}">{{nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-div">
+                        <p> Fecha de inicio:</p>
+                        <input type="date" name="fecha_inicio" value="{{igarantia.fecha_inicio}}" class="input-form">
+                    </div>
+                    {{!-- <div class="form-div">
+                        <p> Fecha de cierre: </p>
+                        <input type="date" name="fecha_cierre" placeholder="Fecha de cierre: " class="input-form">
+                    </div> --}}
+                    <div class="form-div">
+                        <p> Duración de la inversión: </p>
+                        <input type="text" name="duracion" value="{{igarantia.duracion}}" class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p>Periodo de liquidación: </p>
+                        <select name="periodo_liquidacion" class="lista-sel">
+                            <option value="1"> Mensual</option>
+                            <option value="3"> Trimestral</option>
+                            <option value="6"> Semestral</option>
+                            <option value="24"> Final del mutuo</option>
+                        </select>
+                    </div>
+                    <div class="form-div">
+                        <p> Valor de inversión: </p>
+                        <input type="text" name="valor_inversion" value="{{igarantia.valor_inversion}}"
+                            class="input-form">
+                    </div>
+
+                    <div class="form-div">
+                        <p>Tasa de interés mensual: </p>
+                        <input type="text" name="tasa_int_men" value="{{igarantia.tasa_int_men}}" class="input-form">
+                    </div>
+                    {{!-- <div class="form-div">
+                        <p>Tasa de interés anual: </p>
+                        <input type="text" name="tasa_int_anual" placeholder="Tasa de interés anual: " class="input-form">
+                    </div> --}}
+                    {{!-- <div class="form-div">
+                        <p>Escoger fecha de pago: </p>
+                        <input type="radio" name="fecha_pago" class="radio" value="19"> Día 19 del mes
+                    </div> --}}
+                </div>
+            </div>
+            <button class="boton" type="submit">
+                Actualizar inversión
+            </button>
+        </form>
+    </div>
+</div>
+{{/if}}
+
+
+
+{{#if iasociativo}}
+<div class="form">
+    <div class="columna">
+        <form action="/inversion/edit/{{iasociativo.id}}/asociativo?_method=PUT" method="POST" class="form-forms">
+            <h1> Editar Inversión asociativo</h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                    <div class="form-div">
+                        <p> Proyecto:</p>
+                        <select name="proyecto" class="lista-sel">
+                            {{#each proyecto}}
+                            <option value="{{nombre}}">{{nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-div">
+                        <p> Fecha de inicio:</p>
+                        <input type="date" name="fecha_inicio" value="{{iasociativo.fecha_inicio}}" class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Fecha de cierre: </p>
+                        <input type="date" name="fecha_cierre" value="{{iasociativo.fecha_cierre}}" class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Numero de acciones: </p>
+                        <input type="text" name="n_acciones" value="{{iasociativo.n_acciones}}" class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Valor de compra: </p>
+                        <input type="text" name="valor_compra" value="{{iasociativo.valor_compra}}" class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p>Fecha de entrega: </p>
+                        <input type="date" name="fecha_entrega_prometida"
+                            value="{{iasociativo.fecha_entrega_prometida}}" class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p>TIR prometida: </p>
+                        <input type="text" name="tir_prometida" value="{{iasociativo.tir_prometida}}"
+                            class="input-form">
+                    </div>
+                </div>
+            </div>
+            <button class="boton" type="submit">
+                Actualizar inversión
+            </button>
+        </form>
+    </div>
+</div>
+{{/if}}
+
+
+
+{{#if ifnf}}
+<div class="form">
+    <div class="columna">
+        <form action="/inversion/edit/{{ifnf.id}}/fnf?_method=PUT" method="POST" class="form-forms">
+            <h1> Editar Inversión FNF</h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                    <div class="form-div">
+                        <p> Proyecto:</p>
+                        <select name="proyecto" class="lista-sel">
+                            {{#each proyecto}}
+                            <option value="{{nombre}}">{{nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-div">
+                        <p> Fecha de inicio:</p>
+                        <input type="date" name="fecha_inicio" value="{{ifnf.fecha_inicio}}" class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p>Fecha de legalización mutuo en fiducia: </p>
+                        <input type="date" name="lega_mutuo_fidu" value="{{ifnf.lega_mutuo_fidu}}"
+                            class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Valor del mutuo: </p>
+                        <input type="text" name="valor_mutuo" value="{{ifnf.valor_mutuo}}"
+                            class="input-form">
+                        <input type="text" name="observaciones" value="{{ifnf.observaciones}}" class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p>Tasa de interés mensual: </p>
+                        <input type="text" name="tasa_interes" value="{{ifnf.tasa_interes}}"
+                            class="input-form">
+                    </div>
+                    {{!-- <div class="form-div">
+                        <p>Tasa de interés anual: </p>
+                        <input type="text" name="tasa_anual" placeholder="Ingrese la tasa de interés SIN el simbolo %" class="input-form">
+                    </div> --}}
+                </div>
+            </div>
+            <button class="boton" type="submit">
+                Actualizar inversión
+            </button>
+        </form>
+    </div>
+</div>
+{{/if}}
