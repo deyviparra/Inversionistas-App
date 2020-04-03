@@ -3,6 +3,7 @@ const { Schema, model } = require('mongoose')
 const i_asociativoSchema = new Schema({
     inver_id: { type: String},
     proyecto: { type: String},
+    co_inversionista: { type: Array},
     fecha_inicio: { type: String},
     fecha_cierre:{type: String},
     n_acciones:{type: String},

@@ -87,14 +87,14 @@ inverCtrl.renderFichaI = async (req, res) => {
 inverCtrl.renderModelo = async (req, res) => {
     const proyecto = await Proyecto.find()
     const inversionista = await Inversionista.findById(req.query.id)
-    res.render('modelos-inversion/' + req.query.modelo, { proyecto, inversionista })
+    res.render('modelos-inversion/' + req.query.modelo, { proyecto, inversionista})
 }
 
 function calcularedad(edad) {
-    var edad_arr = edad.split("-");
-    var edad_fecha = new Date(edad_arr[0], edad_arr[1] - 1, edad_arr[2]);
-    var edad_Dif = Date.now() - edad_fecha.getTime();
-    var edad_Final = new Date(edad_Dif);
+    let edad_arr = edad.split("-");
+    let edad_fecha = new Date(edad_arr[0], edad_arr[1] - 1, edad_arr[2]);
+    let edad_Dif = Date.now() - edad_fecha.getTime();
+    let edad_Final = new Date(edad_Dif);
     return Math.abs(edad_Final.getUTCFullYear() - 1970);
 }
 

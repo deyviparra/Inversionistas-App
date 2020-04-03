@@ -20,13 +20,23 @@
                         <p> Fecha de cierre: </p>
                         <input type="date" name="fecha_cierre" placeholder="Fecha de cierre: " class="input-form">
                     </div>
+                    
                     <div class="form-div">
-                        <p> Periodo de liquidación: </p>
-                        <input type="text" name="periodo_liq" placeholder="Periodo de liquidación: " class="input-form">
-                    </div>         
+                        <p>Periodo de liquidación: </p>
+                        <select name="periodo_liquidacion" class="lista-sel">
+                            <option value="1"> Mensual</option>
+                            <option value="3"> Trimestral</option>
+                            <option value="6"> Semestral</option>
+                            <option value="24"> Final del mutuo</option>
+                        </select>
+                    </div>       
                     <div class="form-div">
                         <p> Valor de inversión: </p>
                         <input type="text" name="valor_inversion" placeholder="Valor de inversión: " class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Duración de la inversión: </p>
+                        <input type="text" name="duracion" placeholder="Escriba SOLO el número en meses: " class="input-form">
                     </div>
                     <div class="form-div">
                         <p>Tasa de interés mensual: </p>
@@ -37,8 +47,8 @@
                         <input type="text" name="tasa_int_anual" placeholder="Tasa de interés anual: " class="input-form">
                     </div>
                     <div class="form-div">
-                        <p>Periodo pago intereses: </p>
-                        <input type="text" name="periodo_int" placeholder="Periodo de pago intereses: " class="input-form">
+                        <p>Escoger fecha de pago: </p>
+                        <input type="radio" name="fecha_pago" class="radio" value="19"> Día 19 del mes
                     </div>
                 </div>
             </div>

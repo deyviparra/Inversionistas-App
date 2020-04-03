@@ -48,7 +48,9 @@
         <button class="boton" type="submit">
             Asociar inmueble
         </button>
-
+        <button class="boton" type="submit">
+            Agregar Co-inversionista
+        </button>
         <button class="boton" type="submit">
             Eliminar
         </button>
@@ -56,6 +58,21 @@
 </section>
 
 <section>
+    <h2>Plan de pagos</h2>
+    <ul>
+        <table>
+            <tr>
+                <td> <strong> Fecha de pago</strong> </td>
+                <td> <strong> Valor de la cuota </strong> </td>
+            </tr>
+        {{#each icompra.plan_pagos}}
+        <tr>
+            <td> {{fecha}}</td>
+            <td> {{couta}}</td>
+        </tr>
+        {{/each}}
+        </table>
+    </ul>
     <div class="botones">
         <button class="boton" type="submit">
             Modificar plan de pagos
@@ -69,6 +86,28 @@
 {{/if}}
 {{#if iasociativo}}
 <h2>Inversión asociativo</h2>
+<section>
+    <h2>Plan de pagos</h2>
+    <ul>
+        <table>
+            <tr>
+                <td> <strong> Fecha de pago</strong> </td>
+                <td> <strong> Valor de la cuota </strong> </td>
+            </tr>
+        {{#each iasociativo.plan_pagos}}
+        <tr>
+            <td> {{fecha}}</td>
+            <td> {{couta}}</td>
+        </tr>
+        {{/each}}
+        </table>
+    </ul>
+    <div class="botones">
+        <button class="boton" type="submit">
+            Modificar plan de pagos
+        </button>
+    </div>
+</section>
 {{/if}}
 {{#if ifnf}}
 <h2>Inversión fnf</h2>

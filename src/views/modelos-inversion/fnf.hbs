@@ -11,45 +11,47 @@
                             {{#each proyecto}}
                             <option value="{{nombre}}">{{nombre}}</option>
                             {{/each}}
-                        </select> 
+                        </select>
                     </div>
                     <div class="form-div">
                         <p> Fecha de inicio:</p>
                         <input type="date" name="fecha_inicio" placeholder="Fecha de inicio" class="input-form">
                     </div>
-                    
-                    <div class="form-div">
-                        <p>Periodo de liquidación: </p>
-                        <input type="text" name="periodo_liquidacion" placeholder="Periodo de liquidación"
-                            class="input-form">
-                    </div>            
                     <div class="form-div">
                         <p>Fecha de legalización mutuo en fiducia: </p>
                         <input type="date" name="lega_mutuo_fidu" placeholder="Fecha de legalización mutuo en fiducia"
                             class="input-form">
-                    </div>            
+                    </div>
                     <div class="form-div">
                         <p> Valor del mutuo: </p>
-                        <input type="text" name="valor_mutuo" placeholder="Valor " class="input-form">
+                        <input type="text" name="valor_mutuo" placeholder="Ingrese el valor SIN el simbolo $ " class="input-form">
                         <input type="text" name="observaciones" placeholder="Observaciones" class="input-form">
                     </div>
                     <div class="form-div">
-                        <p>Tasa de interés: </p>
-                        <input type="text" name="tasa_interes" placeholder="Tasa de interés " class="input-form">
+                        <p>Tasa de interés mensual: </p>
+                        <input type="text" name="tasa_interes" placeholder="Ingrese la tasa de interés SIN el simbolo %" class="input-form">
                     </div>
                     <div class="form-div">
-                        <p>Tasa de anual: </p>
-                        <input type="text" name="tasa_anual" placeholder="Tasa anual " class="input-form">
+                        <p>Tasa de interés anual: </p>
+                        <input type="text" name="tasa_anual" placeholder="Ingrese la tasa de interés SIN el simbolo %" class="input-form">
                     </div>
-                   
+
                     <div class="form-div">
                         <p>Porcentaje cliente: </p>
-                        <input type="text" name="porcentaje_cliente" placeholder="Porcentaje cliente " class="input-form">
+                        <input type="radio" name="porcentaje_cliente" class="radio" value="0"> 0 %
+                        <input type="radio" name="porcentaje_cliente" class="radio" value="50"> 50 %
+                        <input type="radio" name="porcentaje_cliente" class="radio" value="100"> 100 %
                     </div>
                     <div class="form-div">
                         <p>Porcentaje garantía: </p>
-                        <input type="text" name="porcentaje_garantia" placeholder="Porcentaje garantía " class="input-form">
-                    </div>                    
+                        <input type="radio" name="porcentaje_garantia" class="radio" value="0"> 0 %
+                        <input type="radio" name="porcentaje_garantia" class="radio" value="50"> 50 %
+                        <input type="radio" name="porcentaje_garantia" class="radio" value="100"> 100 %
+                    </div>
+                    <div class="form-div">
+                        <p>Escoger fecha de pago: </p>
+                        <input type="radio" name="fecha_pago" class="radio" value="19"> Día 19 del mes
+                    </div>
                 </div>
             </div>
             <button class="boton" type="submit">

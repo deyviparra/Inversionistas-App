@@ -3,6 +3,7 @@ const { Schema, model } = require("mongoose");
 const i_compraSchema = new Schema({
   inver_id: { type: String },
   proyecto: { type: String },
+  co_inversionista: { type: Array},
   inmuebles:{type:Array},
   fecha_inicio: { type: String },
   fecha_cierre: { type: String },
