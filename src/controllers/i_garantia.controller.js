@@ -103,6 +103,15 @@ igarantiaCtrl.renderEditPPGarantia = async (req,res) => {
       res.render('modelos-inversion/edit-plan_pagos', { inversionista, igarantia })
   };
 
+igarantiaCtrl.agregarPagoGarantia = async (req,res) => {
+    res.send('Agregar pago')
+  };
+  
+igarantiaCtrl.editarPPGarantia = async (req,res) => {
+    res.send('Actualizar PP')
+  };
+  
+
 function crearPlan_pagos(fecha_inicio, tasa_int_men, fecha_pago, valor_inversiono, periodo_liquidacion,duracion) {
     let inicio = fecha_inicio.split("-");
     let inicio_date = new Date(inicio[0], inicio[1] - 1, inicio[2]);

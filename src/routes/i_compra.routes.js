@@ -12,7 +12,9 @@ const {createIcompra,
   updateInversionCompra,
   AsociarInmuebleCompra,
   AsociarInversionistaCompra,
-  renderEditPPCompra
+  renderEditPPCompra,
+  agregarPagoCompra,
+  editarPPCompra
 } = require("../controllers/i_compra.controller");
 
 router.post("/inversion/compra/:id",  createIcompra);
@@ -30,5 +32,10 @@ router.put("/inmueble/add/:id/compra",  AsociarInmuebleCompra);
 router.put("/inversionista/add/:id/compra",  AsociarInversionistaCompra);
 
 router.get("/edit-plan_pagos/:id/compra", renderEditPPCompra );
+
+router.put("/pago/add/:id/compra",  agregarPagoCompra);
+
+router.put("/plan_pago/edit/:id/compra",  editarPPCompra);
+
 
 module.exports = router;

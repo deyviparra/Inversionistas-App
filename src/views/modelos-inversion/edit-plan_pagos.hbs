@@ -1,1 +1,163 @@
-<h1>hola</h1>
+<h1>Datos inversionista</h1>
+<section id="info-ppal" class="info-ppal">
+    <img id="img" src="{{inversionista.imagePath}}" alt="Foto Inversionista">
+    <ul>
+        <li>
+            <p> Nombre: {{inversionista.nombre}} {{inversionista.apellido}}</p>
+        </li>
+        <li>
+            <p> Teléfono: {{inversionista.telefono}}</p>
+        </li>
+        <li>
+            <p> Correo: {{inversionista.correo}}</p>
+        </li>
+        <li>
+            <p> Cédula: {{inversionista.cedula}}</p>
+        </li>
+    </ul>
+</section>
+
+
+{{#if icompra}}
+<h2>Inversión compra de inmueble</h2>
+<section>
+    <h2>Plan de pagos</h2>
+    <ul>
+        <table>
+            <tr>
+                <td> <strong> Fecha de pago</strong> </td>
+                <td> <strong> Valor de la cuota </strong> </td>
+                <td> <strong> Pago realizado </strong> </td>
+            </tr>
+            {{#each icompra.plan_pagos}}
+            <tr>
+                <td> <input type="date" name="fecha" class="input-form" value="{{fecha}}"></td>
+                <td> <input type="text" name="couta" class="input-form" value="{{couta}}"></td>
+                <td> <input type="file" name="pago" class="input-form"></td>
+
+            </tr>
+            {{/each}}
+        </table>
+    </ul>
+    <div class="botones">
+        <form action="/pago/add/{{icompra._id}}/compra?_method=PUT" method="POST"  class="form-forms">
+            <button class="boton" type="submit">
+                Agregar pago
+            </button>
+        </form>
+        <form action="/plan_pago/edit/{{icompra._id}}/compra?_method=PUT" method="POST"  class="form-forms">
+            <button class="boton" type="submit">
+                Guardan plan de pagos
+            </button>
+        </form>
+    </div>
+</section>
+{{/if}}
+
+{{#if igarantia}}
+<h2>Inversión garantía de inmbuele</h2>
+<section>
+    <h2>Plan de pagos</h2>
+    <ul>
+        <table>
+            <tr>
+                <td> <strong> Fecha de pago</strong> </td>
+                <td> <strong> Valor de la cuota </strong> </td>
+                <td> <strong> Pago realizado </strong> </td>
+            </tr>
+            {{#each igarantia.plan_pagos}}
+            <tr>
+                <td> <input type="date" name="fecha" class="input-form" value="{{fecha}}"></td>
+                <td> <input type="text" name="couta" class="input-form" value="{{couta}}"></td>
+                <td> <input type="file" name="pago" class="input-form"></td>
+
+            </tr>
+            {{/each}}
+        </table>
+    </ul>
+    <div class="botones">
+        <form action="/pago/add/{{igarantia._id}}/garantia?_method=PUT" method="POST"  class="form-forms">
+            <button class="boton" type="submit">
+                Agregar pago
+            </button>
+        </form>
+        <form action="/plan_pago/edit/{{igarantia._id}}/garantia?_method=PUT" method="POST"  class="form-forms">
+            <button class="boton" type="submit">
+                Guardan plan de pagos
+            </button>
+        </form>
+    </div>
+</section>
+{{/if}}
+
+{{#if iasociativo}}
+<h2>Inversión asociativo</h2>
+<section>
+    <h2>Plan de pagos</h2>
+    <ul>
+        <table>
+            <tr>
+                <td> <strong> Fecha de pago</strong> </td>
+                <td> <strong> Valor de la cuota </strong> </td>
+                <td> <strong> Pago realizado </strong> </td>
+            </tr>
+            {{#each iasociativo.plan_pagos}}
+            <tr>
+                <td> <input type="date" name="fecha" class="input-form" value="{{fecha}}"></td>
+                <td> <input type="text" name="couta" class="input-form" value="{{couta}}"></td>
+                <td> <input type="file" name="pago" class="input-form"></td>
+
+            </tr>
+            {{/each}}
+        </table>
+    </ul>
+    <div class="botones">
+        <form action="/pago/add/{{iasociativo._id}}/asociativo?_method=PUT" method="POST"  class="form-forms">
+            <button class="boton" type="submit">
+                Agregar pago
+            </button>
+        </form>
+        <form action="/plan_pago/edit/{{iasociativo._id}}/asociativo?_method=PUT" method="POST"  class="form-forms">
+            <button class="boton" type="submit">
+                Guardan plan de pagos
+            </button>
+        </form>
+    </div>
+</section>
+{{/if}}
+
+{{#if ifnf}}
+<h2>Inversión fnf</h2>
+<section>
+    <h2>Plan de pagos</h2>
+    <ul>
+        <table>
+            <tr>
+                <td> <strong> Fecha de pago</strong> </td>
+                <td> <strong> Valor de la cuota </strong> </td>
+                <td> <strong> Pago realizado </strong> </td>
+            </tr>
+            {{#each ifnf.plan_pagos}}
+            <tr>
+                <td> <input type="date" name="fecha" class="input-form" value="{{fecha}}"></td>
+                <td> <input type="text" name="couta" class="input-form" value="{{couta}}"></td>
+                <td> <input type="file" name="pago" class="input-form"></td>
+
+            </tr>
+            {{/each}}
+        </table>
+    </ul>
+    <div class="botones">
+        <form action="/pago/add/{{ifnf._id}}/fnf?_method=PUT" method="POST"  class="form-forms">
+            <button class="boton" type="submit">
+                Agregar pago
+            </button>
+        </form>
+        <form action="/plan_pago/edit/{{ifnf._id}}/fnf?_method=PUT" method="POST"  class="form-forms">
+            <button class="boton" type="submit">
+                Guardan plan de pagos
+            </button>
+        </form>
+    </div>
+</section>
+{{/if}}

@@ -13,7 +13,9 @@ const {
   updateInversionFnf,
   AsociarInmuebleFnf,
   AsociarInversionistaFnf,
-  renderEditPPFnf
+  renderEditPPFnf,
+  agregarPagoFnf,
+  editarPPFnf
 } = require("../controllers/i_fnf.controller");
 
 router.post("/inversion/fnf",  createNewFnf);
@@ -31,5 +33,9 @@ router.put("/inmueble/add/:id/fnf",  AsociarInmuebleFnf);
 router.put("/inversionista/add/:id/fnf",  AsociarInversionistaFnf);
 
 router.get("/edit-plan_pagos/:id/fnf", renderEditPPFnf );
+
+router.put("/pago/add/:id/fnf",  agregarPagoFnf);
+
+router.put("/plan_pago/edit/:id/fnf",  editarPPFnf);
 
 module.exports = router;

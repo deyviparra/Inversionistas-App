@@ -126,6 +126,15 @@ ifnfCtrl.renderEditPPFnf = async (req,res) => {
     res.render('modelos-inversion/edit-plan_pagos', { inversionista, ifnf })
 };
 
+ifnfCtrl.agregarPagoFnf = async (req,res) => {
+  res.send('Agregar pago')
+};
+
+ifnfCtrl.editarPPFnf = async (req,res) => {
+  res.send('Actualizar PP')
+};
+
+
 function crearFechacierre(fecha_inicio) {
   let inicio = fecha_inicio.split("-");
   inicio[0] = parseInt(inicio[0]) + 2;

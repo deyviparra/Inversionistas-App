@@ -120,6 +120,14 @@ asociativoCtrl.renderEditPPAsociativo = async (req,res) => {
     res.render('modelos-inversion/edit-plan_pagos', { inversionista, iasociativo})
 };
 
+asociativoCtrl.agregarPagoAsociativo = async (req,res) => {
+  res.send('Agregar pago')
+};
+
+asociativoCtrl.editarPPAsociativo = async (req,res) => {
+  res.send('Actualizar PP')
+};
+
 function crearPlan_pagos(fecha_cierre, fecha_inicio, valor_compra, fecha_pago) {
   let cierre = fecha_cierre.split("-");
   let inicio = fecha_inicio.split("-");

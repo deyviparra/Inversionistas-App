@@ -117,6 +117,14 @@ icompraCtrl.renderEditPPCompra = async (req,res) => {
     res.render('modelos-inversion/edit-plan_pagos', { inversionista, icompra })
 };
 
+icompraCtrl.agregarPagoCompra = async (req,res) => {
+  res.send('Agregar pago')
+};
+
+icompraCtrl.editarPPCompra = async (req,res) => {
+  res.send('Actualizar PP')
+};
+
 function crearPlan_pagos(fecha_cierre, fecha_inicio, valor_compra,fecha_pago){
     let cierre = fecha_cierre.split("-");
     let inicio = fecha_inicio.split("-");

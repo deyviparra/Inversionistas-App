@@ -13,7 +13,9 @@ const {
   updateInversionAsociativo,
   AsociarInmuebleAsociativo,
   AsociarInversionistaAsociativo,
-  renderEditPPAsociativo
+  renderEditPPAsociativo,
+  agregarPagoAsociativo,
+  editarPPAsociativo
 } = require("../controllers/i_asociativo.controller");
 
 router.post("/inversion/asociativo",  createNewAso);
@@ -31,5 +33,10 @@ router.put("/inmueble/add/:id/asociativo",  AsociarInmuebleAsociativo);
 router.put("/inversionista/add/:id/asociativo",  AsociarInversionistaAsociativo);
 
 router.get("/edit-plan_pagos/:id/asociativo", renderEditPPAsociativo );
+
+router.put("/pago/add/:id/asociativo",  agregarPagoAsociativo);
+
+router.put("/plan_pago/edit/:id/asociativo",  editarPPAsociativo);
+
 
 module.exports = router;
