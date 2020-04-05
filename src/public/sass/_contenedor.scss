@@ -1,19 +1,11 @@
-.up {
+.up{
   border-radius: 20px;
-  background: #272727;
-  box-shadow: 18px 18px 35px #212121, -18px -18px 35px #2d2d2d;
+  background: $input-bg;
+   box-shadow: 18px 18px 35px #212121, -18px -18px 35px #2d2d2d;
+   border: 1px solid $negro;
   margin: 20px;
-  .cajon {
-    a {
-      color: $blanco;
-      margin-top: 40px;
-      &:hover {
-        cursor: pointer;
-        color: $verde;
-      }
-    }
-  }
 }
+
 
 .contenedor {
   margin: 0;
@@ -58,10 +50,16 @@
       border-right: 1px solid $negro;
     }
     a {
+      width: 100%;
+      font-weight: 600;
+      text-align: center;
+      font-size: 36px;
+      padding: 20px;
       margin-bottom: 10px;
       color: $blanco;
 
       &:hover {
+        text-decoration: none;
         cursor: pointer;
         color: $verde;
       }

@@ -4,7 +4,16 @@ header nav {
     width: 100%;
     align-items: center;
     height: 80px;
-  
+    div{
+        a{
+            font-weight: 500;
+            font-size: 20px;
+            &:hover{
+                text-decoration: none;
+            }
+        }
+        
+    }
 
     .logo {
         height: 80px;

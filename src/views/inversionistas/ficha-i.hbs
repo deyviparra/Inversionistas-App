@@ -1,143 +1,146 @@
-<div>
-    <h1> Datos inversionista</h1>
-    <section id="info-ppal" class="info-ppal">
-        <img id="img" src="{{inversionista.imagePath}}" alt="Foto Inversionista">
-        <ul>
-            <li>
-                <p> Nombre: {{inversionista.nombre}} {{inversionista.apellido}}</p>
-            </li>
-            <li>
-                <p> Teléfono: {{inversionista.telefono}}</p>
-            </li>
-            <li>
-                <p> Correo: {{inversionista.correo}}</p>
-            </li>
-            <li>
-                <p> Cédula: {{inversionista.cedula}}</p>
-            </li>
-            <li>
-                <p> Edad: {{inversionista.edad}} Años</p>
-            </li>
+<h1> Perfil de {{inversionista.nombre}} {{inversionista.apellido}}</h1>
+<section id="info-ppal" class="info-ppal">
+    <img id="img" src="{{inversionista.imagePath}}" alt="Foto Inversionista">
+    <ul>
+        <li>
+            <p> Teléfono: {{inversionista.telefono}}</p>
+        </li>
+        <li>
+            <p> Correo: {{inversionista.correo}}</p>
+        </li>
+        <li>
+            <p> Cédula: {{inversionista.cedula}}</p>
+        </li>
+        <li>
+            <p> Edad: {{inversionista.edad}} Años</p>
+        </li>
 
-            <li>
-                <p> Profesión: {{inversionista.profesion}}</p>
-            </li>
-        </ul>
-        <div class="botones">
-            <form action="/edit-inver/{{inversionista._id}}?_method=GET" method="GET">
-                <input type="hidden" name="_method" value="GET">
-                <button class="up" type="submit">Modificar</button>
-            </form>
-            <p>Habilitar inversionista: </p>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider round"></span>
-            </label>
-            <form action="/inversion/add" class="panel">
-                <input type="hidden" value="{{inversionista._id}}" name="id">
-                <select name="modelo" class="lista-sel" id="tipo-modelo">
-                    <option value="asociativo"> Asociativo</option>
-                    <option value="c_inmueble"> Compra de inmueble</option>
-                    <option value="fcp_fnf"> FCP-FNF</option>
-                    <option value="fnf"> FNF</option>
-                    <option value="g_inmueble"> Inmueble en garantía</option>
-                </select>
-                <button class="up" type="submit">Añadir inversión</button>
-            </form>
+        <li>
+            <p> Profesión: {{inversionista.profesion}}</p>
+        </li>
+    </ul>
+    <div class="botones">
+        <form action="/edit-inver/{{inversionista._id}}?_method=GET" method="GET">
+            <input type="hidden" name="_method" value="GET">
+            <button class="up" type="submit">Modificar inversionista</button>
+        </form>
+        <p>Habilitar inversionista: </p>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider round"></span>
+        </label>
+        <p>Selecciona el tipo de inversión: </p>
+        <form action="/inversion/add" class="panel">
+            <input type="hidden" value="{{inversionista._id}}" name="id">
+            <select name="modelo" class="lista-sel" id="tipo-modelo">
+                <option value="asociativo"> Asociativo</option>
+                <option value="c_inmueble"> Compra de inmueble</option>
+                <option value="fcp_fnf"> FCP-FNF</option>
+                <option value="fnf"> FNF</option>
+                <option value="g_inmueble"> Inmueble en garantía</option>
+            </select>
+            <button class="up" type="submit">Añadir inversión</button>
+        </form>
+    </div>
+</section>
+
+<section id="info-secun" class="info-secun">
+    <ul>
+
+        <li>
+            <p> Dirección: {{inversionista.direccion}}</p>
+        </li>
+        <li>
+            <p> Nacimiento: {{inversionista.nacimiento}}</p>
+        </li>
+        <li>
+            <p> Estado Civil:{{inversionista.estado_civil}}</p>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <p> Hijos: {{inversionista.n_hijos}}</p>
+        </li>
+        <li>
+            <p> Mascotas: {{inversionista.n_mascotas}}</p>
+        </li>
+        <li>
+            <p> Hobby: {{inversionista.hobby}}</p>
+        </li>
+    </ul>
+
+</section>
+
+<section id="sec-inversiones" class="sec-inversiones">
+    <h1>Inversiones</h1>
+    <div class="inversiones">
+        <div class='cuadro'>
+            {{#if asociativo}}
+            <h2>Modelo Asociativo</h2>
+            <ul>
+                {{#each asociativo}}
+                <li>
+                    <div>
+                        <p>Proyecto: {{proyecto}}</p>
+                        <p>Fecha de inicio: {{fecha_inicio}}</p>
+                        <p>Valor de compra: {{valor_compra}}</p>
+                        <p>TIR estimada: {{tir_prometida}}</p>
+                    </div>
+                    <a href="/ficha-inversion/{{_id}}/asociativo"> Ver inversión</a>
+                </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+          
+            {{#if icompra}}
+            <h2>Modelo Compra</h2>
+            <ul>
+
+                {{#each icompra}}
+                <li>
+                   <div>
+                        <p>Proyecto: {{proyecto}}</p>
+                        <p>Inver ID: {{inver_id}}</p>
+                        <p>ID: {{_id}}</p>
+                   </div>
+                    <a href="/ficha-inversion/{{_id}}/compra"> Ver inversión</a>
+                </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+           
+            {{#if ifnf}}
+            <h2>Modelo FNF</h2>
+            <ul>
+
+                {{#each ifnf}}
+                <li>
+                    <div>
+                        <p>Proyecto: {{proyecto}}</p>
+                        <p>Inver ID: {{inver_id}}</p>
+                        <p>ID: {{_id}}</p>
+                    </div>
+                    <a href="/ficha-inversion/{{_id}}/fnf"> Ver inversión</a>
+                </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+            {{#if igarantia}}
+            <h2>Modelo garantía</h2>
+            <ul>
+                {{#each igarantia}}
+                <li>
+                   <div>
+                        <p>Proyecto: {{proyecto}}</p>
+                        <p>Inver ID: {{inver_id}}</p>
+                        <p>ID: {{_id}}</p>
+                   </div>
+                    <a href="/ficha-inversion/{{_id}}/garantia"> Ver inversión</a>
+                </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+            </ul>
         </div>
-    </section>
-
-    <section id="info-secun" class="info-secun">
-        <ul>
-
-            <li>
-                <p> Dirección: {{inversionista.direccion}}</p>
-            </li>
-            <li>
-                <p> Nacimiento: {{inversionista.nacimiento}}</p>
-            </li>
-            <li>
-                <p> Estado Civil:{{inversionista.estado_civil}}</p>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <p> Hijos: {{inversionista.n_hijos}}</p>
-            </li>
-            <li>
-                <p> Mascotas: {{inversionista.n_mascotas}}</p>
-            </li>
-            <li>
-                <p> Hobby: {{inversionista.hobby}}</p>
-            </li>
-        </ul>
-        <ul>
-    </section>
-
-    <section id="sec-inversiones" class="sec-inversiones">
-        <h1>Inversiones</h1>
-        <div class="inversiones">
-            <div class='cuadro'>
-                    {{#if asociativo}}
-                    <h2>Modelo Asociativo</h2>
-                <ul>
-                    {{#each asociativo}}
-                    <li>
-                        <p>Proyecto: {{proyecto}}</p>
-                        <p>Inver ID: {{inver_id}}</p>
-                        <p>ID: {{_id}}</p>
-                        <a href="/ficha-inversion/{{_id}}/asociativo"> Ver inversión</a>
-                    </li>
-                    {{/each}}
-                </ul>
-                    {{/if}}
-                    <br>
-                    <br>
-                    {{#if icompra}}
-                    <h2>Modelo Compra</h2>
-                <ul>
-
-                    {{#each icompra}}
-                    <li>
-                        <p>Proyecto: {{proyecto}}</p>
-                        <p>Inver ID: {{inver_id}}</p>
-                        <p>ID: {{_id}}</p>
-                        <a href="/ficha-inversion/{{_id}}/compra"> Ver inversión</a>
-                    </li>
-                    {{/each}}
-                </ul>
-                    {{/if}}
-                    <br>
-                    <br>
-                    {{#if ifnf}}
-                    <h2>Modelo FNF</h2>
-                <ul>
-
-                    {{#each ifnf}}
-                    <li>
-                        <p>Proyecto: {{proyecto}}</p>
-                        <p>Inver ID: {{inver_id}}</p>
-                        <p>ID: {{_id}}</p>
-                        <a href="/ficha-inversion/{{_id}}/fnf"> Ver inversión</a>
-                    </li>
-                    {{/each}}
-                </ul>
-                    {{/if}}
-                    {{#if igarantia}}
-                    <h2>Modelo garantía</h2>
-                    <ul>
-                    {{#each igarantia}}
-                    <li>
-                        <p>Proyecto: {{proyecto}}</p>
-                        <p>Inver ID: {{inver_id}}</p>
-                        <p>ID: {{_id}}</p>
-                        <a href="/ficha-inversion/{{_id}}/garantia"> Ver inversión</a>
-                    </li>
-                    {{/each}}
-                </ul>
-                    {{/if}}
-                </ul>
-            </div>
-        </div>
-    </section>
-</div>
+    </div>
+</section>

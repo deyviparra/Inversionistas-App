@@ -17,188 +17,248 @@
     </ul>
 </section>
 
+<section class="info-inversion">
 
-{{#if icompra}}
-<h2>Inversión compra de inmueble</h2>
-<section class="info-ppal">
-    <ul>
-        <li>
-            <p> Proyecto: {{icompra.proyecto}}</p>
-        </li>
-        <li>
-            <p> Fecha de inicio: {{icompra.fecha_inicio}}</p>
-        </li>
-        <li>
-            <p> Fecha de cierre: {{icompra.fecha_cierre}}</p>
-        </li>
-        <li>
-            <p> Valor de compra: {{icompra.valor_compra}}</p>
-        </li>
-        <li>
-            <p>Fecha de entrega: {{icompra.fecha_entrega}}</p>
-        </li>
-        <li>
-            <p>TIR prometida: {{icompra.tir_prometida}}</p>
-        </li>
-    </ul>
-    <div class="botones">
+    {{#if icompra}}
+    <h2>Inversión compra de inmueble</h2>
+    <section class="info-ppal">
+        <ul>
+            <li>
+                <p> Proyecto: {{icompra.proyecto}}</p>
+            </li>
+            <li>
+                <p> Fecha de inicio: {{icompra.fecha_inicio}}</p>
+            </li>
+            <li>
+                <p> Fecha de cierre: {{icompra.fecha_cierre}}</p>
+            </li>
+            <li>
+                <p> Valor de compra: {{icompra.valor_compra}}</p>
+            </li>
+            <li>
+                <p>Fecha de entrega: {{icompra.fecha_entrega}}</p>
+            </li>
+            <li>
+                <p>TIR prometida: {{icompra.tir_prometida}}</p>
+            </li>
+        </ul>
+        <div class="botones">
 
-        <a href="/edit-inversion/{{icompra._id}}/compra" class="boton" type="submit">
-            Modificar inversión
-        </a>
+            <a href="/edit-inversion/{{icompra._id}}/compra" class="boton" type="submit">
+                Modificar inversión
+            </a>
 
-        <button class="boton" type="submit">
-            Asociar inmueble
-        </button>
-        <button class="boton" type="submit">
-            Agregar Co-inversionista
-        </button>
-        <button class="boton" type="submit">
-            Eliminar
-        </button>
-    </div>
-</section>
-<section>
-    <h2>Plan de pagos</h2>
-    <ul>
-        <table>
-            <tr>
-                <td> <strong> Fecha de pago</strong> </td>
-                <td> <strong> Valor de la cuota </strong> </td>
-            </tr>
-            {{#each icompra.plan_pagos}}
-            <tr>
-                <td> {{fecha}}</td>
-                <td> {{couta}}</td>
-            </tr>
-            {{/each}}
-        </table>
-    </ul>
-    <div class="botones">
-        <button class="boton" type="submit">
-            Modificar plan de pagos
-        </button>
-    </div>
-</section>
-{{/if}}
+            <button class="boton" type="submit">
+                Asociar inmueble
+            </button>
+            <button class="boton" type="submit">
+                Agregar Co-inversionista
+            </button>
+            <button class="boton" type="submit">
+                Eliminar
+            </button>
+        </div>
+    </section>
+    {{/if}}
 
 
 
-{{#if igarantia}}
-<h2>Inversión garantía de inmbuele</h2>
-<section class="info-ppal">
-    <ul>
-        <li>
-            <p> Proyecto: {{igarantia.proyecto}}</p>
-        </li>
-        <li>
-            <p> Fecha de inicio: {{igarantia.fecha_inicio}}</p>
-        </li>
-        {{!-- <li>
+    {{#if igarantia}}
+    <h2>Inversión garantía de inmbuele</h2>
+    <section class="info-ppal">
+        <ul>
+            <li>
+                <p> Proyecto: {{igarantia.proyecto}}</p>
+            </li>
+            <li>
+                <p> Fecha de inicio: {{igarantia.fecha_inicio}}</p>
+            </li>
+            {{!-- <li>
             <p> Fecha de cierre: {{igarantia.fecha_cierre}}</p>
         </li> --}}
 
-        <li>
-            <p> Duración de la inversión: {{igarantia.duracion}} meses</p>
-        </li>
-        
-        <li>
-            <p> Valor de inversion: {{igarantia.valor_inversion}}</p>
-        </li>
-        <li>
-            <p>Periodo de liquidación: Cada {{igarantia.periodo_liquidacion}} meses </p>
-        </li>
-        <li>
-            <p>Tasa de intereses mensual: {{igarantia.tasa_int_men}} %</p>
-        </li>
-    </ul>
-    <div class="botones">
+            <li>
+                <p> Duración de la inversión: {{igarantia.duracion}} meses</p>
+            </li>
 
-        <a href="/edit-inversion/{{igarantia._id}}/garantia" class="boton" type="submit">
-            Modificar inversión
-        </a>
+            <li>
+                <p> Valor de inversion: {{igarantia.valor_inversion}}</p>
+            </li>
+            <li>
+                <p>Periodo de liquidación: Cada {{igarantia.periodo_liquidacion}} meses </p>
+            </li>
+            <li>
+                <p>Tasa de intereses mensual: {{igarantia.tasa_int_men}} %</p>
+            </li>
+        </ul>
+        <div class="botones">
 
-        <button class="boton" type="submit">
-            Asociar inmueble
-        </button>
-        <button class="boton" type="submit">
-            Agregar Co-inversionista
-        </button>
-        <button class="boton" type="submit">
-            Eliminar
-        </button>
-    </div>
+            <a href="/edit-inversion/{{igarantia._id}}/garantia" class="boton" type="submit">
+                Modificar inversión
+            </a>
+
+            <button class="boton" type="submit">
+                Asociar inmueble
+            </button>
+            <button class="boton" type="submit">
+                Agregar Co-inversionista
+            </button>
+            <button class="boton" type="submit">
+                Eliminar
+            </button>
+        </div>
+    </section>
+    
+    {{/if}}
+
+
+
+    {{#if iasociativo}}
+    <h2>Inversión asociativo</h2>
+    <section class="info-ppal">
+        <ul>
+            <li>
+                <p> Proyecto: {{iasociativo.proyecto}}</p>
+            </li>
+            <li>
+                <p> Fecha de inicio: {{iasociativo.fecha_inicio}}</p>
+            </li>
+            <li>
+                <p> Fecha de cierre: {{iasociativo.fecha_cierre}}</p>
+            </li>
+
+            <li>
+                <p> Número de acciones: {{iasociativo.n_acciones}}</p>
+            </li>
+            <li>
+                <p> Valor de compra: {{iasociativo.valor_compra}}</p>
+            </li>
+
+            <li>
+                <p> Fecha entrega prometida: {{iasociativo.fecha_entrega_prometida}}</p>
+            </li>
+            <li>
+                <p>TIR prometida: {{iasociativo.tir_prometida}}</p>
+            </li>
+        </ul>
+        <div class="botones">
+
+            <a href="/edit-inversion/{{iasociativo._id}}/asociativo" class="boton" type="submit">
+                Modificar inversión
+            </a>
+
+            <button class="boton" type="submit">
+                Asociar inmueble
+            </button>
+            <button class="boton" type="submit">
+                Agregar Co-inversionista
+            </button>
+            <button class="boton" type="submit">
+                Eliminar
+            </button>
+        </div>
+    </section>
+    {{/if}}
+
+
+
+    {{#if ifnf}}
+    <h2>Inversión fnf</h2>
+    <section class="info-ppal">
+        <ul>
+            <li>
+                <p> Proyecto: {{ifnf.proyecto}}</p>
+            </li>
+            <li>
+                <p> Fecha de inicio: {{ifnf.fecha_inicio}}</p>
+            </li>
+            {{!-- <li>
+            <p> Fecha de cierre: {{ifnf.fecha_cierre}}</p>
+        </li> --}}
+
+            <li>
+                <p> Fecha de legalización del mutuo: {{ifnf.lega_mutuo_fidu}}</p>
+            </li>
+
+            <li>
+                <p> Valor del mutuo: {{ifnf.valor_mutuo}} observaciones: {{ifnf.observaciones}}</p>
+            </li>
+
+            <li>
+                <p>Tasa de interés: {{ifnf.tasa_interes}} %</p>
+            </li>
+            <li>
+                <p>Porcentaje cliente: {{ifnf.porcentaje_cliente}} %</p>
+            </li>
+            <li>
+                <p>Porcentaje garantia: {{ifnf.porcentaje_garantia}} %</p>
+            </li>
+        </ul>
+        <div class="botones">
+
+            <a href="/edit-inversion/{{ifnf._id}}/fnf" class="boton" type="submit">
+                Modificar inversión
+            </a>
+
+            <button class="boton" type="submit">
+                Asociar inmueble
+            </button>
+            <button class="boton" type="submit">
+                Agregar Co-inversionista
+            </button>
+            <button class="boton" type="submit">
+                Eliminar
+            </button>
+        </div>
+    </section>
+   
+    {{/if}}
 </section>
-<section>
+
+<section class="pagos">
+    {{#if ifnf}}
     <h2>Plan de pago de intereses</h2>
-    <ul>
-        <table>
-            <tr>
-                <td> <strong> Fecha de pago</strong> </td>
-                <td> <strong> Valor de la cuota </strong> </td>
-            </tr>
-            {{#each igarantia.plan_pago_intereses}}
-            <tr>
-                <td> {{fecha}}</td>
-                <td> {{couta}}</td>
-            </tr>
-            {{/each}}
-        </table>
-    </ul>
-    <div class="botones">
-        <button class="boton" type="submit">Modificar</button>
-    </div>
-</section>
-{{/if}}
-
-
-
-{{#if iasociativo}}
-<h2>Inversión asociativo</h2>
-<section class="info-ppal">
-    <ul>
-        <li>
-            <p> Proyecto: {{iasociativo.proyecto}}</p>
-        </li>
-        <li>
-            <p> Fecha de inicio: {{iasociativo.fecha_inicio}}</p>
-        </li>
-        <li>
-            <p> Fecha de cierre: {{iasociativo.fecha_cierre}}</p>
-        </li>
-        
-        <li>
-            <p> Número de acciones: {{iasociativo.n_acciones}}</p>
-        </li>
-        <li>
-            <p> Valor de compra: {{iasociativo.valor_compra}}</p>
-        </li>
-        
-        <li>
-            <p> Fecha entrega prometida: {{iasociativo.fecha_entrega_prometida}}</p>
-        </li>
-        <li>
-            <p>TIR prometida: {{iasociativo.tir_prometida}}</p>
-        </li>
-    </ul>
-    <div class="botones">
-
-        <a href="/edit-inversion/{{iasociativo._id}}/asociativo" class="boton" type="submit">
-            Modificar inversión
-        </a>
-
-        <button class="boton" type="submit">
-            Asociar inmueble
-        </button>
-        <button class="boton" type="submit">
-            Agregar Co-inversionista
-        </button>
-        <button class="boton" type="submit">
-            Eliminar
-        </button>
-    </div>
-</section>
-<section>
+        <ul>
+            <table>
+                <tr>
+                    <td> <strong> Fecha de pago</strong> </td>
+                    <td> <strong> Cuota cliente </strong> </td>
+                    <td> <strong> Cuota garantía </strong> </td>
+                </tr>
+                {{#each ifnf.plan_pago_intereses}}
+                <tr>
+                    <td> {{fecha}}</td>
+                    <td> {{couta_cliente}}</td>
+                    <td> {{couta_garantia}}</td>
+                </tr>
+                {{/each}}
+            </table>
+        </ul>
+        <div class="botones">
+            <button class="boton" type="submit">Modificar</button>
+        </div>
+    {{/if}}
+    {{#if igarantia}}
+    <h2>Plan de pago de intereses</h2>
+        <ul>
+            <table>
+                <tr>
+                    <td> <strong> Fecha de pago</strong> </td>
+                    <td> <strong> Valor de la cuota </strong> </td>
+                </tr>
+                {{#each igarantia.plan_pago_intereses}}
+                <tr>
+                    <td> {{fecha}}</td>
+                    <td> {{couta}}</td>
+                </tr>
+                {{/each}}
+            </table>
+        </ul>
+        <div class="botones">
+            <button class="boton" type="submit">Modificar</button>
+        </div>
+    {{/if}}
+    {{#if iasociativo}}
     <h2>Plan de pagos</h2>
     <ul>
         <table>
@@ -219,80 +279,28 @@
             Modificar plan de pagos
         </button>
     </div>
-</section>
-{{/if}}
+    {{/if}}
+    {{#if icompra }}
 
-
-
-{{#if ifnf}}
-<h2>Inversión fnf</h2>
-<section class="info-ppal">
-    <ul>
-        <li>
-            <p> Proyecto: {{ifnf.proyecto}}</p>
-        </li>
-        <li>
-            <p> Fecha de inicio: {{ifnf.fecha_inicio}}</p>
-        </li>
-        {{!-- <li>
-            <p> Fecha de cierre: {{ifnf.fecha_cierre}}</p>
-        </li> --}}
-
-        <li>
-            <p> Fecha de legalización del mutuo: {{ifnf.lega_mutuo_fidu}}</p>
-        </li>
-        
-        <li>
-            <p> Valor del mutuo: {{ifnf.valor_mutuo}} observaciones: {{ifnf.observaciones}}</p>
-        </li>
-       
-        <li>
-            <p>Tasa de interés: {{ifnf.tasa_interes}} %</p>
-        </li>
-        <li>
-            <p>Porcentaje cliente: {{ifnf.porcentaje_cliente}} %</p>
-        </li>
-        <li>
-            <p>Porcentaje garantia: {{ifnf.porcentaje_garantia}} %</p>
-        </li>
-    </ul>
-    <div class="botones">
-
-        <a href="/edit-inversion/{{ifnf._id}}/fnf" class="boton" type="submit">
-            Modificar inversión
-        </a>
-
-        <button class="boton" type="submit">
-            Asociar inmueble
-        </button>
-        <button class="boton" type="submit">
-            Agregar Co-inversionista
-        </button>
-        <button class="boton" type="submit">
-            Eliminar
-        </button>
-    </div>
-</section>
-<section>
-    <h2>Plan de pago de intereses</h2>
+    <h2>Plan de pagos</h2>
     <ul>
         <table>
             <tr>
                 <td> <strong> Fecha de pago</strong> </td>
-                <td> <strong> Cuota cliente </strong> </td>
-                <td> <strong> Cuota garantía </strong> </td>
+                <td> <strong> Valor de la cuota </strong> </td>
             </tr>
-            {{#each ifnf.plan_pago_intereses}}
+            {{#each icompra.plan_pagos }}
             <tr>
                 <td> {{fecha}}</td>
-                <td> {{couta_cliente}}</td>
-                <td> {{couta_garantia}}</td>
+                <td> {{couta}}</td>
             </tr>
             {{/each}}
         </table>
     </ul>
     <div class="botones">
-        <button class="boton" type="submit">Modificar</button>
+        <button class="boton" type="submit">
+            Modificar plan de pagos
+        </button>
     </div>
+    {{/if}}
 </section>
-{{/if}}

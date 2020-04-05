@@ -1,62 +1,101 @@
-*{
+* {
     text-decoration: none;
     color: $blanco;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-body{
+
+body {
     background: $negro !important;
+
+    h1 {
+        text-align: center;
+        font-size: 48px;
+        font-weight: 700;
+        margin: 25px;
+    }
 }
-ul,ol{
+
+ul,
+ol {
     list-style: none;
 }
-h1{
-    text-align: center;
-    font-size: 36px;
-    font-weight: 600;
-    margin: 20px;
-}
+
+
 @-webkit-keyframes autofill {
     to {
-      color: $blanco;
-      background: transparent;
+        color: $blanco;
+        background: transparent;
     }
-  }
-  input::placeholder{
-      color: $blanco;
-  }
-  input:-webkit-autofill {
+}
+
+input::placeholder {
+    color: $blanco;
+}
+
+input:-webkit-autofill {
     -webkit-animation-name: autofill;
     -webkit-animation-fill-mode: both;
-  }
-  input{
+}
+
+input {
     width: 100%;
     margin: 10px;
     height: 40px;
     padding: 10px;
 }
 
-@media (min-width:900px){
-    h1{
-        font-size: 40px;
-        font-weight: 700;
-    }
-}
-p{
+
+p {
     margin: 0;
 }
 
 
-.titulo{
+.titulo {
     font-size: 24px;
     font-weight: 500;
 }
-.hide{
-    display: none !important; 
+
+.hide {
+    display: none !important;
 }
-.boton{
+
+.contenedor-form .columna-1 .input-group .upload-image {
+    width: 60%;
+    border-bottom: 2px solid $blanco;
+    display: flex;
+    margin: 0 !important;
+    padding: 0 !important;
+    align-items: center;
+}
+
+.boton {
     border-radius: 5px;
     background: $verde;
     color: $negro;
     padding: 5px 10px;
     margin: 10px;
+
+    &:hover {
+        background: $negro;
+        color: $blanco;
+    }
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    background: $verde;
+
+    p {
+        padding-top: 20px;
+        font-size: 24px;
+        width: 100%;
+        color: $negro;
+        text-align: center;
+
+        a {
+            color: $gris-cla;
+        }
+    }
 }
