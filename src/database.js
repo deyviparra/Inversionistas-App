@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 
-const {INVERSIONISTAS_MONGODB_HOST,INVERSIONISTAS_MONGODB_DATABASE}= process.env;
-const MONGODB_URI = `mongodb://${INVERSIONISTAS_MONGODB_HOST}/${INVERSIONISTAS_MONGODB_DATABASE}`
+const {MONGODB_URI}= process.env;
 
 mongoose.connect(MONGODB_URI,{
     useNewUrlParser: true,
