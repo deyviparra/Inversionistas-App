@@ -51,8 +51,89 @@ ifnfCtrl.renderFichaInvFnf = async (req, res) => {
 ifnfCtrl.renderEditInvFnf = async (req,res) => {
   const ifnf = await Ifnf.findById(req.params.id);
   const inversionista = await Inversionista.findById(ifnf.inver_id);
-    res.render('modelos-inversion/edit-inversion', { inversionista, ifnf })
+  const proyecto = await Proyecto.find();
+    res.render('modelos-inversion/edit-inversion', { inversionista, ifnf, proyecto })
 };
+
+ifnfCtrl.renderInmuebleFnf = async (req,res) => {
+  const ifnf = await Ifnf.findById(req.params.id);
+  const inversionista = await Inversionista.findById(ifnf.inver_id);
+    res.render('modelos-inversion/asociar-inmueble', { inversionista, ifnf })
+};
+
+ifnfCtrl.renderInversionistaFnf = async (req,res) => {
+  const ifnf = await Ifnf.findById(req.params.id);
+  const inversionista = await Inversionista.findById(ifnf.inver_id);
+  const inversionistas = await Inversionista.find();
+    res.render('modelos-inversion/asociar-inversionista', { inversionista, ifnf, inversionistas })
+};
+
+ifnfCtrl.deleteInversionFnf = async (req, res) => {
+  const ifnf = await Ifnf.findById(req.params.id);
+  const inversionista = await Inversionista.findById(ifnf.inver_id);
+  await Ifnf.findByIdAndDelete(req.params.id)
+  req.flash('error_msg', 'Inversión eliminada');
+  res.redirect('/ficha-i/' + inversionista._id)
+}
+
+ifnfCtrl.updateInversionFnf = async (req, res) => {
+  console.log(req.params.id)
+  const {
+    proyecto,
+    fecha_inicio,
+    lega_mutuo_fidu,
+    valor_mutuo,
+    observaciones,
+    tasa_interes
+  } = req.body;  
+  const ifnf = await Ifnf.findById(req.params.id)
+  const inversionista = await Inversionista.findById(ifnf.inver_id);
+   await Ifnf.findByIdAndUpdate(req.params.id,{
+    proyecto,
+    fecha_inicio,
+    lega_mutuo_fidu,
+    valor_mutuo,
+    observaciones,
+    tasa_interes
+  })  
+  req.flash('success_msg', 'Inversion actualizada')
+  res.redirect('/ficha-i/' + inversionista._id)
+}
+
+ifnfCtrl.AsociarInmuebleFnf = async (req, res) => {
+  const { inmuebles } = await Ifnf.findById(req.params.id)
+  const ifnf = await Ifnf.findById(req.params.id)
+  const inmueble = req.body;
+  inmuebles.push(inmueble)
+  await Ifnf.findByIdAndUpdate(req.params.id, { inmuebles })
+  req.flash('success_msg', 'Inmueble añadido')
+  res.redirect('/ficha-inversion/'+ ifnf._id + '/fnf')
+}
+
+ifnfCtrl.AsociarInversionistaFnf= async (req, res) => {
+  const { co_inversionista } = await Ifnf.findById(req.params.id)
+  const ifnf = await Ifnf.findById(req.params.id)
+  const inversionista = req.body;
+  co_inversionista.push(inversionista)
+  await Ifnf.findByIdAndUpdate(req.params.id, { co_inversionista })
+  req.flash('success_msg', 'Inversionista añadido')
+  res.redirect('/ficha-inversion/'+ ifnf._id+'/fnf')
+}
+
+ifnfCtrl.renderEditPPFnf = async (req,res) => {
+  const ifnf = await Ifnf.findById(req.params.id);
+  const inversionista = await Inversionista.findById(ifnf.inver_id);
+    res.render('modelos-inversion/edit-plan_pagos', { inversionista, ifnf })
+};
+
+ifnfCtrl.agregarPagoFnf = async (req,res) => {
+  res.send('Agregar pago')
+};
+
+ifnfCtrl.editarPPFnf = async (req,res) => {
+  res.send('Actualizar PP')
+};
+
 
 function crearFechacierre(fecha_inicio) {
   let inicio = fecha_inicio.split("-");

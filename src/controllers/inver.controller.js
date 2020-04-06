@@ -66,7 +66,6 @@ inverCtrl.updateInver = async (req, res) => {
     res.redirect('/inver')
 }
 inverCtrl.deleteInver = async (req, res) => {
-
     const inver = await Inversionista.findById(req.params.id)
     await Inversionista.findByIdAndDelete(req.params.id)
     unlink(path.resolve(path.join(__dirname, '../public' + inver.imagePath)))
@@ -75,10 +74,12 @@ inverCtrl.deleteInver = async (req, res) => {
 }
 inverCtrl.renderFichaI = async (req, res) => {
     const inversionista = await Inversionista.findById(req.params.id)
+    // Inversiones propias
     const icompra = await Icompra.find({inver_id:req.params.id})
     const ifnf = await Ifnf.find({inver_id:req.params.id})
     const igarantia = await Igarantia.find({inver_id:req.params.id})
     const asociativo = await Asociativo.find({inver_id:req.params.id})
+    // Inversiones de otros
     res.render('inversionistas/ficha-i', { inversionista,asociativo,icompra,ifnf,igarantia })
 }
 
