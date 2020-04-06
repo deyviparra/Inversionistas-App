@@ -68,7 +68,10 @@ inverCtrl.updateInver = async (req, res) => {
 inverCtrl.deleteInver = async (req, res) => {
     const inver = await Inversionista.findById(req.params.id)
     await Inversionista.findByIdAndDelete(req.params.id)
-    unlink(path.resolve(path.join(__dirname, '../public' + inver.imagePath)))
+    console.log(inver.imagePath)
+    if(inver.imagePath !== '/uploads/sinfoto.png'){
+        unlink(path.resolve(path.join(__dirname, '../public' + inver.imagePath)))
+    }
     req.flash('error_msg', 'Inversionista eliminado')
     res.redirect('/inver')
 }
