@@ -99,9 +99,10 @@
                 {{#each icompra}}
                 <li>
                    <div>
-                        <p>Proyecto: {{proyecto}}</p>
-                        <p>Inver ID: {{inver_id}}</p>
-                        <p>ID: {{_id}}</p>
+                        <p>Proyecto: {{nombre}}</p>
+                        <p>Fecha de inicio: {{fecha_inicio}}</p>
+                        <p>Valor de compra: {{valor_compra}}</p>
+                        <p>TIR estimada: {{tir_prometida}}</p>
                    </div>
                     <a href="/ficha-inversion/{{_id}}/compra"> Ver inversión</a>
                 </li>
@@ -117,8 +118,9 @@
                 <li>
                     <div>
                         <p>Proyecto: {{proyecto}}</p>
-                        <p>Inver ID: {{inver_id}}</p>
-                        <p>ID: {{_id}}</p>
+                        <p>Fecha de inicio: {{fecha_inicio}}</p>
+                        <p>Valor del mutuo: {{valor_mutuo}}</p>
+                        <p>Tasa intereses: {{tasa_interes}}</p>
                     </div>
                     <a href="/ficha-inversion/{{_id}}/fnf"> Ver inversión</a>
                 </li>
@@ -132,8 +134,9 @@
                 <li>
                    <div>
                         <p>Proyecto: {{proyecto}}</p>
-                        <p>Inver ID: {{inver_id}}</p>
-                        <p>ID: {{_id}}</p>
+                        <p>Fecha de inicio: {{fecha_inicio}}</p>
+                        <p>Valor del mutuo: {{valor_inversion}}</p>
+                        <p>Tasa intereses: {{tasa_int_men}}</p>
                    </div>
                     <a href="/ficha-inversion/{{_id}}/garantia"> Ver inversión</a>
                 </li>
