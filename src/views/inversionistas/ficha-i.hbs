@@ -75,10 +75,10 @@
     <h1>Inversiones</h1>
     <div class="inversiones">
         <div class='cuadro'>
-            {{#if asociativo}}
+            {{#if iasociativo}}
             <h2>Modelo Asociativo</h2>
             <ul>
-                {{#each asociativo}}
+                {{#each iasociativo}}
                 <li>
                     <div>
                         <p>Proyecto: {{proyecto.nombre}}</p>
@@ -88,14 +88,31 @@
                     </div>
                     <a href="/ficha-inversion/{{_id}}/asociativo"> Ver inversión</a>
                 </li>
-                {{/each}}
+                {{/each}} 
+                
             </ul>
             {{/if}}
-          
+            {{#if iasociativo_c}}
+            <h2>Modelo Asociativo en Cooperación</h2>
+            <ul>
+                {{#each iasociativo_c}}
+                <li>
+                    <div>
+                        <p>Proyecto: {{proyecto.nombre}}</p>
+                        <p>Fecha de inicio: {{fecha_inicio}}</p>
+                        <p>Valor de compra: {{valor_compra}}</p>
+                        <p>TIR estimada: {{tir_prometida}}</p>
+                    </div>
+                    <a href="/ficha-inversion/{{_id}}/asociativo"> Ver inversión</a>
+                </li>
+                {{/each}} 
+                
+            </ul>
+            {{/if}}
+            
             {{#if icompra}}
             <h2>Modelo Compra</h2>
             <ul>
-
                 {{#each icompra}}
                 <li>
                    <div>
@@ -109,11 +126,26 @@
                 {{/each}}
             </ul>
             {{/if}}
-           
-            {{#if ifnf}}
+            {{#if icompra_c}}
+            <h2>Modelo Compra en Cooperación</h2>
+            <ul>
+                {{#each icompra_c}}
+                <li>
+                   <div>
+                        <p>Proyecto: {{proyecto.nombre}}</p>
+                        <p>Fecha de inicio: {{fecha_inicio}}</p>
+                        <p>Valor de compra: {{valor_compra}}</p>
+                        <p>TIR estimada: {{tir_prometida}}</p>
+                   </div>
+                    <a href="/ficha-inversion/{{_id}}/compra"> Ver inversión</a>
+                </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+
+            {{#if ifnf }}
             <h2>Modelo FNF</h2>
             <ul>
-
                 {{#each ifnf}}
                 <li>
                     <div>
@@ -127,10 +159,43 @@
                 {{/each}}
             </ul>
             {{/if}}
-            {{#if igarantia}}
+            {{#if ifnf_c }}
+            <h2>Modelo FNF en Cooperación</h2>
+            <ul>
+                {{#each ifnf_c}}
+                <li>
+                    <div>
+                        <p>Proyecto: {{proyecto.nombre}}</p>
+                        <p>Fecha de inicio: {{fecha_inicio}}</p>
+                        <p>Valor del mutuo: {{valor_mutuo}}</p>
+                        <p>Tasa intereses: {{tasa_interes}}</p>
+                    </div>
+                    <a href="/ficha-inversion/{{_id}}/fnf"> Ver inversión</a>
+                </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+
+            {{#if igarantia }}
             <h2>Modelo garantía</h2>
             <ul>
                 {{#each igarantia}}
+                <li>
+                   <div>
+                        <p>Proyecto: {{proyecto.nombre}}</p>
+                        <p>Fecha de inicio: {{fecha_inicio}}</p>
+                        <p>Valor del mutuo: {{valor_inversion}}</p>
+                        <p>Tasa intereses: {{tasa_int_men}}</p>
+                   </div>
+                    <a href="/ficha-inversion/{{_id}}/garantia"> Ver inversión</a>
+                </li>
+                {{/each}}
+            </ul>
+            {{/if}}
+            {{#if igarantia_c }}
+            <h2>Modelo garantía</h2>
+            <ul>
+                {{#each igarantia_c}}
                 <li>
                    <div>
                         <p>Proyecto: {{proyecto.nombre}}</p>

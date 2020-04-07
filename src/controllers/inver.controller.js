@@ -8,6 +8,7 @@ const Proyecto = require("../models/Proyecto");
 const Icompra = require("../models/I_compra");
 const Ifnf = require("../models/I_fnf");
 const Igarantia = require("../models/I_garantia");
+const mongoose = require("mongoose");
 
 
 inverCtrl.renderInverForm = (req, res) => {
@@ -81,9 +82,13 @@ inverCtrl.renderFichaI = async (req, res) => {
     const icompra = await Icompra.find({inver_id:req.params.id})
     const ifnf = await Ifnf.find({inver_id:req.params.id})
     const igarantia = await Igarantia.find({inver_id:req.params.id})
-    const asociativo = await Asociativo.find({inver_id:req.params.id})
+    const iasociativo = await Asociativo.find({inver_id:req.params.id})
     // Inversiones de otros
-    res.render('inversionistas/ficha-i', { inversionista,asociativo,icompra,ifnf,igarantia})
+    const icompra_c = await Icompra.find({"co_inversionista.id":mongoose.Types.ObjectId(req.params.id)})
+    const ifnf_c = await Ifnf.find({"co_inversionista.id":mongoose.Types.ObjectId(req.params.id)})
+    const igarantia_c = await Igarantia.find({"co_inversionista.id":mongoose.Types.ObjectId(req.params.id)})
+    const iasociativo_c = await Asociativo.find({"co_inversionista.id":mongoose.Types.ObjectId(req.params.id)})
+    res.render('inversionistas/ficha-i', { inversionista,iasociativo,icompra,ifnf,igarantia,icompra_c,ifnf_c,igarantia_c,iasociativo_c})
 }
 
 
