@@ -24,7 +24,7 @@
     <section class="info-ppal">
         <ul>
             <li>
-                <p> Proyecto: {{icompra.proyecto}}</p>
+                <p> Proyecto: {{icompra.proyecto.nombre}}</p>
             </li>
             <li>
                 <p> Fecha de inicio: {{icompra.fecha_inicio}}</p>
@@ -55,7 +55,7 @@
             <p>Co-inversionista:</p>
             {{#each icompra.co_inversionista}}
             <tr>
-                <td> {{co_inversionista}}</td>
+                <td> {{nombre}}</td>
             </tr>
             {{/each}}
         </table>
@@ -85,7 +85,7 @@
     <section class="info-ppal">
         <ul>
             <li>
-                <p> Proyecto: {{igarantia.proyecto}}</p>
+                <p> Proyecto: {{igarantia.proyecto.nombre}}</p>
             </li>
             <li>
                 <p> Fecha de inicio: {{igarantia.fecha_inicio}}</p>
@@ -112,7 +112,7 @@
             <p>Co-inversionista:</p>
             {{#each igarantia.co_inversionista}}
             <tr>
-                <td> {{co_inversionista}}</td>
+                <td> {{nombre}}</td>
             </tr>
             {{/each}}
         </table>
@@ -141,7 +141,7 @@
     <section class="info-ppal">
         <ul>
             <li>
-                <p> Proyecto: {{iasociativo.proyecto}}</p>
+                <p> Proyecto: {{iasociativo.proyecto.nombre}}</p>
             </li>
             <li>
                 <p> Fecha de inicio: {{iasociativo.fecha_inicio}}</p>
@@ -177,7 +177,7 @@
         <p>Co-inversionista:</p>
         {{#each iasociativo.co_inversionista}}
         <tr>
-            <td> {{co_inversionista}}</td>
+            <td> {{nombre}}</td>
         </tr>
         {{/each}}
     </table>
@@ -207,7 +207,7 @@
     <section class="info-ppal">
         <ul>
             <li>
-                <p> Proyecto: {{ifnf.proyecto}}</p>
+                <p> Proyecto: {{ifnf.proyecto.nombre}}</p>
             </li>
             <li>
                 <p> Fecha de inicio: {{ifnf.fecha_inicio}}</p>
@@ -247,7 +247,7 @@
         <p>Co-inversionista:</p>
         {{#each ifnf.co_inversionista}}
         <tr>
-            <td> {{co_inversionista}}</td>
+            <td> {{nombre}}</td>
         </tr>
         {{/each}}
     </table>

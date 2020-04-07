@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose')
 
 const i_fnfSchema = new Schema({
   inver_id: { type: String},
-  proyecto: { type: String},
+  proyecto: { type: Object},
   co_inversionista: { type: Array},
   fecha_inicio: { type: String},
   fecha_cierre:{type: String},

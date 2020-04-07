@@ -6,7 +6,7 @@ const Icompra = require("../models/I_compra");
 icompraCtrl.createIcompra = async (req, res) => {
   const inver_id = req.params.id;
   const {
-    proyecto,
+    proyecto_id,
     fecha_inicio,
     fecha_cierre,
     n_encargo_fidu,
@@ -15,6 +15,8 @@ icompraCtrl.createIcompra = async (req, res) => {
     tir_prometida,
     fecha_pago
   } = req.body;
+  const {_id,nombre} =await Proyecto.findById(proyecto_id)
+  const proyecto = {'id':_id,'nombre':nombre}
   const newIcompra = new Icompra({
     inver_id,
     proyecto,
@@ -66,9 +68,8 @@ icompraCtrl.deleteInversionCompra = async (req, res) => {
 }
 
 icompraCtrl.updateInversionCompra = async (req, res) => {
-  console.log(req.params.id)
   const {
-    proyecto,
+    proyecto_id,
     fecha_inicio,
     fecha_cierre,
     n_encargo_fidu,
@@ -76,6 +77,8 @@ icompraCtrl.updateInversionCompra = async (req, res) => {
     fecha_entrega_prometida,
     tir_prometida
   } = req.body;  
+  const {_id,nombre} =await Proyecto.findById(proyecto_id)
+  const proyecto = {'id':_id,'nombre':nombre}
   const icompra = await Icompra.findById(req.params.id)
   const inversionista = await Inversionista.findById(icompra.inver_id);
    await Icompra.findByIdAndUpdate(req.params.id,{
@@ -104,7 +107,8 @@ icompraCtrl.AsociarInmuebleCompra = async (req, res) => {
 icompraCtrl.AsociarInversionistaCompra = async (req, res) => {
   const { co_inversionista } = await Icompra.findById(req.params.id)
   const icompra = await Icompra.findById(req.params.id)
-  const inversionista = req.body;
+  const {_id,nombre, apellido} =await Inversionista.findById(req.body.co_inversionista)
+  const inversionista = {'id':_id,'nombre':nombre + " " + apellido}
   co_inversionista.push(inversionista)
   await Icompra.findByIdAndUpdate(req.params.id, { co_inversionista })
   req.flash('success_msg', 'Inversionista añadido')

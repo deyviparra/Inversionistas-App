@@ -81,7 +81,7 @@
                 {{#each asociativo}}
                 <li>
                     <div>
-                        <p>Proyecto: {{proyecto}}</p>
+                        <p>Proyecto: {{proyecto.nombre}}</p>
                         <p>Fecha de inicio: {{fecha_inicio}}</p>
                         <p>Valor de compra: {{valor_compra}}</p>
                         <p>TIR estimada: {{tir_prometida}}</p>
@@ -99,7 +99,7 @@
                 {{#each icompra}}
                 <li>
                    <div>
-                        <p>Proyecto: {{nombre}}</p>
+                        <p>Proyecto: {{proyecto.nombre}}</p>
                         <p>Fecha de inicio: {{fecha_inicio}}</p>
                         <p>Valor de compra: {{valor_compra}}</p>
                         <p>TIR estimada: {{tir_prometida}}</p>
@@ -117,7 +117,7 @@
                 {{#each ifnf}}
                 <li>
                     <div>
-                        <p>Proyecto: {{proyecto}}</p>
+                        <p>Proyecto: {{proyecto.nombre}}</p>
                         <p>Fecha de inicio: {{fecha_inicio}}</p>
                         <p>Valor del mutuo: {{valor_mutuo}}</p>
                         <p>Tasa intereses: {{tasa_interes}}</p>
@@ -133,7 +133,7 @@
                 {{#each igarantia}}
                 <li>
                    <div>
-                        <p>Proyecto: {{proyecto}}</p>
+                        <p>Proyecto: {{proyecto.nombre}}</p>
                         <p>Fecha de inicio: {{fecha_inicio}}</p>
                         <p>Valor del mutuo: {{valor_inversion}}</p>
                         <p>Tasa intereses: {{tasa_int_men}}</p>

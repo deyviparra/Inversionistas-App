@@ -6,7 +6,7 @@ const Iasociativo = require("../models/I_asociativo");
 asociativoCtrl.createNewAso = async (req, res) => {
   const {
     inver_id,
-    proyecto,
+    proyecto_id,
     fecha_inicio,
     fecha_cierre,
     n_acciones,
@@ -15,6 +15,8 @@ asociativoCtrl.createNewAso = async (req, res) => {
     tir_prometida,
     fecha_pago
   } = req.body;
+  const {_id,nombre} =await Proyecto.findById(proyecto_id)
+  const proyecto = {'id':_id,'nombre':nombre}
   const newAsociativo = new Iasociativo({
     inver_id,
     proyecto,
@@ -69,9 +71,8 @@ asociativoCtrl.deleteInversionAsociativo = async (req, res) => {
 }
 
 asociativoCtrl.updateInversionAsociativo = async (req, res) => {
-  console.log(req.params.id)
   const {
-    proyecto,
+    proyecto_id,
     fecha_inicio,
     fecha_cierre,
     n_acciones,
@@ -79,6 +80,8 @@ asociativoCtrl.updateInversionAsociativo = async (req, res) => {
     fecha_entrega_prometida,
     tir_prometida
   } = req.body;  
+  const {_id,nombre} =await Proyecto.findById(proyecto_id)
+  const proyecto = {'id':_id,'nombre':nombre}
   const iasociativo = await Iasociativo.findById(req.params.id)
   const inversionista = await Inversionista.findById(iasociativo.inver_id);
    await Iasociativo.findByIdAndUpdate(req.params.id,{
@@ -107,7 +110,8 @@ asociativoCtrl.AsociarInmuebleAsociativo = async (req, res) => {
 asociativoCtrl.AsociarInversionistaAsociativo = async (req, res) => {
   const { co_inversionista } = await Iasociativo.findById(req.params.id)
   const iasociativo = await Iasociativo.findById(req.params.id)
-  const inversionista = req.body;
+  const {_id,nombre, apellido} =await Inversionista.findById(req.body.co_inversionista)
+  const inversionista = {'id':_id,'nombre':nombre + " " + apellido}
   co_inversionista.push(inversionista)
   await Iasociativo.findByIdAndUpdate(req.params.id, { co_inversionista })
   req.flash('success_msg', 'Inversionista añadido')

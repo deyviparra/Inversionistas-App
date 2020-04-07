@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose')
 
 const i_garantiaSchema = new Schema({
   inver_id: { type: String },
-  proyecto: { type: String },
+  proyecto: { type: Object },
   co_inversionista: { type: Array },
   inmuebles: { type: Array },
   fecha_inicio: { type: String },

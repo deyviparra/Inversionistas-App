@@ -8,17 +8,18 @@ const Ifnf = require("../models/I_fnf");
 ifnfCtrl.createNewFnf = async (req, res) => {
   const {
     inver_id,
-    proyecto,
+    proyecto_id,
     fecha_inicio,
     lega_mutuo_fidu,
     valor_mutuo,
     observaciones,
     tasa_interes,
-    // tasa_anual,
     porcentaje_cliente,
     porcentaje_garantia,
     fecha_pago
   } = req.body;
+  const {_id,nombre} =await Proyecto.findById(proyecto_id)
+  const proyecto = {'id':_id,'nombre':nombre}
   const newFnf = new Ifnf({
     inver_id,
     proyecto,
@@ -27,7 +28,6 @@ ifnfCtrl.createNewFnf = async (req, res) => {
     valor_mutuo,
     observaciones,
     tasa_interes,
-    // tasa_anual,
     porcentaje_cliente,
     porcentaje_garantia
   });
@@ -77,15 +77,16 @@ ifnfCtrl.deleteInversionFnf = async (req, res) => {
 }
 
 ifnfCtrl.updateInversionFnf = async (req, res) => {
-  console.log(req.params.id)
   const {
-    proyecto,
+    proyecto_id,
     fecha_inicio,
     lega_mutuo_fidu,
     valor_mutuo,
     observaciones,
     tasa_interes
   } = req.body;  
+  const {_id,nombre} =await Proyecto.findById(proyecto_id)
+  const proyecto = {'id':_id,'nombre':nombre}
   const ifnf = await Ifnf.findById(req.params.id)
   const inversionista = await Inversionista.findById(ifnf.inver_id);
    await Ifnf.findByIdAndUpdate(req.params.id,{
@@ -113,7 +114,8 @@ ifnfCtrl.AsociarInmuebleFnf = async (req, res) => {
 ifnfCtrl.AsociarInversionistaFnf= async (req, res) => {
   const { co_inversionista } = await Ifnf.findById(req.params.id)
   const ifnf = await Ifnf.findById(req.params.id)
-  const inversionista = req.body;
+  const {_id,nombre, apellido} =await Inversionista.findById(req.body.co_inversionista)
+  const inversionista = {'id':_id,'nombre':nombre + " " + apellido}
   co_inversionista.push(inversionista)
   await Ifnf.findByIdAndUpdate(req.params.id, { co_inversionista })
   req.flash('success_msg', 'Inversionista añadido')
