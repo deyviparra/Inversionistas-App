@@ -16,11 +16,14 @@ inverCtrl.renderInverForm = (req, res) => {
 }
 
 inverCtrl.createNewInver = async (req, res) => {
-    const { nombre, apellido, telefono, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby } = req.body;
+    const {razon_social,nit,nombre, apellido, celular, telefono, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion } = req.body;
     const newInversionista = new Inversionista({
+        razon_social,
+        nit,
         nombre,
         apellido,
         telefono,
+        celular,
         correo,
         cedula,
         direccion,
@@ -28,7 +31,8 @@ inverCtrl.createNewInver = async (req, res) => {
         estado_civil,
         n_hijos,
         n_mascotas,
-        hobby
+        hobby,
+        profesion
     });
 
     if (typeof req.file === 'undefined') {
@@ -54,14 +58,14 @@ inverCtrl.renderEditFormInver = async (req, res) => {
     res.render('inversionistas/edit-inver', { inver })
 }
 inverCtrl.updateInver = async (req, res) => {
-    const { nombre, apellido, telefono, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby } = req.body;
+    const {razon_social,nit,nombre, apellido,telefono,  celular, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion } = req.body;
     if (typeof req.file === 'undefined') {
-        await Inversionista.findByIdAndUpdate(req.params.id, { nombre, apellido, telefono, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby })
+        await Inversionista.findByIdAndUpdate(req.params.id, {razon_social,nit,nombre, apellido, telefono, celular,correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion })
     } else {
         const imagePath = "/uploads/" + req.file.filename;
         const inver = await Inversionista.findById(req.params.id)
         unlink(path.resolve(path.join(__dirname, '../public' + inver.imagePath)))
-        await Inversionista.findByIdAndUpdate(req.params.id, { nombre, apellido, telefono, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, imagePath })
+        await Inversionista.findByIdAndUpdate(req.params.id, {razon_social,nit,nombre, apellido, telefono, celular, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion, imagePath })
     }
     req.flash('success_msg', 'Inversionista actualizado')
     res.redirect('/inver')
