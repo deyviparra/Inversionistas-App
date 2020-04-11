@@ -6,6 +6,7 @@
   background: $negro;
   width: 80%;
   margin: auto;
+  margin-bottom: 30px;
   img {
     width: 20%;
     height: auto;
@@ -36,17 +37,28 @@
   }
 
   .botones {
+    transform: translateX(70px);
+    box-shadow: 18px 18px 35px #212121, -18px -18px 35px #2d2d2d;
+  border-radius: 20px;
+
+   border: 1px solid $negro;
+    padding: 5px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
 
+    button{
+      border-radius: 20px;
+      margin: 10px;
+      padding:5px 10px;
+    }
     p {
       margin: 10px;
     }
 
     .panel {
-      margin-top: -20px;
+      transform: translateY(-15px);
       display: flex;
       align-items: center;
       justify-content: center;

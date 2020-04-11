@@ -69,6 +69,19 @@
 
   .ver-ficha {
     width: 100%;
+    background-color: $verde;
+    color: $negro;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px;
+    &:hover{
+      color: $blanco;
+      background-color: $verde;
+    }
+    &:active{
+      border: 2px solid $gris-cla;
+    }
+
   }
 
   .delete {
@@ -76,5 +89,7 @@
     margin-top: 10px;
     margin-right: 4.969px;
     margin-bottom: 10px;
+    background: $gris-cla;
+    border: none;
   }
 }

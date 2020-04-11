@@ -15,11 +15,11 @@
     <div class="botones">
         <form action="/edit-proy/{{proyecto._id}}?_method=GET" method="GET">
             <input type="hidden" name="_method" value="GET">
-            <button class="up" type="submit">Modificar</button>
+            <button class="boton" type="submit">Modificar</button>
         </form>
         <form action="/tipos" class="panel">
                 <input type="hidden" value="{{proyecto._id}}" name="id">
-                <button class="up" type="submit">Añadir tipo de {{proyecto.tipo}}</button>
+                <button class="boton" type="submit">Añadir tipo de {{proyecto.tipo}}</button>
             </form>
     </div>
 </section>

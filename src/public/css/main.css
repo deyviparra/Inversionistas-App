@@ -200,7 +200,8 @@ header nav {
   height: 300px;
   background: #272727;
   width: 80%;
-  margin: auto; }
+  margin: auto;
+  margin-bottom: 30px; }
   .info-ppal img {
     width: 20%;
     height: auto;
@@ -223,14 +224,23 @@ header nav {
       background: #2b2b2b;
       color: #f3f3f3; }
   .info-ppal .botones {
+    transform: translateX(70px);
+    box-shadow: 18px 18px 35px #212121, -18px -18px 35px #2d2d2d;
+    border-radius: 20px;
+    border: 1px solid #272727;
+    padding: 5px 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around; }
+    .info-ppal .botones button {
+      border-radius: 20px;
+      margin: 10px;
+      padding: 5px 10px; }
     .info-ppal .botones p {
       margin: 10px; }
     .info-ppal .botones .panel {
-      margin-top: -20px;
+      transform: translateY(-15px);
       display: flex;
       align-items: center;
       justify-content: center; }
@@ -483,12 +493,24 @@ input:checked + .slider:before {
   width: 100%;
   height: 40%; }
   .cont-botones .ver-ficha {
-    width: 100%; }
+    width: 100%;
+    background-color: #ced423;
+    color: #272727;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 15px; }
+    .cont-botones .ver-ficha:hover {
+      color: #f3f3f3;
+      background-color: #ced423; }
+    .cont-botones .ver-ficha:active {
+      border: 2px solid #4c5c68; }
   .cont-botones .delete {
     width: 100%;
     margin-top: 10px;
     margin-right: 4.969px;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    background: #4c5c68;
+    border: none; }
 
 .boton {
   margin-bottom: 40px; }
@@ -560,5 +582,3 @@ input:checked + .slider:before {
         text-align: center; }
       .novedades .noticias .texto-col p {
         text-align: justify; }
-
-/*# sourceMappingURL=main.css.map */
