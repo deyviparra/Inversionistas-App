@@ -1,22 +1,27 @@
-    <h1> Fondo de inversión FNF</h1>
+<h1> Fondo de inversión FNF</h1>
 <div class="contenedor up" id="usuario-form">
-        <form id="form2" class="form-login" action="/usuarios/registro" method="POST">
-            <h2>Crear Usuario</h2>
-            <div class="login">
-                <input id="nombre_u" class="input-form" type="text" name="nombre" placeholder="Nombre" value="{{nombre}}" autofocus
-                    required>
-                <input id="apellido_u" class="input-form" type="text" name="apellido" placeholder="Apellido" value="{{apellido}}" autofocus
-                    required>
-                <input id="telefono_u" class="input-form" type="text" name="telefono" placeholder="Teléfono" value="{{telefono}}" autofocus
-                r   equired>
-                <input id="correo_u" class="input-form" type="email" name="correo" placeholder="Correo" value="{{correo}}" autofocus
-                    required>
-                <input id="contrasena_u" class="input-form" type="password" name="contrasena"  placeholder="Contraseña" required>
-                <input id="contrasena2_u" class="input-form" type="password" name="confirm_contrasena" placeholder="Repita la contraseña" autofocus
-                    required>
-                <button type='submit' id="crear_u" class="boton">
-                    Crear usuario
-                </button>
-            </div>
-        </form>
-    </div>
+    <form id="form2" class="form-login" action="/usuarios/registro" method="POST">
+        <h2>Crear Usuario</h2>
+        <div class="login">
+            <input id="nombre_u" class="input-form" type="text" name="nombre" placeholder="Nombre" value="{{nombre}}"
+                autofocus required>
+            <input id="apellido_u" class="input-form" type="text" name="apellido" placeholder="Apellido"
+                value="{{apellido}}" autofocus required>
+            <input id="telefono_u" class="input-form" type="text" name="celular" placeholder="Teléfono"
+                value="{{telefono}}" autofocus r equired>
+            <input id="correo_u" class="input-form" type="email" name="correo" placeholder="Correo" value="{{correo}}"
+                autofocus required>
+            <input id="contrasena_u" class="input-form" type="password" name="contrasena" placeholder="Contraseña"
+                required>
+            <input id="contrasena2_u" class="input-form" type="password" name="confirm_contrasena"
+                placeholder="Repita la contraseña" autofocus required>
+            <p>¿El usuario puede modificar inversiones, inversionistas, proyectos? </p>
+            <input type="checkbox" name="modificar"> Si
+            <p>¿El usuario puede generar informes? </p>
+            <input type="checkbox" name="informes"> Si
+            <button type='submit' id="crear_u" class="boton">
+                Crear usuario
+            </button>
+        </div>
+    </form>
+</div>

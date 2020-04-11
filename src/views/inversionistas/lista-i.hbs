@@ -8,10 +8,17 @@
         </div>
       <div class='texto-cuadro'>
         <div class='card-block px-2'>
+          {{#if razon_social}}
+          <p class='up2 titulo'>{{razon_social}}</p>
+          <p class='up2'>Representante: {{nombre}} {{apellido}}</p>
+          <p class='up2'>Cel: {{celular}}</p>
+          <p class='up2'>Nit: {{nit}}</p>
+          {{else}}
           <p class='up2 titulo'>{{nombre}} {{apellido}}</p>
           <p class='up2'>Cel: {{celular}}</p>
           <p class='up2'>Correo: {{correo}}</p>
           <p class='up2'>CC: {{cedula}}</p>
+          {{/if}}
         </div>
         <div class="cont-botones">
           <form action="/ficha-i/{{_id}}?_method=GET" method="GET">

@@ -1,13 +1,19 @@
-<h1> Perfil de {{inversionista.nombre}} {{inversionista.apellido}}</h1>
+{{#if inversionista.razon_social}}
+<h1>{{inversionista.razon_social}}</h1>
+{{else}}
+<h1> {{inversionista.nombre}} {{inversionista.apellido}}</h1>
+{{/if}}
 <section id="info-ppal" class="info-ppal">
     <img id="img" src="{{inversionista.imagePath}}" alt="Foto Inversionista">
     <ul>
-        <li>
-            <p> Razón social: {{inversionista.razon_social}}</p>
-        </li>
+        {{#if inversionista.razon_social}}
         <li>
             <p> Nit: {{inversionista.nit}}</p>
         </li>
+        <li>
+            <p> Representante legal: {{inversionista.nombre}} {{inversionista.apellido}}</p>
+        </li>
+        {{/if}}
         <li>
             <p> Celular: {{inversionista.celular}}</p>
         </li>
