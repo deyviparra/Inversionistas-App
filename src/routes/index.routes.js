@@ -14,7 +14,7 @@ const {
 router.get("/noticia/add", isAuthenticated, renderCreateNoticia);
 router.post("/noticia/add", isAuthenticated, createNoticia);
 
-router.get("/noticia/edit/:id", isAuthenticated, renderNoticiaEdit);
+router.get("/noticia/edit", isAuthenticated, renderNoticiaEdit);
 router.put("/noticia/edit/:id", isAuthenticated, updateNoticia);
 
 router.get("/", renderIndex);

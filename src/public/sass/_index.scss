@@ -5,9 +5,12 @@
 }
 
 .novedades{
+    background: $gris-os;
     margin: 0;
     padding: 60px 15%;
     h2{
+        color: $blanco;
+        font-size: 42px;
         text-align: center;
     }
     .noticias{
@@ -15,7 +18,7 @@
         display: flex;
         justify-content: center;
         .imagen-col{
-            display: flex;        }
+            display: flex;        
             flex-direction: column;
             align-items: center;
             justify-content: space-around;
@@ -24,8 +27,11 @@
                 width: auto;
                 margin: 20px;
             }
+        }
         .texto-col{
+            padding: 20px;
             margin: 50px;
+            width: 60%;
             h3{
                 text-align: center;
             }
