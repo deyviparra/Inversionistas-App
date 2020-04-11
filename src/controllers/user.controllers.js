@@ -8,14 +8,15 @@ userCtrl.renderRegistro = (req, res) => {
 }
 
 userCtrl.registro = async (req, res) => {
+    console.log(req.body)
     const errors = []
-    const { nombre, apellido, correo, telefono, contrasena, confirm_contrasena } = req.body
+    const { nombre, apellido, correo, celular, modificar, informes, contrasena, confirm_contrasena } = req.body
     if (contrasena != confirm_contrasena) {
         errors.push({ text: 'Las contraseñas no coinciden' })
     }
     if (errors.length > 0) {
         res.render('usuarios/registro', {
-            errors, nombre, apellido, correo, telefono
+            errors, nombre, apellido, correo, celular
         })
     } else {
         const emailUser = await User.findOne({ correo: correo });
@@ -23,7 +24,7 @@ userCtrl.registro = async (req, res) => {
             req.flash('error_msg', 'El correo ya esta en uso')
             res.redirect('/usuarios/registro')
         } else {
-            const newUsuario = new User({ nombre, apellido, telefono, correo, contrasena })
+            const newUsuario = new User({ nombre, apellido, celular, modificar, informes, correo, contrasena })
             newUsuario.contrasena = await newUsuario.encryptPassword(contrasena);
             await newUsuario.save();
             req.flash('success_msg', 'Usuario creado con exito')
@@ -58,8 +59,8 @@ userCtrl.renderEditFormUser=async (req,res)=>{
  }
 
 userCtrl.updateUser=async (req,res)=>{
-    const {nombre,apellido,telefono,correo}=req.body;
-    await User.findByIdAndUpdate(req.params.id, {nombre,apellido,telefono,correo} )
+    const {nombre,apellido,celular,correo}=req.body;
+    await User.findByIdAndUpdate(req.params.id, {nombre,apellido,celular,correo} )
         req.flash('success_msg', 'Usuario actualizado')
         res.redirect('/menuppal')
     }

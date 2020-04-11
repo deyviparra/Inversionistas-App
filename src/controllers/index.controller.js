@@ -10,7 +10,6 @@ const path = require("path");
 indexCtrl.renderIndex = async (req, res) => {
   const noticiaArray = await Noticia.find();
   const noticia = noticiaArray[0]
-  console.log(noticiaArray)
   res.render("index", { noticia});
 };
 indexCtrl.renderNoticiaEdit = async (req, res) => {
