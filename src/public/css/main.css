@@ -52,7 +52,7 @@ p {
 
 .boton {
   border-radius: 5px;
-  background: #ced423;
+  background: #cfde00;
   color: #272727;
   padding: 5px 10px;
   margin: 10px; }
@@ -66,7 +66,7 @@ p {
   justify-content: space-between;
   padding: 0 10%;
   height: 80px;
-  background: #ced423; }
+  background: #cfde00; }
   .footer p {
     display: inline;
     padding-top: 20px;
@@ -79,7 +79,7 @@ p {
 
 header {
   width: 100%;
-  background-color: #ced423;
+  background-color: #cfde00;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -213,7 +213,7 @@ header nav {
     font-size: 20px; }
   .info-ppal button {
     color: #272727;
-    background: #ced423;
+    background: #cfde00;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -257,7 +257,7 @@ header nav {
   justify-content: space-around;
   align-items: center;
   height: 200px;
-  background: #ced423; }
+  background: #cfde00; }
   .info-secun ul li p {
     color: #272727;
     margin: 20px;
@@ -287,7 +287,7 @@ header nav {
       box-shadow: 9px 9px 18px #1c1c1c, -9px -9px 18px #323232;
       border: none; }
       .sec-inversiones .inversiones div ul li a {
-        background: #ced423;
+        background: #cfde00;
         color: #272727;
         text-align: center;
         height: 40px;
@@ -337,10 +337,10 @@ header nav {
   transition: 0.4s; }
 
 input:checked + .slider {
-  background-color: #ced423; }
+  background-color: #cfde00; }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #ced423; }
+  box-shadow: 0 0 1px #cfde00; }
 
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);
@@ -414,7 +414,7 @@ input:checked + .slider:before {
       .cajon div a:hover {
         text-decoration: none;
         cursor: pointer;
-        color: #ced423; }
+        color: #cfde00; }
     .cajon div .btn-izq,
     .cajon div .btn-izq:hover {
       border-radius: 0 0 0 20px; }
@@ -494,14 +494,14 @@ input:checked + .slider:before {
   height: 40%; }
   .cont-botones .ver-ficha {
     width: 100%;
-    background-color: #ced423;
+    background-color: #cfde00;
     color: #272727;
     border: none;
     border-radius: 5px;
     padding: 5px 15px; }
     .cont-botones .ver-ficha:hover {
       color: #f3f3f3;
-      background-color: #ced423; }
+      background-color: #cfde00; }
     .cont-botones .ver-ficha:active {
       border: 2px solid #4c5c68; }
   .cont-botones .delete {
@@ -516,7 +516,7 @@ input:checked + .slider:before {
   margin-bottom: 40px; }
 
 .info-inversion {
-  background-color: #ced423;
+  background-color: #cfde00;
   padding: 60px 0;
   display: flex;
   flex-direction: column; }
@@ -525,7 +525,7 @@ input:checked + .slider:before {
     text-align: center;
     color: #272727; }
   .info-inversion .info-ppal {
-    background-color: #ced423;
+    background-color: #cfde00;
     height: auto; }
     .info-inversion .info-ppal ul li p {
       color: #272727; }
@@ -535,7 +535,7 @@ input:checked + .slider:before {
       background: #272727;
       color: #f3f3f3; }
       .info-inversion .info-ppal .botones .boton:hover {
-        background: #ced423;
+        background: #cfde00;
         color: #272727; }
 
 .pagos {
@@ -582,3 +582,5 @@ input:checked + .slider:before {
         text-align: center; }
       .novedades .noticias .texto-col p {
         text-align: justify; }
+
+/*# sourceMappingURL=main.css.map */
