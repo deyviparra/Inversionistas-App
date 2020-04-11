@@ -59,6 +59,7 @@
             </tr>
             {{/each}}
         </table>
+        {{#if user.modificar}}
         <div class="botones">
             <a href="/edit-inversion/{{icompra._id}}/compra" class="boton" type="submit">
                 Modificar inversión
@@ -73,8 +74,8 @@
                 <input type="hidden" name="_method" value="DELETE">
                 <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
             </form>
-
         </div>
+        {{/if}}
     </section>
     {{/if}}
 
@@ -116,8 +117,8 @@
             </tr>
             {{/each}}
         </table>
+        {{#if user.modificar}}
         <div class="botones">
-
             <a href="/edit-inversion/{{igarantia._id}}/garantia" class="boton" type="submit">
                 Modificar inversión
             </a>
@@ -128,8 +129,8 @@
                 <input type="hidden" name="_method" value="DELETE">
                 <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
             </form>
-
         </div>
+        {{/if}}
     </section>
 
     {{/if}}
@@ -174,29 +175,30 @@
             {{/each}}
         </table>
         <table>
-        <p>Co-inversionista:</p>
-        {{#each iasociativo.co_inversionista}}
-        <tr>
-            <td> {{nombre}}</td>
-        </tr>
-        {{/each}}
-    </table>
+            <p>Co-inversionista:</p>
+            {{#each iasociativo.co_inversionista}}
+            <tr>
+                <td> {{nombre}}</td>
+            </tr>
+            {{/each}}
+        </table>
+        {{#if user.modificar}}
         <div class="botones">
             <a href="/edit-inversion/{{iasociativo._id}}/asociativo" class="boton" type="submit">
-            Modificar inversión
-        </a>
-        <a href="/asociar-inmueble/{{iasociativo._id}}/asociativo" class="boton" type="submit">
-            Asociar inmueble
-        </a>
-        <a href="/asociar-inversionista/{{iasociativo._id}}/asociativo" class="boton" type="submit">
-            Asociar Co-inversionista
-        </a>
-        <form action="/eliminar-inversion/{{iasociativo._id}}/asociativo?_method=DELETE" method="POST">
-            <input type="hidden" name="_method" value="DELETE">
-            <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
-        </form>
-            
+                Modificar inversión
+            </a>
+            <a href="/asociar-inmueble/{{iasociativo._id}}/asociativo" class="boton" type="submit">
+                Asociar inmueble
+            </a>
+            <a href="/asociar-inversionista/{{iasociativo._id}}/asociativo" class="boton" type="submit">
+                Asociar Co-inversionista
+            </a>
+            <form action="/eliminar-inversion/{{iasociativo._id}}/asociativo?_method=DELETE" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
+            </form>
         </div>
+        {{/if}}
     </section>
     {{/if}}
 
@@ -235,38 +237,39 @@
             </li>
         </ul>
         <table>
-        <p>Inmuebles:</p>
-        {{#each ifnf.inmuebles}}
-        <tr>
-            <td> {{torre}}</td>
-            <td> {{valor}}</td>
-        </tr>
-        {{/each}}
-    </table>
-    <table>
-        <p>Co-inversionista:</p>
-        {{#each ifnf.co_inversionista}}
-        <tr>
-            <td> {{nombre}}</td>
-        </tr>
-        {{/each}}
-    </table>
+            <p>Inmuebles:</p>
+            {{#each ifnf.inmuebles}}
+            <tr>
+                <td> {{torre}}</td>
+                <td> {{valor}}</td>
+            </tr>
+            {{/each}}
+        </table>
+        <table>
+            <p>Co-inversionista:</p>
+            {{#each ifnf.co_inversionista}}
+            <tr>
+                <td> {{nombre}}</td>
+            </tr>
+            {{/each}}
+        </table>
+        {{#if user.modificar}}
         <div class="botones">
-
             <a href="/edit-inversion/{{ifnf._id}}/fnf" class="boton" type="submit">
-            Modificar inversión
-        </a>
-        <a href="/asociar-inmueble/{{ifnf._id}}/fnf" class="boton" type="submit">
-            Asociar inmueble
-        </a>
-        <a href="/asociar-inversionista/{{ifnf._id}}/fnf" class="boton" type="submit">
-            Asociar Co-inversionista
-        </a>
-        <form action="/eliminar-inversion/{{ifnf._id}}/fnf?_method=DELETE" method="POST">
-            <input type="hidden" name="_method" value="DELETE">
-            <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
-        </form>
+                Modificar inversión
+            </a>
+            <a href="/asociar-inmueble/{{ifnf._id}}/fnf" class="boton" type="submit">
+                Asociar inmueble
+            </a>
+            <a href="/asociar-inversionista/{{ifnf._id}}/fnf" class="boton" type="submit">
+                Asociar Co-inversionista
+            </a>
+            <form action="/eliminar-inversion/{{ifnf._id}}/fnf?_method=DELETE" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
+            </form>
         </div>
+        {{/if}}
     </section>
 
     {{/if}}
@@ -291,12 +294,15 @@
             {{/each}}
         </table>
     </ul>
+    {{#if user.modificar}}
     <div class="botones">
         <a href="/edit-plan_pagos/{{ifnf._id}}/fnf" class="boton" type="submit">
             Modificar plan de pagos
         </a>
     </div>
     {{/if}}
+    {{/if}}
+
     {{#if igarantia}}
     <h2>Plan de pago de intereses</h2>
     <ul>
@@ -313,12 +319,15 @@
             {{/each}}
         </table>
     </ul>
+    {{#if user.modificar}}
     <div class="botones">
         <a href="/edit-plan_pagos/{{igarantia._id}}/garantia" class="boton" type="submit">
             Modificar plan de pagos
         </a>
     </div>
     {{/if}}
+    {{/if}}
+
     {{#if iasociativo}}
     <h2>Plan de pagos</h2>
     <ul>
@@ -335,14 +344,16 @@
             {{/each}}
         </table>
     </ul>
+    {{#if user.modificar}}
     <div class="botones">
         <a href="/edit-plan_pagos/{{iasociativo._id}}/asociativo" class="boton" type="submit">
             Modificar plan de pagos
         </a>
     </div>
     {{/if}}
-    {{#if icompra }}
+    {{/if}}
 
+    {{#if icompra }}
     <h2>Plan de pagos</h2>
     <ul>
         <table>
@@ -358,10 +369,12 @@
             {{/each}}
         </table>
     </ul>
+    {{#if user.modificar}}
     <div class="botones">
         <a href="/edit-plan_pagos/{{icompra._id}}/compra" class="boton" type="submit">
             Modificar plan de pagos
         </a>
     </div>
+    {{/if}}
     {{/if}}
 </section>

@@ -24,6 +24,7 @@
             <p> Cédula: {{inversionista.cedula}}</p>
         </li>
     </ul>
+    {{#if user.modificar}}
     <div class="botones">
         <form action="/edit-inver/{{inversionista._id}}?_method=GET" method="GET">
             <input type="hidden" name="_method" value="GET">
@@ -46,7 +47,12 @@
             </select>
             <button class="boton" type="submit">Añadir inversión</button>
         </form>
+        <form action="/inver/delete/{{_id}}?_method=DELETE" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="delete btn btn-danger" type="submit">Eliminar Inversionista</button>
+          </form>
     </div>
+    {{/if}}
 </section>
 
 <section id="info-secun" class="info-secun">

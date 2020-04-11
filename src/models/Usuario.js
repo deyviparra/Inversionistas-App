@@ -7,8 +7,8 @@ const userSchema = new Schema({
   apellido: { type: String, required: true },
   celular: { type: String, required: true },
   correo: { type: String, required: true, unique: true },
-  modificar: { type: Boolean},
-  informes: { type: Boolean},
+  modificar: { type: String},
+  informes: { type: String},
   contrasena: { type: String, required: true }
 }, {
   timestamps: true

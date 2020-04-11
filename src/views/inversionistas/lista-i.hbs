@@ -25,10 +25,12 @@
             <input type="hidden" name="_method" value="GET">
             <button class="ver-ficha" type="submit">Ver ficha</button>
           </form>
+              {{#if ../user.modificar}}
           <form action="/inver/delete/{{_id}}?_method=DELETE" method="POST">
             <input type="hidden" name="_method" value="DELETE">
             <button class="delete btn btn-danger" type="submit">Eliminar</button>
           </form>
+          {{/if}}
         </div>
       </div>
     </div>
