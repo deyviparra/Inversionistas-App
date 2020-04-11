@@ -251,6 +251,12 @@ header nav {
       background: #f3f3f3; }
       .info-ppal .botones .lista-sel option {
         color: black; }
+    .info-ppal .botones .delete {
+      color: #f3f3f3;
+      background: #4c5c68;
+      border: none; }
+      .info-ppal .botones .delete:hover {
+        background: red; }
 
 .info-secun {
   display: flex;
