@@ -1,0 +1,43 @@
+<div class="form" id="form-edit-inver">
+    <div class="columna">
+        <form action="/noticia/add/" method="POST" enctype="multipart/form-data"
+            id="inver-form" class="form-forms">
+            <h1 id="titulo1-h1">Crear noticia</h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                    <div class="form-div">
+                        <p>Titulo: </p>
+                        <input type="text" name="titulo" value="" class="input-form" autofocus
+                            required>
+                    </div>
+                    <div class="form-div">
+                        <p>Descripción novedades: </p>
+                        <textarea  class="input-form noti-texto" name="texto" value="">
+                        </textarea>
+                    </div>
+                </div>
+                <div class="columna-1">
+
+                    <div class="input-group mb-3">
+                        <input type="file" name='image' class="upload-image" id="image">
+                    </div>
+                    {{!-- <div class="input-group mb-3">
+                        <input type="file" name='image' class="custom-file-input" id="image">
+                        <label for="image" class="custom-file-label">Subir imágen 1</label>
+                    </div> --}} 
+                    {{!-- <div class="input-group mb-3">
+                        <input type="file" name='img2' class="custom-file-input" id="image">
+                        <label for="img2" class="custom-file-label">Subir imágen 2</label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="file" name='img3' class="custom-file-input" id="image">
+                        <label for="img3" class="custom-file-label">Subir imágen 3</label>
+                    </div> --}}
+                </div>
+            </div>
+            <button class="boton" type="submit">
+                Guardar Noticia
+            </button>
+        </form>
+    </div>
+</div>

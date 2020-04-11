@@ -1,13 +1,28 @@
-<h1>Iniciar sesión como:</h1>
+<div class="banner-ppal">
 
-<div class="contenedor up" id="menu-ppal">
-
-    <div class="up cajon">
-
-        <a href="/" class="text-index">Inversionista </a>
-    </div>
-    <div class="up cajon">
-
-        <a href="/usuarios/login" class="text-index">Administrador</a>
-    </div>
+   
+  
+    <img src="../uploads/bannerppal.png" alt="Obrasde banner">
 </div>
+{{#if noticia}}
+<section class="novedades">
+    <h2>Novedades</h2>
+    <div class="noticias">
+        <div class="imagen-col">
+            <img src="{{noticia.img1}}" alt="Imagen de noticia" class="imagen-noticia">
+            {{!-- <img src="{{noticia.img2}}" alt="Imagen de noticia" class="imagen-noticia">
+            <img src="{{noticia.img3}}" alt="Imagen de noticia" class="imagen-noticia"> --}}
+        </div>
+        <div class="texto-col">
+            <div class="texto-cajon up">
+                <h3>
+                    {{noticia.titulo}}
+                </h3>
+                <p>
+                    {{noticia.texto}}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{{/if}}

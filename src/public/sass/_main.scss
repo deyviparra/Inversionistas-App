@@ -1,7 +1,8 @@
 * {
     text-decoration: none;
     color: $blanco;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    // font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 
 body {
@@ -81,13 +82,16 @@ p {
     }
 }
 
-footer {
+.footer {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 0 10%;
     height: 80px;
     background: $verde;
 
     p {
+        display: inline;
         padding-top: 20px;
         font-size: 24px;
         width: 100%;
