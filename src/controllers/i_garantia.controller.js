@@ -75,7 +75,6 @@ igarantiaCtrl.updateInversionGarantia = async (req, res) => {
   const {_id,nombre} =await Proyecto.findById(proyecto_id)
   const proyecto = {'id':_id,'nombre':nombre}
   const igarantia = await Igarantia.findById(req.params.id)
-  const inversionista = await Inversionista.findById(igarantia.inver_id);
   await Igarantia.findByIdAndUpdate(req.params.id, {
     proyecto,
     fecha_inicio,
@@ -85,7 +84,7 @@ igarantiaCtrl.updateInversionGarantia = async (req, res) => {
     tasa_int_men
   })
   req.flash('success_msg', 'Inversion actualizada')
-  res.redirect('/ficha-i/' + inversionista._id)
+  res.redirect('/ficha-inversion/' + igarantia._id + '/garantia')
 }
 
 igarantiaCtrl.AsociarInversionistaGarantia = async (req, res) => {

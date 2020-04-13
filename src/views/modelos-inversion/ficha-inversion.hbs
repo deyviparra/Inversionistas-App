@@ -6,13 +6,13 @@
             <p> Nombre: {{inversionista.nombre}} {{inversionista.apellido}}</p>
         </li>
         <li>
-            <p> Teléfono: {{inversionista.telefono}}</p>
+            <p> Cédula: {{inversionista.cedula}}</p>
+        </li>
+        <li>
+            <p> Celular: {{inversionista.celular}}</p>
         </li>
         <li>
             <p> Correo: {{inversionista.correo}}</p>
-        </li>
-        <li>
-            <p> Cédula: {{inversionista.cedula}}</p>
         </li>
     </ul>
 </section>
@@ -48,8 +48,12 @@
 
             {{#each icompra.inmuebles}}
             <li>
-                <p>{{torre}}</p>
-                <p>{{valor}}</p>
+                <p> Torre: {{torre}}</p>
+                <p> Apartamento: {{apartamento}}</p>
+                <p> Parqueadero: {{parqueadero}}</p>
+                <p> Cuarto útil: {{cuarto_util}}</p>
+                <p> Encargo fiduciario: {{encargo_fiduciario}}</p>
+                <p> Valor: {{valor}}</p>
             </li>
             {{/each}}
             </ul>
@@ -180,8 +184,11 @@
 
             {{#each iasociativo.inmuebles}}
             <li>
-                <p>{{torre}}</p>
-                <p>{{valor}}</p>
+                <p> Torre: {{torre}}</p>
+                <p> Apartamento: {{apartamento}}</p>
+                <p> Parqueadero: {{parqueadero}}</p>
+                <p> Cuarto útil: {{cuarto_util}}</p>
+                <p> Valor: {{valor}}</p>
             </li>
             {{/each}}
             </ul>
@@ -256,8 +263,11 @@
 
             {{#each ifnf.inmuebles}}
             <li>
-                <p> {{torre}}</p>
-                <p> {{valor}}</p>
+                <p> Torre: {{torre}}</p>
+                <p> Apartamento: {{apartamento}}</p>
+                <p> Parqueadero: {{parqueadero}}</p>
+                <p> Cuarto útil: {{cuarto_util}}</p>
+                <p> Valor: {{valor}}</p>
             </li>
             {{/each}}
             </ul>

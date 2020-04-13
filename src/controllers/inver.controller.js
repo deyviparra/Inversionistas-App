@@ -16,7 +16,7 @@ inverCtrl.renderInverForm = (req, res) => {
 }
 
 inverCtrl.createNewInver = async (req, res) => {
-    const {razon_social,nit,nombre, apellido, celular, telefono, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion } = req.body;
+    const {razon_social,nit,nombre, apellido, celular, telefono, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion, empresa } = req.body;
     const newInversionista = new Inversionista({
         razon_social,
         nit,
@@ -32,7 +32,8 @@ inverCtrl.createNewInver = async (req, res) => {
         n_hijos,
         n_mascotas,
         hobby,
-        profesion
+        profesion,
+        empresa
     });
 
     if (typeof req.file === 'undefined') {
@@ -58,18 +59,21 @@ inverCtrl.renderEditFormInver = async (req, res) => {
     res.render('inversionistas/edit-inver', { inver })
 }
 inverCtrl.updateInver = async (req, res) => {
-    const {razon_social,nit,nombre, apellido,telefono,  celular, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion } = req.body;
+    const inversionista = await Inversionista.findById(req.params.id)
+    const {razon_social,nit,nombre, apellido,telefono,  celular, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion, empresa } = req.body;
     const edad = calcularedad(nacimiento);
     if (typeof req.file === 'undefined') {
-        await Inversionista.findByIdAndUpdate(req.params.id, {razon_social,nit,nombre, apellido, edad, telefono, celular,correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion })
+        await Inversionista.findByIdAndUpdate(req.params.id, {razon_social,nit,nombre, apellido, edad, telefono, celular,correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion, empresa })
     } else {
         const imagePath = "/uploads/" + req.file.filename;
         const inver = await Inversionista.findById(req.params.id)
+        if(inver.imagePath !== '/uploads/sinfoto.png'){
         unlink(path.resolve(path.join(__dirname, '../public' + inver.imagePath)))
-        await Inversionista.findByIdAndUpdate(req.params.id, {razon_social,nit,nombre, apellido, edad, telefono, celular, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion, imagePath })
+        }
+        await Inversionista.findByIdAndUpdate(req.params.id, {razon_social,nit,nombre, apellido, edad, telefono, celular, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion, empresa, imagePath })
     }
     req.flash('success_msg', 'Inversionista actualizado')
-    res.redirect('/inver')
+    res.redirect('/ficha-i/' + inversionista._id)
 }
 inverCtrl.deleteInver = async (req, res) => {
     const inver = await Inversionista.findById(req.params.id)
