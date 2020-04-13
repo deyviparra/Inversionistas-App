@@ -25,7 +25,7 @@
                 <input type="hidden" value="{{proyecto._id}}" name="id">
                 <button class="boton" type="submit">Añadir tipo de {{proyecto.tipo}}</button>
             </form>
-            <form action="/proy/delete/{{proyecto._id}}?_method=DELETE" method="POST">
+            <form action="/proy/delete/{{proyecto._id}}?_method=DELETE" method="POST" name="form-delete">
                 <input type="hidden" name="_method" value="DELETE">
                 <button class="btn btn-danger delete" type="submit">Eliminar</button>
             </form>

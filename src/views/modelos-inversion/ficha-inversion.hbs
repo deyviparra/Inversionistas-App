@@ -79,7 +79,7 @@
             <a href="/asociar-inversionista/{{icompra._id}}/compra" class="boton" type="submit">
                 Asociar Co-inversionista
             </a>
-            <form action="/eliminar-inversion/{{icompra._id}}/compra?_method=DELETE" method="POST">
+            <form action="/eliminar-inversion/{{icompra._id}}/compra?_method=DELETE" method="POST" name="form-delete">
                 <input type="hidden" name="_method" value="DELETE">
                 <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
             </form>
@@ -138,7 +138,7 @@
             <a href="/asociar-inversionista/{{igarantia._id}}/garantia" class="boton" type="submit">
                 Asociar Co-inversionista
             </a>
-            <form action="/eliminar-inversion/{{igarantia._id}}/garantia?_method=DELETE" method="POST">
+            <form action="/eliminar-inversion/{{igarantia._id}}/garantia?_method=DELETE" method="POST" name="form-delete">
                 <input type="hidden" name="_method" value="DELETE">
                 <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
             </form>
@@ -214,8 +214,7 @@
             <a href="/asociar-inversionista/{{iasociativo._id}}/asociativo" class="boton" type="submit">
                 Asociar Co-inversionista
             </a>
-            <form action="/eliminar-inversion/{{iasociativo._id}}/asociativo?_method=DELETE" method="POST">
-                <input type="hidden" name="_method" value="DELETE">
+            <form action="/eliminar-inversion/{{iasociativo._id}}/asociativo?_method=DELETE" method="POST" name="form-delete">
                 <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
             </form>
         </div>
@@ -296,7 +295,7 @@
             <a href="/asociar-inversionista/{{ifnf._id}}/fnf" class="boton" type="submit">
                 Asociar Co-inversionista
             </a>
-            <form action="/eliminar-inversion/{{ifnf._id}}/fnf?_method=DELETE" method="POST">
+            <form action="/eliminar-inversion/{{ifnf._id}}/fnf?_method=DELETE" method="POST" name="form-delete">
                 <input type="hidden" name="_method" value="DELETE">
                 <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
             </form>

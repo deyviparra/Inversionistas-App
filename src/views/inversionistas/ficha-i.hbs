@@ -47,7 +47,7 @@
             </select>
             <button class="boton" type="submit">Añadir inversión</button>
         </form>
-        <form action="/inver/delete/{{inversionista._id}}?_method=DELETE" method="POST">
+        <form action="/inver/delete/{{inversionista._id}}?_method=DELETE" method="POST" name="form-delete">
             <input type="hidden" name="_method" value="DELETE">
             <button class="delete btn btn-danger" type="submit">Eliminar Inversionista</button>
           </form>

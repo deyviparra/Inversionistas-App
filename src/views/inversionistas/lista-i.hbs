@@ -1,5 +1,4 @@
 
-
 <h1 id="titulo1-h1">Inversionistas</h1>
 
 
@@ -15,8 +14,8 @@
   <div class='cuadro'>
     <div class='cuadro-interno'>
       <div class='div-imagen'>
-              <img src='{{imagePath}}' alt='' class=''>  
-        </div>
+        <img src='{{imagePath}}' alt='' class=''>
+      </div>
       <div class='texto-cuadro'>
         <div class='card-block px-2'>
           {{#if razon_social}}
@@ -36,8 +35,8 @@
             <input type="hidden" name="_method" value="GET">
             <button class="ver-ficha" type="submit">Ver ficha</button>
           </form>
-              {{#if ../user.modificar}}
-          <form action="/inver/delete/{{_id}}?_method=DELETE" method="POST">
+          {{#if ../user.modificar}}
+          <form action="/inver/delete/{{_id}}?_method=DELETE" method="POST" name="form-delete">
             <input type="hidden" name="_method" value="DELETE">
             <button class="delete btn btn-danger" type="submit">Eliminar</button>
           </form>

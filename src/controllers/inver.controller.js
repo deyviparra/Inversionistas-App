@@ -76,14 +76,15 @@ inverCtrl.updateInver = async (req, res) => {
     res.redirect('/ficha-i/' + inversionista._id)
 }
 inverCtrl.deleteInver = async (req, res) => {
+
     const inver = await Inversionista.findById(req.params.id)
-    await Inversionista.findByIdAndDelete(req.params.id)
-    console.log(inver.imagePath)
-    if(inver.imagePath !== '/uploads/sinfoto.png'){
-        unlink(path.resolve(path.join(__dirname, '../public' + inver.imagePath)))
-    }
-    req.flash('error_msg', 'Inversionista eliminado')
-    res.redirect('/inver')
+    console.log(req)
+        await Inversionista.findByIdAndDelete(req.params.id)
+        if(inver.imagePath !== '/uploads/sinfoto.png'){
+            unlink(path.resolve(path.join(__dirname, '../public' + inver.imagePath)))
+        }
+        req.flash('error_msg', 'Inversionista eliminado')
+        res.redirect('/inver')
 }
 inverCtrl.renderFichaI = async (req, res) => {
     const inversionista = await Inversionista.findById(req.params.id)
