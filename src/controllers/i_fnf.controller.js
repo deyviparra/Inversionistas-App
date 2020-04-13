@@ -104,6 +104,7 @@ ifnfCtrl.AsociarInmuebleFnf = async (req, res) => {
   const { inmuebles } = await Ifnf.findById(req.params.id)
   const ifnf = await Ifnf.findById(req.params.id)
   const inmueble = req.body;
+  inmueble.valor = Number(inmueble.valor)
   inmuebles.push(inmueble)
   await Ifnf.findByIdAndUpdate(req.params.id, { inmuebles })
   req.flash('success_msg', 'Inmueble añadido')

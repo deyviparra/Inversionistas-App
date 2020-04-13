@@ -97,6 +97,7 @@ icompraCtrl.AsociarInmuebleCompra = async (req, res) => {
   const { inmuebles } = await Icompra.findById(req.params.id)
   const icompra = await Icompra.findById(req.params.id)
   const inmueble = req.body;
+  inmueble.valor = Number(inmueble.valor)
   inmuebles.push(inmueble)
   await Icompra.findByIdAndUpdate(req.params.id, { inmuebles })
   req.flash('success_msg', 'Inmueble añadido')

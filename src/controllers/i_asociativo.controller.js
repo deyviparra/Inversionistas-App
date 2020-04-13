@@ -100,6 +100,7 @@ asociativoCtrl.AsociarInmuebleAsociativo = async (req, res) => {
   const { inmuebles } = await Iasociativo.findById(req.params.id)
   const iasociativo = await Iasociativo.findById(req.params.id)
   const inmueble = req.body;
+  inmueble.valor = Number(inmueble.valor)
   inmuebles.push(inmueble)
   await Iasociativo.findByIdAndUpdate(req.params.id, { inmuebles })
   req.flash('success_msg', 'Inmueble añadido')

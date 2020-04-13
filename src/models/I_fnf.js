@@ -8,16 +8,16 @@ const i_fnfSchema = new Schema({
   fecha_cierre:{type: String},
   inmuebles:{type:Array},
   lega_mutuo_fidu:{type:String},
-  valor_mutuo:{type: String},
+  valor_mutuo:{type: Number},
   observaciones:{type: String},
-  tasa_interes:{type: String},
-  tasa_anual:{type: String},
+  tasa_interes:{type: Number},
+  tasa_anual:{type: Number},
   plan_pago_intereses:{type: Array},
   pago_realizado_intereses:{type: Array},
-  porcentaje_cliente:{type: String},
-  porcentaje_garantia:{type: String},
-  valorizacion_20_mutuo:{type: String},
-  valor_comercial:{type: String}
+  porcentaje_cliente:{type: Number},
+  porcentaje_garantia:{type: Number},
+  valorizacion_20_mutuo:{type: Number},
+  valor_comercial:{type: Number}
   })
   
   module.exports = model('I_fnf', i_fnfSchema)

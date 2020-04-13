@@ -9,7 +9,7 @@ const i_compraSchema = new Schema({
   fecha_cierre: { type: String },
   valor_compra: { type: Number },
   fecha_entrega_prometida: { type: String },
-  tir_prometida: { type: String },
+  tir_prometida: { type: Number },
   fecha_entrega_real: { type: String },
   tir_entrega_real: { type: String },
   plan_pagos: { type: Array },

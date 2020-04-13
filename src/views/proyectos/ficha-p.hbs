@@ -12,7 +12,7 @@
                 <p> Dirección: {{proyecto.direccion}}</p>
             </li>
             <li>
-                <p> Precios desde: {{proyecto.rango}}</p>
+                <p> Precios desde: {{formatNumber proyecto.rango style="currency" currency="COP"}}</p>
             </li>
         </ul>
         {{#if user.modificar}}
