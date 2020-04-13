@@ -66,7 +66,9 @@ p {
   justify-content: space-between;
   padding: 0 10%;
   height: 80px;
-  background: #cfde00; }
+  background: #cfde00;
+  position: relative;
+  bottom: 0; }
   .footer p {
     display: inline;
     padding-top: 20px;
@@ -531,6 +533,30 @@ input:checked + .slider:before {
     background: #4c5c68;
     border: none; }
 
+.buscador {
+  display: flex;
+  justify-content: center; }
+  .buscador .form-buscar {
+    width: 50%;
+    background: #cfde00;
+    padding: 5px;
+    display: flex;
+    border-radius: 5px;
+    justify-content: space-between; }
+    .buscador .form-buscar .input-buscar {
+      width: 70%;
+      color: #272727;
+      border-radius: 5px; }
+    .buscador .form-buscar button {
+      padding: 5px 12px;
+      width: 20%;
+      color: #272727; }
+    .buscador .form-buscar .boton {
+      margin: 0;
+      margin-right: 20px; }
+      .buscador .form-buscar .boton:hover {
+        color: #f3f3f3; }
+
 .boton {
   margin-bottom: 40px; }
 
@@ -546,16 +572,38 @@ input:checked + .slider:before {
   .info-inversion .info-ppal {
     background-color: #cfde00;
     height: auto; }
-    .info-inversion .info-ppal ul li p {
+    .info-inversion .info-ppal p {
       color: #272727; }
-    .info-inversion .info-ppal .botones a:hover {
-      border: 1px solid #272727; }
-    .info-inversion .info-ppal .botones .boton {
-      background: #272727;
-      color: #f3f3f3; }
-      .info-inversion .info-ppal .botones .boton:hover {
-        background: #cfde00;
-        color: #272727; }
+    .info-inversion .info-ppal .lista-inmuebles,
+    .info-inversion .info-ppal .lista-co-inver {
+      display: flex;
+      height: 100%;
+      flex-direction: column; }
+      .info-inversion .info-ppal .lista-inmuebles p,
+      .info-inversion .info-ppal .lista-co-inver p {
+        margin: 0;
+        padding: 0; }
+      .info-inversion .info-ppal .lista-inmuebles ul,
+      .info-inversion .info-ppal .lista-co-inver ul {
+        display: flex;
+        flex-direction: column;
+        padding: 0; }
+        .info-inversion .info-ppal .lista-inmuebles ul li,
+        .info-inversion .info-ppal .lista-co-inver ul li {
+          margin: 10px; }
+    .info-inversion .info-ppal .botones {
+      box-sizing: content-box;
+      border: none;
+      border-radius: 30px;
+      background: #CFDE00;
+      box-shadow: 20px 20px 60px #b0bd00, -20px -20px 60px #eeff00; }
+      .info-inversion .info-ppal .botones .boton {
+        border-radius: 15px;
+        background: #272727;
+        color: #f3f3f3; }
+        .info-inversion .info-ppal .botones .boton:hover {
+          text-decoration: none;
+          background: #4c5c68; }
 
 .pagos {
   background-color: #272727;
@@ -601,5 +649,3 @@ input:checked + .slider:before {
         text-align: center; }
       .novedades .noticias .texto-col p {
         text-align: justify; }
-
-/*# sourceMappingURL=main.css.map */

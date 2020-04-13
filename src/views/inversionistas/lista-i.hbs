@@ -1,4 +1,15 @@
+
+
 <h1 id="titulo1-h1">Inversionistas</h1>
+
+
+{{!-- <div class="buscador">
+  <form action="/inver/search" class="form-buscar">
+  <input type="text" name="buscar-i" id="buscar-i" class="input-buscar" value="">
+  <button class="boton">Buscar</button>
+  </form>
+</div> --}}
+
 <div class="list">
   {{#each inversionistas}}
   <div class='cuadro'>
@@ -11,13 +22,13 @@
           {{#if razon_social}}
           <p class='up2 titulo'>{{razon_social}}</p>
           <p class='up2'>Representante: {{nombre}} {{apellido}}</p>
-          <p class='up2'>Cel: {{celular}}</p>
           <p class='up2'>Nit: {{nit}}</p>
+          <p class='up2'>Cel: {{celular}}</p>
           {{else}}
           <p class='up2 titulo'>{{nombre}} {{apellido}}</p>
-          <p class='up2'>Cel: {{celular}}</p>
-          <p class='up2'>Correo: {{correo}}</p>
           <p class='up2'>CC: {{cedula}}</p>
+          <p class='up2'>Correo: {{correo}}</p>
+          <p class='up2'>Cel: {{celular}}</p>
           {{/if}}
         </div>
         <div class="cont-botones">

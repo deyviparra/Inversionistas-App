@@ -92,3 +92,32 @@
     border: none;
   }
 }
+.buscador{
+  display: flex;
+  justify-content: center;
+  .form-buscar{
+    width: 50%;
+    background: $verde;
+    padding: 5px;
+    display: flex;
+    border-radius: 5px;
+    justify-content: space-between;
+    .input-buscar{
+      width: 70%;
+      color: $negro;
+      border-radius: 5px;
+    }
+    button{
+      padding: 5px 12px;
+      width: 20%;
+      color: $negro;
+    }
+    .boton{
+      margin: 0;
+      margin-right: 20px;
+      &:hover{
+        color: $blanco;
+      }
+    }
+  }
+}

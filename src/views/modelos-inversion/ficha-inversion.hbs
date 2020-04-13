@@ -42,23 +42,28 @@
                 <p>TIR prometida: {{icompra.tir_prometida}}</p>
             </li>
         </ul>
-        <table>
+        <div class="lista-inmuebles">
             <p>Inmuebles:</p>
+            <ul>
+
             {{#each icompra.inmuebles}}
-            <tr>
-                <td> {{torre}}</td>
-                <td> {{valor}}</td>
-            </tr>
+            <li>
+                <p>{{torre}}</p>
+                <p>{{valor}}</p>
+            </li>
             {{/each}}
-        </table>
-        <table>
+            </ul>
+        </div>
+        <div class="lista-co-inver">
             <p>Co-inversionista:</p>
+            <ul>
             {{#each icompra.co_inversionista}}
-            <tr>
-                <td> {{nombre}}</td>
-            </tr>
+            <li>
+                <p>{{nombre}}</p>
+            </li>
             {{/each}}
-        </table>
+            </ul>
+        </div>
         {{#if user.modificar}}
         <div class="botones">
             <a href="/edit-inversion/{{icompra._id}}/compra" class="boton" type="submit">
@@ -109,14 +114,18 @@
                 <p>Tasa de intereses mensual: {{igarantia.tasa_int_men}} %</p>
             </li>
         </ul>
-        <table>
+    
+        
+        <div class="lista-co-inver">
             <p>Co-inversionista:</p>
+            <ul>
             {{#each igarantia.co_inversionista}}
-            <tr>
-                <td> {{nombre}}</td>
-            </tr>
+            <li>
+                <p>{{nombre}}</p>
+            </li>
             {{/each}}
-        </table>
+            </ul>
+        </div>
         {{#if user.modificar}}
         <div class="botones">
             <a href="/edit-inversion/{{igarantia._id}}/garantia" class="boton" type="submit">
@@ -165,23 +174,28 @@
                 <p>TIR prometida: {{iasociativo.tir_prometida}}</p>
             </li>
         </ul>
-        <table>
+        <div class="lista-inmuebles">
             <p>Inmuebles:</p>
+            <ul>
+
             {{#each iasociativo.inmuebles}}
-            <tr>
-                <td> {{torre}}</td>
-                <td> {{apartamento}}</td>
-            </tr>
+            <li>
+                <p>{{torre}}</p>
+                <p>{{valor}}</p>
+            </li>
             {{/each}}
-        </table>
-        <table>
+            </ul>
+        </div>
+        <div class="lista-co-inver">
             <p>Co-inversionista:</p>
+            <ul>
             {{#each iasociativo.co_inversionista}}
-            <tr>
-                <td> {{nombre}}</td>
-            </tr>
+            <li>
+                <p>{{nombre}}</p>
+            </li>
             {{/each}}
-        </table>
+            </ul>
+        </div>
         {{#if user.modificar}}
         <div class="botones">
             <a href="/edit-inversion/{{iasociativo._id}}/asociativo" class="boton" type="submit">
@@ -236,23 +250,28 @@
                 <p>Porcentaje garantia: {{ifnf.porcentaje_garantia}} %</p>
             </li>
         </ul>
-        <table>
+        <div class="lista-inmuebles">
             <p>Inmuebles:</p>
+            <ul>
+
             {{#each ifnf.inmuebles}}
-            <tr>
-                <td> {{torre}}</td>
-                <td> {{valor}}</td>
-            </tr>
+            <li>
+                <p> {{torre}}</p>
+                <p> {{valor}}</p>
+            </li>
             {{/each}}
-        </table>
-        <table>
+            </ul>
+        </div>
+        <div class="lista-co-inver">
             <p>Co-inversionista:</p>
+            <ul>
             {{#each ifnf.co_inversionista}}
-            <tr>
-                <td> {{nombre}}</td>
-            </tr>
+            <li>
+                <p> {{nombre}}</p>
+            </li>
             {{/each}}
-        </table>
+            </ul>
+        </div>
         {{#if user.modificar}}
         <div class="botones">
             <a href="/edit-inversion/{{ifnf._id}}/fnf" class="boton" type="submit">

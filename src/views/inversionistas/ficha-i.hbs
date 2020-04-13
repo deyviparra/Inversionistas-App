@@ -14,14 +14,14 @@
             <p> Representante legal: {{inversionista.nombre}} {{inversionista.apellido}}</p>
         </li>
         {{/if}}
-        <li>
-            <p> Celular: {{inversionista.celular}}</p>
+         <li>
+            <p> Cédula: {{inversionista.cedula}}</p>
         </li>
         <li>
             <p> Correo: {{inversionista.correo}}</p>
         </li>
         <li>
-            <p> Cédula: {{inversionista.cedula}}</p>
+            <p> Celular: {{inversionista.celular}}</p>
         </li>
     </ul>
     {{#if user.modificar}}
@@ -57,35 +57,37 @@
 
 <section id="info-secun" class="info-secun">
     <ul>
-
+        <li>
+            <p> Teléfono fijo: {{inversionista.telefono}}</p>
+        </li>
         <li>
             <p> Dirección: {{inversionista.direccion}}</p>
         </li>
         <li>
-            <p> Nacimiento: {{inversionista.nacimiento}}</p>
+            <p> Profesión: {{inversionista.profesion}}</p>
         </li>
-        <li>
-            <p> Teléfono fijo: {{inversionista.telefono}}</p>
-        </li>
+        
+        
     </ul>
     <ul>
         <li>
-            <p> Estado Civil:{{inversionista.estado_civil}}</p>
+            <p> Estado Civil: {{inversionista.estado_civil}}</p>
         </li>
+        <li>
+            <p> Edad: {{inversionista.edad}} Años</p>
+        </li>
+        <li>
+            <p> Fecha de nacimiento: {{inversionista.nacimiento}}</p>
+        </li>
+        
+    </ul>
+    <ul>
         <li>
             <p> Hijos: {{inversionista.n_hijos}}</p>
         </li>
         <li>
             <p> Mascotas: {{inversionista.n_mascotas}}</p>
-        </li>
-    </ul>
-    <ul>
-        <li>
-            <p> Edad: {{inversionista.edad}} Años</p>
-        </li>
-        <li>
-            <p> Profesión: {{inversionista.profesion}}</p>
-        </li>
+        </li>        
         <li>
             <p> Hobby: {{inversionista.hobby}}</p>
         </li>
