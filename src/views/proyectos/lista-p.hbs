@@ -11,7 +11,7 @@
           <p class='up2 titulo'>{{nombre}}</p>
           <p class='up2 card-text'>Dirección: {{direccion}}</p>
           <p class='up2 card-text'>Tipo: {{tipo}}</p>
-          <p class='up2 card-text'>Precios desde: {{rango}}</p>
+          <p class='up2 card-text'>Precios desde: {{formatNumber rango style="currency" currency="COP"}}</p>
         </div>
         <div class="cont-botones">
           <form action="/ficha-p/{{_id}}?_method=GET" method="GET">

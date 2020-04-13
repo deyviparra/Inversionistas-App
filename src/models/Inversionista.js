@@ -3,10 +3,10 @@ const { Schema, model } = require('mongoose')
 const inverSchema = new Schema({
   nombre: { type: String },
   apellido: { type: String },
-  celular: { type: String },
-  telefono: { type: String },
+  celular: { type: Number },
+  telefono: { type: Number },
   correo: { type: String },
-  cedula: { type: String },
+  cedula: { type: Number },
   direccion: { type: String },
   nacimiento: { type: String },
   estado_civil: { type: String },

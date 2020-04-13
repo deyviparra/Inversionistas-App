@@ -23,7 +23,7 @@
                     </div>
                     <div class="form-div">
                         <p> Valor de compra: </p>
-                        <input type="text" name="valor_compra" value="{{icompra.valor_compra}}" class="input-form">
+                        <input type="number" name="valor_compra" value="{{icompra.valor_compra}}" class="input-form">
                     </div>
                     <div class="form-div">
                         <p>Fecha de entrega: </p>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="form-div">
                         <p>TIR prometida: </p>
-                        <input type="text" name="tir_prometida" value="{{icompra.tir_prometida}}" class="input-form">
+                        <input type="number" step="any"  name="tir_prometida" value="{{icompra.tir_prometida}}" class="input-form">
                     </div>
 
                 </div>
@@ -85,13 +85,13 @@
                     </div>
                     <div class="form-div">
                         <p> Valor de inversión: </p>
-                        <input type="text" name="valor_inversion" value="{{igarantia.valor_inversion}}"
+                        <input type="number" name="valor_inversion" value="{{igarantia.valor_inversion}}"
                             class="input-form">
                     </div>
 
                     <div class="form-div">
                         <p>Tasa de interés mensual: </p>
-                        <input type="text" name="tasa_int_men" value="{{igarantia.tasa_int_men}}" class="input-form">
+                        <input type="number" step="any"  name="tasa_int_men" value="{{igarantia.tasa_int_men}}" class="input-form">
                     </div>
                     {{!-- <div class="form-div">
                         <p>Tasa de interés anual: </p>
@@ -142,7 +142,7 @@
                     </div>
                     <div class="form-div">
                         <p> Valor de compra: </p>
-                        <input type="text" name="valor_compra" value="{{iasociativo.valor_compra}}" class="input-form">
+                        <input type="number" name="valor_compra" value="{{iasociativo.valor_compra}}" class="input-form">
                     </div>
                     <div class="form-div">
                         <p>Fecha de entrega: </p>
@@ -151,7 +151,7 @@
                     </div>
                     <div class="form-div">
                         <p>TIR prometida: </p>
-                        <input type="text" name="tir_prometida" value="{{iasociativo.tir_prometida}}"
+                        <input type="number" step="any"  name="tir_prometida" value="{{iasociativo.tir_prometida}}"
                             class="input-form">
                     </div>
                 </div>
@@ -192,13 +192,13 @@
                     </div>
                     <div class="form-div">
                         <p> Valor del mutuo: </p>
-                        <input type="text" name="valor_mutuo" value="{{ifnf.valor_mutuo}}"
+                        <input type="number" name="valor_mutuo" value="{{ifnf.valor_mutuo}}"
                             class="input-form">
                         <input type="text" name="observaciones" value="{{ifnf.observaciones}}" class="input-form">
                     </div>
                     <div class="form-div">
                         <p>Tasa de interés mensual: </p>
-                        <input type="text" name="tasa_interes" value="{{ifnf.tasa_interes}}"
+                        <input type="number" step="any"  name="tasa_interes" value="{{ifnf.tasa_interes}}"
                             class="input-form">
                     </div>
                     {{!-- <div class="form-div">
