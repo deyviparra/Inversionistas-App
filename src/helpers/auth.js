@@ -11,15 +11,19 @@ helpers.isAuthenticated = (req, res, next) => {
 }
 
 Handlebars.registerHelper("phoneNumber", function (num) {
-    num = num.toString();
+    if (num != null && num != NaN) {
+        num = num.toString();
 
-    return '(' + num.substr(0, 3) + ') '
-        + num.substr(3, 3) + '-'
-        + num.substr(6, 4);
+        return '(' + num.substr(0, 3) + ') '
+            + num.substr(3, 3) + '-'
+            + num.substr(6, 4);
+    }
 });
 
 Handlebars.registerHelper("addPoints", function (num) {
-    return num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');
+    if (num != null && num != NaN) {
+        return num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');
+    }
 });
 
 module.exports = helpers, Handlebars;
