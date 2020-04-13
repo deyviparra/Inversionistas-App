@@ -7,15 +7,14 @@
         <img id="img" src="/uploads/sinfoto.png" alt="Foto usuario" class="img_usuario">
         <a href="/usuarios/perfil"> Hola, {{user.nombre}} {{user.apellido}}</a>
         <a href="/usuarios/logout">Cerrar sesión</a>
+        {{#if user.super_usuario}}
+        <a href="/usuarios/registro">Crear usuario</a>
+        {{/if}}
     </div>
     {{else}}
     <div>
         <a href="/client/login">Inversionista</a>
         <a href="/usuarios/login">Administrador</a>
     </div>
-    {{/if}}
-    {{#if super_usuario}}
-    {{!-- se debe añadir esta cualidad a 1 usuario para control de super usuario --}}
-    <a href="/usuarios/registro">Crear usuario</a>
     {{/if}}
 </nav>

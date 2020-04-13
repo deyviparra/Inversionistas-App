@@ -88,13 +88,17 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 200px;
   background: $verde;
+  padding: 60px;
 
   ul li p {
     color: $negro;
     margin: 20px;
     font-size: 20px;
+  }
+  .text-area{
+    width: 25%;
+    color: $negro;
   }
 }
 
