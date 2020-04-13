@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-div">
                         <p>Precios desde: </p>
-                        <input type="text" name="rango" value="{{proy.rango}}" id="rango_p"
+                        <input type="number" name="rango" value="{{proy.rango}}" id="rango_p"
                             placeholder="Rango de precios: " class="input-form">
                     </div>
                     <div class="form-div">
@@ -53,9 +53,7 @@
                         <textarea name="descripcion"  class="textarea-form" rows="8" cols="60"  value="{{proy.descripcion}}"></textarea>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="file" class="custom-file-input" name="image" id="image_p">
-                        <label for="image" class="custom-file-label">Subir imágen</label>
-                        <output id="list-img-p"></output>
+                        <input type="file" class="upload-image" name="image" id="image_p">
                     </div>
                 </div>
             </div>

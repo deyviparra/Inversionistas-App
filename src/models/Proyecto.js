@@ -5,7 +5,7 @@ const projectSchema = new Schema ({
     tipo:{type: String},
     direccion:{type: String},
     descripcion:{type: String},
-    rango:{type: String},
+    rango:{type: Number},
     municipio:{type: String},
     departamento:{type: String},
     estrato:{type:String},

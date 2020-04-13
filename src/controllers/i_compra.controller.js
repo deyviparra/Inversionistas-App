@@ -80,7 +80,6 @@ icompraCtrl.updateInversionCompra = async (req, res) => {
   const {_id,nombre} =await Proyecto.findById(proyecto_id)
   const proyecto = {'id':_id,'nombre':nombre}
   const icompra = await Icompra.findById(req.params.id)
-  const inversionista = await Inversionista.findById(icompra.inver_id);
    await Icompra.findByIdAndUpdate(req.params.id,{
     proyecto,
     fecha_inicio,
@@ -91,13 +90,14 @@ icompraCtrl.updateInversionCompra = async (req, res) => {
     tir_prometida
   })  
   req.flash('success_msg', 'Inversion actualizada')
-  res.redirect('/ficha-i/' + inversionista._id)
+  res.redirect('/ficha-inversion/' + icompra._id + '/compra')
 }
 
 icompraCtrl.AsociarInmuebleCompra = async (req, res) => {
   const { inmuebles } = await Icompra.findById(req.params.id)
   const icompra = await Icompra.findById(req.params.id)
   const inmueble = req.body;
+  inmueble.valor = Number(inmueble.valor)
   inmuebles.push(inmueble)
   await Icompra.findByIdAndUpdate(req.params.id, { inmuebles })
   req.flash('success_msg', 'Inmueble añadido')

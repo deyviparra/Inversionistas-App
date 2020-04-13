@@ -88,7 +88,6 @@ ifnfCtrl.updateInversionFnf = async (req, res) => {
   const {_id,nombre} =await Proyecto.findById(proyecto_id)
   const proyecto = {'id':_id,'nombre':nombre}
   const ifnf = await Ifnf.findById(req.params.id)
-  const inversionista = await Inversionista.findById(ifnf.inver_id);
    await Ifnf.findByIdAndUpdate(req.params.id,{
     proyecto,
     fecha_inicio,
@@ -98,13 +97,14 @@ ifnfCtrl.updateInversionFnf = async (req, res) => {
     tasa_interes
   })  
   req.flash('success_msg', 'Inversion actualizada')
-  res.redirect('/ficha-i/' + inversionista._id)
+  res.redirect('/ficha-inversion/' + ifnf._id + '/fnf')
 }
 
 ifnfCtrl.AsociarInmuebleFnf = async (req, res) => {
   const { inmuebles } = await Ifnf.findById(req.params.id)
   const ifnf = await Ifnf.findById(req.params.id)
   const inmueble = req.body;
+  inmueble.valor = Number(inmueble.valor)
   inmuebles.push(inmueble)
   await Ifnf.findByIdAndUpdate(req.params.id, { inmuebles })
   req.flash('success_msg', 'Inmueble añadido')

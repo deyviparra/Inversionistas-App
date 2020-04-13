@@ -8,11 +8,11 @@ const i_asociativoSchema = new Schema({
     fecha_cierre:{type: String},
     n_acciones:{type: String},
     inmuebles:{type:Array},
-    valor_compra:{type: String},
+    valor_compra:{type: Number},
     fecha_entrega_prometida:{type: String},
-    tir_prometida:{type: String},
+    tir_prometida:{type: Number},
     fecha_entrega_real:{type: String},
-    tir_entrega_real:{type: String},
+    tir_entrega_real:{type: Number},
     plan_pagos:{type:Array},
     pagos_realizados:{type:Array}
   })

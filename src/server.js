@@ -7,11 +7,14 @@ const methodOverride = require('method-override')
 const flash = require('connect-flash')
 const session =require('express-session')
 const passport = require('passport')
+var Handlebars     = require('handlebars');
+var HandlebarsIntl = require('handlebars-intl');
 
 
 //inicializations
 const app = express()
 require('./config/passport')
+HandlebarsIntl.registerWith(Handlebars);
 
 
 //settings

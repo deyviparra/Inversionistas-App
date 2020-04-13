@@ -4,8 +4,6 @@ const { unlink } = require("fs-extra");
 const path = require("path");
 const { uploadFile } = require('../upload.js')
 
-var tipos = [];
-
 proyCtrl.renderProyForm = (req, res) => {
   res.render('proyectos/nuevo-p')
   // const tipo = req.query
@@ -48,17 +46,20 @@ proyCtrl.renderEditFormProy = async (req, res) => {
   res.render('proyectos/edit-proy', { proy })
 }
 proyCtrl.updateProy = async (req, res) => {
+  const proyecto = await Proyecto.findById(req.params.id)
   const { nombre, tipo, direccion, rango, descripcion, municipio, departamento, estrato } = req.body;
   if (typeof req.file === 'undefined') {
     await Proyecto.findByIdAndUpdate(req.params.id, { nombre, tipo, direccion, rango, descripcion, municipio, departamento, estrato })
   } else {
     const imagePath = "/uploads/" + req.file.filename;
     const proy = await Proyecto.findById(req.params.id)
+    if (proy.imagePath !== '/uploads/sinfotop.png') {
     unlink(path.resolve(path.join(__dirname, '../public' + proy.imagePath)))
+    }
     await Proyecto.findByIdAndUpdate(req.params.id, { nombre, tipo, direccion, rango, municipio, departamento, estrato, imagePath })
   }
   req.flash('success_msg', 'Proyecto actualizado')
-  res.redirect('/proy')
+  res.redirect('/ficha-p/' + proyecto._id)
 }
 proyCtrl.deleteProy = async (req, res) => {
   const proy = await Proyecto.findById(req.params.id)
@@ -87,4 +88,5 @@ proyCtrl.updateType = async (req, res) => {
   req.flash('success_msg', 'Tipo añadido')
   res.redirect('/ficha-p/' + req.params.id)
 }
+
 module.exports = proyCtrl;

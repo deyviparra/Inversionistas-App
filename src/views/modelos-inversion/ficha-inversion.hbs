@@ -1,3 +1,4 @@
+
 <h1>Datos inversionista</h1>
 <section id="info-ppal" class="info-ppal">
     <img id="img" src="{{inversionista.imagePath}}" alt="Foto Inversionista">
@@ -6,40 +7,39 @@
             <p> Nombre: {{inversionista.nombre}} {{inversionista.apellido}}</p>
         </li>
         <li>
-            <p> Teléfono: {{inversionista.telefono}}</p>
+            <p> Cédula: {{inversionista.cedula}}</p>
+        </li>
+        <li>
+            <p> Celular: {{inversionista.celular}}</p>
         </li>
         <li>
             <p> Correo: {{inversionista.correo}}</p>
-        </li>
-        <li>
-            <p> Cédula: {{inversionista.cedula}}</p>
         </li>
     </ul>
 </section>
 
 <section class="info-inversion">
-
     {{#if icompra}}
     <h2>Inversión compra de inmueble</h2>
     <section class="info-ppal">
         <ul>
             <li>
-                <p> Proyecto: {{icompra.proyecto.nombre}}</p>
+                <p>Proyecto: {{icompra.proyecto.nombre}}</p>
             </li>
             <li>
-                <p> Fecha de inicio: {{icompra.fecha_inicio}}</p>
+                <p>Fecha de inicio: {{icompra.fecha_inicio}}</p>
             </li>
             <li>
-                <p> Fecha de cierre: {{icompra.fecha_cierre}}</p>
+                <p>Fecha de cierre: {{icompra.fecha_cierre}}</p>
             </li>
             <li>
-                <p> Valor de compra: {{icompra.valor_compra}}</p>
+                <p>Valor de compra: {{formatNumber icompra.valor_compra style="currency" currency="COP"}}</p>
             </li>
             <li>
                 <p>Fecha de entrega: {{icompra.fecha_entrega}}</p>
             </li>
             <li>
-                <p>TIR prometida: {{icompra.tir_prometida}}</p>
+                <p>TIR prometida: {{icompra.tir_prometida}} %</p>
             </li>
         </ul>
         <div class="lista-inmuebles">
@@ -48,8 +48,12 @@
 
             {{#each icompra.inmuebles}}
             <li>
-                <p>{{torre}}</p>
-                <p>{{valor}}</p>
+                <p> Torre: {{torre}}</p>
+                <p> Apartamento: {{apartamento}}</p>
+                <p> Parqueadero: {{parqueadero}}</p>
+                <p> Cuarto útil: {{cuarto_util}}</p>
+                <p> Encargo fiduciario: {{encargo_fiduciario}}</p>
+                <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
             </li>
             {{/each}}
             </ul>
@@ -91,21 +95,21 @@
     <section class="info-ppal">
         <ul>
             <li>
-                <p> Proyecto: {{igarantia.proyecto.nombre}}</p>
+                <p>Proyecto: {{igarantia.proyecto.nombre}}</p>
             </li>
             <li>
-                <p> Fecha de inicio: {{igarantia.fecha_inicio}}</p>
+                <p>Fecha de inicio: {{igarantia.fecha_inicio}}</p>
             </li>
             {{!-- <li>
             <p> Fecha de cierre: {{igarantia.fecha_cierre}}</p>
         </li> --}}
 
             <li>
-                <p> Duración de la inversión: {{igarantia.duracion}} meses</p>
+                <p>Duración de la inversión: {{igarantia.duracion}} meses</p>
             </li>
 
             <li>
-                <p> Valor de inversion: {{igarantia.valor_inversion}}</p>
+                <p>Valor de inversion: {{formatNumber igarantia.valor_inversion style="currency" currency="COP"}}</p>
             </li>
             <li>
                 <p>Periodo de liquidación: Cada {{igarantia.periodo_liquidacion}} meses </p>
@@ -164,14 +168,14 @@
                 <p> Número de acciones: {{iasociativo.n_acciones}}</p>
             </li>
             <li>
-                <p> Valor de compra: {{iasociativo.valor_compra}}</p>
+                <p> Valor de compra: {{formatNumber iasociativo.valor_compra style="currency" currency="COP"}}</p>
             </li>
 
             <li>
                 <p> Fecha entrega prometida: {{iasociativo.fecha_entrega_prometida}}</p>
             </li>
             <li>
-                <p>TIR prometida: {{iasociativo.tir_prometida}}</p>
+                <p>TIR prometida: {{iasociativo.tir_prometida}} %</p>
             </li>
         </ul>
         <div class="lista-inmuebles">
@@ -180,8 +184,11 @@
 
             {{#each iasociativo.inmuebles}}
             <li>
-                <p>{{torre}}</p>
-                <p>{{valor}}</p>
+                <p> Torre: {{torre}}</p>
+                <p> Apartamento: {{apartamento}}</p>
+                <p> Parqueadero: {{parqueadero}}</p>
+                <p> Cuarto útil: {{cuarto_util}}</p>
+                <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
             </li>
             {{/each}}
             </ul>
@@ -223,21 +230,21 @@
     <section class="info-ppal">
         <ul>
             <li>
-                <p> Proyecto: {{ifnf.proyecto.nombre}}</p>
+                <p>Proyecto: {{ifnf.proyecto.nombre}}</p>
             </li>
             <li>
-                <p> Fecha de inicio: {{ifnf.fecha_inicio}}</p>
+                <p>Fecha de inicio: {{ifnf.fecha_inicio}}</p>
             </li>
             {{!-- <li>
             <p> Fecha de cierre: {{ifnf.fecha_cierre}}</p>
         </li> --}}
 
             <li>
-                <p> Fecha de legalización del mutuo: {{ifnf.lega_mutuo_fidu}}</p>
+                <p>Fecha de legalización del mutuo: {{ifnf.lega_mutuo_fidu}}</p>
             </li>
 
             <li>
-                <p> Valor del mutuo: {{ifnf.valor_mutuo}} observaciones: {{ifnf.observaciones}}</p>
+                <p>Valor del mutuo: {{formatNumber ifnf.valor_mutuo style="currency" currency="COP"}}</p>
             </li>
 
             <li>
@@ -249,6 +256,9 @@
             <li>
                 <p>Porcentaje garantia: {{ifnf.porcentaje_garantia}} %</p>
             </li>
+            <li>
+                <p>Observaciones: {{ifnf.observaciones}}</p>
+            </li>
         </ul>
         <div class="lista-inmuebles">
             <p>Inmuebles:</p>
@@ -256,8 +266,11 @@
 
             {{#each ifnf.inmuebles}}
             <li>
-                <p> {{torre}}</p>
-                <p> {{valor}}</p>
+                <p> Torre: {{torre}}</p>
+                <p> Apartamento: {{apartamento}}</p>
+                <p> Parqueadero: {{parqueadero}}</p>
+                <p> Cuarto útil: {{cuarto_util}}</p>
+                <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
             </li>
             {{/each}}
             </ul>
