@@ -7,7 +7,7 @@ const i_compraSchema = new Schema({
   inmuebles:{type:Array},
   fecha_inicio: { type: String },
   fecha_cierre: { type: String },
-  valor_compra: { type: String },
+  valor_compra: { type: Number },
   fecha_entrega_prometida: { type: String },
   tir_prometida: { type: String },
   fecha_entrega_real: { type: String },
