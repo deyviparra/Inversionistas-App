@@ -15,12 +15,13 @@ proyCtrl.renderProyForm = (req, res) => {
 
 }
 proyCtrl.createNewProy = async (req, res) => {
-  const { nombre, tipo, direccion, rango, municipio, departamento, estrato } = req.body;
+  const { nombre, tipo, direccion, rango, descripcion, municipio, departamento, estrato } = req.body;
   const newProyecto = new Proyecto({
     nombre,
     tipo,
     direccion,
     rango,
+    descripcion,
     municipio,
     departamento,
     estrato
@@ -47,9 +48,9 @@ proyCtrl.renderEditFormProy = async (req, res) => {
   res.render('proyectos/edit-proy', { proy })
 }
 proyCtrl.updateProy = async (req, res) => {
-  const { nombre, tipo, direccion, rango, municipio, departamento, estrato } = req.body;
+  const { nombre, tipo, direccion, rango, descripcion, municipio, departamento, estrato } = req.body;
   if (typeof req.file === 'undefined') {
-    await Proyecto.findByIdAndUpdate(req.params.id, { nombre, tipo, direccion, rango, municipio, departamento, estrato })
+    await Proyecto.findByIdAndUpdate(req.params.id, { nombre, tipo, direccion, rango, descripcion, municipio, departamento, estrato })
   } else {
     const imagePath = "/uploads/" + req.file.filename;
     const proy = await Proyecto.findById(req.params.id)

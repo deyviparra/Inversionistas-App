@@ -27,17 +27,17 @@
                             placeholder="Dirección: " class="input-form">
                     </div>
                     <div class="form-div">
-                        <p>Rango de precios: </p>
+                        <p>Precios desde: </p>
                         <input type="text" name="rango" value="{{proy.rango}}" id="rango_p"
                             placeholder="Rango de precios: " class="input-form">
                     </div>
-                </div>
-                <div class="columna-1">
                     <div class="form-div">
                         <p>Municipio: </p>
                         <input type="text" name="municipio" value="{{proy.municipio}}" id="municipio_p"
                             placeholder="Municipio: " class="input-form">
                     </div>
+                </div>
+                <div class="columna-1">
                     <div class="form-div">
                         <p>Departamento: </p>
                         <input type="text" name="departamento" value="{{proy.departamento}}" id="departamento_p"
@@ -46,7 +46,11 @@
                     <div class="form-div">
                         <p>Estrato: </p>
                         <input type="text" name="estrato" value="{{proy.estrato}}" id="estrato_p"
-                            placeholder="Estrato: " class="input-inver">
+                            placeholder="Estrato: " class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p>Descripcion: </p>
+                        <textarea name="descripcion"  class="textarea-form" rows="8" cols="60"  value="{{proy.descripcion}}"></textarea>
                     </div>
                     <div class="input-group mb-3">
                         <input type="file" class="custom-file-input" name="image" id="image_p">

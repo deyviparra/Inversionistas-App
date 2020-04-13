@@ -59,13 +59,14 @@ inverCtrl.renderEditFormInver = async (req, res) => {
 }
 inverCtrl.updateInver = async (req, res) => {
     const {razon_social,nit,nombre, apellido,telefono,  celular, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion } = req.body;
+    const edad = calcularedad(nacimiento);
     if (typeof req.file === 'undefined') {
-        await Inversionista.findByIdAndUpdate(req.params.id, {razon_social,nit,nombre, apellido, telefono, celular,correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion })
+        await Inversionista.findByIdAndUpdate(req.params.id, {razon_social,nit,nombre, apellido, edad, telefono, celular,correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion })
     } else {
         const imagePath = "/uploads/" + req.file.filename;
         const inver = await Inversionista.findById(req.params.id)
         unlink(path.resolve(path.join(__dirname, '../public' + inver.imagePath)))
-        await Inversionista.findByIdAndUpdate(req.params.id, {razon_social,nit,nombre, apellido, telefono, celular, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion, imagePath })
+        await Inversionista.findByIdAndUpdate(req.params.id, {razon_social,nit,nombre, apellido, edad, telefono, celular, correo, cedula, direccion, nacimiento, estado_civil, n_hijos, n_mascotas, hobby, profesion, imagePath })
     }
     req.flash('success_msg', 'Inversionista actualizado')
     res.redirect('/inver')

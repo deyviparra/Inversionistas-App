@@ -8,6 +8,17 @@
     border: none;
   }
 }
+.textarea-form{
+  color: $blanco;
+  border-radius: 5px;
+  background: linear-gradient(145deg, #2a2a2a, #232323);
+  box-shadow: 9px 9px 18px #1c1c1c, -9px -9px 18px #323232;
+  border: none;
+  margin: 10px;
+  &:target {
+    border: none;
+  }
+}
 .form {
   color: $blanco;
   display: flex;
