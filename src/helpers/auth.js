@@ -10,16 +10,16 @@ helpers.isAuthenticated = (req, res, next) => {
     }
 }
 
-// Handlebars.registerHelper("phoneNumber", function (num) {
-//     num = num.toString();
+Handlebars.registerHelper("phoneNumber", function (num) {
+    num = num.toString();
 
-//     return '(' + num.substr(0, 3) + ') '
-//         + num.substr(3, 3) + '-'
-//         + num.substr(6, 4);
-// });
+    return '(' + num.substr(0, 3) + ') '
+        + num.substr(3, 3) + '-'
+        + num.substr(6, 4);
+});
 
-// Handlebars.registerHelper("addPoints", function (num) {
-//     return num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');
-// });
+Handlebars.registerHelper("addPoints", function (num) {
+    return num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.');
+});
 
 module.exports = helpers, Handlebars;
