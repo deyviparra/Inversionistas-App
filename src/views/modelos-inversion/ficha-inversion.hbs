@@ -3,6 +3,26 @@
 <section id="info-ppal" class="info-ppal">
     <img id="img" src="{{inversionista.imagePath}}" alt="Foto Inversionista">
     <ul>
+        {{#if inversionista.razon_social}}
+        <li>
+            <p> Razón social: {{inversionista.razon_social}}</p>
+        </li>
+        <li>
+            <p> Nit: {{addPointsNit inversionista.nit}}</p>
+        </li>
+        <li>
+            <p> Representante Legal: {{inversionista.nombre}} {{inversionista.apellido}}</p>
+        </li>
+        <li>
+            <p> Cédula: {{addPoints inversionista.cedula}}</p>
+        </li>
+        <li>
+            <p> Celular: {{phoneNumber inversionista.celular}}</p>
+        </li>
+        <li>
+            <p> Correo: {{inversionista.correo}}</p>
+        </li>
+        {{else}}
         <li>
             <p> Nombre: {{inversionista.nombre}} {{inversionista.apellido}}</p>
         </li>
@@ -15,6 +35,7 @@
         <li>
             <p> Correo: {{inversionista.correo}}</p>
         </li>
+        {{/if}}
     </ul>
 </section>
 

@@ -8,7 +8,7 @@
     <ul>
         {{#if inversionista.razon_social}}
         <li>
-            <p> Nit: {{inversionista.nit}}</p>
+            <p> Nit: {{addPointsNit inversionista.nit}}</p>
         </li>
         <li>
             <p> Representante legal: {{inversionista.nombre}} {{inversionista.apellido}}</p>
@@ -58,7 +58,7 @@
 <section id="info-secun" class="info-secun">
     <ul>
         <li>
-            <p> Teléfono fijo: {{inversionista.telefono}}</p>
+            <p> Teléfono fijo: {{ phoneNumber inversionista.telefono}}</p>
         </li>
         <li>
             <p> Dirección: {{inversionista.direccion}}</p>
