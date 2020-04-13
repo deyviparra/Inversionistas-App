@@ -9,6 +9,7 @@ const userSchema = new Schema({
   correo: { type: String, required: true, unique: true },
   modificar: { type: String},
   informes: { type: String},
+  super_usuario: { type: String},
   contrasena: { type: String, required: true }
 }, {
   timestamps: true

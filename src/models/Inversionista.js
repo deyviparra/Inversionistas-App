@@ -15,6 +15,7 @@ const inverSchema = new Schema({
   hobby: { type: String },
   edad: { type: String },
   profesion: {type: String},
+  empresa: {type: String},
   razon_social: {type: String},
   nit:{type: String},
   imagePath: { type: String }

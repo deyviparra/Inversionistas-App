@@ -83,7 +83,6 @@ asociativoCtrl.updateInversionAsociativo = async (req, res) => {
   const {_id,nombre} =await Proyecto.findById(proyecto_id)
   const proyecto = {'id':_id,'nombre':nombre}
   const iasociativo = await Iasociativo.findById(req.params.id)
-  const inversionista = await Inversionista.findById(iasociativo.inver_id);
    await Iasociativo.findByIdAndUpdate(req.params.id,{
     proyecto,
     fecha_inicio,
@@ -94,7 +93,7 @@ asociativoCtrl.updateInversionAsociativo = async (req, res) => {
     tir_prometida
   })  
   req.flash('success_msg', 'Inversion actualizada')
-  res.redirect('/ficha-i/' + inversionista._id)
+  res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
 }
 
 asociativoCtrl.AsociarInmuebleAsociativo = async (req, res) => {
