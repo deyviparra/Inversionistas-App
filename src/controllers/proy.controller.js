@@ -51,7 +51,8 @@ proyCtrl.updateProy = async (req, res) => {
   if (typeof req.file === 'undefined') {
     await Proyecto.findByIdAndUpdate(req.params.id, { nombre, tipo, direccion, rango, descripcion, municipio, departamento, estrato })
   } else {
-    const imagePath = "/uploads/" + req.file.filename;
+    const imagePath =  "https://inversionistas-bucket.s3-sa-east-1.amazonaws.com/" + req.file.filename;
+    await uploadFile(path.join(__dirname, '../public/uploads/' + req.file.filename), req.file.filename)
     const proy = await Proyecto.findById(req.params.id)
     if (proy.imagePath !== '/uploads/sinfotop.png') {
     unlink(path.resolve(path.join(__dirname, '../public' + proy.imagePath)))
