@@ -7,10 +7,10 @@
             <p> Nombre: {{inversionista.nombre}} {{inversionista.apellido}}</p>
         </li>
         <li>
-            <p> Cédula: {{inversionista.cedula}}</p>
+            <p> Cédula: {{addPoints inversionista.cedula}}</p>
         </li>
         <li>
-            <p> Celular: {{inversionista.celular}}</p>
+            <p> Celular: {{phoneNumber inversionista.celular}}</p>
         </li>
         <li>
             <p> Correo: {{inversionista.correo}}</p>
@@ -320,8 +320,8 @@
             {{#each ifnf.plan_pago_intereses}}
             <tr>
                 <td> {{fecha}}</td>
-                <td> {{couta_cliente}}</td>
-                <td> {{couta_garantia}}</td>
+                <td> {{formatNumber couta_cliente style="currency" currency="COP"}}</td>
+                <td> {{formatNumber couta_garantia style="currency" currency="COP"}}</td>
             </tr>
             {{/each}}
         </table>
@@ -346,7 +346,7 @@
             {{#each igarantia.plan_pago_intereses}}
             <tr>
                 <td> {{fecha}}</td>
-                <td> {{couta}}</td>
+                <td> {{formatNumber couta style="currency" currency="COP"}}</td>
             </tr>
             {{/each}}
         </table>
@@ -371,7 +371,7 @@
             {{#each iasociativo.plan_pagos}}
             <tr>
                 <td> {{fecha}}</td>
-                <td> {{couta}}</td>
+                <td> {{formatNumber couta style="currency" currency="COP"}}</td>
             </tr>
             {{/each}}
         </table>
@@ -396,7 +396,7 @@
             {{#each icompra.plan_pagos }}
             <tr>
                 <td> {{fecha}}</td>
-                <td> {{couta}}</td>
+                <td> {{formatNumber couta style="currency" currency="COP"}}</td>
             </tr>
             {{/each}}
         </table>
