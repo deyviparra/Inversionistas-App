@@ -13,15 +13,20 @@ helpers.isAuthenticated = (req, res, next) => {
 Handlebars.registerHelper("phoneNumber", function (num) {
     if (num != null && num != NaN) {
         num = num.toString();
-        if(num.length == 10){
+        if(num.length == 10){ //Cellphone
             return '(' + num.substr(0, 3) + ') '
             + num.substr(3, 3) + '-'
             + num.substr(6, 4);
         }
-        if (num.length <10){
+        if (num.length <10){ //Home
             return '(' + num.substr(0, 3) + ') '
         + num.substr(3, 2) + '-'
         + num.substr(5, 3);
+        }
+        if(num.length >10){ //International
+            return  '+' + num.substr(0,1) + ' ' +'('+ num.substr(1, 3) + ') '
+            + num.substr(4, 3) + '-'
+            + num.substr(7, 4);
         }
     }
 });

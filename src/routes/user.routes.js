@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const { isAuthenticated } = require('../helpers/auth')
+
 const { 
     renderLogin, 
     renderRegistro, 
@@ -9,7 +10,7 @@ const {
     renderFichaU,
     renderEditFormUser, 
     updateUser
-} = require('../controllers/user.controllers')
+} = require('../controllers/user.controller')
 
 // login
 router.get('/usuarios/login', renderLogin)

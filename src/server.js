@@ -69,6 +69,7 @@ app.use(require('./routes/i_asociativo.routes'));
 app.use(require('./routes/i_compra.routes'));
 app.use(require('./routes/i_garantia.routes'));
 app.use(require('./routes/i_fnf.routes'));
+app.use(require('./routes/inver_user.routes'));
 
 
 

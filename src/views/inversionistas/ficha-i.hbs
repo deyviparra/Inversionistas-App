@@ -14,7 +14,7 @@
             <p> Representante legal: {{inversionista.nombre}} {{inversionista.apellido}}</p>
         </li>
         {{/if}}
-         <li>
+        <li>
             <p> Cédula: {{addPoints inversionista.cedula}}</p>
         </li>
         <li>
@@ -31,10 +31,17 @@
             <button class="boton" type="submit">Modificar inversionista</button>
         </form>
         <p>Habilitar inversionista: </p>
+        {{#if inveruser.0.activo}}
         <label class="switch">
-            <input type="checkbox">
+            <input type="checkbox" name="habilitar-user" checked="true">
             <span class="slider round"></span>
         </label>
+        {{else}}
+        <label class="switch">
+            <input type="checkbox" name="habilitar-user">
+            <span class="slider round"></span>
+        </label>
+        {{/if}}
         <p>Selecciona el tipo de inversión: </p>
         <form action="/inversion/add" class="panel">
             <input type="hidden" value="{{inversionista._id}}" name="id">
@@ -50,7 +57,7 @@
         <form action="/inver/delete/{{inversionista._id}}?_method=DELETE" method="POST" name="form-delete">
             <input type="hidden" name="_method" value="DELETE">
             <button class="delete btn btn-danger" type="submit">Eliminar Inversionista</button>
-          </form>
+        </form>
     </div>
     {{/if}}
 </section>
@@ -66,10 +73,10 @@
         <li>
             <p> Profesión: {{inversionista.profesion}}</p>
         </li>
-         <li>
+        <li>
             <p> Empresa: {{inversionista.empresa}}</p>
         </li>
-        
+
     </ul>
     <ul>
         <li>
@@ -81,7 +88,7 @@
         <li>
             <p> Fecha de nacimiento: {{inversionista.nacimiento}}</p>
         </li>
-        
+
     </ul>
     <ul>
         <li>
@@ -89,7 +96,7 @@
         </li>
         <li>
             <p> Mascotas: {{inversionista.n_mascotas}}</p>
-        </li>        
+        </li>
         <li>
             <p> Hobby: {{inversionista.hobby}}</p>
         </li>
@@ -114,8 +121,8 @@
                     </div>
                     <a href="/ficha-inversion/{{_id}}/asociativo"> Ver inversión</a>
                 </li>
-                {{/each}} 
-                
+                {{/each}}
+
             </ul>
             {{/if}}
             {{#if iasociativo_c}}
@@ -131,22 +138,22 @@
                     </div>
                     <a href="/ficha-inversion/{{_id}}/asociativo"> Ver inversión</a>
                 </li>
-                {{/each}} 
-                
+                {{/each}}
+
             </ul>
             {{/if}}
-            
+
             {{#if icompra}}
             <h2>Modelo Compra</h2>
             <ul>
                 {{#each icompra}}
                 <li>
-                   <div>
+                    <div>
                         <p>Proyecto: {{proyecto.nombre}}</p>
                         <p>Fecha de inicio: {{fecha_inicio}}</p>
                         <p>Valor de compra: {{formatNumber valor_compra style="currency" currency="COP"}}</p>
                         <p>TIR estimada: {{tir_prometida}} %</p>
-                   </div>
+                    </div>
                     <a href="/ficha-inversion/{{_id}}/compra"> Ver inversión</a>
                 </li>
                 {{/each}}
@@ -157,12 +164,12 @@
             <ul>
                 {{#each icompra_c}}
                 <li>
-                   <div>
+                    <div>
                         <p>Proyecto: {{proyecto.nombre}}</p>
                         <p>Fecha de inicio: {{fecha_inicio}}</p>
                         <p>Valor de compra: {{formatNumber valor_compra style="currency" currency="COP"}}</p>
                         <p>TIR estimada: {{tir_prometida}} %</p>
-                   </div>
+                    </div>
                     <a href="/ficha-inversion/{{_id}}/compra"> Ver inversión</a>
                 </li>
                 {{/each}}
@@ -207,12 +214,12 @@
             <ul>
                 {{#each igarantia}}
                 <li>
-                   <div>
+                    <div>
                         <p>Proyecto: {{proyecto.nombre}}</p>
                         <p>Fecha de inicio: {{fecha_inicio}}</p>
                         <p>Valor del mutuo: {{formatNumber valor_inversion style="currency" currency="COP"}}</p>
                         <p>Tasa intereses: {{tasa_int_men}} %</p>
-                   </div>
+                    </div>
                     <a href="/ficha-inversion/{{_id}}/garantia"> Ver inversión</a>
                 </li>
                 {{/each}}
@@ -223,12 +230,12 @@
             <ul>
                 {{#each igarantia_c}}
                 <li>
-                   <div>
+                    <div>
                         <p>Proyecto: {{proyecto.nombre}}</p>
                         <p>Fecha de inicio: {{fecha_inicio}}</p>
                         <p>Valor del mutuo: {{formatNumber valor_inversion style="currency" currency="COP"}}</p>
                         <p>Tasa intereses: {{tasa_int_men}} %</p>
-                   </div>
+                    </div>
                     <a href="/ficha-inversion/{{_id}}/garantia"> Ver inversión</a>
                 </li>
                 {{/each}}

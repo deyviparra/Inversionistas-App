@@ -2,7 +2,6 @@ const userCtrl = {}
 const passport = require('passport')
 const User = require('../models/Usuario')
 
-
 userCtrl.renderRegistro = (req, res) => {
     res.render('usuarios/registro')
 }
