@@ -173,6 +173,21 @@ inverCtrl.renderModelo = async (req, res) => {
     }
 }
 
+inverCtrl.searchInver = async (req,res) =>{
+    try{
+        //Por ahora solo busca con el nombre
+        const {buscarI} = req.query
+        const nombre = buscarI.split(" ")
+        const inverMatch = await Inversionista.find({nombre:{$regex: nombre[0] , $options: "i"}},function(err, docs) {
+            return docs
+            });
+        res.render('inversionistas/lista-i', { inverMatch })   
+     }
+    catch (e){
+        console.log('error: ' + e)
+    }
+}
+
 function calcularedad(edad) {
     let edad_arr = edad.split("-");
     let edad_fecha = new Date(edad_arr[0], edad_arr[1] - 1, edad_arr[2]);

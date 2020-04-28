@@ -10,6 +10,7 @@ const {
   deleteInver,
   renderFichaI,
   renderModelo,
+  searchInver
 } = require("../controllers/inver.controller");
 
 // Agregar inversionista
@@ -25,5 +26,7 @@ router.put("/inver/edit/:id", isAuthenticated, updateInver);
 router.delete("/inver/delete/:id",isAuthenticated, deleteInver);
 // Add Investment
 router.get("/inversion/add", isAuthenticated, renderModelo)
+//search route
+router.get('/inver/search', isAuthenticated,searchInver)
 
 module.exports = router;

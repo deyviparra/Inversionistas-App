@@ -2,13 +2,16 @@
 <h1 id="titulo1-h1">Inversionistas</h1>
 
 
-{{!-- <div class="buscador">
-  <form action="/inver/search" class="form-buscar">
-  <input type="text" name="buscar-i" id="buscar-i" class="input-buscar" value="">
-  <button class="boton">Buscar</button>
+<div class="buscador">
+  
+  <form action='../inver/search' class="form-buscar">
+    <input type="text" name="buscarI" id="buscar-i" class="input-buscar" value="">
+    <button class="boton">Buscar</button>
   </form>
-</div> --}}
+  
+</div>
 
+{{#if inversionistas}}
 <div class="list">
   {{#each inversionistas}}
   <div class='cuadro'>
@@ -47,3 +50,45 @@
   </div>
   {{/each}}
 </div>
+{{/if}}
+
+{{#if inverMatch}}
+<div class="list">
+  {{#each inverMatch}}
+  <div class='cuadro'>
+    <div class='cuadro-interno'>
+      <div class='div-imagen'>
+        <img src='{{imagePath}}' alt='' class=''>
+      </div>
+      <div class='texto-cuadro'>
+        <div class='card-block px-2'>
+          {{#if razon_social}}
+          <p class='up2 titulo'>{{razon_social}}</p>
+          <p class='up2'>Representante: {{nombre}} {{apellido}}</p>
+          <p class='up2'>Nit: {{addPointsNit nit}}</p>
+          <p class='up2'>Cel: {{phoneNumber celular}}</p>
+          {{else}}
+          <p class='up2 titulo'>{{nombre}} {{apellido}}</p>
+          <p class='up2'>CC: {{addPoints cedula}}</p>
+          <p class='up2'>Correo: {{correo}}</p>
+          <p class='up2'>Cel: {{phoneNumber celular}}</p>
+          {{/if}}
+        </div>
+        <div class="cont-botones">
+          <form action="/ficha-i/{{_id}}?_method=GET" method="GET">
+            <input type="hidden" name="_method" value="GET">
+            <button class="ver-ficha" type="submit">Ver ficha</button>
+          </form>
+          {{#if ../user.modificar}}
+          <form action="/inver/delete/{{_id}}?_method=DELETE" method="POST" name="form-delete">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="delete btn btn-danger" type="submit">Eliminar</button>
+          </form>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+{{/if}}
