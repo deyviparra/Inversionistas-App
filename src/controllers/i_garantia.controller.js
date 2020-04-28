@@ -4,98 +4,153 @@ const Proyecto = require("../models/Proyecto");
 const Igarantia = require("../models/I_garantia");
 
 igarantiaCtrl.createIgarantia = async (req, res) => {
-
-  const inver_id = req.params.id;
-  const {
-    proyecto_id,
-    fecha_inicio,
-    duracion,
-    periodo_liquidacion,
-    valor_inversion,
-    tasa_int_men
-  } = req.body;
-  const { _id, nombre } = await Proyecto.findById(proyecto_id)
-  const proyecto = { 'id': _id, 'nombre': nombre }
-  const newIgarantia = new Igarantia({
-    inver_id,
-    proyecto,
-    fecha_inicio,
-    duracion,
-    periodo_liquidacion,
-    valor_inversion,
-    tasa_int_men
-  })
-  let fecha_pago = 19
-  // newIgarantia.tasa_int_anual = Number(tasa_int_men)*12
-  newIgarantia.plan_pago_intereses = crearPlan_pagos(fecha_inicio, tasa_int_men, fecha_pago, valor_inversion, periodo_liquidacion, duracion);
-  newIgarantia.pagos_realizados = new Array(newIgarantia.plan_pago_intereses.length)
-  await newIgarantia.save();
-  req.flash('success_msg', 'Inversión creada')
-  res.redirect('/ficha-i/' + req.params.id)
+  try {
+    const inver_id = req.params.id;
+    const {
+      proyecto_id,
+      fecha_inicio,
+      duracion,
+      periodo_liquidacion,
+      valor_inversion,
+      tasa_int_men
+    } = req.body;
+    const { _id, nombre } = await Proyecto.findById(proyecto_id)
+    const proyecto = { 'id': _id, 'nombre': nombre }
+    const newIgarantia = new Igarantia({
+      inver_id,
+      proyecto,
+      fecha_inicio,
+      duracion,
+      periodo_liquidacion,
+      valor_inversion,
+      tasa_int_men
+    })
+    let fecha_pago = 19
+    // newIgarantia.tasa_int_anual = Number(tasa_int_men)*12
+    newIgarantia.plan_pago_intereses = crearPlan_pagos(fecha_inicio, tasa_int_men, fecha_pago, valor_inversion, periodo_liquidacion, duracion);
+    newIgarantia.pagos_realizados = new Array(newIgarantia.plan_pago_intereses.length)
+    await newIgarantia.save();
+    req.flash('success_msg', 'Inversión creada')
+    res.redirect('/ficha-i/' + req.params.id)
+  }
+  catch (e) {
+    req.flash('error_msg', 'No se puede crear la inversión')
+    res.redirect('/ficha-i/' + req.params.id)
+    console.log(e);
+  }
 }
 
 igarantiaCtrl.renderFichaInvGarantia = async (req, res) => {
-  const igarantia = await Igarantia.findById(req.params.id)
-  const inversionista = await Inversionista.findById(igarantia.inver_id)
-  res.render('modelos-inversion/ficha-inversion', { inversionista, igarantia })
+  try {
+    const igarantia = await Igarantia.findById(req.params.id)
+    const inversionista = await Inversionista.findById(igarantia.inver_id)
+    res.render('modelos-inversion/ficha-inversion', { inversionista, igarantia })
+  }
+  catch (e) {
+    const igarantia = await Igarantia.findById(req.params.id)
+    const inversionista = await Inversionista.findById(igarantia.inver_id)
+    req.flash('error_msg', 'No se puede visualizar la inversión')
+    res.redirect('/ficha-i/' + inversionista._id)
+    console.log(e);
+  }
 }
 
 igarantiaCtrl.renderEditInvGarantia = async (req, res) => {
-  const igarantia = await Igarantia.findById(req.params.id)
-  const inversionista = await Inversionista.findById(igarantia.inver_id)
-  const proyecto = await Proyecto.find();
-  res.render('modelos-inversion/edit-inversion', { inversionista, igarantia, proyecto })
+  try {
+    const igarantia = await Igarantia.findById(req.params.id)
+    const inversionista = await Inversionista.findById(igarantia.inver_id)
+    const proyecto = await Proyecto.find();
+    res.render('modelos-inversion/edit-inversion', { inversionista, igarantia, proyecto })
+  }
+  catch (e) {
+    const igarantia = await Igarantia.findById(req.params.id)
+    req.flash('error_msg', 'No se puede modificar la inversión')
+    res.redirect('/ficha-inversion/' + igarantia._id + '/garantia')
+    console.log(e);
+  }
 };
 
 igarantiaCtrl.renderInversionistaGarantia = async (req, res) => {
-  const igarantia = await Igarantia.findById(req.params.id)
-  const inversionista = await Inversionista.findById(igarantia.inver_id)
-  const inversionistas = await Inversionista.find();
-  res.render('modelos-inversion/asociar-inversionista', { inversionista, igarantia, inversionistas })
+  try {
+    const igarantia = await Igarantia.findById(req.params.id)
+    const inversionista = await Inversionista.findById(igarantia.inver_id)
+    const inversionistas = await Inversionista.find();
+    res.render('modelos-inversion/asociar-inversionista', { inversionista, igarantia, inversionistas })
+  }
+  catch (e) {
+    const igarantia = await Igarantia.findById(req.params.id)
+    req.flash('error_msg', 'No se puese asociar inversionista')
+    res.redirect('/ficha-inversion/' + igarantia._id + '/garantia')
+    console.log(e);
+  }
 };
 
 igarantiaCtrl.deleteInversionGarantia = async (req, res) => {
-  const igarantia = await Igarantia.findById(req.params.id)
-  const inversionista = await Inversionista.findById(igarantia.inver_id)
-  await Igarantia.findByIdAndDelete(req.params.id)
-  req.flash('error_msg', 'Inversión eliminada');
-  res.redirect('/ficha-i/' + inversionista._id)
+  try {
+    const igarantia = await Igarantia.findById(req.params.id)
+    const inversionista = await Inversionista.findById(igarantia.inver_id)
+    await Igarantia.findByIdAndDelete(req.params.id)
+    req.flash('error_msg', 'Inversión eliminada');
+    res.redirect('/ficha-i/' + inversionista._id)
+  }
+  catch (e) {
+    const igarantia = await Igarantia.findById(req.params.id)
+    req.flash('error_msg', 'La inversión no pudo ser eliminada')
+    res.redirect('/ficha-inversion/' + igarantia._id + '/garantia')
+    console.log(e);
+  }
 }
 
 igarantiaCtrl.updateInversionGarantia = async (req, res) => {
-  console.log(req.params.id)
-  const { 
-    proyecto_id,
-    fecha_inicio,
-    duracion,
-    periodo_liquidacion,
-    valor_inversion,
-    tasa_int_men
-  } = req.body;
-  const {_id,nombre} =await Proyecto.findById(proyecto_id)
-  const proyecto = {'id':_id,'nombre':nombre}
-  const igarantia = await Igarantia.findById(req.params.id)
-  await Igarantia.findByIdAndUpdate(req.params.id, {
-    proyecto,
-    fecha_inicio,
-    duracion,
-    periodo_liquidacion,
-    valor_inversion,
-    tasa_int_men
-  })
-  req.flash('success_msg', 'Inversion actualizada')
-  res.redirect('/ficha-inversion/' + igarantia._id + '/garantia')
+  try {
+    console.log(req.params.id)
+    const {
+      proyecto_id,
+      fecha_inicio,
+      duracion,
+      periodo_liquidacion,
+      valor_inversion,
+      tasa_int_men
+    } = req.body;
+    const { _id, nombre } = await Proyecto.findById(proyecto_id)
+    const proyecto = { 'id': _id, 'nombre': nombre }
+    const igarantia = await Igarantia.findById(req.params.id)
+    await Igarantia.findByIdAndUpdate(req.params.id, {
+      proyecto,
+      fecha_inicio,
+      duracion,
+      periodo_liquidacion,
+      valor_inversion,
+      tasa_int_men
+    })
+    req.flash('success_msg', 'Inversion actualizada')
+    res.redirect('/ficha-inversion/' + igarantia._id + '/garantia')
+  }
+  catch (e) {
+    const igarantia = await Igarantia.findById(req.params.id)
+    req.flash('error_msg', 'La inversión no pudo ser actualizada')
+    res.redirect('/ficha-inversion/' + igarantia._id + '/garantia')
+    console.log(e);
+  }
 }
 
 igarantiaCtrl.AsociarInversionistaGarantia = async (req, res) => {
-  const { co_inversionista } = await Igarantia.findById(req.params.id)
-  const igarantia = await Igarantia.findById(req.params.id)
-  const {_id,nombre, apellido} =await Inversionista.findById(req.body.co_inversionista)
-  const inversionista = {'id':_id,'nombre':nombre + " " + apellido}
-  co_inversionista.push(inversionista)
-  await Igarantia.findByIdAndUpdate(req.params.id, { co_inversionista })
-  req.flash('success_msg', 'Inversionista añadido')
-  res.redirect('/ficha-inversion/' + igarantia._id + '/garantia')
+  try {
+    const { co_inversionista } = await Igarantia.findById(req.params.id)
+    const igarantia = await Igarantia.findById(req.params.id)
+    const { _id, nombre, apellido } = await Inversionista.findById(req.body.co_inversionista)
+    const inversionista = { 'id': _id, 'nombre': nombre + " " + apellido }
+    co_inversionista.push(inversionista)
+    await Igarantia.findByIdAndUpdate(req.params.id, { co_inversionista })
+    req.flash('success_msg', 'Inversionista añadido')
+    res.redirect('/ficha-inversion/' + igarantia._id + '/garantia')
+  }
+  catch (e) {
+    const igarantia = await Igarantia.findById(req.params.id)
+    req.flash('error_msg', 'El Co-inversionista no pudo ser añadido')
+    res.redirect('/ficha-inversion/' + igarantia._id + '/garantia')
+    console.log(e);
+  }
 }
 
 igarantiaCtrl.renderEditPPGarantia = async (req, res) => {
