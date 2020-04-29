@@ -663,3 +663,16 @@ input:checked + .slider:before {
         text-align: center; }
       .novedades .noticias .texto-col p {
         text-align: justify; }
+
+.back {
+  position: relative;
+  height: 1px; }
+  .back .back-button {
+    margin: 0;
+    padding: 10px 20px;
+    position: absolute;
+    top: 55px;
+    left: 15px; }
+    .back .back-button:hover {
+      background: #4c5c68;
+      text-decoration: none; }

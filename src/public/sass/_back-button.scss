@@ -1,0 +1,15 @@
+.back{
+    position: relative;
+    height: 1px;
+    .back-button{
+        margin: 0;
+        padding: 10px 20px;
+        position: absolute;
+        top: 55px;
+        left: 15px;
+        &:hover{
+            background: $gris-cla;
+            text-decoration: none;
+        }
+    }
+}

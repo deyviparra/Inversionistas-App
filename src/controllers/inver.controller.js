@@ -15,7 +15,8 @@ const InverUser = require('../models/Inver_User');
 
 inverCtrl.renderInverForm = (req, res) => {
     try {
-        res.render('inversionistas/nuevo-i')
+        const backUrl = '/menuppal'
+        res.render('inversionistas/nuevo-i',{backUrl})
     }
     catch (e) {
         req.flash('error_msg', 'No se puede crear el inversionista')
@@ -68,8 +69,9 @@ inverCtrl.createNewInver = async (req, res) => {
 
 inverCtrl.renderInver = async (req, res) => {
     try {
+        const backUrl = '/menuppal'
         const inversionistas = await Inversionista.find()
-        res.render('inversionistas/lista-i', { inversionistas })
+        res.render('inversionistas/lista-i', { inversionistas,backUrl })
     }
     catch (e) {
         req.flash('error_msg', 'No se puede visualizar los inversionistas')
@@ -81,9 +83,11 @@ inverCtrl.renderInver = async (req, res) => {
 inverCtrl.renderEditFormInver = async (req, res) => {
     try {
         const inver = await Inversionista.findById(req.params.id)
-        res.render('inversionistas/edit-inver', { inver })
+        const backUrl = "/ficha-i/" + inver._id
+        res.render('inversionistas/edit-inver', { inver,backUrl })
     }
     catch (e) {
+        const backUrl = "/inver"
         const inversionista = await Inversionista.findById(req.params.id)
         req.flash('error_msg', 'No se puede modificar el inversionista')
         res.redirect("/ficha-i/" + inversionista._id);
@@ -119,6 +123,7 @@ inverCtrl.updateInver = async (req, res) => {
 
 inverCtrl.deleteInver = async (req, res) => {
     try {
+        const backUrl = "/menuppal"
         const inver = await Inversionista.findById(req.params.id)
         console.log(req)
         await Inversionista.findByIdAndDelete(req.params.id)
@@ -129,7 +134,8 @@ inverCtrl.deleteInver = async (req, res) => {
         res.redirect('/inver')
     }
     catch (e) {
-        req.flash('error_msg', 'No se puede eliminar el inversionista')
+        const backUrl = '/menuppal'
+        req.flash('error_msg', 'No se pudo eliminar el inversionista')
         res.redirect('/inver')
         console.log(e);
     }
@@ -137,6 +143,7 @@ inverCtrl.deleteInver = async (req, res) => {
 
 inverCtrl.renderFichaI = async (req, res) => {
     try {
+        const backUrl = '/inver'
         const inversionista = await Inversionista.findById(req.params.id)
         // Inversiones propias
         const icompra = await Icompra.find({ inver_id: req.params.id })
@@ -150,20 +157,22 @@ inverCtrl.renderFichaI = async (req, res) => {
         const iasociativo_c = await Asociativo.find({ "co_inversionista.id": mongoose.Types.ObjectId(req.params.id) })
         // Iversionistas como Usuarios
         const inveruser = await InverUser.find({ inver_id: req.params.id });
-        res.render('inversionistas/ficha-i', { inversionista, iasociativo, icompra, ifnf, igarantia, icompra_c, ifnf_c, igarantia_c, iasociativo_c, inveruser })
+        res.render('inversionistas/ficha-i', { inversionista, iasociativo, icompra, ifnf, igarantia, icompra_c, ifnf_c, igarantia_c, iasociativo_c, inveruser,backUrl })
     }
     catch (e) {
+        const backUrl = '/menuppal'
         req.flash('error_msg', 'No se puede visualizar el inversionista')
-        res.redirect('/inver')
+        res.redirect('/inver') 
         console.log(e);
-    }
+    } 
 }
 
 inverCtrl.renderModelo = async (req, res) => {
     try {
-        const proyecto = await Proyecto.find()
         const inversionista = await Inversionista.findById(req.query.id)
-        res.render('modelos-inversion/' + req.query.modelo, { proyecto, inversionista })
+        const backUrl= "/ficha-i/" + inversionista._id
+        const proyecto = await Proyecto.find()
+        res.render('modelos-inversion/' + req.query.modelo, { proyecto, inversionista,backUrl })
     }
     catch (e) {
         const inversionista = await Inversionista.findById(req.query.id)
@@ -176,12 +185,13 @@ inverCtrl.renderModelo = async (req, res) => {
 inverCtrl.searchInver = async (req,res) =>{
     try{
         //Por ahora solo busca con el nombre
+        const backUlr = '/menuppal'
         const {buscarI} = req.query
         const nombre = buscarI.split(" ")
         const inverMatch = await Inversionista.find({nombre:{$regex: nombre[0] , $options: "i"}},function(err, docs) {
             return docs
             });
-        res.render('inversionistas/lista-i', { inverMatch })   
+        res.render('inversionistas/lista-i', { inverMatch,backUlr })   
      }
     catch (e){
         console.log('error: ' + e)

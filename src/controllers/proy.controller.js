@@ -6,7 +6,8 @@ const { uploadFile } = require('../upload.js')
 
 proyCtrl.renderProyForm = (req, res) => {
   try{
-    res.render('proyectos/nuevo-p')
+    const backUrl = '/menuppal'
+    res.render('proyectos/nuevo-p',{backUrl})
   }
   catch (e) {
     req.flash('error_msg', 'No se puede crear un proyecto')
@@ -48,8 +49,9 @@ proyCtrl.createNewProy = async (req, res) => {
 }
 proyCtrl.renderProy = async (req, res) => {
   try{
+    const backUrl = '/menuppal'
     const proyectos = await Proyecto.find()
-    res.render('proyectos/lista-p', { proyectos })
+    res.render('proyectos/lista-p', { proyectos, backUrl })
   }
   catch (e) {
     req.flash('error_msg', 'No se pueden visualizar los proyectos')
@@ -60,7 +62,8 @@ proyCtrl.renderProy = async (req, res) => {
 proyCtrl.renderEditFormProy = async (req, res) => {
   try{
     const proy = await Proyecto.findById(req.params.id)
-    res.render('proyectos/edit-proy', { proy })
+    const backUrl = '/ficha-p/' + proy._id
+    res.render('proyectos/edit-proy', { proy,backUrl })
   }
   catch (e) {
     const proyecto = await Proyecto.findById(req.params.id)
@@ -114,7 +117,8 @@ proyCtrl.deleteProy = async (req, res) => {
 proyCtrl.renderFichaP = async (req, res) => {
   try {
     const proyecto = await Proyecto.findById(req.params.id)
-    res.render('proyectos/ficha-p', { proyecto })
+    const backUrl = '/proy'
+    res.render('proyectos/ficha-p', { proyecto,backUrl })
   }
   catch (e) {
     req.flash('error_msg', 'No se puede visualizar el proyecto')
@@ -126,7 +130,8 @@ proyCtrl.renderFichaP = async (req, res) => {
 proyCtrl.renderTipo = async (req, res) => {
   try {
     const proyecto = await Proyecto.findById(req.query.id)
-    res.render('proyectos/tipos', { proyecto })
+    const backUrl = '/ficha-p/' + proyecto._id
+    res.render('proyectos/tipos', { proyecto,backUrl })
   }
   catch (e) {
     const proyecto = await Proyecto.findById(req.query.id)
