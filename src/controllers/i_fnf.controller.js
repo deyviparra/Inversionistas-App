@@ -210,6 +210,7 @@ ifnfCtrl.editarPPFnf = async (req, res) => {
 
 
 function crearFechacierre(fecha_inicio) {
+  try{
   let inicio = fecha_inicio.split("-");
   inicio[0] = parseInt(inicio[0]) + 2;
   inicio[0] = String(inicio[0]);
@@ -222,8 +223,13 @@ function crearFechacierre(fecha_inicio) {
 
   return fecha;
 }
+catch{
+  console.log('No es posible crear la fecha de cierre')
+}
+}
 
 function crearPlan_pagos(fecha_inicio, tasa_interes, porcentaje_cliente, porcentaje_garantia, fecha_pago, valor_mutuo) {
+  try{
   let inicio = fecha_inicio.split("-");
   let inicio_date = new Date(inicio[0], inicio[1] - 1, inicio[2]);
   let plan_pagos = []
@@ -252,6 +258,10 @@ function crearPlan_pagos(fecha_inicio, tasa_interes, porcentaje_cliente, porcent
     inicio[1] = String(inicio[1]);
   }
   return plan_pagos;
+}
+catch{
+  console.log('No es posible crear el plan de pagos')
+}
 }
 
 module.exports = ifnfCtrl;

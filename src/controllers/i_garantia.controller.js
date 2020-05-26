@@ -169,6 +169,7 @@ igarantiaCtrl.editarPPGarantia = async (req, res) => {
 
 
 function crearPlan_pagos(fecha_inicio, tasa_int_men, fecha_pago, valor_inversiono, periodo_liquidacion, duracion) {
+  try{
   let inicio = fecha_inicio.split("-");
   let inicio_date = new Date(inicio[0], inicio[1] - 1, inicio[2]);
   let meses = Number(duracion);
@@ -207,5 +208,9 @@ function crearPlan_pagos(fecha_inicio, tasa_int_men, fecha_pago, valor_inversion
     inicio[1] = String(inicio[1]);
   }
   return plan_pagos;
+}
+catch{
+  console.log('No es posible crear el plan de pagos')
+}
 }
 module.exports = igarantiaCtrl;

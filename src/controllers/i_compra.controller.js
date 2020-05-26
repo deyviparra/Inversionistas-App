@@ -202,6 +202,7 @@ icompraCtrl.editarPPCompra = async (req, res) => {
 };
 
 function crearPlan_pagos(fecha_cierre, fecha_inicio, valor_compra, fecha_pago) {
+  try{
   let cierre = fecha_cierre.split("-");
   let inicio = fecha_inicio.split("-");
 
@@ -227,6 +228,10 @@ function crearPlan_pagos(fecha_cierre, fecha_inicio, valor_compra, fecha_pago) {
     inicio[1]++;
   }
   return plan_pagos;
+}
+catch{
+  console.log('No es posible crear el plan de pagos')
+}
 }
 
 module.exports = icompraCtrl;

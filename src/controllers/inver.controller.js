@@ -199,11 +199,16 @@ inverCtrl.searchInver = async (req,res) =>{
 }
 
 function calcularedad(edad) {
+    try{
     let edad_arr = edad.split("-");
     let edad_fecha = new Date(edad_arr[0], edad_arr[1] - 1, edad_arr[2]);
     let edad_Dif = Date.now() - edad_fecha.getTime();
     let edad_Final = new Date(edad_Dif);
     return Math.abs(edad_Final.getUTCFullYear() - 1970);
+}
+catch{
+  console.log('No es posible calcular la edad')
+}
 }
 
 module.exports = inverCtrl;

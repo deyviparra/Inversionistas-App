@@ -19,8 +19,8 @@
 
 
 {{#if icompra}}
+<section class="edit-pp">
 <h2>Inversión compra de inmueble</h2>
-<section>
     <h2>Plan de pagos</h2>
     <ul>
         <table>
@@ -31,8 +31,8 @@
             </tr>
             {{#each icompra.plan_pagos}}
             <tr>
-                <td> <input type="date" name="fecha" class="input-form" value="{{fecha}}"></td>
-                <td> <input type="text" name="couta" class="input-form" value="{{couta}}"></td>
+                <td> <input type="text" name="fecha" class="input-form" value="{{fecha}}"></td>
+                <td> <input type="text" name="couta" class="input-form" value="{{formatNumber couta style="currency" currency="COP"}}"></td>
                 <td> <input type="file" name="pago" class="input-form"></td>
 
             </tr>
@@ -55,8 +55,8 @@
 {{/if}}
 
 {{#if igarantia}}
+<section class="edit-pp">
 <h2>Inversión garantía de inmbuele</h2>
-<section>
     <h2>Plan de pagos</h2>
     <ul>
         <table>
@@ -67,8 +67,8 @@
             </tr>
             {{#each igarantia.plan_pagos}}
             <tr>
-                <td> <input type="date" name="fecha" class="input-form" value="{{fecha}}"></td>
-                <td> <input type="text" name="couta" class="input-form" value="{{couta}}"></td>
+                <td> <input type="text" name="fecha" class="input-form" value="{{fecha}}"></td>
+                <td> <input type="text" name="couta" class="input-form" value="{{formatNumber couta style="currency" currency="COP"}}"></td>
                 <td> <input type="file" name="pago" class="input-form"></td>
 
             </tr>
@@ -91,8 +91,8 @@
 {{/if}}
 
 {{#if iasociativo}}
+<section class="edit-pp">
 <h2>Inversión asociativo</h2>
-<section>
     <h2>Plan de pagos</h2>
     <ul>
         <table>
@@ -103,8 +103,8 @@
             </tr>
             {{#each iasociativo.plan_pagos}}
             <tr>
-                <td> <input type="date" name="fecha" class="input-form" value="{{fecha}}"></td>
-                <td> <input type="text" name="couta" class="input-form" value="{{couta}}"></td>
+                <td> <input type="text" name="fecha" class="input-form" value="{{fecha}}"></td>
+                <td> <input type="text" name="couta" class="input-form" value="{{formatNumber couta style="currency" currency="COP"}}"></td>
                 <td> <input type="file" name="pago" class="input-form"></td>
 
             </tr>
@@ -127,22 +127,23 @@
 {{/if}}
 
 {{#if ifnf}}
-<h2>Inversión fnf</h2>
-<section>
+<section class="edit-pp">
+<h2>Inversión FNF</h2>
     <h2>Plan de pagos</h2>
     <ul>
         <table>
             <tr>
                 <td> <strong> Fecha de pago</strong> </td>
-                <td> <strong> Valor de la cuota </strong> </td>
+                <td> <strong> Valor de la cuota cliente </strong> </td>
+                <td> <strong> Valor de la cuota garantía </strong> </td>
                 <td> <strong> Pago realizado </strong> </td>
             </tr>
-            {{#each ifnf.plan_pagos}}
+            {{#each ifnf.plan_pago_intereses}}
             <tr>
-                <td> <input type="date" name="fecha" class="input-form" value="{{fecha}}"></td>
-                <td> <input type="text" name="couta" class="input-form" value="{{couta}}"></td>
+                <td> <input type="text" name="fecha" class="input-form" value="{{fecha}}"></td>
+                <td> <input type="text" name="couta_cliente" class="input-form" value="{{formatNumber couta_cliente style="currency" currency="COP"}}"></td>
+                <td> <input type="text" name="couta_garantia" class="input-form" value="{{formatNumber couta_garantia style="currency" currency="COP"}}"></td>
                 <td> <input type="file" name="pago" class="input-form"></td>
-
             </tr>
             {{/each}}
         </table>
