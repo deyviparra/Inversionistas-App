@@ -1,0 +1,24 @@
+{{#if iasociativo}}
+<div class="form">
+    <div class="columna">
+        <form action="/pago/adddate/{{iasociativo.id}}/asociativo?_method=PUT" method="POST" class="form-forms">
+            <h1> Añadir fecha al Plan de pagos</h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                    <div class="form-div">
+                        <p> Fecha:</p>
+                        <input type="date" name="fecha" placeholder="dd/mm/aaaa" class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p> Couta: </p>
+                        <input type="text" name="couta" placeholder="Ingrese el valor sin puntos ni simbolos " class="input-form">
+                    </div>
+                </div>
+            </div>
+            <button class="boton" type="submit">
+                Agregar
+            </button>
+        </form>
+    </div>
+</div>
+{{/if}}
