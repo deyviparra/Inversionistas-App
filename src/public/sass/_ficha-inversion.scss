@@ -16,12 +16,14 @@
         height: auto;
         display: flex;
         align-items: flex-start;
+
         p {
             color: $negro;
             margin: 0;
             padding: 10px;
         }
-        ul{
+
+        ul {
             padding: 0;
             margin: 0;
             width: 30%;
@@ -34,17 +36,20 @@
             display: flex;
             height: 100%;
             flex-direction: column;
-            p{
+
+            p {
                 margin: 0;
-                padding: 0; 
+                padding: 0;
             }
+
             ul {
                 width: 100%;
                 padding: 0;
                 padding-top: 15px;
                 display: flex;
                 flex-direction: column;
-                p{
+
+                p {
                     padding: 5px;
                 }
             }
@@ -79,19 +84,21 @@
     flex-direction: column;
     align-items: center;
 
-    ul {
-        width: 60%;
+    h2 {
+        margin: 15px;
+    }
 
-        table {
-            width: 100%;
+    ul {
+        width: 80%;
+
+        li {
             display: flex;
             justify-content: space-around;
 
-            tr {
-
-
-                td {}
+            p {
+                display: inline;
             }
         }
+
     }
 }

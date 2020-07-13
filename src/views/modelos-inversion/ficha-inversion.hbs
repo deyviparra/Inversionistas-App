@@ -1,4 +1,3 @@
-
 <h1>Datos inversionista</h1>
 <section id="info-ppal" class="info-ppal">
     <img id="img" src="{{inversionista.imagePath}}" alt="Foto Inversionista">
@@ -67,26 +66,26 @@
             <p>Inmuebles:</p>
             <ul>
 
-            {{#each icompra.inmuebles}}
-            <li>
-                <p> Torre: {{torre}}</p>
-                <p> Apartamento: {{apartamento}}</p>
-                <p> Parqueadero: {{parqueadero}}</p>
-                <p> Cuarto útil: {{cuarto_util}}</p>
-                <p> Encargo fiduciario: {{encargo_fiduciario}}</p>
-                <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
-            </li>
-            {{/each}}
+                {{#each icompra.inmuebles}}
+                <li>
+                    <p> Torre: {{torre}}</p>
+                    <p> Apartamento: {{apartamento}}</p>
+                    <p> Parqueadero: {{parqueadero}}</p>
+                    <p> Cuarto útil: {{cuarto_util}}</p>
+                    <p> Encargo fiduciario: {{encargo_fiduciario}}</p>
+                    <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
+                </li>
+                {{/each}}
             </ul>
         </div>
         <div class="lista-co-inver">
             <p>Co-inversionista:</p>
             <ul>
-            {{#each icompra.co_inversionista}}
-            <li>
-                <p>{{nombre}}</p>
-            </li>
-            {{/each}}
+                {{#each icompra.co_inversionista}}
+                <li>
+                    <p>{{nombre}}</p>
+                </li>
+                {{/each}}
             </ul>
         </div>
         {{#if user.modificar}}
@@ -139,16 +138,16 @@
                 <p>Tasa de intereses mensual: {{igarantia.tasa_int_men}} %</p>
             </li>
         </ul>
-    
-        
+
+
         <div class="lista-co-inver">
             <p>Co-inversionista:</p>
             <ul>
-            {{#each igarantia.co_inversionista}}
-            <li>
-                <p>{{nombre}}</p>
-            </li>
-            {{/each}}
+                {{#each igarantia.co_inversionista}}
+                <li>
+                    <p>{{nombre}}</p>
+                </li>
+                {{/each}}
             </ul>
         </div>
         {{#if user.modificar}}
@@ -159,7 +158,8 @@
             <a href="/asociar-inversionista/{{igarantia._id}}/garantia" class="boton" type="submit">
                 Asociar Co-inversionista
             </a>
-            <form action="/eliminar-inversion/{{igarantia._id}}/garantia?_method=DELETE" method="POST" name="form-delete">
+            <form action="/eliminar-inversion/{{igarantia._id}}/garantia?_method=DELETE" method="POST"
+                name="form-delete">
                 <input type="hidden" name="_method" value="DELETE">
                 <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
             </form>
@@ -201,27 +201,31 @@
         </ul>
         <div class="lista-inmuebles">
             <p>Inmuebles:</p>
-            <ul>
+            <button class="boton" id="boton-modal">Ver inmuebles</button>
 
-            {{#each iasociativo.inmuebles}}
-            <li>
-                <p> Torre: {{torre}}</p>
-                <p> Apartamento: {{apartamento}}</p>
-                <p> Parqueadero: {{parqueadero}}</p>
-                <p> Cuarto útil: {{cuarto_util}}</p>
-                <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
-            </li>
-            {{/each}}
-            </ul>
+            <div id="modal" class="modal">
+                <ul >
+                    {{#each iasociativo.inmuebles}}
+                    <li>
+                        <p> Torre: {{torre}}</p>
+                        <p> Apartamento: {{apartamento}}</p>
+                        <p> Parqueadero: {{parqueadero}}</p>
+                        <p> Cuarto útil: {{cuarto_util}}</p>
+                        <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+
         </div>
         <div class="lista-co-inver">
             <p>Co-inversionista:</p>
             <ul>
-            {{#each iasociativo.co_inversionista}}
-            <li>
-                <p>{{nombre}}</p>
-            </li>
-            {{/each}}
+                {{#each iasociativo.co_inversionista}}
+                <li>
+                    <p>{{nombre}}</p>
+                </li>
+                {{/each}}
             </ul>
         </div>
         {{#if user.modificar}}
@@ -235,7 +239,8 @@
             <a href="/asociar-inversionista/{{iasociativo._id}}/asociativo" class="boton" type="submit">
                 Asociar Co-inversionista
             </a>
-            <form action="/eliminar-inversion/{{iasociativo._id}}/asociativo?_method=DELETE" method="POST" name="form-delete">
+            <form action="/eliminar-inversion/{{iasociativo._id}}/asociativo?_method=DELETE" method="POST"
+                name="form-delete">
                 <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
             </form>
         </div>
@@ -284,25 +289,25 @@
             <p>Inmuebles:</p>
             <ul>
 
-            {{#each ifnf.inmuebles}}
-            <li>
-                <p> Torre: {{torre}}</p>
-                <p> Apartamento: {{apartamento}}</p>
-                <p> Parqueadero: {{parqueadero}}</p>
-                <p> Cuarto útil: {{cuarto_util}}</p>
-                <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
-            </li>
-            {{/each}}
+                {{#each ifnf.inmuebles}}
+                <li>
+                    <p> Torre: {{torre}}</p>
+                    <p> Apartamento: {{apartamento}}</p>
+                    <p> Parqueadero: {{parqueadero}}</p>
+                    <p> Cuarto útil: {{cuarto_util}}</p>
+                    <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
+                </li>
+                {{/each}}
             </ul>
         </div>
         <div class="lista-co-inver">
             <p>Co-inversionista:</p>
             <ul>
-            {{#each ifnf.co_inversionista}}
-            <li>
-                <p> {{nombre}}</p>
-            </li>
-            {{/each}}
+                {{#each ifnf.co_inversionista}}
+                <li>
+                    <p> {{nombre}}</p>
+                </li>
+                {{/each}}
             </ul>
         </div>
         {{#if user.modificar}}
@@ -327,24 +332,25 @@
     {{/if}}
 </section>
 
+{{!-- ------------------------------------------------------------------------------------------------------ --}}
+
 <section class="pagos">
     {{#if ifnf}}
     <h2>Plan de pago de intereses</h2>
     <ul>
-        <table>
-            <tr>
-                <td> <strong> Fecha de pago</strong> </td>
-                <td> <strong> Cuota cliente </strong> </td>
-                <td> <strong> Cuota garantía </strong> </td>
-            </tr>
-            {{#each ifnf.plan_pago_intereses}}
-            <tr>
-                <td> {{fecha}}</td>
-                <td> {{formatNumber couta_cliente style="currency" currency="COP"}}</td>
-                <td> {{formatNumber couta_garantia style="currency" currency="COP"}}</td>
-            </tr>
-            {{/each}}
-        </table>
+        <li>
+            <p> <strong> Fecha de pago</strong> </p>
+            <p> <strong> Cuota cliente </strong> </p>
+            <p> <strong> Cuota garantía </strong> </p>
+        </li>
+        {{#each ifnf.plan_pago_intereses}}
+        <li>
+            <p> {{fecha}}</p>
+            <p> {{formatNumber couta_cliente style="currency" currency="COP"}}</p>
+            <p> {{formatNumber couta_garantia style="currency" currency="COP"}}</p>
+        </li>
+        {{/each}}
+
     </ul>
     {{#if user.modificar}}
     <div class="botones">
@@ -358,18 +364,18 @@
     {{#if igarantia}}
     <h2>Plan de pago de intereses</h2>
     <ul>
-        <table>
-            <tr>
-                <td> <strong> Fecha de pago</strong> </td>
-                <td> <strong> Valor de la cuota </strong> </td>
-            </tr>
-            {{#each igarantia.plan_pago_intereses}}
-            <tr>
-                <td> {{fecha}}</td>
-                <td> {{formatNumber couta style="currency" currency="COP"}}</td>
-            </tr>
-            {{/each}}
-        </table>
+
+        <li>
+            <p> <strong> Fecha de pago</strong> </p>
+            <p> <strong> Valor de la cuota </strong> </p>
+        </li>
+        {{#each igarantia.plan_pago_intereses}}
+        <li>
+            <p> {{fecha}}</p>
+            <p> {{formatNumber couta style="currency" currency="COP"}}</p>
+        </li>
+        {{/each}}
+
     </ul>
     {{#if user.modificar}}
     <div class="botones">
@@ -383,18 +389,18 @@
     {{#if iasociativo}}
     <h2>Plan de pagos</h2>
     <ul>
-        <table>
-            <tr>
-                <td> <strong> Fecha de pago</strong> </td>
-                <td> <strong> Valor de la cuota </strong> </td>
-            </tr>
-            {{#each iasociativo.plan_pagos}}
-            <tr>
-                <td> {{fecha}}</td>
-                <td> {{formatNumber couta style="currency" currency="COP"}}</td>
-            </tr>
-            {{/each}}
-        </table>
+
+        <li>
+            <p> <strong> Fecha de pago</strong> </p>
+            <p> <strong> Valor de la cuota </strong> </p>
+        </li>
+        {{#each iasociativo.plan_pagos}}
+        <li>
+            <p> {{fecha}}</p>
+            <p> {{formatNumber couta style="currency" currency="COP"}}</p>
+        </li>
+        {{/each}}
+
     </ul>
     {{#if user.modificar}}
     <div class="botones">
@@ -408,18 +414,18 @@
     {{#if icompra }}
     <h2>Plan de pagos</h2>
     <ul>
-        <table>
-            <tr>
-                <td> <strong> Fecha de pago</strong> </td>
-                <td> <strong> Valor de la cuota </strong> </td>
-            </tr>
-            {{#each icompra.plan_pagos }}
-            <tr>
-                <td> {{fecha}}</td>
-                <td> {{formatNumber couta style="currency" currency="COP"}}</td>
-            </tr>
-            {{/each}}
-        </table>
+
+        <li>
+            <p> <strong> Fecha de pago</strong> </p>
+            <p> <strong> Valor de la cuota </strong> </p>
+        </li>
+        {{#each icompra.plan_pagos }}
+        <li>
+            <p> {{fecha}}</p>
+            <p> {{formatNumber couta style="currency" currency="COP"}}</p>
+        </li>
+        {{/each}}
+
     </ul>
     {{#if user.modificar}}
     <div class="botones">

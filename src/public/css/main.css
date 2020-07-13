@@ -624,12 +624,15 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: column;
   align-items: center; }
+  .pagos h2 {
+    margin: 15px; }
   .pagos ul {
-    width: 60%; }
-    .pagos ul table {
-      width: 100%;
+    width: 80%; }
+    .pagos ul li {
       display: flex;
       justify-content: space-around; }
+      .pagos ul li p {
+        display: inline; }
 
 .banner-ppal img {
   width: 100%; }
