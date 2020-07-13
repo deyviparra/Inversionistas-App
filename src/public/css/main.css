@@ -609,7 +609,7 @@ input:checked + .slider:before {
       box-sizing: content-box;
       border: none;
       border-radius: 30px;
-      background: #CFDE00;
+      background: #cfde00;
       box-shadow: 20px 20px 60px #b0bd00, -20px -20px 60px #eeff00; }
       .info-inversion .info-ppal .botones .boton {
         border-radius: 15px;
@@ -633,6 +633,24 @@ input:checked + .slider:before {
       justify-content: space-around; }
       .pagos ul li p {
         display: inline; }
+
+.edit-pp {
+  background-color: #272727;
+  padding: 30px 0; }
+  .edit-pp h2 {
+    display: block;
+    text-align: center;
+    color: #f3f3f3;
+    margin: 20px; }
+  .edit-pp .botones {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .edit-pp .botones ul {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
 
 .banner-ppal img {
   width: 100%; }

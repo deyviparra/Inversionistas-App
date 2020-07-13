@@ -1,26 +1,52 @@
 .info-inversion {
-    background-color: $verde;
-    padding: 30px 0;
-    display: flex;
-    flex-direction: column;
+  background-color: $verde;
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
 
-    h2 {
-        display: block;
-        text-align: center;
-        color: $negro;
-        margin: 20px;
+  h2 {
+    display: block;
+    text-align: center;
+    color: $negro;
+    margin: 20px;
+  }
+
+  .info-ppal {
+    background-color: $verde;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    p {
+      color: $negro;
+      margin: 0;
+      padding: 10px;
+    }
+    ul {
+      padding: 0;
+      margin: 0;
+      width: 30%;
     }
 
-    .info-ppal {
-        background-color: $verde;
-        height: auto;
+    .lista-inmuebles,
+    .lista-co-inver {
+      width: 15%;
+      padding-top: 10px;
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      p {
+        margin: 0;
+        padding: 0;
+      }
+      ul {
+        width: 100%;
+        padding: 0;
+        padding-top: 15px;
         display: flex;
         align-items: flex-start;
 
         p {
-            color: $negro;
-            margin: 0;
-            padding: 10px;
+          padding: 5px;
         }
 
         ul {
@@ -54,34 +80,47 @@
                 }
             }
         }
-
-        .botones {
-            margin-top: 6%;
-            box-sizing: content-box;
-            border: none;
-            border-radius: 30px;
-            background: #CFDE00;
-            box-shadow: 20px 20px 60px #b0bd00,
-                -20px -20px 60px #eeff00;
-
-            .boton {
-                border-radius: 15px;
-                background: $negro;
-                color: $blanco;
-
-                &:hover {
-                    text-decoration: none;
-                    background: $gris-cla;
-                }
-            }
-        }
+      }
     }
+  }
 }
 
 .pagos {
-    background-color: $negro;
+  background-color: $negro;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  ul {
+    width: 60%;
+
+    table {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+
+      tr {
+        td {
+        }
+      }
+    }
+  }
+}
+
+.edit-pp {
+  background-color: $negro;
+  padding: 30px 0;
+
+  h2 {
+    display: block;
+    text-align: center;
+    color: $blanco;
+    margin: 20px;
+  }
+  .botones {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 
     h2 {
@@ -101,4 +140,6 @@
         }
 
     }
+    
+  }
 }

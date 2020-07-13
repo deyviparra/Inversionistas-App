@@ -36,7 +36,6 @@ asociativoCtrl.createNewAso = async (req, res) => {
   catch (e) {
     req.flash('error_msg', 'No es posible crear la inversión')
     res.redirect("/ficha-i/" + inver_id);
-
     console.log(e);
   }
 };
@@ -198,39 +197,114 @@ asociativoCtrl.renderEditPPAsociativo = async (req, res) => {
 };
 
 asociativoCtrl.agregarPagoAsociativo = async (req, res) => {
-  res.send('Agregar pago')
+  const iasociativo = await Iasociativo.findById(req.params.id);
+  const inversionista = await Inversionista.findById(iasociativo.inver_id);
+  res.render('modelos-inversion/agregar-fecha-pp', { inversionista, iasociativo })
 };
 
-asociativoCtrl.editarPPAsociativo = async (req, res) => {
-  res.send('Actualizar PP')
+asociativoCtrl.AddDateAsociativo = async (req, res) => {
+  try {
+    const { plan_pagos } = await Iasociativo.findById(req.params.id)
+    const iasociativo = await Iasociativo.findById(req.params.id)
+    const pago = req.body;
+    const cuota = pago.couta;
+    const fecha = pago.fecha;
+    pago.couta = Number(cuota);
+    pago.fecha = datespliter(fecha);
+    plan_pagos.push(pago)
+    await Iasociativo.findByIdAndUpdate(req.params.id, { plan_pagos })
+    req.flash('success_msg', 'Fecha de Pago añadida')
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+  }
+  catch (e) {
+    const iasociativo = await Iasociativo.findById(req.params.id)
+    req.flash('error_msg', 'La fecha de  pago no pudo ser añadida')
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+    console.log(e);
+  }
+}
+
+
+
+asociativoCtrl.updatePPAsociativo = async (req, res) => {
+  try {
+    const iasociativo = await Iasociativo.findById(req.params.id)
+    const  plan = req.body;
+    let plan_pagos = updatePlanPagos(plan);
+    await Iasociativo.findByIdAndUpdate(req.params.id, { plan_pagos })
+    req.flash('success_msg', 'Plan de pagos actualizado')
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+  }
+  catch (e) {
+    const iasociativo = await Iasociativo.findById(req.params.id)
+    req.flash('error_msg', 'El plan de pagos no pudo ser actualizado')
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+    console.log(e);
+  }
 };
 
 function crearPlan_pagos(fecha_cierre, fecha_inicio, valor_compra, fecha_pago) {
-  let cierre = fecha_cierre.split("-");
-  let inicio = fecha_inicio.split("-");
+  try {
+    let cierre = fecha_cierre.split("-");
+    let inicio = fecha_inicio.split("-");
 
-  let cierre_date = new Date(cierre[0], cierre[1] - 1, cierre[2]);
-  let inicio_date = new Date(inicio[0], inicio[1] - 1, inicio[2]);
-  let dif = cierre_date.getTime() - inicio_date.getTime();
+    let cierre_date = new Date(cierre[0], cierre[1] - 1, cierre[2]);
+    let inicio_date = new Date(inicio[0], inicio[1] - 1, inicio[2]);
+    let dif = cierre_date.getTime() - inicio_date.getTime();
 
-  let fecha = new Date(dif);
-  let meses = ((fecha.getUTCFullYear() - 1970) * 12) + (fecha.getUTCMonth());
+    let fecha = new Date(dif);
+    let meses = ((fecha.getUTCFullYear() - 1970) * 12) + (fecha.getUTCMonth());
 
-  let couta = valor_compra / meses;
+    let couta = valor_compra / meses;
 
-  let plan_pagos = new Array(meses);
+    let plan_pagos = new Array(meses);
 
-  for (let i = 0; i < meses; i++) {
-    inicio_date = new Date(inicio[0], inicio[1] - 1, inicio[2]);
-    let ano = inicio_date.getFullYear();
-    let mes = inicio_date.getMonth();
-    mes++;
-    let dia = fecha_pago
-    let fecha = dia + "/" + mes + "/" + ano;
-    plan_pagos[i] = { fecha, couta };
-    inicio[1]++;
+    for (let i = 0; i < meses; i++) {
+      inicio_date = new Date(inicio[0], inicio[1] - 1, inicio[2]);
+      let ano = inicio_date.getFullYear();
+      let mes = inicio_date.getMonth();
+      mes++;
+      let dia = fecha_pago
+      let fecha = dia + "/" + mes + "/" + ano;
+      plan_pagos[i] = { fecha, couta };
+      inicio[1]++;
+    }
+    return plan_pagos;
   }
-  return plan_pagos;
+  catch{
+    console.log('No es posible crear el plan de pagos')
+  }
+}
+
+function datespliter (fecha){
+  try{
+    let fecha_arr = fecha.split("-");
+    let dia = fecha_arr[2] ;
+    let mes = fecha_arr[1] ;
+    let ano = fecha_arr[0] ;
+    let new_fecha = dia + "/" + mes + "/" + ano;
+    return new_fecha;
+  }
+  catch{
+    console.log('Error guardando nueva fecha en plan de pagos')
+  }
+}
+
+function updatePlanPagos(plan){
+  let fechas = plan.fecha;
+  let coutas = plan.couta;
+  let pagos = plan.pago;
+
+  let new_plan_pagos = new Array(fechas.length);
+
+  for (let i = 0; i < fechas.length; i++) {
+    let fecha = fechas [i];
+    let couta = Number (coutas [i]);
+    let pago = pagos [i];
+
+    new_plan_pagos[i] = { fecha, couta, pago };
+  }
+  return(new_plan_pagos)
 }
 
 module.exports = asociativoCtrl;
