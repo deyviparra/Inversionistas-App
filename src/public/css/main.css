@@ -1,7 +1,7 @@
 * {
   text-decoration: none;
   color: #f3f3f3;
-  font-family: 'Open Sans Condensed', sans-serif; }
+  font-family: "Open Sans Condensed", sans-serif; }
 
 body {
   background: #272727 !important; }
@@ -14,6 +14,10 @@ body {
 ul,
 ol {
   list-style: none; }
+
+.highlight {
+  font-style: oblique;
+  font-size: 22px; }
 
 @-webkit-keyframes autofill {
   to {
@@ -280,9 +284,13 @@ header nav {
     color: #272727;
     margin: 20px;
     font-size: 20px; }
+    .info-secun ul li p span {
+      color: #272727; }
   .info-secun .text-area {
     width: 25%;
     color: #272727; }
+    .info-secun .text-area span {
+      color: #272727; }
 
 .sec-inversiones .inversiones div {
   display: flex;
@@ -589,6 +597,8 @@ input:checked + .slider:before {
       .info-inversion .info-ppal .info-inversion-div ul {
         width: 50%;
         margin-left: 12%; }
+      .info-inversion .info-ppal .info-inversion-div span {
+        color: #272727; }
     .info-inversion .info-ppal .inmueble-coinver {
       display: flex;
       width: 100%;

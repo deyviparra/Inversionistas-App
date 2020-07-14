@@ -95,10 +95,16 @@
     color: $negro;
     margin: 20px;
     font-size: 20px;
+    span{
+      color: $negro;
+    }
   }
   .text-area{
     width: 25%;
     color: $negro;
+    span{
+      color: $negro;
+    }
   }
 }
 

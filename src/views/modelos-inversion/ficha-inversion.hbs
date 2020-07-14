@@ -4,35 +4,35 @@
     <ul>
         {{#if inversionista.razon_social}}
         <li>
-            <p> Razón social: {{inversionista.razon_social}}</p>
+            <p> <span class="highlight">Razón social: </span>{{inversionista.razon_social}}</p>
         </li>
         <li>
-            <p> Nit: {{addPointsNit inversionista.nit}}</p>
+            <p> <span class="highlight">Nit: </span>{{addPointsNit inversionista.nit}}</p>
         </li>
         <li>
-            <p> Representante Legal: {{inversionista.nombre}} {{inversionista.apellido}}</p>
+            <p> <span class="highlight">Representante legal: </span>{{inversionista.nombre}} {{inversionista.apellido}}</p>
         </li>
         <li>
-            <p> Cédula: {{addPoints inversionista.cedula}}</p>
+            <p> <span class="highlight">Cédula: </span>{{addPoints inversionista.cedula}}</p>
         </li>
         <li>
-            <p> Celular: {{phoneNumber inversionista.celular}}</p>
+            <p> <span class="highlight">Celular: </span>{{phoneNumber inversionista.celular}}</p>
         </li>
         <li>
-            <p> Correo: {{inversionista.correo}}</p>
+            <p> <span class="highlight">Correo: </span>{{inversionista.correo}}</p>
         </li>
         {{else}}
         <li>
-            <p> Nombre: {{inversionista.nombre}} {{inversionista.apellido}}</p>
+            <p> <span class="highlight">Nombre: </span> {{inversionista.nombre}} {{inversionista.apellido}}</p>
         </li>
         <li>
-            <p> Cédula: {{addPoints inversionista.cedula}}</p>
+            <p> <span class="highlight">Cédula: </span>{{addPoints inversionista.cedula}}</p>
         </li>
         <li>
-            <p> Celular: {{phoneNumber inversionista.celular}}</p>
+            <p> <span class="highlight">Celular: </span>{{phoneNumber inversionista.celular}}</p>
         </li>
         <li>
-            <p> Correo: {{inversionista.correo}}</p>
+            <p> <span class="highlight">Correo: </span> {{inversionista.correo}}</p>
         </li>
         {{/if}}
     </ul>
@@ -45,24 +45,24 @@
         <div class="info-inversion-div">
             <ul>
                 <li>
-                    <p>Proyecto: {{icompra.proyecto.nombre}}</p>
+                    <p> <span class="highlight">Proyecto: </span>{{icompra.proyecto.nombre}}</p>
                 </li>
                 <li>
-                    <p>Fecha de inicio: {{icompra.fecha_inicio}}</p>
+                    <p><span class="highlight">Fecha de inicio: </span>{{icompra.fecha_inicio}}</p>
                 </li>
                 <li>
-                    <p>Fecha de cierre: {{icompra.fecha_cierre}}</p>
+                    <p> <span class="highlight">Fecha de cierre: </span>{{icompra.fecha_cierre}}</p>
                 </li>
             </ul>
             <ul>
                 <li>
-                    <p>Valor de compra: {{formatNumber icompra.valor_compra style="currency" currency="COP"}}</p>
+                    <p> <span class="highlight">Valor de compra: </span>{{formatNumber icompra.valor_compra style="currency" currency="COP"}}</p>
                 </li>
                 <li>
-                    <p>Fecha de entrega: {{icompra.fecha_entrega}}</p>
+                    <p> <span class="highlight">Fecha de entrega: </span>{{icompra.fecha_entrega}}</p>
                 </li>
                 <li>
-                    <p>TIR prometida: {{icompra.tir_prometida}} %</p>
+                    <p> <span class="highlight">TIR prometida: </span>{{icompra.tir_prometida}} %</p>
                 </li>
             </ul>
         </div>
@@ -127,25 +127,25 @@
         <div class="info-inversion-div">
             <ul>
                 <li>
-                    <p>Proyecto: {{igarantia.proyecto.nombre}}</p>
+                    <p> <span class="highlight">Proyecto: </span>{{igarantia.proyecto.nombre}}</p>
                 </li>
                 <li>
-                    <p>Fecha de inicio: {{igarantia.fecha_inicio}}</p>
+                    <p> <span class="highlight">Fecha de inicio: </span>{{igarantia.fecha_inicio}}</p>
                 </li>
                 <li>
-                    <p>Duración de la inversión: {{igarantia.duracion}} meses</p>
+                    <p> <span class="highlight">Duración de la inversión: </span>{{igarantia.duracion}} meses</p>
                 </li>
             </ul>
             <ul>
                 <li>
-                    <p>Valor de inversion: {{formatNumber igarantia.valor_inversion style="currency" currency="COP"}}
+                    <p> <span class="highlight">Valor de la inversión: </span>{{formatNumber igarantia.valor_inversion style="currency" currency="COP"}}
                     </p>
                 </li>
                 <li>
-                    <p>Periodo de liquidación: Cada {{igarantia.periodo_liquidacion}} meses </p>
+                    <p> <span class="highlight">Período de liquidación: cada </span>{{igarantia.periodo_liquidacion}} meses </p>
                 </li>
                 <li>
-                    <p>Tasa de intereses mensual: {{igarantia.tasa_int_men}} %</p>
+                    <p> <span class="highlight">Tasa de intereses mensual: </span>{{igarantia.tasa_int_men}} %</p>
                 </li>
             </ul>
         </div>
@@ -191,29 +191,29 @@
         <div class="info-inversion-div">
             <ul>
                 <li>
-                    <p> Proyecto: {{iasociativo.proyecto.nombre}}</p>
+                    <p> <span class="highlight">Proyecto: </span>{{iasociativo.proyecto.nombre}}</p>
                 </li>
                 <li>
-                    <p> Fecha de inicio: {{iasociativo.fecha_inicio}}</p>
+                    <p> <span class="highlight">Fecha de inicio: </span>{{iasociativo.fecha_inicio}}</p>
                 </li>
                 <li>
-                    <p> Fecha de cierre: {{iasociativo.fecha_cierre}}</p>
+                    <p> <span class="highlight">Fecha de cierre: </span>{{iasociativo.fecha_cierre}}</p>
                 </li>
 
                 <li>
-                    <p> Número de acciones: {{iasociativo.n_acciones}}</p>
+                    <p> <span class="highlight">Número de acciones: </span>{{iasociativo.n_acciones}}</p>
                 </li>
             </ul>
             <ul>
                 <li>
-                    <p> Valor de compra: {{formatNumber iasociativo.valor_compra style="currency" currency="COP"}}</p>
+                    <p> <span class="highlight">Valor de compra: </span>{{formatNumber iasociativo.valor_compra style="currency" currency="COP"}}</p>
                 </li>
 
                 <li>
-                    <p> Fecha entrega prometida: {{iasociativo.fecha_entrega_prometida}}</p>
+                    <p> <span class="highlight">Fecha de entrega prometida:</span>{{iasociativo.fecha_entrega_prometida}}</p>
                 </li>
                 <li>
-                    <p>TIR prometida: {{iasociativo.tir_prometida}} %</p>
+                    <p><span class="highlight">TIR prometida: </span>{{iasociativo.tir_prometida}} %</p>
                 </li>
             </ul>
         </div>
@@ -278,33 +278,33 @@
         <div class="info-inversion-div">
             <ul>
                 <li>
-                    <p>Proyecto: {{ifnf.proyecto.nombre}}</p>
+                    <p> <span class="highlight">Proyecto: </span>{{ifnf.proyecto.nombre}}</p>
                 </li>
                 <li>
-                    <p>Fecha de inicio: {{ifnf.fecha_inicio}}</p>
-                </li>
-
-                <li>
-                    <p>Fecha de legalización del mutuo: {{ifnf.lega_mutuo_fidu}}</p>
+                    <p> <span class="highlight">Fecha de inicio: </span>{{ifnf.fecha_inicio}}</p>
                 </li>
 
                 <li>
-                    <p>Valor del mutuo: {{formatNumber ifnf.valor_mutuo style="currency" currency="COP"}}</p>
+                    <p> <span class="highlight">Fecha de legalización del mutuo: </span>{{ifnf.lega_mutuo_fidu}}</p>
                 </li>
 
                 <li>
-                    <p>Tasa de interés: {{ifnf.tasa_interes}} %</p>
+                    <p> <span class="highlight">Valor del mutuo: </span>{{formatNumber ifnf.valor_mutuo style="currency" currency="COP"}}</p>
+                </li>
+
+                <li>
+                    <p> <span class="highlight">Tasa de interés: </span> {{ifnf.tasa_interes}} %</p>
                 </li>
             </ul>
             <ul>
                 <li>
-                    <p>Porcentaje cliente: {{ifnf.porcentaje_cliente}} %</p>
+                    <p> <span class="highlight">Porcentaje cliente: </span>{{ifnf.porcentaje_cliente}} %</p>
                 </li>
                 <li>
-                    <p>Porcentaje garantia: {{ifnf.porcentaje_garantia}} %</p>
+                    <p> <span class="highlight">Porcentaje garantía: </span>{{ifnf.porcentaje_garantia}} %</p>
                 </li>
                 <li>
-                    <p>Observaciones: {{ifnf.observaciones}}</p>
+                    <p> <span class="highlight">Obervaciones: </span>{{ifnf.observaciones}}</p>
                 </li>
             </ul>
         </div>

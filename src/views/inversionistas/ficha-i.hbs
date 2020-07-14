@@ -8,20 +8,20 @@
     <ul>
         {{#if inversionista.razon_social}}
         <li>
-            <p> Nit: {{addPointsNit inversionista.nit}}</p>
+            <p> <span class="highlight">Nit: </span>{{addPointsNit inversionista.nit}}</p>
         </li>
         <li>
-            <p> Representante legal: {{inversionista.nombre}} {{inversionista.apellido}}</p>
+            <p> <span class="highlight">Representante legal: </span>{{inversionista.nombre}} {{inversionista.apellido}}</p>
         </li>
         {{/if}}
         <li>
-            <p> Cédula: {{addPoints inversionista.cedula}}</p>
+            <p> <span class="highlight">Cédula: </span>{{addPoints inversionista.cedula}}</p>
         </li>
         <li>
-            <p> Correo: {{inversionista.correo}}</p>
+            <p> <span class="highlight">Correo: </span>{{inversionista.correo}}</p>
         </li>
         <li>
-            <p> Celular: {{phoneNumber inversionista.celular}}</p>
+            <p> <span class="highlight">Celular: </span>{{phoneNumber inversionista.celular}}</p>
         </li>
     </ul>
     {{#if user.modificar}}
@@ -65,40 +65,40 @@
 <section id="info-secun" class="info-secun">
     <ul>
         <li>
-            <p> Teléfono fijo: {{ phoneNumber inversionista.telefono}}</p>
+            <p> <span class="highlight">Teléfono fijo: </span>{{ phoneNumber inversionista.telefono}}</p>
         </li>
         <li>
-            <p> Dirección: {{inversionista.direccion}}</p>
+            <p> <span class="highlight">Dirección: </span>{{inversionista.direccion}}</p>
         </li>
         <li>
-            <p> Profesión: {{inversionista.profesion}}</p>
+            <p> <span class="highlight">Profesión:</span>{{inversionista.profesion}}</p>
         </li>
         <li>
-            <p> Empresa: {{inversionista.empresa}}</p>
-        </li>
-
-    </ul>
-    <ul>
-        <li>
-            <p> Estado Civil: {{inversionista.estado_civil}}</p>
-        </li>
-        <li>
-            <p> Edad: {{inversionista.edad}} Años</p>
-        </li>
-        <li>
-            <p> Fecha de nacimiento: {{inversionista.nacimiento}}</p>
+            <p> <span class="highlight">Empresa: </span>{{inversionista.empresa}}</p>
         </li>
 
     </ul>
     <ul>
         <li>
-            <p> Hijos: {{inversionista.n_hijos}}</p>
+            <p> <span class="highlight">Estado civil: </span>{{inversionista.estado_civil}}</p>
         </li>
         <li>
-            <p> Mascotas: {{inversionista.n_mascotas}}</p>
+            <p> <span class="highlight">Edad: </span>{{inversionista.edad}} Años</p>
         </li>
         <li>
-            <p> Hobby: {{inversionista.hobby}}</p>
+            <p> <span class="highlight">Fecha de nacimiento: </span>{{inversionista.nacimiento}}</p>
+        </li>
+
+    </ul>
+    <ul>
+        <li>
+            <p> <span class="highlight">Hijos: </span>{{inversionista.n_hijos}}</p>
+        </li>
+        <li>
+            <p> <span class="highlight">Mascotas: </span>{{inversionista.n_mascotas}}</p>
+        </li>
+        <li>
+            <p> <span class="highlight">Hobby: </span>{{inversionista.hobby}}</p>
         </li>
     </ul>
 
