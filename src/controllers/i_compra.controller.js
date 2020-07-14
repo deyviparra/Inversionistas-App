@@ -194,7 +194,8 @@ icompraCtrl.AsociarInversionistaCompra = async (req, res) => {
 icompraCtrl.renderEditPPCompra = async (req, res) => {
   const icompra = await Icompra.findById(req.params.id);
   const inversionista = await Inversionista.findById(icompra.inver_id);
-  res.render('modelos-inversion/edit-plan_pagos', { inversionista, icompra })
+  const backUrl = "/ficha-inversion/" + icompra._id + "/compra";
+  res.render('modelos-inversion/edit-plan_pagos', { inversionista, icompra, backUrl })
 };
 
 icompraCtrl.agregarPagoCompra = async (req, res) => {

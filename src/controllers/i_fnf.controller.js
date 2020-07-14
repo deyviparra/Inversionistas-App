@@ -200,7 +200,8 @@ ifnfCtrl.AsociarInversionistaFnf = async (req, res) => {
 ifnfCtrl.renderEditPPFnf = async (req, res) => {
   const ifnf = await Ifnf.findById(req.params.id);
   const inversionista = await Inversionista.findById(ifnf.inver_id);
-  res.render('modelos-inversion/edit-plan_pagos', { inversionista, ifnf })
+  const backUrl = "/ficha-inversion/" + ifnf._id + "/fnf";
+  res.render('modelos-inversion/edit-plan_pagos', { inversionista, ifnf, backUrl })
 };
 
 ifnfCtrl.agregarPagoFnf = async (req, res) => {

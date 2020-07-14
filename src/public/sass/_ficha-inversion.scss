@@ -129,15 +129,10 @@
 
   ul {
     width: 60%;
-
-    table {
-      width: 100%;
+    li {
       display: flex;
       justify-content: space-around;
-
-      tr {
-        td {}
-      }
+      
     }
   }
 }

@@ -158,7 +158,8 @@ igarantiaCtrl.AsociarInversionistaGarantia = async (req, res) => {
 igarantiaCtrl.renderEditPPGarantia = async (req, res) => {
   const igarantia = await Igarantia.findById(req.params.id);
   const inversionista = await Inversionista.findById(igarantia.inver_id);
-  res.render('modelos-inversion/edit-plan_pagos', { inversionista, igarantia });
+  const backUrl = "/ficha-inversion/" + igarantia._id + "/garantia";
+  res.render('modelos-inversion/edit-plan_pagos', { inversionista, igarantia, backUrl });
 };
 
 igarantiaCtrl.agregarPagoGarantia = async (req, res) => {

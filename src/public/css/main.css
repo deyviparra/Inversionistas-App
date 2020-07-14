@@ -663,8 +663,7 @@ input:checked + .slider:before {
   align-items: center; }
   .pagos ul {
     width: 60%; }
-    .pagos ul table {
-      width: 100%;
+    .pagos ul li {
       display: flex;
       justify-content: space-around; }
 

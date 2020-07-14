@@ -198,13 +198,15 @@ asociativoCtrl.AsociarInversionistaAsociativo = async (req, res) => {
 asociativoCtrl.renderEditPPAsociativo = async (req, res) => {
   const iasociativo = await Iasociativo.findById(req.params.id);
   const inversionista = await Inversionista.findById(iasociativo.inver_id);
-  res.render('modelos-inversion/edit-plan_pagos', { inversionista, iasociativo });
+  const backUrl = "/ficha-inversion/" + iasociativo._id + "/asociativo";
+  res.render('modelos-inversion/edit-plan_pagos', { inversionista, iasociativo, backUrl });
 };
 
 asociativoCtrl.agregarPagoAsociativo = async (req, res) => {
   const iasociativo = await Iasociativo.findById(req.params.id);
   const inversionista = await Inversionista.findById(iasociativo.inver_id);
-  res.render('modelos-inversion/agregar-fecha-pp', { inversionista, iasociativo });
+  const backUrl = "/edit-plan_pagos/" + iasociativo._id + "/asociativo";
+  res.render('modelos-inversion/agregar-fecha-pp', { inversionista, iasociativo, backUrl });
 };
 
 asociativoCtrl.AddDateAsociativo = async (req, res) => {
