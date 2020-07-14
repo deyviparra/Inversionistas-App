@@ -161,7 +161,8 @@
                 <a class="btn-inversion" href="/edit-inversion/{{igarantia._id}}/garantia" class="boton" type="submit">
                     Modificar inversión
                 </a>
-                <a class="btn-inversion" href="/asociar-inversionista/{{igarantia._id}}/garantia" class="boton" type="submit">
+                <a class="btn-inversion" href="/asociar-inversionista/{{igarantia._id}}/garantia" class="boton"
+                    type="submit">
                     Asociar Co-inversionista
                 </a>
                 <form action="/eliminar-inversion/{{igarantia._id}}/garantia?_method=DELETE" method="POST"
@@ -300,27 +301,33 @@
         <div class="inmueble-coinver">
             <div class="lista-inmuebles">
                 <button class="btn-inversion">Ver inmuebles</button>
-                <ul class="modal">
-                    {{#each ifnf.inmuebles}}
-                    <li>
-                        <p> Torre: {{torre}}</p>
-                        <p> Apartamento: {{apartamento}}</p>
-                        <p> Parqueadero: {{parqueadero}}</p>
-                        <p> Cuarto útil: {{cuarto_util}}</p>
-                        <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
-                    </li>
-                    {{/each}}
-                </ul>
+
+                <div id="modal-div" class="modal-div">
+                    <ul class="modal">
+                        {{#each ifnf.inmuebles}}
+                        <li>
+                            <p> Torre: {{torre}}</p>
+                            <p> Apartamento: {{apartamento}}</p>
+                            <p> Parqueadero: {{parqueadero}}</p>
+                            <p> Cuarto útil: {{cuarto_util}}</p>
+                            <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
+
             </div>
             <div class="lista-co-inver">
                 <button class="btn-inversion">Ver co-inversionistas</button>
-                <ul>
-                    {{#each ifnf.co_inversionista}}
-                    <li>
-                        <p> {{nombre}}</p>
-                    </li>
-                    {{/each}}
-                </ul>
+                <div id="modal-div" class="modal-div">
+                    <ul class="modal">
+                        {{#each ifnf.co_inversionista}}
+                        <li>
+                            <p> {{nombre}}</p>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
             </div>
             {{#if user.modificar}}
             <div class="botones-inversion">
