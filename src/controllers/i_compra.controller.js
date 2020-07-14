@@ -44,7 +44,8 @@ icompraCtrl.renderFichaInvCompra = async (req, res) => {
   try {
     const icompra = await Icompra.findById(req.params.id);
     const inversionista = await Inversionista.findById(icompra.inver_id);
-    res.render("modelos-inversion/ficha-inversion", { inversionista, icompra });
+    const backUrl = "/ficha-i/" + icompra.inver_id;
+    res.render("modelos-inversion/ficha-inversion", { inversionista, icompra, backUrl });
   }
   catch (e) {
     const icompra = await Icompra.findById(req.params.id)
@@ -60,7 +61,8 @@ icompraCtrl.renderEditInvCompra = async (req, res) => {
     const icompra = await Icompra.findById(req.params.id);
     const inversionista = await Inversionista.findById(icompra.inver_id);
     const proyecto = await Proyecto.find();
-    res.render('modelos-inversion/edit-inversion', { inversionista, icompra, proyecto })
+    const backUrl = "/ficha-inversion/" + icompra._id + "/compra";
+    res.render('modelos-inversion/edit-inversion', { inversionista, icompra, proyecto, backUrl })
   }
   catch (e) {
     const icompra = await Icompra.findById(req.params.id)
@@ -74,7 +76,8 @@ icompraCtrl.renderInmuebleCompra = async (req, res) => {
   try {
     const icompra = await Icompra.findById(req.params.id);
     const inversionista = await Inversionista.findById(icompra.inver_id);
-    res.render('modelos-inversion/asociar-inmueble', { inversionista, icompra })
+    const backUrl = "/ficha-inversion/" + icompra._id + "/compra";
+    res.render('modelos-inversion/asociar-inmueble', { inversionista, icompra, backUrl })
   }
   catch (e) {
     const icompra = await Icompra.findById(req.params.id)
@@ -89,7 +92,8 @@ icompraCtrl.renderInversionistaCompra = async (req, res) => {
     const icompra = await Icompra.findById(req.params.id);
     const inversionista = await Inversionista.findById(icompra.inver_id);
     const inversionistas = await Inversionista.find();
-    res.render('modelos-inversion/asociar-inversionista', { inversionista, icompra, inversionistas })
+    const backUrl = "/ficha-inversion/" + icompra._id + "/compra";
+    res.render('modelos-inversion/asociar-inversionista', { inversionista, icompra, inversionistas, backUrl })
   }
   catch (e) {
     const icompra = await Icompra.findById(req.params.id)
@@ -113,7 +117,7 @@ icompraCtrl.deleteInversionCompra = async (req, res) => {
     res.redirect('/ficha-inversion/' + icompra._id + '/compra')
     console.log(e);
   }
-}
+};
 
 icompraCtrl.updateInversionCompra = async (req, res) => {
   try {
@@ -147,7 +151,7 @@ icompraCtrl.updateInversionCompra = async (req, res) => {
     res.redirect('/ficha-inversion/' + icompra._id + '/compra')
     console.log(e);
   }
-}
+};
 
 icompraCtrl.AsociarInmuebleCompra = async (req, res) => {
   try {
@@ -166,7 +170,7 @@ icompraCtrl.AsociarInmuebleCompra = async (req, res) => {
     res.redirect('/ficha-inversion/' + icompra._id + '/compra')
     console.log(e);
   }
-}
+};
 
 icompraCtrl.AsociarInversionistaCompra = async (req, res) => {
   try {
@@ -202,36 +206,36 @@ icompraCtrl.editarPPCompra = async (req, res) => {
 };
 
 function crearPlan_pagos(fecha_cierre, fecha_inicio, valor_compra, fecha_pago) {
-  try{
-  let cierre = fecha_cierre.split("-");
-  let inicio = fecha_inicio.split("-");
+  try {
+    let cierre = fecha_cierre.split("-");
+    let inicio = fecha_inicio.split("-");
 
-  let cierre_date = new Date(cierre[0], cierre[1] - 1, cierre[2]);
-  let inicio_date = new Date(inicio[0], inicio[1] - 1, inicio[2]);
-  let dif = cierre_date.getTime() - inicio_date.getTime();
+    let cierre_date = new Date(cierre[0], cierre[1] - 1, cierre[2]);
+    let inicio_date = new Date(inicio[0], inicio[1] - 1, inicio[2]);
+    let dif = cierre_date.getTime() - inicio_date.getTime();
 
-  let fecha = new Date(dif);
-  let meses = ((fecha.getUTCFullYear() - 1970) * 12) + (fecha.getUTCMonth());
+    let fecha = new Date(dif);
+    let meses = ((fecha.getUTCFullYear() - 1970) * 12) + (fecha.getUTCMonth());
 
-  let couta = valor_compra / meses;
+    let couta = valor_compra / meses;
 
-  let plan_pagos = new Array(meses);
+    let plan_pagos = new Array(meses);
 
-  for (let i = 0; i < meses; i++) {
-    inicio_date = new Date(inicio[0], inicio[1] - 1, inicio[2]);
-    let ano = inicio_date.getFullYear();
-    let mes = inicio_date.getMonth();
-    mes++;
-    let dia = fecha_pago
-    let fecha = dia + "/" + mes + "/" + ano;
-    plan_pagos[i] = { fecha, couta };
-    inicio[1]++;
+    for (let i = 0; i < meses; i++) {
+      inicio_date = new Date(inicio[0], inicio[1] - 1, inicio[2]);
+      let ano = inicio_date.getFullYear();
+      let mes = inicio_date.getMonth();
+      mes++;
+      let dia = fecha_pago
+      let fecha = dia + "/" + mes + "/" + ano;
+      plan_pagos[i] = { fecha, couta };
+      inicio[1]++;
+    }
+    return plan_pagos;
   }
-  return plan_pagos;
-}
-catch{
-  console.log('No es posible crear el plan de pagos')
-}
-}
+  catch{
+    console.log('No es posible crear el plan de pagos')
+  }
+};
 
 module.exports = icompraCtrl;

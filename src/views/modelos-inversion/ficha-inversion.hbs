@@ -69,28 +69,32 @@
         <div class="inmueble-coinver">
             <div class="lista-inmuebles">
                 <button class="btn-inversion">Ver inmuebles</button>
-                <ul>
-                    {{#each icompra.inmuebles}}
-                    <li>
-                        <p> Torre: {{torre}}</p>
-                        <p> Apartamento: {{apartamento}}</p>
-                        <p> Parqueadero: {{parqueadero}}</p>
-                        <p> Cuarto útil: {{cuarto_util}}</p>
-                        <p> Encargo fiduciario: {{encargo_fiduciario}}</p>
-                        <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
-                    </li>
-                    {{/each}}
-                </ul>
+                <div id="modal-div" class="modal-div">
+                    <ul class="modal">
+                        {{#each icompra.inmuebles}}
+                        <li>
+                            <p> Torre: {{torre}}</p>
+                            <p> Apartamento: {{apartamento}}</p>
+                            <p> Parqueadero: {{parqueadero}}</p>
+                            <p> Cuarto útil: {{cuarto_util}}</p>
+                            <p> Encargo fiduciario: {{encargo_fiduciario}}</p>
+                            <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
             </div>
             <div class="lista-co-inver">
                 <button class="btn-inversion">Ver co-inversionistas</button>
-                <ul>
-                    {{#each icompra.co_inversionista}}
-                    <li>
-                        <p>{{nombre}}</p>
-                    </li>
-                    {{/each}}
-                </ul>
+                <div id="modal-div" class="modal-div">
+                    <ul class="modal">
+                        {{#each icompra.co_inversionista}}
+                        <li>
+                            <p>{{nombre}}</p>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
             </div>
             {{#if user.modificar}}
             <div class="botones-inversion">
@@ -102,12 +106,12 @@
                 </a>
                 <a class="btn-inversion" href="/asociar-inversionista/{{icompra._id}}/compra" class="boton"
                     type="submit">
-                    Asociar Co-inversionista
+                    Asociar co-inversionista
                 </a>
                 <form action="/eliminar-inversion/{{icompra._id}}/compra?_method=DELETE" method="POST"
                     name="form-delete">
                     <input type="hidden" name="_method" value="DELETE">
-                    <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
+                    <button class="btn btn-danger delete" type="submit">Eliminar inversión</button>
                 </form>
             </div>
             {{/if}}
@@ -148,13 +152,15 @@
         <div class="inmueble-coinver">
             <div class="lista-co-inver">
                 <button class="btn-inversion">Ver co-inversionistas</button>
-                <ul>
-                    {{#each igarantia.co_inversionista}}
-                    <li>
-                        <p>{{nombre}}</p>
-                    </li>
-                    {{/each}}
-                </ul>
+                <div id="modal-div" class="modal-div">
+                    <ul class="modal">
+                        {{#each igarantia.co_inversionista}}
+                        <li>
+                            <p>{{nombre}}</p>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
             </div>
             {{#if user.modificar}}
             <div class="botones-inversion">
@@ -163,12 +169,12 @@
                 </a>
                 <a class="btn-inversion" href="/asociar-inversionista/{{igarantia._id}}/garantia" class="boton"
                     type="submit">
-                    Asociar Co-inversionista
+                    Asociar co-inversionista
                 </a>
                 <form action="/eliminar-inversion/{{igarantia._id}}/garantia?_method=DELETE" method="POST"
                     name="form-delete">
                     <input type="hidden" name="_method" value="DELETE">
-                    <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
+                    <button class="btn btn-danger delete" type="submit">Eliminar inversión</button>
                 </form>
             </div>
             {{/if}}
@@ -214,27 +220,31 @@
         <div class="inmueble-coinver">
             <div class="lista-inmuebles">
                 <button class="btn-inversion">Ver inmuebles</button>
-                <ul>
-                    {{#each iasociativo.inmuebles}}
-                    <li>
-                        <p> Torre: {{torre}}</p>
-                        <p> Apartamento: {{apartamento}}</p>
-                        <p> Parqueadero: {{parqueadero}}</p>
-                        <p> Cuarto útil: {{cuarto_util}}</p>
-                        <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
-                    </li>
-                    {{/each}}
-                </ul>
+                <div id="modal-div" class="modal-div">
+                    <ul class="modal">
+                        {{#each iasociativo.inmuebles}}
+                        <li>
+                            <p> Torre: {{torre}}</p>
+                            <p> Apartamento: {{apartamento}}</p>
+                            <p> Parqueadero: {{parqueadero}}</p>
+                            <p> Cuarto útil: {{cuarto_util}}</p>
+                            <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
             </div>
             <div class="lista-co-inver">
                 <button class="btn-inversion">Ver co-inversionistas</button>
-                <ul>
-                    {{#each iasociativo.co_inversionista}}
-                    <li>
-                        <p>{{nombre}}</p>
-                    </li>
-                    {{/each}}
-                </ul>
+                <div id="modal-div" class="modal-div">
+                    <ul class="modal">
+                        {{#each iasociativo.co_inversionista}}
+                        <li>
+                            <p>{{nombre}}</p>
+                        </li>
+                        {{/each}}
+                    </ul>
+                </div>
             </div>
             {{#if user.modificar}}
             <div class="botones-inversion">
@@ -248,11 +258,11 @@
                 </a>
                 <a class="btn-inversion" href="/asociar-inversionista/{{iasociativo._id}}/asociativo" class="boton"
                     type="submit">
-                    Asociar Co-inversionista
+                    Asociar co-inversionista
                 </a>
                 <form action="/eliminar-inversion/{{iasociativo._id}}/asociativo?_method=DELETE" method="POST"
                     name="form-delete">
-                    <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
+                    <button class="btn btn-danger delete" type="submit">Eliminar inversión</button>
                 </form>
             </div>
             {{/if}}
@@ -301,7 +311,6 @@
         <div class="inmueble-coinver">
             <div class="lista-inmuebles">
                 <button class="btn-inversion">Ver inmuebles</button>
-
                 <div id="modal-div" class="modal-div">
                     <ul class="modal">
                         {{#each ifnf.inmuebles}}
@@ -338,11 +347,11 @@
                     Asociar inmueble
                 </a>
                 <a class="btn-inversion" href="/asociar-inversionista/{{ifnf._id}}/fnf" type="submit">
-                    Asociar Co-inversionista
+                    Asociar co-inversionista
                 </a>
                 <form action="/eliminar-inversion/{{ifnf._id}}/fnf?_method=DELETE" method="POST" name="form-delete">
                     <input type="hidden" name="_method" value="DELETE">
-                    <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
+                    <button class="btn btn-danger delete" type="submit">Eliminar inversión</button>
                 </form>
             </div>
             {{/if}}
