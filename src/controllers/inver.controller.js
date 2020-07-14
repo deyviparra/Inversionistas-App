@@ -185,9 +185,20 @@ inverCtrl.searchInver = async (req,res) =>{
         const backUlr = '/menuppal'
         const {buscarI} = req.query
         const nombre = buscarI.split(" ")
-        const inverMatch = await Inversionista.find({nombre:{$regex: nombre[0] , $options: "i"}},function(err, docs) {
+        const apellido = buscarI.split(" ")
+        const razonSocial = buscarI.split(" ")
+        const inverMatchN = await Inversionista.find({nombre:{$regex: nombre[0] , $options: "i"}},function(err, docs) {
             return docs
             });
+        const inverMatchLN = await Inversionista.find({apellido:{$regex: apellido[0] , $options: "i"}},function(err, docs) {
+            return docs
+            });
+        const inverMatchRS = await Inversionista.find({razon_social:{$regex: razonSocial[0] , $options: "i"}},function(err, docs) {
+            return docs
+            });
+
+        const inverMatch = inverMatchN.concat(inverMatchLN).concat(inverMatchRS)
+         
         res.render('inversionistas/lista-i', { inverMatch,backUlr })   
      }
     catch (e){

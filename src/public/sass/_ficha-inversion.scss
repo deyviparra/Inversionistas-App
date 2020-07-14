@@ -48,57 +48,72 @@
 
       .lista-inmuebles,
       .lista-co-inver {
-        ul {
+
+        .modal-div {
           display: none;
+          justify-content: center;
+          align-items: center;
           position: fixed;
-          background: $gris-os;
-          padding: 30px;
-          top: 20vh;
-          left: 30vw;
-          width: 35vw;
-          height: 60vh;
-          border-radius: 5px;
-          border: 2px solid white;
-          overflow: auto;
-          li p{
-            color: white;
+          width: 100%;
+          top: 0;
+          left: 0;
+          height: 100%;
+          background: #00000025;
+          z-index: 1;
+
+          .modal {
+            background: $gris-os;
+            position: fixed;
+            top: 20vh;
+            left: 35vw;
+            padding: 30px;
+            width: 35vw;
+            height: 60vh;
+            border-radius: 5px;
+            border: 2px solid white;
+            overflow: auto;
+            z-index: 2;
+            li p {
+              color: white;
+            }
           }
         }
       }
-      
 
       .btn-inversion,
-        .btn-danger {
-          border-radius: 50px;
-          background: #CFDE00;
-          box-shadow: 15px 15px 30px #b4c100,
-            -15px -15px 30px #eafb00;
-          text-decoration: none;
-          color: black;
-          margin: 15px;
-          padding: 20px;
-          border: none;
+      .btn-danger {
+        border-radius: 50px;
+        background: #CFDE00;
+        box-shadow: 15px 15px 30px #b4c100,
+          -15px -15px 30px #eafb00;
+        text-decoration: none;
+        color: black;
+        margin: 15px;
+        padding: 20px;
+        border: none;
 
-        }
+      }
 
-        .btn-inversion:hover {
-          border-radius: 50px;
-          background: #CFDE00;
-          box-shadow: inset 15px 15px 30px #b4c100,
-            inset -15px -15px 30px #eafb00;
-          font-weight: lighter;
-        }
-        .btn-danger:hover {
-          border-radius: 50px;
-          background: #ff0000;
-          box-shadow: inset 15px 15px 30px #de0000,
-            inset -15px -15px 30px #ff0000;
-        }
+      .btn-inversion:hover {
+        border-radius: 50px;
+        background: #CFDE00;
+        box-shadow: inset 15px 15px 30px #b4c100,
+          inset -15px -15px 30px #eafb00;
+        font-weight: lighter;
+      }
+
+      .btn-danger:hover {
+        border-radius: 50px;
+        background: #ff0000;
+        box-shadow: inset 15px 15px 30px #de0000,
+          inset -15px -15px 30px #ff0000;
+      }
+
       .botones-inversion {
         display: flex;
         justify-content: space-between;
         align-items: center;
-      
+
       }
     }
 
