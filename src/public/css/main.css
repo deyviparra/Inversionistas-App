@@ -574,65 +574,64 @@ input:checked + .slider:before {
     background-color: #cfde00;
     height: auto;
     display: flex;
+    flex-direction: column;
     align-items: flex-start; }
     .info-inversion .info-ppal p {
       color: #272727;
       margin: 0;
       padding: 10px; }
-    .info-inversion .info-ppal ul {
-      padding: 0;
-      margin: 0;
-      width: 30%; }
-    .info-inversion .info-ppal .lista-inmuebles,
-    .info-inversion .info-ppal .lista-co-inver {
-      width: 15%;
-      padding-top: 10px;
+    .info-inversion .info-ppal .info-inversion-div {
       display: flex;
-      height: 100%;
-      flex-direction: column; }
-      .info-inversion .info-ppal .lista-inmuebles p,
-      .info-inversion .info-ppal .lista-co-inver p {
-        margin: 0;
-        padding: 0; }
-      .info-inversion .info-ppal .lista-inmuebles ul,
-      .info-inversion .info-ppal .lista-co-inver ul {
-        width: 100%;
-        padding: 0;
-        padding-top: 15px;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 15px; }
+      .info-inversion .info-ppal .info-inversion-div ul {
+        width: 50%;
+        margin-left: 12%; }
+    .info-inversion .info-ppal .inmueble-coinver {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: center; }
+      .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles ul,
+      .info-inversion .info-ppal .inmueble-coinver .lista-co-inver ul {
+        display: none; }
+      .info-inversion .info-ppal .inmueble-coinver .btn-inversion,
+      .info-inversion .info-ppal .inmueble-coinver .btn-danger {
+        border-radius: 50px;
+        background: #CFDE00;
+        box-shadow: 15px 15px 30px #b4c100, -15px -15px 30px #eafb00;
+        text-decoration: none;
+        color: black;
+        margin: 15px;
+        padding: 20px;
+        border: none; }
+      .info-inversion .info-ppal .inmueble-coinver .btn-inversion:hover {
+        border-radius: 50px;
+        background: #CFDE00;
+        box-shadow: inset 15px 15px 30px #b4c100, inset -15px -15px 30px #eafb00;
+        font-weight: lighter; }
+      .info-inversion .info-ppal .inmueble-coinver .btn-danger:hover {
+        border-radius: 50px;
+        background: #ff0000;
+        box-shadow: inset 15px 15px 30px #de0000, inset -15px -15px 30px #ff0000; }
+      .info-inversion .info-ppal .inmueble-coinver .botones-inversion {
         display: flex;
-        flex-direction: column; }
-        .info-inversion .info-ppal .lista-inmuebles ul p,
-        .info-inversion .info-ppal .lista-co-inver ul p {
-          padding: 5px; }
-    .info-inversion .info-ppal .botones {
-      margin-top: 6%;
-      box-sizing: content-box;
-      border: none;
-      border-radius: 30px;
-      background: #cfde00;
-      box-shadow: 20px 20px 60px #b0bd00, -20px -20px 60px #eeff00; }
-      .info-inversion .info-ppal .botones .boton {
-        border-radius: 15px;
-        background: #272727;
-        color: #f3f3f3; }
-        .info-inversion .info-ppal .botones .boton:hover {
-          text-decoration: none;
-          background: #4c5c68; }
+        justify-content: space-between;
+        align-items: center; }
 
 .pagos {
   background-color: #272727;
   display: flex;
   flex-direction: column;
   align-items: center; }
-  .pagos h2 {
-    margin: 15px; }
   .pagos ul {
-    width: 80%; }
-    .pagos ul li {
+    width: 60%; }
+    .pagos ul table {
+      width: 100%;
       display: flex;
       justify-content: space-around; }
-      .pagos ul li p {
-        display: inline; }
 
 .edit-pp {
   background-color: #272727;
@@ -647,10 +646,15 @@ input:checked + .slider:before {
     flex-direction: column;
     justify-content: center;
     align-items: center; }
+    .edit-pp .botones h2 {
+      margin: 15px; }
     .edit-pp .botones ul {
-      display: flex;
-      align-items: center;
-      justify-content: center; }
+      width: 80%; }
+      .edit-pp .botones ul li {
+        display: flex;
+        justify-content: space-around; }
+        .edit-pp .botones ul li p {
+          display: inline; }
 
 .banner-ppal img {
   width: 100%; }

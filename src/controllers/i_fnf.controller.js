@@ -50,9 +50,10 @@ ifnfCtrl.renderFichaInvFnf = async (req, res) => {
   try {
     const ifnf = await Ifnf.findById(req.params.id);
     const inversionista = await Inversionista.findById(ifnf.inver_id);
+    const backUrl= "/ficha-i/" + ifnf.inver_id
     res.render("modelos-inversion/ficha-inversion", {
       inversionista,
-      ifnf
+      ifnf,backUrl
     });
   }
   catch (e) {

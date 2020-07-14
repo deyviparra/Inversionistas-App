@@ -251,82 +251,85 @@
 
 
     {{#if ifnf}}
-    <h2>Inversión fnf</h2>
+    <h2>Inversión FNF</h2>
     <section class="info-ppal">
-        <ul>
-            <li>
-                <p>Proyecto: {{ifnf.proyecto.nombre}}</p>
-            </li>
-            <li>
-                <p>Fecha de inicio: {{ifnf.fecha_inicio}}</p>
-            </li>
-            {{!-- <li>
-            <p> Fecha de cierre: {{ifnf.fecha_cierre}}</p>
-        </li> --}}
-
-            <li>
-                <p>Fecha de legalización del mutuo: {{ifnf.lega_mutuo_fidu}}</p>
-            </li>
-
-            <li>
-                <p>Valor del mutuo: {{formatNumber ifnf.valor_mutuo style="currency" currency="COP"}}</p>
-            </li>
-
-            <li>
-                <p>Tasa de interés: {{ifnf.tasa_interes}} %</p>
-            </li>
-            <li>
-                <p>Porcentaje cliente: {{ifnf.porcentaje_cliente}} %</p>
-            </li>
-            <li>
-                <p>Porcentaje garantia: {{ifnf.porcentaje_garantia}} %</p>
-            </li>
-            <li>
-                <p>Observaciones: {{ifnf.observaciones}}</p>
-            </li>
-        </ul>
-        <div class="lista-inmuebles">
-            <p>Inmuebles:</p>
+        <div class="info-inversion-div">
             <ul>
-
-                {{#each ifnf.inmuebles}}
                 <li>
-                    <p> Torre: {{torre}}</p>
-                    <p> Apartamento: {{apartamento}}</p>
-                    <p> Parqueadero: {{parqueadero}}</p>
-                    <p> Cuarto útil: {{cuarto_util}}</p>
-                    <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
+                    <p>Proyecto: {{ifnf.proyecto.nombre}}</p>
                 </li>
-                {{/each}}
+                <li>
+                    <p>Fecha de inicio: {{ifnf.fecha_inicio}}</p>
+                </li>
+                
+                <li>
+                    <p>Fecha de legalización del mutuo: {{ifnf.lega_mutuo_fidu}}</p>
+                </li>
+                
+                <li>
+                    <p>Valor del mutuo: {{formatNumber ifnf.valor_mutuo style="currency" currency="COP"}}</p>
+                </li>
+                
+                <li>
+                    <p>Tasa de interés: {{ifnf.tasa_interes}} %</p>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <p>Porcentaje cliente: {{ifnf.porcentaje_cliente}} %</p>
+                </li>
+                <li>
+                    <p>Porcentaje garantia: {{ifnf.porcentaje_garantia}} %</p>
+                </li>
+                <li>
+                    <p>Observaciones: {{ifnf.observaciones}}</p>
+                </li>
             </ul>
         </div>
-        <div class="lista-co-inver">
-            <p>Co-inversionista:</p>
-            <ul>
-                {{#each ifnf.co_inversionista}}
-                <li>
-                    <p> {{nombre}}</p>
-                </li>
-                {{/each}}
-            </ul>
+        <div class="inmueble-coinver">
+            <div class="lista-inmuebles">
+                <button class="btn-inversion">Ver inmuebles</button>
+                <ul>
+                    {{#each ifnf.inmuebles}}
+                    <li>
+                        <p> Torre: {{torre}}</p>
+                        <p> Apartamento: {{apartamento}}</p>
+                        <p> Parqueadero: {{parqueadero}}</p>
+                        <p> Cuarto útil: {{cuarto_util}}</p>
+                        <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <div class="lista-co-inver">
+                <button class="btn-inversion">Ver co-inversionistas</button>
+                <ul>
+                    {{#each ifnf.co_inversionista}}
+                    <li>
+                        <p> {{nombre}}</p>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            {{#if user.modificar}}
+            <div class="botones-inversion">
+                <a class="btn-inversion" href="/edit-inversion/{{ifnf._id}}/fnf" type="submit">
+                    Modificar inversión
+                </a>
+                <a class="btn-inversion" href="/asociar-inmueble/{{ifnf._id}}/fnf" type="submit">
+                    Asociar inmueble
+                </a>
+                <a class="btn-inversion" href="/asociar-inversionista/{{ifnf._id}}/fnf" type="submit">
+                    Asociar Co-inversionista
+                </a>
+                <form action="/eliminar-inversion/{{ifnf._id}}/fnf?_method=DELETE" method="POST" name="form-delete">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
+                </form>
+            </div>
+            {{/if}}
         </div>
-        {{#if user.modificar}}
-        <div class="botones">
-            <a href="/edit-inversion/{{ifnf._id}}/fnf" class="boton" type="submit">
-                Modificar inversión
-            </a>
-            <a href="/asociar-inmueble/{{ifnf._id}}/fnf" class="boton" type="submit">
-                Asociar inmueble
-            </a>
-            <a href="/asociar-inversionista/{{ifnf._id}}/fnf" class="boton" type="submit">
-                Asociar Co-inversionista
-            </a>
-            <form action="/eliminar-inversion/{{ifnf._id}}/fnf?_method=DELETE" method="POST" name="form-delete">
-                <input type="hidden" name="_method" value="DELETE">
-                <button class="btn btn-danger delete" type="submit">Eliminar Inversión</button>
-            </form>
-        </div>
-        {{/if}}
+
     </section>
 
     {{/if}}
