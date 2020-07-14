@@ -87,7 +87,6 @@ inverCtrl.renderEditFormInver = async (req, res) => {
         res.render('inversionistas/edit-inver', { inver,backUrl })
     }
     catch (e) {
-        const backUrl = "/inver"
         const inversionista = await Inversionista.findById(req.params.id)
         req.flash('error_msg', 'No se puede modificar el inversionista')
         res.redirect("/ficha-i/" + inversionista._id);
@@ -123,7 +122,6 @@ inverCtrl.updateInver = async (req, res) => {
 
 inverCtrl.deleteInver = async (req, res) => {
     try {
-        const backUrl = "/menuppal"
         const inver = await Inversionista.findById(req.params.id)
         console.log(req)
         await Inversionista.findByIdAndDelete(req.params.id)
@@ -134,7 +132,6 @@ inverCtrl.deleteInver = async (req, res) => {
         res.redirect('/inver')
     }
     catch (e) {
-        const backUrl = '/menuppal'
         req.flash('error_msg', 'No se pudo eliminar el inversionista')
         res.redirect('/inver')
         console.log(e);
