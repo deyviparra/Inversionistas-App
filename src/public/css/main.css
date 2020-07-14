@@ -610,11 +610,6 @@ input:checked + .slider:before {
         .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles ul li p,
         .info-inversion .info-ppal .inmueble-coinver .lista-co-inver ul li p {
           color: white; }
-        .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles ul:focus,
-        .info-inversion .info-ppal .inmueble-coinver .lista-co-inver ul:focus {
-          display: block; }
-      .info-inversion .info-ppal .inmueble-coinver button.btn-inversion:active ~ ul, .info-inversion .info-ppal .inmueble-coinver button.btn-inversion:target ~ ul {
-        display: block; }
       .info-inversion .info-ppal .inmueble-coinver .btn-inversion,
       .info-inversion .info-ppal .inmueble-coinver .btn-danger {
         border-radius: 50px;

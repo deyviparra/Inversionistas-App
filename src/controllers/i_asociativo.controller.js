@@ -16,8 +16,8 @@ asociativoCtrl.createNewAso = async (req, res) => {
     fecha_pago
   } = req.body;
   try {
-    const { _id, nombre } = await Proyecto.findById(proyecto_id)
-    const proyecto = { 'id': _id, 'nombre': nombre }
+    const { _id, nombre } = await Proyecto.findById(proyecto_id);
+    const proyecto = { 'id': _id, 'nombre': nombre };
     const newAsociativo = new Iasociativo({
       inver_id,
       proyecto,
@@ -34,7 +34,7 @@ asociativoCtrl.createNewAso = async (req, res) => {
     res.redirect("/ficha-i/" + inver_id);
   }
   catch (e) {
-    req.flash('error_msg', 'No es posible crear la inversión')
+    req.flash('error_msg', 'No es posible crear la inversión');
     res.redirect("/ficha-i/" + inver_id);
     console.log(e);
   }
@@ -44,16 +44,18 @@ asociativoCtrl.renderFichaInvAsociativo = async (req, res) => {
   try {
     const iasociativo = await Iasociativo.findById(req.params.id);
     const inversionista = await Inversionista.findById(iasociativo.inver_id);
+    const backUrl = "/ficha-i/" + iasociativo.inver_id;
     res.render("modelos-inversion/ficha-inversion", {
       inversionista,
-      iasociativo
+      iasociativo,
+      backUrl
     });
   }
   catch (e) {
-    const iasociativo = await Iasociativo.findById(req.params.id)
+    const iasociativo = await Iasociativo.findById(req.params.id);
     const inversionista = await Inversionista.findById(iasociativo.inver_id);
-    req.flash('error_msg', 'No es posible visualizar la inversión')
-    res.redirect('/ficha-i/' + inversionista._id)
+    req.flash('error_msg', 'No es posible visualizar la inversión');
+    res.redirect('/ficha-i/' + inversionista._id);
     console.log(e);
   }
 };
@@ -63,12 +65,13 @@ asociativoCtrl.renderEditInvAsociativo = async (req, res) => {
     const iasociativo = await Iasociativo.findById(req.params.id);
     const inversionista = await Inversionista.findById(iasociativo.inver_id);
     const proyecto = await Proyecto.find();
-    res.render('modelos-inversion/edit-inversion', { inversionista, iasociativo, proyecto })
+    const backUrl = "/ficha-inversion/" + iasociativo._id + "/asociativo";
+    res.render('modelos-inversion/edit-inversion', { inversionista, iasociativo, proyecto, backUrl })
   }
   catch (e) {
-    const iasociativo = await Iasociativo.findById(req.params.id)
-    req.flash('error_msg', 'No es posible modificar la inversión')
-    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+    const iasociativo = await Iasociativo.findById(req.params.id);
+    req.flash('error_msg', 'No es posible modificar la inversión');
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo');
     console.log(e);
   }
 };
@@ -77,12 +80,13 @@ asociativoCtrl.renderInmuebleAsociativo = async (req, res) => {
   try {
     const iasociativo = await Iasociativo.findById(req.params.id);
     const inversionista = await Inversionista.findById(iasociativo.inver_id);
-    res.render('modelos-inversion/asociar-inmueble', { inversionista, iasociativo })
+    const backUrl = "/ficha-inversion/" + iasociativo._id + "/asociativo";
+    res.render('modelos-inversion/asociar-inmueble', { inversionista, iasociativo, backUrl })
   }
   catch (e) {
-    const iasociativo = await Iasociativo.findById(req.params.id)
-    req.flash('error_msg', 'No es posible asociar inmueble')
-    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+    const iasociativo = await Iasociativo.findById(req.params.id);
+    req.flash('error_msg', 'No es posible asociar inmueble');
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo');
     console.log(e);
   }
 };
@@ -92,12 +96,13 @@ asociativoCtrl.renderInversionistaAsociativo = async (req, res) => {
     const iasociativo = await Iasociativo.findById(req.params.id);
     const inversionista = await Inversionista.findById(iasociativo.inver_id);
     const inversionistas = await Inversionista.find();
-    res.render('modelos-inversion/asociar-inversionista', { inversionista, iasociativo, inversionistas })
+    const backUrl = "/ficha-inversion/" + iasociativo._id + "/asociativo";
+    res.render('modelos-inversion/asociar-inversionista', { inversionista, iasociativo, inversionistas, backUrl })
   }
   catch (e) {
-    const iasociativo = await Iasociativo.findById(req.params.id)
-    req.flash('error_msg', 'No es posible asociar inversionista')
-    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+    const iasociativo = await Iasociativo.findById(req.params.id);
+    req.flash('error_msg', 'No es posible asociar inversionista');
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo');
     console.log(e);
   }
 };
@@ -106,17 +111,17 @@ asociativoCtrl.deleteInversionAsociativo = async (req, res) => {
   try {
     const iasociativo = await Iasociativo.findById(req.params.id);
     const inversionista = await Inversionista.findById(iasociativo.inver_id);
-    await Iasociativo.findByIdAndDelete(req.params.id)
+    await Iasociativo.findByIdAndDelete(req.params.id);
     req.flash('error_msg', 'Inversión eliminada');
-    res.redirect('/ficha-i/' + inversionista._id)
+    res.redirect('/ficha-i/' + inversionista._id);
   }
   catch (e) {
-    const iasociativo = await Iasociativo.findById(req.params.id)
-    req.flash('error_msg', 'La inversión no pudo ser eliminada')
-    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+    const iasociativo = await Iasociativo.findById(req.params.id);
+    req.flash('error_msg', 'La inversión no pudo ser eliminada');
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo');
     console.log(e);
   }
-}
+};
 
 asociativoCtrl.updateInversionAsociativo = async (req, res) => {
   try {
@@ -129,9 +134,9 @@ asociativoCtrl.updateInversionAsociativo = async (req, res) => {
       fecha_entrega_prometida,
       tir_prometida
     } = req.body;
-    const { _id, nombre } = await Proyecto.findById(proyecto_id)
-    const proyecto = { 'id': _id, 'nombre': nombre }
-    const iasociativo = await Iasociativo.findById(req.params.id)
+    const { _id, nombre } = await Proyecto.findById(proyecto_id);
+    const proyecto = { 'id': _id, 'nombre': nombre };
+    const iasociativo = await Iasociativo.findById(req.params.id);
     await Iasociativo.findByIdAndUpdate(req.params.id, {
       proyecto,
       fecha_inicio,
@@ -140,105 +145,103 @@ asociativoCtrl.updateInversionAsociativo = async (req, res) => {
       valor_compra,
       fecha_entrega_prometida,
       tir_prometida
-    })
-    req.flash('success_msg', 'Inversion actualizada')
-    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+    });
+    req.flash('success_msg', 'Inversion actualizada');
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo');
   }
   catch (e) {
-    const iasociativo = await Iasociativo.findById(req.params.id)
-    req.flash('error_msg', 'La inversión no pudo ser actualizada')
-    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+    const iasociativo = await Iasociativo.findById(req.params.id);
+    req.flash('error_msg', 'La inversión no pudo ser actualizada');
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo');
     console.log(e);
   }
-}
+};
 
 asociativoCtrl.AsociarInmuebleAsociativo = async (req, res) => {
   try {
-    const { inmuebles } = await Iasociativo.findById(req.params.id)
-    const iasociativo = await Iasociativo.findById(req.params.id)
+    const { inmuebles } = await Iasociativo.findById(req.params.id);
+    const iasociativo = await Iasociativo.findById(req.params.id);
     const inmueble = req.body;
-    inmueble.valor = Number(inmueble.valor)
-    inmuebles.push(inmueble)
-    await Iasociativo.findByIdAndUpdate(req.params.id, { inmuebles })
-    req.flash('success_msg', 'Inmueble añadido')
-    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+    inmueble.valor = Number(inmueble.valor);
+    inmuebles.push(inmueble);
+    await Iasociativo.findByIdAndUpdate(req.params.id, { inmuebles });
+    req.flash('success_msg', 'Inmueble añadido');
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo');
   }
   catch (e) {
-    const iasociativo = await Iasociativo.findById(req.params.id)
-    req.flash('error_msg', 'El inmuble no pudo ser añadido')
-    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+    const iasociativo = await Iasociativo.findById(req.params.id);
+    req.flash('error_msg', 'El inmuble no pudo ser añadido');
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo');
     console.log(e);
   }
-}
+};
 
 asociativoCtrl.AsociarInversionistaAsociativo = async (req, res) => {
   try {
-    const { co_inversionista } = await Iasociativo.findById(req.params.id)
-    const iasociativo = await Iasociativo.findById(req.params.id)
-    const { _id, nombre, apellido } = await Inversionista.findById(req.body.co_inversionista)
-    const inversionista = { 'id': _id, 'nombre': nombre + " " + apellido }
-    co_inversionista.push(inversionista)
-    await Iasociativo.findByIdAndUpdate(req.params.id, { co_inversionista })
-    req.flash('success_msg', 'Inversionista añadido')
-    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+    const { co_inversionista } = await Iasociativo.findById(req.params.id);
+    const iasociativo = await Iasociativo.findById(req.params.id);
+    const { _id, nombre, apellido } = await Inversionista.findById(req.body.co_inversionista);
+    const inversionista = { 'id': _id, 'nombre': nombre + " " + apellido };
+    co_inversionista.push(inversionista);
+    await Iasociativo.findByIdAndUpdate(req.params.id, { co_inversionista });
+    req.flash('success_msg', 'Inversionista añadido');
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo');
   }
   catch (e) {
-    const iasociativo = await Iasociativo.findById(req.params.id)
-    req.flash('error_msg', 'El Co-inversionista no pudo ser añadido')
-    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+    const iasociativo = await Iasociativo.findById(req.params.id);
+    req.flash('error_msg', 'El Co-inversionista no pudo ser añadido');
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo');
     console.log(e);
   }
-}
+};
 
 asociativoCtrl.renderEditPPAsociativo = async (req, res) => {
   const iasociativo = await Iasociativo.findById(req.params.id);
   const inversionista = await Inversionista.findById(iasociativo.inver_id);
-  res.render('modelos-inversion/edit-plan_pagos', { inversionista, iasociativo })
+  res.render('modelos-inversion/edit-plan_pagos', { inversionista, iasociativo });
 };
 
 asociativoCtrl.agregarPagoAsociativo = async (req, res) => {
   const iasociativo = await Iasociativo.findById(req.params.id);
   const inversionista = await Inversionista.findById(iasociativo.inver_id);
-  res.render('modelos-inversion/agregar-fecha-pp', { inversionista, iasociativo })
+  res.render('modelos-inversion/agregar-fecha-pp', { inversionista, iasociativo });
 };
 
 asociativoCtrl.AddDateAsociativo = async (req, res) => {
   try {
-    const { plan_pagos } = await Iasociativo.findById(req.params.id)
-    const iasociativo = await Iasociativo.findById(req.params.id)
+    const { plan_pagos } = await Iasociativo.findById(req.params.id);
+    const iasociativo = await Iasociativo.findById(req.params.id);
     const pago = req.body;
     const cuota = pago.couta;
     const fecha = pago.fecha;
     pago.couta = Number(cuota);
     pago.fecha = datespliter(fecha);
-    plan_pagos.push(pago)
-    await Iasociativo.findByIdAndUpdate(req.params.id, { plan_pagos })
-    req.flash('success_msg', 'Fecha de Pago añadida')
-    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+    plan_pagos.push(pago);
+    await Iasociativo.findByIdAndUpdate(req.params.id, { plan_pagos });
+    req.flash('success_msg', 'Fecha de Pago añadida');
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo');
   }
   catch (e) {
-    const iasociativo = await Iasociativo.findById(req.params.id)
-    req.flash('error_msg', 'La fecha de  pago no pudo ser añadida')
-    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+    const iasociativo = await Iasociativo.findById(req.params.id);
+    req.flash('error_msg', 'La fecha de  pago no pudo ser añadida');
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo');
     console.log(e);
   }
-}
-
-
+};
 
 asociativoCtrl.updatePPAsociativo = async (req, res) => {
   try {
-    const iasociativo = await Iasociativo.findById(req.params.id)
-    const  plan = req.body;
+    const iasociativo = await Iasociativo.findById(req.params.id);
+    const plan = req.body;
     let plan_pagos = updatePlanPagos(plan);
-    await Iasociativo.findByIdAndUpdate(req.params.id, { plan_pagos })
-    req.flash('success_msg', 'Plan de pagos actualizado')
-    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+    await Iasociativo.findByIdAndUpdate(req.params.id, { plan_pagos });
+    req.flash('success_msg', 'Plan de pagos actualizado');
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo');
   }
   catch (e) {
-    const iasociativo = await Iasociativo.findById(req.params.id)
-    req.flash('error_msg', 'El plan de pagos no pudo ser actualizado')
-    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo')
+    const iasociativo = await Iasociativo.findById(req.params.id);
+    req.flash('error_msg', 'El plan de pagos no pudo ser actualizado');
+    res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo');
     console.log(e);
   }
 };
@@ -276,12 +279,12 @@ function crearPlan_pagos(fecha_cierre, fecha_inicio, valor_compra, fecha_pago) {
   }
 }
 
-function datespliter (fecha){
-  try{
+function datespliter(fecha) {
+  try {
     let fecha_arr = fecha.split("-");
-    let dia = fecha_arr[2] ;
-    let mes = fecha_arr[1] ;
-    let ano = fecha_arr[0] ;
+    let dia = fecha_arr[2];
+    let mes = fecha_arr[1];
+    let ano = fecha_arr[0];
     let new_fecha = dia + "/" + mes + "/" + ano;
     return new_fecha;
   }
@@ -290,7 +293,7 @@ function datespliter (fecha){
   }
 }
 
-function updatePlanPagos(plan){
+function updatePlanPagos(plan) {
   let fechas = plan.fecha;
   let coutas = plan.couta;
   let pagos = plan.pago;
@@ -298,13 +301,13 @@ function updatePlanPagos(plan){
   let new_plan_pagos = new Array(fechas.length);
 
   for (let i = 0; i < fechas.length; i++) {
-    let fecha = fechas [i];
-    let couta = Number (coutas [i]);
-    let pago = pagos [i];
+    let fecha = fechas[i];
+    let couta = Number(coutas[i]);
+    let pago = pagos[i];
 
     new_plan_pagos[i] = { fecha, couta, pago };
   }
-  return(new_plan_pagos)
-}
+  return (new_plan_pagos)
+};
 
 module.exports = asociativoCtrl;
