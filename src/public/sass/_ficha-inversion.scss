@@ -47,8 +47,28 @@
       .lista-co-inver {
         ul {
           display: none;
+          position: fixed;
+          background: $gris-os;
+          padding: 30px;
+          top: 20vh;
+          left: 30vw;
+          width: 35vw;
+          height: 60vh;
+          border-radius: 5px;
+          border: 2px solid white;
+          overflow: auto;
+          li p{
+            color: white;
+          }
+          &:focus{
+            display: block;
+          }
         }
       }
+      button.btn-inversion:active~ul,button.btn-inversion:target~ul{
+        display: block;
+      }
+
       .btn-inversion,
         .btn-danger {
           border-radius: 50px;
