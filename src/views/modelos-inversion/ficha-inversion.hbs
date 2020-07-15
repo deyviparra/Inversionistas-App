@@ -358,13 +358,15 @@
         </div>
 
         <div class="alerta-cumplimiento">
-            <p> Valor mutuo: </p>
-            <p> Valor apartamento actual: </p>
-            <p> Valor apartamento compra: </p>
-            <p> % cumplimiento: </p>
-
-
-
+           <div class="info-cumplimiento">
+                <p> <span class="highlight">Valor mutuo: </span> {{formatNumber ifnf.valor_mutuo style="currency" currency="COP"}}</p>
+                <p> <span class="highlight">Valor apartamento actual: </span>{{formatNumber proyecto.rango style="currency" currency="COP"}}</p>
+                <p> <span class="highlight">Valor apartamento compra: </span>{{formatNumber ifnf.inmuebles.0.valor style="currency" currency="COP"}}</p>
+                <p> <span class="highlight">Meta: </span>{{formatNumber meta style="currency" currency="COP"}}</p>
+           </div>
+            <div class="indicador">
+                <p> Cumplimiento de la meta: <span id="porcentaje-cumplimiento"> {{porcentajeCumplimiento}}</span> %</p>
+            </div>
         </div>
 
     </section>

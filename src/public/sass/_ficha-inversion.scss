@@ -35,7 +35,8 @@
         width: 50%;
         margin-left: 12%;
       }
-      span{
+
+      span {
         color: $negro;
       }
     }
@@ -73,6 +74,7 @@
             border: 2px solid white;
             overflow: auto;
             z-index: 2;
+
             li p {
               color: white;
             }
@@ -117,6 +119,34 @@
       }
     }
 
+    .alerta-cumplimiento {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      margin-top: 20px;
+      align-self: center;
+      border-radius: 8px;
+      background: #CFDE00;
+      box-shadow: inset 9px 9px 18px #acb800,
+        inset -9px -9px 18px #f2ff00;
+      .info-cumplimiento{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .indicador{
+        
+      }
+      p {
+
+        span {
+          color: $negro;
+        }
+      }
+    }
 
   }
 }
@@ -129,10 +159,11 @@
 
   ul {
     width: 60%;
+
     li {
       display: flex;
       justify-content: space-around;
-      
+
     }
   }
 }
