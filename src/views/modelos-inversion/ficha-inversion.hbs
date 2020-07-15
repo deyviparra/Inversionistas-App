@@ -10,7 +10,8 @@
             <p> <span class="highlight">Nit: </span>{{addPointsNit inversionista.nit}}</p>
         </li>
         <li>
-            <p> <span class="highlight">Representante legal: </span>{{inversionista.nombre}} {{inversionista.apellido}}</p>
+            <p> <span class="highlight">Representante legal: </span>{{inversionista.nombre}} {{inversionista.apellido}}
+            </p>
         </li>
         <li>
             <p> <span class="highlight">Cédula: </span>{{addPoints inversionista.cedula}}</p>
@@ -56,7 +57,8 @@
             </ul>
             <ul>
                 <li>
-                    <p> <span class="highlight">Valor de compra: </span>{{formatNumber icompra.valor_compra style="currency" currency="COP"}}</p>
+                    <p> <span class="highlight">Valor de compra:
+                        </span>{{formatNumber icompra.valor_compra style="currency" currency="COP"}}</p>
                 </li>
                 <li>
                     <p> <span class="highlight">Fecha de entrega: </span>{{icompra.fecha_entrega}}</p>
@@ -138,11 +140,13 @@
             </ul>
             <ul>
                 <li>
-                    <p> <span class="highlight">Valor de la inversión: </span>{{formatNumber igarantia.valor_inversion style="currency" currency="COP"}}
+                    <p> <span class="highlight">Valor de la inversión:
+                        </span>{{formatNumber igarantia.valor_inversion style="currency" currency="COP"}}
                     </p>
                 </li>
                 <li>
-                    <p> <span class="highlight">Período de liquidación: cada </span>{{igarantia.periodo_liquidacion}} meses </p>
+                    <p> <span class="highlight">Período de liquidación: cada </span>{{igarantia.periodo_liquidacion}}
+                        meses </p>
                 </li>
                 <li>
                     <p> <span class="highlight">Tasa de intereses mensual: </span>{{igarantia.tasa_int_men}} %</p>
@@ -206,11 +210,13 @@
             </ul>
             <ul>
                 <li>
-                    <p> <span class="highlight">Valor de compra: </span>{{formatNumber iasociativo.valor_compra style="currency" currency="COP"}}</p>
+                    <p> <span class="highlight">Valor de compra:
+                        </span>{{formatNumber iasociativo.valor_compra style="currency" currency="COP"}}</p>
                 </li>
 
                 <li>
-                    <p> <span class="highlight">Fecha de entrega prometida:</span>{{iasociativo.fecha_entrega_prometida}}</p>
+                    <p> <span class="highlight">Fecha de entrega
+                            prometida:</span>{{iasociativo.fecha_entrega_prometida}}</p>
                 </li>
                 <li>
                     <p><span class="highlight">TIR prometida: </span>{{iasociativo.tir_prometida}} %</p>
@@ -289,7 +295,8 @@
                 </li>
 
                 <li>
-                    <p> <span class="highlight">Valor del mutuo: </span>{{formatNumber ifnf.valor_mutuo style="currency" currency="COP"}}</p>
+                    <p> <span class="highlight">Valor del mutuo:
+                        </span>{{formatNumber ifnf.valor_mutuo style="currency" currency="COP"}}</p>
                 </li>
 
                 <li>
@@ -358,15 +365,28 @@
         </div>
 
         <div class="alerta-cumplimiento">
-           <div class="info-cumplimiento">
-                <p> <span class="highlight">Valor mutuo: </span> {{formatNumber ifnf.valor_mutuo style="currency" currency="COP"}}</p>
-                <p> <span class="highlight">Valor apartamento actual: </span>{{formatNumber proyecto.rango style="currency" currency="COP"}}</p>
-                <p> <span class="highlight">Valor apartamento compra: </span>{{formatNumber ifnf.inmuebles.0.valor style="currency" currency="COP"}}</p>
+            <div class="info-cumplimiento">
+                <p> <span class="highlight">Valor mutuo: </span>
+                    {{formatNumber ifnf.valor_mutuo style="currency" currency="COP"}}</p>
+                <p> <span class="highlight">Valor apartamento actual:
+                    </span>{{formatNumber proyecto.rango style="currency" currency="COP"}}</p>
+                {{#if ifnf.inmuebles.0.valor}}
+                <p> <span class="highlight">Valor apartamento compra:
+                    </span>{{formatNumber ifnf.inmuebles.0.valor style="currency" currency="COP"}}</p>
                 <p> <span class="highlight">Meta: </span>{{formatNumber meta style="currency" currency="COP"}}</p>
-           </div>
-            <div class="indicador">
-                <p> Cumplimiento de la meta: <span id="porcentaje-cumplimiento"> {{porcentajeCumplimiento}}</span> %</p>
             </div>
+            <p> Cumplimiento de la meta: <span id="porcentaje-cumplimiento"></span> {{porcentajeCumplimiento}}</span> %
+            </p>
+            <div class="indicador">
+                <p>0%</p>
+                <meter class="barra" min="0" max="100" low="50" high="80" value={{porcentajeCumplimiento}}> </meter>
+                <p>100%</p>
+            </div>
+            {{else}}
+            <div class="alerta-inmueble">
+                <p> Esta inversión NO tiene un inmueble asociado aún.</p>
+            </div>
+            {{/if}}
         </div>
 
     </section>
