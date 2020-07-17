@@ -588,6 +588,9 @@ input:checked + .slider:before {
       color: #272727;
       margin: 0;
       padding: 10px; }
+      .info-inversion .info-ppal p a {
+        text-decoration: none;
+        color: #272727; }
     .info-inversion .info-ppal .info-inversion-div {
       display: flex;
       justify-content: space-around;
