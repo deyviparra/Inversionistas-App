@@ -632,13 +632,25 @@ input:checked + .slider:before {
           border: 2px solid #f3f3f3;
           overflow: auto;
           z-index: 2; }
-          .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles .modal-div .modal li p,
-          .info-inversion .info-ppal .inmueble-coinver .lista-co-inver .modal-div .modal li p {
-            color: #f3f3f3; }
-          .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles .modal-div .modal li a,
-          .info-inversion .info-ppal .inmueble-coinver .lista-co-inver .modal-div .modal li a {
-            text-decoration: underline;
-            color: #f3f3f3; }
+          .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles .modal-div .modal li,
+          .info-inversion .info-ppal .inmueble-coinver .lista-co-inver .modal-div .modal li {
+            border: 2px dotted #f3f3f3;
+            display: flex;
+            margin: 10px;
+            justify-content: space-around;
+            align-items: center; }
+            .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles .modal-div .modal li p,
+            .info-inversion .info-ppal .inmueble-coinver .lista-co-inver .modal-div .modal li p {
+              color: #f3f3f3; }
+            .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles .modal-div .modal li a,
+            .info-inversion .info-ppal .inmueble-coinver .lista-co-inver .modal-div .modal li a {
+              text-decoration: underline;
+              color: #f3f3f3; }
+            .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles .modal-div .modal li button,
+            .info-inversion .info-ppal .inmueble-coinver .lista-co-inver .modal-div .modal li button {
+              height: 40px;
+              background: red;
+              color: #f3f3f3; }
       .info-inversion .info-ppal .inmueble-coinver .btn-inversion,
       .info-inversion .info-ppal .inmueble-coinver .btn-danger {
         border-radius: 50px;

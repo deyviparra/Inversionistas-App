@@ -79,12 +79,21 @@
             z-index: 2;
 
             li{
-
+              border: 2px dotted $blanco;
+              display: flex;
+              margin: 10px;
+              justify-content: space-around;
+              align-items: center;
               p {
                 color: $blanco;
               }
               a{
                 text-decoration: underline;
+                color: $blanco;
+              }
+              button{
+                height: 40px;
+                background: red;
                 color: $blanco;
               }
             }

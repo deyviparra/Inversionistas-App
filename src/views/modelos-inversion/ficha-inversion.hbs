@@ -232,11 +232,14 @@
                     <ul class="modal">
                         {{#each iasociativo.inmuebles}}
                         <li>
-                            <p> Torre: {{torre}}</p>
-                            <p> Apartamento: {{apartamento}}</p>
-                            <p> Parqueadero: {{parqueadero}}</p>
-                            <p> Cuarto útil: {{cuarto_util}}</p>
-                            <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
+                            <div>
+                                <p> Torre: {{torre}}</p>
+                                <p> Apartamento: {{apartamento}}</p>
+                                <p> Parqueadero: {{parqueadero}}</p>
+                                <p> Cuarto útil: {{cuarto_util}}</p>
+                                <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
+                            </div>
+                            <button class="eliminar-inmueble">Eliminar</button>
                         </li>
                         {{/each}}
                     </ul>
