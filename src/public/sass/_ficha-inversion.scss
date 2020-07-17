@@ -23,7 +23,7 @@
       margin: 0;
       padding: 10px;
       a{
-        text-decoration: none;
+        text-decoration: underline;
         color: $negro;
       }
     }
@@ -74,12 +74,19 @@
             width: 35vw;
             height: 60vh;
             border-radius: 5px;
-            border: 2px solid white;
+            border: 2px solid $blanco;
             overflow: auto;
             z-index: 2;
 
-            li p {
-              color: white;
+            li{
+
+              p {
+                color: $blanco;
+              }
+              a{
+                text-decoration: underline;
+                color: $blanco;
+              }
             }
           }
         }

@@ -589,7 +589,7 @@ input:checked + .slider:before {
       margin: 0;
       padding: 10px; }
       .info-inversion .info-ppal p a {
-        text-decoration: none;
+        text-decoration: underline;
         color: #272727; }
     .info-inversion .info-ppal .info-inversion-div {
       display: flex;
@@ -629,12 +629,16 @@ input:checked + .slider:before {
           width: 35vw;
           height: 60vh;
           border-radius: 5px;
-          border: 2px solid white;
+          border: 2px solid #f3f3f3;
           overflow: auto;
           z-index: 2; }
           .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles .modal-div .modal li p,
           .info-inversion .info-ppal .inmueble-coinver .lista-co-inver .modal-div .modal li p {
-            color: white; }
+            color: #f3f3f3; }
+          .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles .modal-div .modal li a,
+          .info-inversion .info-ppal .inmueble-coinver .lista-co-inver .modal-div .modal li a {
+            text-decoration: underline;
+            color: #f3f3f3; }
       .info-inversion .info-ppal .inmueble-coinver .btn-inversion,
       .info-inversion .info-ppal .inmueble-coinver .btn-danger {
         border-radius: 50px;
