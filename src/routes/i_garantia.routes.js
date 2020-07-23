@@ -11,7 +11,8 @@ const {
   AsociarInversionistaGarantia,
   renderEditPPGarantia,
   agregarPagoGarantia,
-  editarPPGarantia
+  editarPPGarantia,
+  EliminarCoInverGarantia
 } = require("../controllers/i_garantia.controller");
 
 // Agregar inversión
@@ -25,6 +26,7 @@ router.put("/inversion/edit/:id/garantia", isAuthenticated, updateInversionGaran
 // Agregar Co-inversionista
 router.get("/asociar-inversionista/:id/garantia",isAuthenticated, renderInversionistaGarantia );
 router.put("/inversionista/add/:id/garantia", isAuthenticated, AsociarInversionistaGarantia);
+router.put("/eliminar-coinver/:id/garantia/:index",isAuthenticated, EliminarCoInverGarantia);
 // Editar plan de pagos
 router.get("/edit-plan_pagos/:id/garantia",isAuthenticated, renderEditPPGarantia );
 router.put("/plan_pago/edit/:id/garantia", isAuthenticated, editarPPGarantia);

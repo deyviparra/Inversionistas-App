@@ -172,6 +172,42 @@ icompraCtrl.AsociarInmuebleCompra = async (req, res) => {
   }
 };
 
+//-----------------------------------------------------------------------------------
+
+icompraCtrl.EliminarInmuebleCompra = async (req, res) => {
+  try {
+    let { inmuebles,id } = await Icompra.findById(req.params.id);
+    const arr1 = inmuebles.slice(0, req.params.index);
+    const arr2 = inmuebles.slice(Number(req.params.index) + 1, inmuebles.length + 1);
+    inmuebles = arr1.concat(arr2);
+    await Icompra.findByIdAndUpdate(req.params.id, {
+      inmuebles
+    });
+    req.flash("success_msg", "Inmueble eliminado");
+    res.send(["/ficha-inversion/" + id + "/compra"])
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+icompraCtrl.EliminarCoInverCompra = async (req, res) => {
+  try {
+    let { co_inversionista,id } = await Icompra.findById(req.params.id);
+    const arr1 = co_inversionista.slice(0, req.params.index);
+    const arr2 = co_inversionista.slice(Number(req.params.index) + 1, co_inversionista.length + 1);
+    co_inversionista = arr1.concat(arr2);
+    console.log(co_inversionista)
+    await Icompra.findByIdAndUpdate(req.params.id, {
+      co_inversionista
+    });
+    req.flash("success_msg", "Co-inversionista eliminado");
+    res.send(["/ficha-inversion/" + id + "/compra"])
+  } catch (e) {
+    console.log(e);
+  }
+};
+//-----------------------------------------------------------------------------------
+
 icompraCtrl.AsociarInversionistaCompra = async (req, res) => {
   try {
     const { co_inversionista } = await Icompra.findById(req.params.id)

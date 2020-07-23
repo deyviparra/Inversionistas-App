@@ -13,7 +13,9 @@ const {
   AsociarInversionistaFnf,
   renderEditPPFnf,
   agregarPagoFnf,
-  editarPPFnf
+  editarPPFnf,
+  EliminarInmuebleFnf,
+  EliminarCoInverFnf
 } = require("../controllers/i_fnf.controller");
 
 // Agregar inversión
@@ -27,9 +29,11 @@ router.put("/inversion/edit/:id/fnf", isAuthenticated, updateInversionFnf);
 // Agregar inmbuele
 router.get("/asociar-inmueble/:id/fnf",isAuthenticated, renderInmuebleFnf );
 router.put("/inmueble/add/:id/fnf", isAuthenticated, AsociarInmuebleFnf);
+router.put("/eliminar-inmueble/:id/fnf/:index",isAuthenticated, EliminarInmuebleFnf);
 // Agregar Co-inversionista
 router.get("/asociar-inversionista/:id/fnf", isAuthenticated,renderInversionistaFnf );
 router.put("/inversionista/add/:id/fnf", isAuthenticated, AsociarInversionistaFnf);
+router.put("/eliminar-coinver/:id/fnf/:index",isAuthenticated, EliminarCoInverFnf);
 // Editar plan de pagos
 router.get("/edit-plan_pagos/:id/fnf",isAuthenticated, renderEditPPFnf );
 router.put("/plan_pago/edit/:id/fnf", isAuthenticated, editarPPFnf);

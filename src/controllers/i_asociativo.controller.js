@@ -191,26 +191,36 @@ asociativoCtrl.AsociarInmuebleAsociativo = async (req, res) => {
 
 asociativoCtrl.EliminarInmuebleAsociativo = async (req, res) => {
   try {
-    const { inmuebles } = await Iasociativo.findById(req.params.id);
+    let { inmuebles,id } = await Iasociativo.findById(req.params.id);
     const arr1 = inmuebles.slice(0, req.params.index);
     const arr2 = inmuebles.slice(Number(req.params.index) + 1, inmuebles.length + 1);
-    const arr = arr1.concat(arr2);
-    console.log(arr)
-    // const iasociativo = await Iasociativo.findById(req.params.id);
-    // const inmueble = req.body;
-    // inmueble.valor = Number(inmueble.valor);
-    // inmuebles.push(inmueble);
-    // await Iasociativo.findByIdAndUpdate(req.params.id, { inmuebles });
-    // req.flash('success_msg', 'Inmueble añadido');
-    // res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo');
+    inmuebles = arr1.concat(arr2);
+    await Iasociativo.findByIdAndUpdate(req.params.id, {
+      inmuebles
+    });
+    req.flash("success_msg", "Inmueble eliminado");
+    res.send(["/ficha-inversion/" + id + "/asociativo"])
   } catch (e) {
-    // const iasociativo = await Iasociativo.findById(req.params.id);
-    // req.flash('error_msg', 'El inmuble no pudo ser añadido');
-    // res.redirect('/ficha-inversion/' + iasociativo._id + '/asociativo');
     console.log(e);
   }
 };
 
+asociativoCtrl.EliminarCoInverAsociativo = async (req, res) => {
+  try {
+    let { co_inversionista,id } = await Iasociativo.findById(req.params.id);
+    const arr1 = co_inversionista.slice(0, req.params.index);
+    const arr2 = co_inversionista.slice(Number(req.params.index) + 1, co_inversionista.length + 1);
+    co_inversionista = arr1.concat(arr2);
+    console.log(co_inversionista)
+    await Iasociativo.findByIdAndUpdate(req.params.id, {
+      co_inversionista
+    });
+    req.flash("success_msg", "Co-inversionista eliminado");
+    res.send(["/ficha-inversion/" + id + "/asociativo"])
+  } catch (e) {
+    console.log(e);
+  }
+};
 //-----------------------------------------------------------------------------------
 
 asociativoCtrl.AsociarInversionistaAsociativo = async (req, res) => {

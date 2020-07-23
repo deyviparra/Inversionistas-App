@@ -13,7 +13,9 @@ const {
   AsociarInversionistaCompra,
   renderEditPPCompra,
   agregarPagoCompra,
-  editarPPCompra
+  editarPPCompra,
+  EliminarInmuebleCompra,
+  EliminarCoInverCompra
 } = require("../controllers/i_compra.controller");
 
 // Agregar inversión
@@ -27,9 +29,11 @@ router.put("/inversion/edit/:id/compra", isAuthenticated, updateInversionCompra)
 // Agregar inmueble
 router.get("/asociar-inmueble/:id/compra",isAuthenticated, renderInmuebleCompra );
 router.put("/inmueble/add/:id/compra", isAuthenticated, AsociarInmuebleCompra);
+router.put("/eliminar-inmueble/:id/compra/:index",isAuthenticated, EliminarInmuebleCompra);
 // Agregar Co-inversionista
 router.get("/asociar-inversionista/:id/compra",isAuthenticated, renderInversionistaCompra );
 router.put("/inversionista/add/:id/compra", isAuthenticated, AsociarInversionistaCompra);
+router.put("/eliminar-coinver/:id/compra/:index",isAuthenticated, EliminarCoInverCompra);
 // Editar plan de pagos
 router.get("/edit-plan_pagos/:id/compra",isAuthenticated, renderEditPPCompra );
 router.put("/plan_pago/edit/:id/compra", isAuthenticated, editarPPCompra);

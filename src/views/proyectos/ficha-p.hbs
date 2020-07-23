@@ -57,9 +57,12 @@
             <ul>
                 {{#each proyecto.tipos}}
                 <li>
-                    <p> <span class="highlight">Tipo: </span>{{nombre}}</p>
-                    <p> <span class="highlight">Valor: </span>{{valor}}</p>
-                    <p> <span class="highlight">Tamaño: </span>{{metraje}} {{unidades}}</p>
+                    <div>
+                        <p> <span class="highlight">Tipo: </span>{{nombre}}</p>
+                        <p> <span class="highlight">Valor: </span>{{valor}}</p>
+                        <p> <span class="highlight">Tamaño: </span>{{metraje}} {{unidades}}</p>
+                    </div>
+                    <button class="eliminar-tipoApto">Eliminar</button>
                 </li>
                 {{/each}}
             </ul>

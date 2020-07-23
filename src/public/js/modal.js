@@ -2,10 +2,8 @@ const btnModal = document.querySelectorAll(".btn-inversion");
 const modal = document.querySelectorAll(".modal");
 const modalDiv = document.querySelectorAll(".modal-div");
 btnModal.forEach((element, index) => {
-  console.log(element);
   element.onclick = () => {
     modal[index].style.display = "block";
-    console.log("paso por aqui");
     modalDiv[index].style.display = "block";
   };
 });

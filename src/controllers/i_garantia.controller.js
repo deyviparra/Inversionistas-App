@@ -136,6 +136,26 @@ igarantiaCtrl.updateInversionGarantia = async (req, res) => {
   }
 };
 
+//-----------------------------------------------------------------------------------
+
+igarantiaCtrl.EliminarCoInverGarantia = async (req, res) => {
+  try {
+    let { co_inversionista,id } = await Igarantia.findById(req.params.id);
+    const arr1 = co_inversionista.slice(0, req.params.index);
+    const arr2 = co_inversionista.slice(Number(req.params.index) + 1, co_inversionista.length + 1);
+    co_inversionista = arr1.concat(arr2);
+    console.log(co_inversionista)
+    await Igarantia.findByIdAndUpdate(req.params.id, {
+      co_inversionista
+    });
+    req.flash("success_msg", "Co-inversionista eliminado");
+    res.send(["/ficha-inversion/" + id + "/garantia"])
+  } catch (e) {
+    console.log(e);
+  }
+};
+//-----------------------------------------------------------------------------------
+
 igarantiaCtrl.AsociarInversionistaGarantia = async (req, res) => {
   try {
     const { co_inversionista } = await Igarantia.findById(req.params.id);

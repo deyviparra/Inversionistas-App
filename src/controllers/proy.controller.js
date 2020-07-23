@@ -5,9 +5,9 @@ const path = require("path");
 const { uploadFile } = require('../upload.js')
 
 proyCtrl.renderProyForm = (req, res) => {
-  try{
+  try {
     const backUrl = '/menuppal'
-    res.render('proyectos/nuevo-p',{backUrl})
+    res.render('proyectos/nuevo-p', { backUrl })
   }
   catch (e) {
     req.flash('error_msg', 'No se puede crear un proyecto')
@@ -16,7 +16,7 @@ proyCtrl.renderProyForm = (req, res) => {
   }
 }
 proyCtrl.createNewProy = async (req, res) => {
-  try{
+  try {
     const { nombre, tipo, direccion, rango, descripcion, municipio, departamento, estrato } = req.body;
     const newProyecto = new Proyecto({
       nombre,
@@ -33,7 +33,7 @@ proyCtrl.createNewProy = async (req, res) => {
     } else {
       newProyecto.imagePath = "https://inversionistas-bucket.s3-sa-east-1.amazonaws.com/" + req.file.filename;
       await uploadFile(path.join(__dirname, '../public/uploads/' + req.file.filename), req.file.filename)
-      
+
     }
     newProyecto.galeria = [""];
     newProyecto.tipos = [""];
@@ -48,7 +48,7 @@ proyCtrl.createNewProy = async (req, res) => {
   }
 }
 proyCtrl.renderProy = async (req, res) => {
-  try{
+  try {
     const backUrl = '/menuppal'
     const proyectos = await Proyecto.find()
     res.render('proyectos/lista-p', { proyectos, backUrl })
@@ -60,10 +60,10 @@ proyCtrl.renderProy = async (req, res) => {
   }
 }
 proyCtrl.renderEditFormProy = async (req, res) => {
-  try{
+  try {
     const proy = await Proyecto.findById(req.params.id)
     const backUrl = '/ficha-p/' + proy._id
-    res.render('proyectos/edit-proy', { proy,backUrl })
+    res.render('proyectos/edit-proy', { proy, backUrl })
   }
   catch (e) {
     const proyecto = await Proyecto.findById(req.params.id)
@@ -73,7 +73,7 @@ proyCtrl.renderEditFormProy = async (req, res) => {
   }
 }
 proyCtrl.updateProy = async (req, res) => {
-  try{
+  try {
     const proyecto = await Proyecto.findById(req.params.id)
     const { nombre, tipo, direccion, rango, descripcion, municipio, departamento, estrato } = req.body;
     if (typeof req.file === 'undefined') {
@@ -99,7 +99,7 @@ proyCtrl.updateProy = async (req, res) => {
 }
 
 proyCtrl.deleteProy = async (req, res) => {
-  try{
+  try {
     const proy = await Proyecto.findById(req.params.id)
     await Proyecto.findByIdAndDelete(req.params.id)
     if (proy.imagePath !== '/uploads/sinfotop.png') {
@@ -118,7 +118,7 @@ proyCtrl.renderFichaP = async (req, res) => {
   try {
     const proyecto = await Proyecto.findById(req.params.id)
     const backUrl = '/proy'
-    res.render('proyectos/ficha-p', { proyecto,backUrl })
+    res.render('proyectos/ficha-p', { proyecto, backUrl })
   }
   catch (e) {
     req.flash('error_msg', 'No se puede visualizar el proyecto')
@@ -131,7 +131,7 @@ proyCtrl.renderTipo = async (req, res) => {
   try {
     const proyecto = await Proyecto.findById(req.query.id)
     const backUrl = '/ficha-p/' + proyecto._id
-    res.render('proyectos/tipos', { proyecto,backUrl })
+    res.render('proyectos/tipos', { proyecto, backUrl })
   }
   catch (e) {
     const proyecto = await Proyecto.findById(req.query.id)
@@ -155,5 +155,20 @@ proyCtrl.updateType = async (req, res) => {
     console.log(e);
   }
 }
+proyCtrl.deleteType = async (req, res) => {
+  try {
+    let { tipos, _id } = await Proyecto.findById(req.params.id);
+    const arr1 = tipos.slice(0, req.params.index);
+    const arr2 = tipos.slice(Number(req.params.index) + 1, tipos.length + 1);
+    tipos = arr1.concat(arr2);
+    await Proyecto.findByIdAndUpdate(req.params.id, {
+      tipos
+    });
+    req.flash("success_msg", "Tipo de apartamento eliminado");
+    res.send(["/ficha-p/" + _id])
+  } catch (e) {
 
+    console.log(e);
+  }
+}
 module.exports = proyCtrl;

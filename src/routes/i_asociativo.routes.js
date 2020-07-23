@@ -15,7 +15,8 @@ const {
   updatePPAsociativo,
   agregarPagoAsociativo,
   AddDateAsociativo,
-  EliminarInmuebleAsociativo
+  EliminarInmuebleAsociativo,
+  EliminarCoInverAsociativo
   
 } = require("../controllers/i_asociativo.controller");
 
@@ -30,10 +31,11 @@ router.put("/inversion/edit/:id/asociativo", isAuthenticated, updateInversionAso
 // Agregar inmueble
 router.get("/asociar-inmueble/:id/asociativo", isAuthenticated, renderInmuebleAsociativo);
 router.put("/inmueble/add/:id/asociativo", isAuthenticated, AsociarInmuebleAsociativo);
-router.put("/eliminar-inmueble/:id/asociativo/:index",isAuthenticated, EliminarInmuebleAsociativo)
+router.put("/eliminar-inmueble/:id/asociativo/:index",isAuthenticated, EliminarInmuebleAsociativo);
 // Agregar Co-inversionista
 router.get("/asociar-inversionista/:id/asociativo", isAuthenticated, renderInversionistaAsociativo);
 router.put("/inversionista/add/:id/asociativo", isAuthenticated, AsociarInversionistaAsociativo);
+router.put("/eliminar-coinver/:id/asociativo/:index",isAuthenticated, EliminarCoInverAsociativo);
 // Agregar pago 
 router.get("/pago/add/:id/asociativo", isAuthenticated, agregarPagoAsociativo);
 router.put("/pago/adddate/:id/asociativo", isAuthenticated, AddDateAsociativo);

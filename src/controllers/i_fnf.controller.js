@@ -275,6 +275,42 @@ ifnfCtrl.AsociarInmuebleFnf = async (req, res) => {
   }
 };
 
+//-----------------------------------------------------------------------------------
+
+ifnfCtrl.EliminarInmuebleFnf = async (req, res) => {
+  try {
+    let { inmuebles,id } = await Ifnf.findById(req.params.id);
+    const arr1 = inmuebles.slice(0, req.params.index);
+    const arr2 = inmuebles.slice(Number(req.params.index) + 1, inmuebles.length + 1);
+    inmuebles = arr1.concat(arr2);
+    await Ifnf.findByIdAndUpdate(req.params.id, {
+      inmuebles
+    });
+    req.flash("success_msg", "Inmueble eliminado");
+    res.send(["/ficha-inversion/" + id + "/fnf"])
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+ifnfCtrl.EliminarCoInverFnf = async (req, res) => {
+  try {
+    let { co_inversionista,id } = await Ifnf.findById(req.params.id);
+    const arr1 = co_inversionista.slice(0, req.params.index);
+    const arr2 = co_inversionista.slice(Number(req.params.index) + 1, co_inversionista.length + 1);
+    co_inversionista = arr1.concat(arr2);
+    console.log(co_inversionista)
+    await Ifnf.findByIdAndUpdate(req.params.id, {
+      co_inversionista
+    });
+    req.flash("success_msg", "Co-inversionista eliminado");
+    res.send(["/ficha-inversion/" + id + "/fnf"])
+  } catch (e) {
+    console.log(e);
+  }
+};
+//-----------------------------------------------------------------------------------
+
 ifnfCtrl.AsociarInversionistaFnf = async (req, res) => {
   try {
     const { co_inversionista } = await Ifnf.findById(req.params.id);

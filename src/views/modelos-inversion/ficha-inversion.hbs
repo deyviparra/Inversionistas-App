@@ -46,7 +46,8 @@
         <div class="info-inversion-div">
             <ul>
                 <li>
-                    <p> <span class="highlight">Proyecto: </span> <a href="/ficha-p/{{icompra.proyecto.id}}" target="_blank" type="submit"> {{icompra.proyecto.nombre}}</a></p>
+                    <p> <span class="highlight">Proyecto: </span> <a href="/ficha-p/{{icompra.proyecto.id}}"
+                            target="_blank" type="submit"> {{icompra.proyecto.nombre}}</a></p>
                 </li>
                 <li>
                     <p><span class="highlight">Fecha de inicio: </span>{{icompra.fecha_inicio}}</p>
@@ -75,12 +76,15 @@
                     <ul class="modal">
                         {{#each icompra.inmuebles}}
                         <li>
-                            <p> Torre: {{torre}}</p>
-                            <p> Apartamento: {{apartamento}}</p>
-                            <p> Parqueadero: {{parqueadero}}</p>
-                            <p> Cuarto útil: {{cuarto_util}}</p>
-                            <p> Encargo fiduciario: {{encargo_fiduciario}}</p>
-                            <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
+                            <div>
+                                <p> Torre: {{torre}}</p>
+                                <p> Apartamento: {{apartamento}}</p>
+                                <p> Parqueadero: {{parqueadero}}</p>
+                                <p> Cuarto útil: {{cuarto_util}}</p>
+                                <p> Encargo fiduciario: {{encargo_fiduciario}}</p>
+                                <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
+                            </div>
+                            <button class="eliminar-inmueble">Eliminar</button>
                         </li>
                         {{/each}}
                     </ul>
@@ -92,8 +96,10 @@
                     <ul class="modal">
                         {{#each icompra.co_inversionista}}
                         <li>
-                            <a href="/ficha-i/{{id}}" target="_blank"> {{nombre}}</a>
-
+                            <div>
+                                <a href="/ficha-i/{{id}}" target="_blank"> {{nombre}}</a>
+                            </div>
+                            <button class="eliminar-coinver">Eliminar</button>
                         </li>
                         {{/each}}
                     </ul>
@@ -130,7 +136,8 @@
         <div class="info-inversion-div">
             <ul>
                 <li>
-                    <p> <span class="highlight">Proyecto: </span> <a href="/ficha-p/{{igarantia.proyecto.id}}" target="_blank" type="submit"> {{igarantia.proyecto.nombre}}</a></p>
+                    <p> <span class="highlight">Proyecto: </span> <a href="/ficha-p/{{igarantia.proyecto.id}}"
+                            target="_blank" type="submit"> {{igarantia.proyecto.nombre}}</a></p>
                 </li>
                 <li>
                     <p> <span class="highlight">Fecha de inicio: </span>{{igarantia.fecha_inicio}}</p>
@@ -161,8 +168,10 @@
                     <ul class="modal">
                         {{#each igarantia.co_inversionista}}
                         <li>
+                            <div>
                             <a href="/ficha-i/{{id}}" target="_blank"> {{nombre}}</a>
-
+                            </div>
+                            <button class="eliminar-coinver">Eliminar</button>
                         </li>
                         {{/each}}
                     </ul>
@@ -197,7 +206,8 @@
         <div class="info-inversion-div">
             <ul>
                 <li>
-                    <p> <span class="highlight">Proyecto: </span> <a href="/ficha-p/{{iasociativo.proyecto.id}}" target="_blank" type="submit"> {{iasociativo.proyecto.nombre}}</a></p>
+                    <p> <span class="highlight">Proyecto: </span> <a href="/ficha-p/{{iasociativo.proyecto.id}}"
+                            target="_blank" type="submit"> {{iasociativo.proyecto.nombre}}</a></p>
                 </li>
                 <li>
                     <p> <span class="highlight">Fecha de inicio: </span>{{iasociativo.fecha_inicio}}</p>
@@ -251,7 +261,10 @@
                     <ul class="modal">
                         {{#each iasociativo.co_inversionista}}
                         <li>
-                            <a href="/ficha-i/{{id}}" target="_blank"> {{nombre}}</a>
+                            <div>
+                                <a href="/ficha-i/{{id}}" target="_blank"> {{nombre}}</a>
+                            </div>
+                            <button class="eliminar-coinver">Eliminar</button>
                         </li>
                         {{/each}}
                     </ul>
@@ -289,7 +302,8 @@
         <div class="info-inversion-div">
             <ul>
                 <li>
-                    <p> <span class="highlight">Proyecto: </span> <a href="/ficha-p/{{ifnf.proyecto.id}}" target="_blank" type="submit"> {{ifnf.proyecto.nombre}}</a></p>
+                    <p> <span class="highlight">Proyecto: </span> <a href="/ficha-p/{{ifnf.proyecto.id}}"
+                            target="_blank" type="submit"> {{ifnf.proyecto.nombre}}</a></p>
                 </li>
                 <li>
                     <p> <span class="highlight">Fecha de inicio: </span>{{ifnf.fecha_inicio}}</p>
@@ -327,11 +341,14 @@
                     <ul class="modal">
                         {{#each ifnf.inmuebles}}
                         <li>
+                            <div>
                             <p> Torre: {{torre}}</p>
                             <p> Apartamento: {{apartamento}}</p>
                             <p> Parqueadero: {{parqueadero}}</p>
                             <p> Cuarto útil: {{cuarto_util}}</p>
                             <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
+                            </div>
+                            <button class="eliminar-inmueble">Eliminar</button>
                         </li>
                         {{/each}}
                     </ul>
@@ -344,7 +361,10 @@
                     <ul class="modal">
                         {{#each ifnf.co_inversionista}}
                         <li>
+                            <div>
                             <a href="/ficha-i/{{id}}" target="_blank"> {{nombre}}</a>
+                            </div>
+                            <button class="eliminar-coinver">Eliminar</button>
                         </li>
                         {{/each}}
                     </ul>
