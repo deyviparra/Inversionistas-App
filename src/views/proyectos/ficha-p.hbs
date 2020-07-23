@@ -53,14 +53,14 @@
     {{#if proyecto.tipos}}
     <section id="sec-inversiones" class="sec-inversiones">
         <h1> Tipos de {{proyecto.tipo}}</h1>
-        <div class="inversiones">
+        <div class="aptos">
             <ul>
                 {{#each proyecto.tipos}}
                 <li>
                     <div>
                         <p> <span class="highlight">Tipo: </span>{{nombre}}</p>
-                        <p> <span class="highlight">Valor: </span>{{valor}}</p>
-                        <p> <span class="highlight">Tamaño: </span>{{metraje}} {{unidades}}</p>
+                        <p> <span class="highlight">Valor: </span>{{addPoints valor}}</p>
+                        <p> <span class="highlight">Area: </span>{{metraje}} {{unidades}}</p>
                     </div>
                     <button class="eliminar-tipoApto">Eliminar</button>
                 </li>

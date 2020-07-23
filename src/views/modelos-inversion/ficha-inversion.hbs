@@ -74,6 +74,7 @@
                 <button class="btn-inversion">Ver inmuebles</button>
                 <div id="modal-div" class="modal-div">
                     <ul class="modal">
+                        <h2>Inmuebles</h2>
                         {{#each icompra.inmuebles}}
                         <li>
                             <div>
@@ -94,6 +95,7 @@
                 <button class="btn-inversion">Ver co-inversionistas</button>
                 <div id="modal-div" class="modal-div">
                     <ul class="modal">
+                        <h2>Co-Inversionistas</h2>
                         {{#each icompra.co_inversionista}}
                         <li>
                             <div>
@@ -166,10 +168,11 @@
                 <button class="btn-inversion">Ver co-inversionistas</button>
                 <div id="modal-div" class="modal-div">
                     <ul class="modal">
+                        <h2>Co-Inversionistas</h2>
                         {{#each igarantia.co_inversionista}}
                         <li>
                             <div>
-                            <a href="/ficha-i/{{id}}" target="_blank"> {{nombre}}</a>
+                                <a href="/ficha-i/{{id}}" target="_blank"> {{nombre}}</a>
                             </div>
                             <button class="eliminar-coinver">Eliminar</button>
                         </li>
@@ -177,6 +180,7 @@
                     </ul>
                 </div>
             </div>
+
             {{#if user.modificar}}
             <div class="botones-inversion">
                 <a class="btn-inversion" href="/edit-inversion/{{igarantia._id}}/garantia" class="boton" type="submit">
@@ -240,6 +244,7 @@
                 <button class="btn-inversion">Ver inmuebles</button>
                 <div id="modal-div" class="modal-div">
                     <ul class="modal">
+                        <h2>Inmuebles</h2>
                         {{#each iasociativo.inmuebles}}
                         <li>
                             <div>
@@ -259,6 +264,7 @@
                 <button class="btn-inversion">Ver co-inversionistas</button>
                 <div id="modal-div" class="modal-div">
                     <ul class="modal">
+                        <h2>Co-Inversionistas</h2>
                         {{#each iasociativo.co_inversionista}}
                         <li>
                             <div>
@@ -339,14 +345,15 @@
                 <button class="btn-inversion">Ver inmuebles</button>
                 <div id="modal-div" class="modal-div">
                     <ul class="modal">
+                        <h2>Inmuebles</h2>
                         {{#each ifnf.inmuebles}}
                         <li>
                             <div>
-                            <p> Torre: {{torre}}</p>
-                            <p> Apartamento: {{apartamento}}</p>
-                            <p> Parqueadero: {{parqueadero}}</p>
-                            <p> Cuarto útil: {{cuarto_util}}</p>
-                            <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
+                                <p> Torre: {{torre}}</p>
+                                <p> Apartamento: {{apartamento}}</p>
+                                <p> Parqueadero: {{parqueadero}}</p>
+                                <p> Cuarto útil: {{cuarto_util}}</p>
+                                <p> Valor: {{formatNumber valor style="currency" currency="COP"}}</p>
                             </div>
                             <button class="eliminar-inmueble">Eliminar</button>
                         </li>
@@ -359,10 +366,11 @@
                 <button class="btn-inversion">Ver co-inversionistas</button>
                 <div id="modal-div" class="modal-div">
                     <ul class="modal">
+                        <h2>Co-Inversionistas</h2>
                         {{#each ifnf.co_inversionista}}
                         <li>
                             <div>
-                            <a href="/ficha-i/{{id}}" target="_blank"> {{nombre}}</a>
+                                <a href="/ficha-i/{{id}}" target="_blank"> {{nombre}}</a>
                             </div>
                             <button class="eliminar-coinver">Eliminar</button>
                         </li>

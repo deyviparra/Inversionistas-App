@@ -22,7 +22,8 @@
       color: $negro;
       margin: 0;
       padding: 10px;
-      a{
+
+      a {
         text-decoration: underline;
         color: $negro;
       }
@@ -62,10 +63,11 @@
           top: 0;
           left: 0;
           height: 100%;
-          background: #00000025;
+          background: #00000095;
           z-index: 1;
 
           .modal {
+
             background: $gris-os;
             position: fixed;
             top: 20vh;
@@ -74,24 +76,34 @@
             width: 35vw;
             height: 60vh;
             border-radius: 5px;
-            border: 2px solid $blanco;
             overflow: auto;
             z-index: 2;
-
-            li{
-              border: 2px dotted $blanco;
+            h2{
+              color: $blanco;
+            }
+            li {
+              border-radius: 15px;
+              background: #272727;
+              box-shadow: 35px 35px 61px #212121,
+                -35px -35px 61px #2d2d2d;
               display: flex;
-              margin: 10px;
+              margin: 20px;
+              padding: 10px;
               justify-content: space-around;
               align-items: center;
+
               p {
                 color: $blanco;
+                margin: -10px;
               }
-              a{
+
+              a {
                 text-decoration: underline;
                 color: $blanco;
+                font-size: 20px;
               }
-              button{
+
+              button {
                 height: 40px;
                 background: red;
                 color: $blanco;
@@ -145,25 +157,30 @@
       border-radius: 8px;
       background: #cfde00;
       box-shadow: inset 9px 9px 18px #acb800, inset -9px -9px 18px #f2ff00;
+
       .info-cumplimiento {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
       }
+
       .indicador {
         width: 60%;
         display: flex;
         align-items: center;
+
         .barra {
           width: 80%;
           height: 40px;
         }
       }
+
       .alerta-inmueble {
         width: 100%;
         display: flex;
         justify-content: center;
-        p{
+
+        p {
           width: 60%;
           text-align: center;
           padding: 10px;
@@ -172,6 +189,7 @@
           color: $blanco;
         }
       }
+
       p {
         span {
           color: $negro;

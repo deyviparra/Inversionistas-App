@@ -7,6 +7,7 @@
   width: 80%;
   margin: auto;
   margin-bottom: 40px;
+
   img {
     width: 20%;
     height: auto;
@@ -52,6 +53,7 @@
       margin: 10px;
       padding: 5px 10px;
     }
+
     p {
       margin: 10px;
     }
@@ -73,11 +75,13 @@
         color: black;
       }
     }
+
     .delete {
       color: $blanco;
       background: $gris-cla;
       border: none;
-      &:hover{
+
+      &:hover {
         background: red;
       }
     }
@@ -95,14 +99,17 @@
     color: $negro;
     margin: 20px;
     font-size: 20px;
-    span{
+
+    span {
       color: $negro;
     }
   }
-  .text-area{
+
+  .text-area {
     width: 25%;
     color: $negro;
-    span{
+
+    span {
       color: $negro;
     }
   }
@@ -147,12 +154,43 @@
             width: 150px;
             padding: auto;
             border-radius: 5px;
+
             &:hover {
               text-decoration: none;
               background-color: $gris-os;
               color: $blanco;
             }
           }
+        }
+      }
+    }
+  }
+
+  .aptos {
+    ul {
+      display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-bottom: 20px;
+      li {
+        margin: 20px;
+        border-radius: 20px;
+        background: #272727;
+        box-shadow: 35px 35px 61px #212121,
+          -35px -35px 61px #2d2d2d;
+        display: flex;
+        width: 30%;
+        justify-content: space-around;
+        align-items: center;
+        padding: 15px;
+
+
+        button {
+          border-radius: 5px;
+          height: 50px;
+          padding: 10px;
+          background: red;
         }
       }
     }
@@ -199,15 +237,15 @@
   transition: 0.4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
   background-color: $verde;
 }
 
-input:focus + .slider {
+input:focus+.slider {
   box-shadow: 0 0 1px $verde;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
   -webkit-transform: translateX(26px);
   -ms-transform: translateX(26px);
   transform: translateX(26px);

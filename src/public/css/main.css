@@ -328,6 +328,27 @@ header nav {
           text-decoration: none;
           background-color: #2b2b2b;
           color: #f3f3f3; }
+.sec-inversiones .aptos ul {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-bottom: 20px; }
+  .sec-inversiones .aptos ul li {
+    margin: 20px;
+    border-radius: 20px;
+    background: #272727;
+    box-shadow: 35px 35px 61px #212121, -35px -35px 61px #2d2d2d;
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px; }
+    .sec-inversiones .aptos ul li button {
+      border-radius: 5px;
+      height: 50px;
+      padding: 10px;
+      background: red; }
 
 /* The switch - the box around the slider */
 .switch {
@@ -617,7 +638,7 @@ input:checked + .slider:before {
         top: 0;
         left: 0;
         height: 100%;
-        background: #00000025;
+        background: #00000095;
         z-index: 1; }
         .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles .modal-div .modal,
         .info-inversion .info-ppal .inmueble-coinver .lista-co-inver .modal-div .modal {
@@ -629,23 +650,30 @@ input:checked + .slider:before {
           width: 35vw;
           height: 60vh;
           border-radius: 5px;
-          border: 2px solid #f3f3f3;
           overflow: auto;
           z-index: 2; }
+          .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles .modal-div .modal h2,
+          .info-inversion .info-ppal .inmueble-coinver .lista-co-inver .modal-div .modal h2 {
+            color: #f3f3f3; }
           .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles .modal-div .modal li,
           .info-inversion .info-ppal .inmueble-coinver .lista-co-inver .modal-div .modal li {
-            border: 2px dotted #f3f3f3;
+            border-radius: 15px;
+            background: #272727;
+            box-shadow: 35px 35px 61px #212121, -35px -35px 61px #2d2d2d;
             display: flex;
-            margin: 10px;
+            margin: 20px;
+            padding: 10px;
             justify-content: space-around;
             align-items: center; }
             .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles .modal-div .modal li p,
             .info-inversion .info-ppal .inmueble-coinver .lista-co-inver .modal-div .modal li p {
-              color: #f3f3f3; }
+              color: #f3f3f3;
+              margin: -10px; }
             .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles .modal-div .modal li a,
             .info-inversion .info-ppal .inmueble-coinver .lista-co-inver .modal-div .modal li a {
               text-decoration: underline;
-              color: #f3f3f3; }
+              color: #f3f3f3;
+              font-size: 20px; }
             .info-inversion .info-ppal .inmueble-coinver .lista-inmuebles .modal-div .modal li button,
             .info-inversion .info-ppal .inmueble-coinver .lista-co-inver .modal-div .modal li button {
               height: 40px;
