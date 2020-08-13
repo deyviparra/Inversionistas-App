@@ -1,17 +1,22 @@
 const ifnfCtrl = {};
 const path = require("path");
 const { uploadFile } = require("../upload.js");
+const { generarPdf } = require("../pdf/pdf");
 const Inversionista = require("../models/Inversionista");
 const Proyecto = require("../models/Proyecto");
 const Ifnf = require("../models/I_fnf");
+const { resolve } = require("path");
 
 const llenarPago = async (planPagos, pagosRealizados, garantia, pago) => {
   let completos = [];
   let indexpp =0;
   let indexStop=true;
+  let retencionGarantia = 0;
 
   if (garantia === "true") {
-
+    if(planPagos[0].couta_cliente == 0){
+       retencionGarantia = parseInt((planPagos[0].couta_garantia)*0.07)
+    }
     const arrGarantias = await pagosRealizados.filter(pago => {
       if(pago.garantia){
         return 1
@@ -27,9 +32,9 @@ const llenarPago = async (planPagos, pagosRealizados, garantia, pago) => {
       }
     }
 
-    while (pago > planPagos[0].couta_garantia) {
-      completos.push(planPagos[0].couta_garantia);
-      pago = pago - planPagos[0].couta_garantia;
+    while (pago > planPagos[0].couta_garantia - retencionGarantia) {
+      completos.push(planPagos[0].couta_garantia-retencionGarantia);
+      pago = pago - (planPagos[0].couta_garantia -retencionGarantia);
     }
     completos.push(pago);
     completos.forEach((element, index) => {
@@ -39,6 +44,8 @@ const llenarPago = async (planPagos, pagosRealizados, garantia, pago) => {
         pagosRealizados[indexpp + index] = { garantia: element };
       }
     });
+
+
   } else {
     
     if (planPagos[0].couta_cliente > 0) {
@@ -61,19 +68,19 @@ const llenarPago = async (planPagos, pagosRealizados, garantia, pago) => {
         pago >
         (Number(planPagos[0].couta_cliente) +
           Number(planPagos[0].couta_garantia)) *
-          0.46
+          0.43
       ) {
         completos.push(
           (Number(planPagos[0].couta_cliente) +
             Number(planPagos[0].couta_garantia)) *
-            0.46
+            0.43
         );
         // Revisar con el cliente si si es así el comportamiento del Plan de pagos para los pagos a el inversionista
         pago =
           pago -
           (Number(planPagos[0].couta_cliente) +
             Number(planPagos[0].couta_garantia)) *
-            0.46;
+            0.43;
       }
       completos.push(pago);
       completos.forEach((element, index) => {
@@ -94,10 +101,16 @@ const checkPP = async (planPagos, pagosRealizados) => {
   let saldoCliente = [];
   let saldoGarantia = [];
   const cuotaTotal = planPagos[0].couta_cliente + planPagos[0].couta_garantia;
+  let retencionGarantia = 0
+
+  if(planPagos[0].couta_cliente == 0){
+    retencionGarantia = parseInt((planPagos[0].couta_garantia)*0.07)
+  }
+
   planPagos.forEach((element, index) => {
     if (element.couta_cliente > 0 && pagosRealizados[index]) {
       if (
-        element.couta_cliente - cuotaTotal * 0.04 ===
+        element.couta_cliente - cuotaTotal * 0.07 ===
         pagosRealizados[index].cliente
       ) {
         saldoCliente[index] = 0;
@@ -106,10 +119,10 @@ const checkPP = async (planPagos, pagosRealizados) => {
         if (pagosRealizados[index].cliente) {
           saldoCliente[index] =
             element.couta_cliente -
-            cuotaTotal * 0.04 -
+            cuotaTotal * 0.07 -
             pagosRealizados[index].cliente;
         } else {
-          saldoCliente[index] = element.couta_cliente;
+          saldoCliente[index] = element.couta_cliente - cuotaTotal * 0.07;
         }
         arrCheckCliente[index] = "";
       }
@@ -117,25 +130,25 @@ const checkPP = async (planPagos, pagosRealizados) => {
       saldoCliente[index] = element.couta_cliente;
       arrCheckCliente[index] = "checked";
     } else {
-      saldoCliente[index] = element.couta_cliente;
+      saldoCliente[index] = element.couta_cliente - cuotaTotal * 0.07;
       arrCheckCliente[index] = "";
     }
     if (pagosRealizados[index]) {
-      if (element.couta_garantia === pagosRealizados[index].garantia) {
+      if (element.couta_garantia - retencionGarantia === pagosRealizados[index].garantia) {
         saldoGarantia[index] =
-          element.couta_garantia - pagosRealizados[index].garantia;
+          element.couta_garantia - pagosRealizados[index].garantia - retencionGarantia;
         arrCheckGarantia[index] = "checked";
       } else {
         if (pagosRealizados[index].garantia) {
           saldoGarantia[index] =
-            element.couta_garantia - pagosRealizados[index].garantia;
+            element.couta_garantia - pagosRealizados[index].garantia - retencionGarantia;
         } else {
-          saldoGarantia[index] = element.couta_garantia;
+          saldoGarantia[index] = element.couta_garantia -retencionGarantia;
         }
         arrCheckGarantia[index] = "";
       }
     } else {
-      saldoGarantia[index] = element.couta_garantia;
+      saldoGarantia[index] = element.couta_garantia -retencionGarantia;
       arrCheckGarantia[index] = "";
     }
   });
@@ -572,5 +585,19 @@ ifnfCtrl.agregarPagoFnf = async (req, res) => {
 ifnfCtrl.editarPPFnf = async (req, res) => {
   res.send("Actualizar PP");
 };
+
+ifnfCtrl.generarInforme = (req, res) => {
+  const nombre = 'informe' 
+  let promesa = new Promise((res,rej)=>{ 
+  let response = generarPdf(nombre,'hola','como','estas')
+    resolve(response)
+  })
+  promesa.then((response)=>{
+    console.log(response)
+    res.redirect('/informes/informe.pdf')
+  })
+
+}
+
 
 module.exports = ifnfCtrl;

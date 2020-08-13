@@ -21,6 +21,7 @@
     "fs-extra": "^9.0.0",
     "handlebars": "^4.5.0",
     "handlebars-intl": "^1.1.2",
+    "html-pdf": "^2.2.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.9.7",
     "morgan": "^1.10.0",
@@ -30,7 +31,7 @@
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
-    "nodemon": "^2.0.2",
+    "nodemon": "^2.0.4",
     "npm-check-updates": "^4.0.4"
   }
 }

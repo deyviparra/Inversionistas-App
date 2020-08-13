@@ -16,7 +16,8 @@ const {
   agregarPagoFnf,
   editarPPFnf,
   EliminarInmuebleFnf,
-  EliminarCoInverFnf
+  EliminarCoInverFnf,
+  generarInforme
 } = require("../controllers/i_fnf.controller");
 
 // Agregar inversión
@@ -42,5 +43,8 @@ router.put("/plan_pago/edit/:id/fnf", isAuthenticated, editarPPFnf);
 // Agregar pago realizado
 router.get("/pago/add/:id/fnf", isAuthenticated, renderAgregarPagoFnf);
 router.put("/pago/add/:id/fnf", isAuthenticated, agregarPagoFnf);
+
+//generar informe
+router.get("/generar-informe/:id/fnf", isAuthenticated, generarInforme);
 
 module.exports = router;
