@@ -1,13 +1,152 @@
 const ifnfCtrl = {};
+const path = require("path");
+const { uploadFile } = require("../upload.js");
 const Inversionista = require("../models/Inversionista");
 const Proyecto = require("../models/Proyecto");
 const Ifnf = require("../models/I_fnf");
 
+const llenarPago = async (planPagos, pagosRealizados, garantia, pago) => {
+  let completos = [];
+  let indexpp =0;
+  let indexStop=true;
+
+  if (garantia === "true") {
+
+    const arrGarantias = await pagosRealizados.filter(pago => {
+      if(pago.garantia){
+        return 1
+      }
+    })
+    if(arrGarantias.length > 0){
+      indexpp=arrGarantias.length - 1
+    }
+
+    if (pagosRealizados[indexpp]) {
+      if (pagosRealizados[indexpp].garantia) {
+        pago = Number(pago) + Number(pagosRealizados[indexpp].garantia);
+      }
+    }
+
+    while (pago > planPagos[0].couta_garantia) {
+      completos.push(planPagos[0].couta_garantia);
+      pago = pago - planPagos[0].couta_garantia;
+    }
+    completos.push(pago);
+    completos.forEach((element, index) => {
+      if (pagosRealizados[indexpp + index]) {
+        pagosRealizados[indexpp + index].garantia = element;
+      } else {
+        pagosRealizados[indexpp + index] = { garantia: element };
+      }
+    });
+  } else {
+    
+    if (planPagos[0].couta_cliente > 0) {
+      const arrClientes = await pagosRealizados.filter(pago => {
+        if(pago.cliente){
+          return 1
+        }
+      })
+      if(arrClientes.length > 0){
+        indexpp=arrClientes.length - 1
+      }
+
+      if (pagosRealizados[indexpp]) {
+        if (pagosRealizados[indexpp].cliente) {
+          pago = Number(pago) + Number(pagosRealizados[indexpp].cliente);
+        }
+      }
+
+      while (
+        pago >
+        (Number(planPagos[0].couta_cliente) +
+          Number(planPagos[0].couta_garantia)) *
+          0.46
+      ) {
+        completos.push(
+          (Number(planPagos[0].couta_cliente) +
+            Number(planPagos[0].couta_garantia)) *
+            0.46
+        );
+        // Revisar con el cliente si si es así el comportamiento del Plan de pagos para los pagos a el inversionista
+        pago =
+          pago -
+          (Number(planPagos[0].couta_cliente) +
+            Number(planPagos[0].couta_garantia)) *
+            0.46;
+      }
+      completos.push(pago);
+      completos.forEach((element, index) => {
+        if (pagosRealizados[indexpp + index]) {
+          pagosRealizados[indexpp + index].cliente = element;
+        } else {
+          pagosRealizados[indexpp + index] = { cliente: element };
+        }
+      });
+    }
+  }
+  return pagosRealizados;
+};
+
+const checkPP = async (planPagos, pagosRealizados) => {
+  let arrCheckCliente = [];
+  let arrCheckGarantia = [];
+  let saldoCliente = [];
+  let saldoGarantia = [];
+  const cuotaTotal = planPagos[0].couta_cliente + planPagos[0].couta_garantia;
+  planPagos.forEach((element, index) => {
+    if (element.couta_cliente > 0 && pagosRealizados[index]) {
+      if (
+        element.couta_cliente - cuotaTotal * 0.04 ===
+        pagosRealizados[index].cliente
+      ) {
+        saldoCliente[index] = 0;
+        arrCheckCliente[index] = "checked";
+      } else {
+        if (pagosRealizados[index].cliente) {
+          saldoCliente[index] =
+            element.couta_cliente -
+            cuotaTotal * 0.04 -
+            pagosRealizados[index].cliente;
+        } else {
+          saldoCliente[index] = element.couta_cliente;
+        }
+        arrCheckCliente[index] = "";
+      }
+    } else if (element.couta_cliente === 0) {
+      saldoCliente[index] = element.couta_cliente;
+      arrCheckCliente[index] = "checked";
+    } else {
+      saldoCliente[index] = element.couta_cliente;
+      arrCheckCliente[index] = "";
+    }
+    if (pagosRealizados[index]) {
+      if (element.couta_garantia === pagosRealizados[index].garantia) {
+        saldoGarantia[index] =
+          element.couta_garantia - pagosRealizados[index].garantia;
+        arrCheckGarantia[index] = "checked";
+      } else {
+        if (pagosRealizados[index].garantia) {
+          saldoGarantia[index] =
+            element.couta_garantia - pagosRealizados[index].garantia;
+        } else {
+          saldoGarantia[index] = element.couta_garantia;
+        }
+        arrCheckGarantia[index] = "";
+      }
+    } else {
+      saldoGarantia[index] = element.couta_garantia;
+      arrCheckGarantia[index] = "";
+    }
+  });
+  return [arrCheckCliente, arrCheckGarantia, saldoCliente, saldoGarantia];
+};
+
 const cumplimiento = async (valorMutuo, valorActual, valorCompra, meta) => {
   const valorizacion = valorActual - valorCompra;
   const estado = (valorizacion / meta) * 100;
-  
-  const cumplimiento = await Math.round(estado)
+
+  const cumplimiento = await Math.round(estado);
 
   return cumplimiento;
 };
@@ -125,15 +264,25 @@ ifnfCtrl.renderFichaInvFnf = async (req, res) => {
     const proyecto = await Proyecto.findById(ifnf.proyecto.id);
     const inversionista = await Inversionista.findById(ifnf.inver_id);
     const backUrl = "/ficha-i/" + ifnf.inver_id;
+
+    const arrsCheck = await checkPP(
+      ifnf.plan_pago_intereses,
+      ifnf.pago_realizado_intereses
+    );
+    ifnf.plan_pago_intereses.forEach((element, index) => {
+      element.arrCheckCliente = arrsCheck[0][index];
+      element.arrCheckGarantia = arrsCheck[1][index];
+      element.saldoCliente = arrsCheck[2][index];
+      element.saldoGarantia = arrsCheck[3][index];
+    });
     if (typeof ifnf.inmuebles[0] != "undefined") {
-      console.log("paso por aqui");
       var porcentajeCumplimiento = await cumplimiento(
         ifnf.valor_mutuo,
         proyecto.rango,
-        ifnf.inmuebles[0].valor,meta
+        ifnf.inmuebles[0].valor,
+        meta
       );
     } else {
-      console.log("paso por aqui 2");
       var porcentajeCumplimiento = "Debes asociar un inmueble a esta inversión";
     }
     res.render("modelos-inversion/ficha-inversion", {
@@ -279,15 +428,18 @@ ifnfCtrl.AsociarInmuebleFnf = async (req, res) => {
 
 ifnfCtrl.EliminarInmuebleFnf = async (req, res) => {
   try {
-    let { inmuebles,id } = await Ifnf.findById(req.params.id);
+    let { inmuebles, id } = await Ifnf.findById(req.params.id);
     const arr1 = inmuebles.slice(0, req.params.index);
-    const arr2 = inmuebles.slice(Number(req.params.index) + 1, inmuebles.length + 1);
+    const arr2 = inmuebles.slice(
+      Number(req.params.index) + 1,
+      inmuebles.length + 1
+    );
     inmuebles = arr1.concat(arr2);
     await Ifnf.findByIdAndUpdate(req.params.id, {
       inmuebles
     });
     req.flash("success_msg", "Inmueble eliminado");
-    res.send(["/ficha-inversion/" + id + "/fnf"])
+    res.send(["/ficha-inversion/" + id + "/fnf"]);
   } catch (e) {
     console.log(e);
   }
@@ -295,16 +447,19 @@ ifnfCtrl.EliminarInmuebleFnf = async (req, res) => {
 
 ifnfCtrl.EliminarCoInverFnf = async (req, res) => {
   try {
-    let { co_inversionista,id } = await Ifnf.findById(req.params.id);
+    let { co_inversionista, id } = await Ifnf.findById(req.params.id);
     const arr1 = co_inversionista.slice(0, req.params.index);
-    const arr2 = co_inversionista.slice(Number(req.params.index) + 1, co_inversionista.length + 1);
+    const arr2 = co_inversionista.slice(
+      Number(req.params.index) + 1,
+      co_inversionista.length + 1
+    );
     co_inversionista = arr1.concat(arr2);
-    console.log(co_inversionista)
+    console.log(co_inversionista);
     await Ifnf.findByIdAndUpdate(req.params.id, {
       co_inversionista
     });
     req.flash("success_msg", "Co-inversionista eliminado");
-    res.send(["/ficha-inversion/" + id + "/fnf"])
+    res.send(["/ficha-inversion/" + id + "/fnf"]);
   } catch (e) {
     console.log(e);
   }
@@ -335,6 +490,16 @@ ifnfCtrl.renderEditPPFnf = async (req, res) => {
   const ifnf = await Ifnf.findById(req.params.id);
   const inversionista = await Inversionista.findById(ifnf.inver_id);
   const backUrl = "/ficha-inversion/" + ifnf._id + "/fnf";
+  const arrsCheck = await checkPP(
+    ifnf.plan_pago_intereses,
+    ifnf.pago_realizado_intereses
+  );
+  ifnf.plan_pago_intereses.forEach((element, index) => {
+    element.arrCheckCliente = arrsCheck[0][index];
+    element.arrCheckGarantia = arrsCheck[1][index];
+    element.saldoCliente = arrsCheck[2][index];
+    element.saldoGarantia = arrsCheck[3][index];
+  });
   res.render("modelos-inversion/edit-plan_pagos", {
     inversionista,
     ifnf,
@@ -342,8 +507,66 @@ ifnfCtrl.renderEditPPFnf = async (req, res) => {
   });
 };
 
+ifnfCtrl.renderAgregarPagoFnf = async (req, res) => {
+  const ifnf = await Ifnf.findById(req.params.id);
+  let garantia = await req.query.garantia;
+  const backUrl = "/edit-plan_pagos/" + ifnf._id + "/fnf";
+  !garantia ? (garantia = "false") : (garantia = "true");
+  res.render("modelos-inversion/agregar-pago", {
+    ifnf,
+    garantia,
+    backUrl
+  });
+};
+
 ifnfCtrl.agregarPagoFnf = async (req, res) => {
-  res.send("Agregar pago");
+  const ifnf = await Ifnf.findById(req.params.id);
+  let garantia = req.body.garantia;
+  const planDePagos = ifnf.plan_pago_intereses;
+  const pagosRealizados = ifnf.pago_realizado_intereses;
+  const pago = req.body.pago;
+  const fecha = req.body.fecha;
+  let historial = [];
+  let destino;
+  let recibo = "";
+
+  if (typeof req.file === "undefined") {
+  } else {
+    recibo =
+      "https://inversionistas-bucket.s3-sa-east-1.amazonaws.com/" +
+      req.file.filename;
+    await uploadFile(
+      path.join(__dirname, "../public/uploads/" + req.file.filename),
+      req.file.filename
+    );
+  }
+
+  if (pagosRealizados[0]) {
+    if (pagosRealizados[0].historial) {
+      historial = pagosRealizados[0].historial;
+    }
+  }
+
+  garantia === "true" ? (destino = "garantia") : (destino = "cliente");
+
+  const newPagoRealizado = await llenarPago(
+    planDePagos,
+    pagosRealizados,
+    garantia,
+    pago
+  );
+
+  historial.push({
+    fecha: fecha,
+    valor: pago,
+    recibo: recibo,
+    destino: destino
+  });
+  newPagoRealizado[0].historial = historial;
+  ifnf.pago_realizado_intereses =  newPagoRealizado;
+
+  await Ifnf.findOneAndUpdate({ _id: ifnf.id }, ifnf);
+  res.redirect("/edit-plan_pagos/" + ifnf.id + "/fnf");
 };
 
 ifnfCtrl.editarPPFnf = async (req, res) => {

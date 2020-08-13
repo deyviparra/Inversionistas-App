@@ -739,16 +739,42 @@ input:checked + .slider:before {
       .info-inversion .info-ppal .alerta-cumplimiento p span {
         color: #272727; }
 
-.pagos {
+.pagos,
+.pp-fnf {
+  margin-top: 20px;
   background-color: #272727;
   display: flex;
   flex-direction: column;
   align-items: center; }
-  .pagos ul {
-    width: 60%; }
-    .pagos ul li {
+  .pagos ul,
+  .pp-fnf ul {
+    margin-top: 20px;
+    width: 80%; }
+    .pagos ul hr,
+    .pp-fnf ul hr {
+      color: #383838;
+      width: 100%;
+      size: 20; }
+    .pagos ul li,
+    .pp-fnf ul li {
       display: flex;
       justify-content: space-around; }
+      .pagos ul li h4,
+      .pp-fnf ul li h4 {
+        width: 22.5%;
+        text-align: center; }
+      .pagos ul li p,
+      .pp-fnf ul li p {
+        width: 22.5%;
+        text-align: center; }
+      .pagos ul li .checklist,
+      .pp-fnf ul li .checklist {
+        width: 5%;
+        text-align: start; }
+      .pagos ul li .checkbox,
+      .pp-fnf ul li .checkbox {
+        height: 15px;
+        justify-self: start; }
 
 .edit-pp {
   background-color: #272727;
@@ -818,3 +844,12 @@ input:checked + .slider:before {
     .back .back-button:hover {
       background: #4c5c68;
       text-decoration: none; }
+
+.pp-fnf .botones {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .pp-fnf .botones div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }

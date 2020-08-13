@@ -1,0 +1,30 @@
+{{#if ifnf}}
+<div class="form">
+    <div class="columna">
+        <form action="/pago/add/{{ifnf.id}}/fnf?_method=PUT" method="POST" class="form-forms">
+            <h1> Añadir registro de pago realizado</h1>
+            <div class="contenedor-form">
+                <div class="columna-1">
+                    <div class="form-div">
+                        <p>Fecha:</p>
+                        <input type="date" name="fecha" placeholder="dd/mm/aaaa" class="input-form">
+                    </div>
+                    <div class="form-div">
+                        <p>Pago: </p>
+                        <input type="text" name="pago" placeholder="Ingrese el valor sin puntos ni simbolos "
+                            class="input-form">
+                    </div>
+                    <div class="form-div input-group mb-3">
+                        <label for="image"> Añadir comprobante de pago:</label>
+                        <input type="file" name='image' class="upload-image" id="image">
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="garantia" value={{garantia}}>
+            <button class="boton" type="submit">
+                Agregar pago
+            </button>
+        </form>
+    </div>
+</div>
+{{/if}}

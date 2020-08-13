@@ -12,6 +12,7 @@ const {
   AsociarInmuebleFnf,
   AsociarInversionistaFnf,
   renderEditPPFnf,
+  renderAgregarPagoFnf,
   agregarPagoFnf,
   editarPPFnf,
   EliminarInmuebleFnf,
@@ -32,12 +33,14 @@ router.put("/inmueble/add/:id/fnf", isAuthenticated, AsociarInmuebleFnf);
 router.put("/eliminar-inmueble/:id/fnf/:index",isAuthenticated, EliminarInmuebleFnf);
 // Agregar Co-inversionista
 router.get("/asociar-inversionista/:id/fnf", isAuthenticated,renderInversionistaFnf );
-router.put("/inversionista/add/:id/fnf", isAuthenticated, AsociarInversionistaFnf);
-router.put("/eliminar-coinver/:id/fnf/:index",isAuthenticated, EliminarCoInverFnf);
+router.put("/inversionista/add/:id/fnf", isAuthenticated,AsociarInversionistaFnf);
+router.put("/eliminar-coinver/:id/fnf/:index",isAuthenticated,EliminarCoInverFnf);
 // Editar plan de pagos
 router.get("/edit-plan_pagos/:id/fnf",isAuthenticated, renderEditPPFnf );
+router.get("/add-pago/:id/fnf",isAuthenticated, renderEditPPFnf );
 router.put("/plan_pago/edit/:id/fnf", isAuthenticated, editarPPFnf);
 // Agregar pago realizado
+router.get("/pago/add/:id/fnf", isAuthenticated, renderAgregarPagoFnf);
 router.put("/pago/add/:id/fnf", isAuthenticated, agregarPagoFnf);
 
 module.exports = router;

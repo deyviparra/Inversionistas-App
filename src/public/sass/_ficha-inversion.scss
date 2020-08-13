@@ -78,9 +78,11 @@
             border-radius: 5px;
             overflow: auto;
             z-index: 2;
-            h2{
+
+            h2 {
               color: $blanco;
             }
+
             li {
               border-radius: 15px;
               background: #272727;
@@ -199,18 +201,47 @@
   }
 }
 
-.pagos {
+.pagos,
+.pp-fnf {
+  margin-top: 20px;
   background-color: $negro;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   ul {
-    width: 60%;
+    margin-top: 20px;
+    width: 80%;
+
+    hr {
+      color: #383838;
+      width: 100%;
+      size: 20;
+    }
 
     li {
       display: flex;
       justify-content: space-around;
+
+      h4 {
+        width: 22.5%;
+        text-align: center;
+      }
+
+      p {
+        width: 22.5%;
+        text-align: center;
+      }
+
+      .checklist {
+        width: 5%;
+        text-align: start;
+      }
+
+      .checkbox {
+        height: 15px;
+        justify-self: start;
+      }
     }
   }
 }

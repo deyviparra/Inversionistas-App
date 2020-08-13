@@ -434,15 +434,32 @@
     <h2>Plan de pago de intereses</h2>
     <ul>
         <li>
-            <p> <strong> Fecha de pago</strong> </p>
-            <p> <strong> Cuota cliente </strong> </p>
-            <p> <strong> Cuota garantía </strong> </p>
+            <h4> <strong> Fecha de pago</strong> </h4>
+            <h4> <strong> Cuota cliente </strong> </h4>
+            <h4 class="checklist"> <strong> Pago</strong> </h4>
+            <h4> <strong> Saldo </strong> </h4>
+            <h4> <strong> Cuota garantía </strong> </h4>
+            <h4 class="checklist"> <strong> Pago</strong> </h4>
+            <h4> <strong> Saldo </strong> </h4>
         </li>
         {{#each ifnf.plan_pago_intereses}}
+        <hr color="#434343" size=2>
         <li>
             <p> {{fecha}}</p>
             <p> {{formatNumber couta_cliente style="currency" currency="COP"}}</p>
+            {{#if arrCheckCliente}}
+            <input type="checkbox" disabled="disabled" class="checklist checkbox" checked>
+            {{else}}
+            <input type="checkbox" disabled="disabled" class="checklist checkbox">
+            {{/if}}
+            <p>{{formatNumber saldoCliente style="currency" currency="COP"}}</p>
             <p> {{formatNumber couta_garantia style="currency" currency="COP"}}</p>
+            {{#if arrCheckGarantia}}
+            <input type="checkbox" disabled="disabled" class="checklist checkbox" checked>
+            {{else}}
+            <input type="checkbox" disabled="disabled" class="checklist checkbox">
+            {{/if}}
+            <p>{{formatNumber saldoGarantia style="currency" currency="COP"}}</p>
         </li>
         {{/each}}
 
@@ -450,7 +467,7 @@
     {{#if user.modificar}}
     <div class="botones">
         <a href="/edit-plan_pagos/{{ifnf._id}}/fnf" class="boton" type="submit">
-            Modificar plan de pagos
+            Agregar pagos
         </a>
     </div>
     {{/if}}

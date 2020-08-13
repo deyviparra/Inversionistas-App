@@ -129,40 +129,54 @@
 {{/if}}
 
 {{#if ifnf}}
-<section class="edit-pp">
-    <h2>Inversión FNF</h2>
+<section class="pp-fnf">
     <h2>Plan de pagos</h2>
     <ul>
-        <table>
-            <tr>
-                <td> <strong> Fecha de pago</strong> </td>
-                <td> <strong> Valor de la cuota cliente </strong> </td>
-                <td> <strong> Valor de la cuota garantía </strong> </td>
-                <td> <strong> Pago realizado </strong> </td>
-            </tr>
-            {{#each ifnf.plan_pago_intereses}}
-            <tr>
-                <td> <input type="text" name="fecha" class="input-form" value="{{fecha}}"></td>
-                <td> <input type="text" name="couta_cliente" class="input-form"
-                        value="{{formatNumber couta_cliente style="currency" currency="COP"}}"></td>
-                <td> <input type="text" name="couta_garantia" class="input-form"
-                        value="{{formatNumber couta_garantia style="currency" currency="COP"}}"></td>
-                <td> <input type="file" name="pago" class="input-form"></td>
-            </tr>
-            {{/each}}
-        </table>
+        <li>
+            <h4> <strong> Fecha de pago</strong> </h4>
+            <h4> <strong> Cuota cliente </strong> </h4>
+            <h4 class="checklist"> <strong> Pago</strong> </h4>
+            <h4> <strong> Saldo </strong> </h4>
+            <h4> <strong> Cuota garantía </strong> </h4>
+            <h4 class="checklist"> <strong> Pago</strong> </h4>
+            <h4> <strong> Saldo </strong> </h4>
+        </li>
+        {{#each ifnf.plan_pago_intereses}}
+        <hr color="#434343" size=2>
+        <li>
+            <p> {{fecha}}</p>
+            <p> {{formatNumber couta_cliente style="currency" currency="COP"}}</p>
+            {{#if arrCheckCliente}}
+            <input type="checkbox" disabled="disabled" class="checklist checkbox" checked>
+            {{else}}
+            <input type="checkbox" disabled="disabled" class="checklist checkbox">
+            {{/if}}
+            <p>{{formatNumber saldoCliente style="currency" currency="COP"}}</p>
+            
+            <p> {{formatNumber couta_garantia style="currency" currency="COP"}}</p>
+            {{#if arrCheckGarantia}}
+            <input type="checkbox" disabled="disabled" class="checklist checkbox" checked>
+            {{else}}
+            <input type="checkbox" disabled="disabled" class="checklist checkbox">
+            {{/if}}
+            <p>{{formatNumber saldoGarantia style="currency" currency="COP"}}</p>
+        </li>
+        {{/each}}
     </ul>
     <div class="botones">
-        <form action="/pago/add/{{ifnf._id}}/fnf?_method=PUT" method="POST" class="form-forms">
-            <button class="boton" type="submit">
-                Agregar pago
-            </button>
-        </form>
-        <form action="/plan_pago/edit/{{ifnf._id}}/fnf?_method=PUT" method="POST" class="form-forms">
-            <button class="boton" type="submit">
-                Guardar plan de pagos
-            </button>
-        </form>
+        <div>
+            <form action="/pago/add/{{ifnf._id}}/fnf" method="GET" class="form-forms">
+                <button class="boton" type="submit">
+                    Agregar pago a inversionista
+                </button>
+            </form>
+            <form action="/pago/add/{{ifnf._id}}/fnf" method="GET" class="form-forms">
+                <input type="hidden" name="garantia" value="true">
+                <button class="boton" type="submit">
+                    Agregar pago a garantía
+                </button>
+            </form>
+        </div>
     </div>
 </section>
 {{/if}}
