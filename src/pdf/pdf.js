@@ -65,8 +65,8 @@ const generarPdf = (nombre, ifnf, inversionista, fecha, valorActual) => {
               border: 1px solid black;
               display: inline-block;
               width: 30%;
-              margin:10px;
               margin-top:0px;
+              padding: 5px;
           }
   
           .cajon div {
@@ -99,6 +99,7 @@ const generarPdf = (nombre, ifnf, inversionista, fecha, valorActual) => {
               border: 1px solid black;
               width:80%;
               display:inline-block;
+              padding: 5px;
           }
           
           .datos div {
