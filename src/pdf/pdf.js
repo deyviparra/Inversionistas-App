@@ -1,14 +1,25 @@
 const pdf = require("html-pdf");
-var path = require('path');
+var path = require("path");
 
 const generarPdf = (nombre, ifnf, inversionista, fecha, valorActual) => {
   var options = {
-      format:"Letter"
+    format: "Letter"
   };
 
   let totalAportes, totalAlCierre, utilidad;
   let pagadoInversionista = 0;
   let pagadoGarantia = 0;
+  let inmuebleNombre,inmuebleApto,inmuebleParq,inmuebleUtil,inverCedula,inverCorreo,inverCelular
+
+  !ifnf.proyecto.nombre ? inmuebleNombre = "-" : inmuebleNombre =ifnf.proyecto.nombre
+  !ifnf.inmuebles[0].torre ? inmuebleTorre = "-" : inmuebleTorre = ifnf.inmuebles[0].torre
+  !ifnf.inmuebles[0].apartamento ? inmuebleApto = "-" : inmuebleApto = ifnf.inmuebles[0].apartamento
+  !ifnf.inmuebles[0].parqueadero ? inmuebleParq = "-" : inmuebleParq = ifnf.inmuebles[0].parqueadero
+  !ifnf.inmuebles[0].cuarto_util ? inmuebleUtil = "-" : inmuebleUtil = ifnf.inmuebles[0].cuarto_util
+
+  !inversionista.cedula ? inverCedula = "-" : inverCedula = inversionista.cedula
+  !inversionista.correo ? inverCorreo = "-" : inverCorreo = inversionista.correo
+  !inversionista.celular ? inverCelular = "-" : inverCelular = inversionista.celular
 
   const veintePorciento =
     parseInt(ifnf.valor_mutuo * (ifnf.tasa_interes - 1)) + 1;
@@ -126,7 +137,9 @@ const generarPdf = (nombre, ifnf, inversionista, fecha, valorActual) => {
   <body>
       <!-- ------------------------ -->
       <div id="pageHeader" style="border-bottom: 1px solid #ddd; padding-bottom: 5px;"> 
-      <h3>Resumen de invesión - ${inversionista.nombre} ${inversionista.apellido}</h3>
+      <h3>Resumen de invesión - ${inversionista.nombre} ${
+    inversionista.apellido
+  }</h3>
           <p>Reporte creado el ${fecha}</p>
       </div>
       <!-- ------------------------ -->
@@ -218,9 +231,7 @@ const generarPdf = (nombre, ifnf, inversionista, fecha, valorActual) => {
                           <p>Celular</p>
                       </div>
                       <div class="der">
-                          <p>${inversionista.nombre} ${
-    inversionista.apellido
-  }</p>
+                          <p>${inversionista.nombre} ${inversionista.apellido}</p>
                           <p>${inversionista.cedula}</p>
                           <p>${inversionista.correo}</p>
                           <p>${inversionista.celular}</p>
@@ -241,11 +252,11 @@ const generarPdf = (nombre, ifnf, inversionista, fecha, valorActual) => {
                           <p class="strong">Valor</p>
                       </div>
                       <div class="der">
-                          <p>${ifnf.proyecto.nombre}</p>
-                          <p>${ifnf.inmuebles[0].torre}</p>
-                          <p>${ifnf.inmuebles[0].apartamento}</p>
-                          <p>${ifnf.inmuebles[0].parqueadero}</p>
-                          <p>${ifnf.inmuebles[0].cuarto_util}</p>
+                          <p>${inmuebleNombre}</p>
+                          <p>${inmuebleTorre}</p>
+                          <p>${inmuebleApto}</p>
+                          <p>${inmuebleParq}</p>
+                          <p>${inmuebleUtil}</p>
                           <p>${new Intl.NumberFormat("co-CO").format(
                             ifnf.inmuebles[0].valor
                           )}</p>
@@ -272,7 +283,7 @@ const generarPdf = (nombre, ifnf, inversionista, fecha, valorActual) => {
 `;
 
   pdf
-    .create(content,options)
+    .create(content, options)
     .toFile(`./src/public/informes/${nombre}.pdf`, function (err, res) {
       if (err) {
         console.log(err);
