@@ -6,24 +6,27 @@ const Inversionista = require("../models/Inversionista");
 const Proyecto = require("../models/Proyecto");
 const Ifnf = require("../models/I_fnf");
 const { resolve } = require("path");
+const { v4: uuidv4 } = require('uuid');
+ 
+
 
 const llenarPago = async (planPagos, pagosRealizados, garantia, pago) => {
   let completos = [];
-  let indexpp =0;
-  let indexStop=true;
+  let indexpp = 0;
+  let indexStop = true;
   let retencionGarantia = 0;
 
   if (garantia === "true") {
-    if(planPagos[0].couta_cliente == 0){
-       retencionGarantia = parseInt((planPagos[0].couta_garantia)*0.07)
+    if (planPagos[0].couta_cliente == 0) {
+      retencionGarantia = parseInt(planPagos[0].couta_garantia * 0.07);
     }
     const arrGarantias = await pagosRealizados.filter(pago => {
-      if(pago.garantia){
-        return 1
+      if (pago.garantia) {
+        return 1;
       }
-    })
-    if(arrGarantias.length > 0){
-      indexpp=arrGarantias.length - 1
+    });
+    if (arrGarantias.length > 0) {
+      indexpp = arrGarantias.length - 1;
     }
 
     if (pagosRealizados[indexpp]) {
@@ -33,8 +36,8 @@ const llenarPago = async (planPagos, pagosRealizados, garantia, pago) => {
     }
 
     while (pago > planPagos[0].couta_garantia - retencionGarantia) {
-      completos.push(planPagos[0].couta_garantia-retencionGarantia);
-      pago = pago - (planPagos[0].couta_garantia -retencionGarantia);
+      completos.push(planPagos[0].couta_garantia - retencionGarantia);
+      pago = pago - (planPagos[0].couta_garantia - retencionGarantia);
     }
     completos.push(pago);
     completos.forEach((element, index) => {
@@ -44,18 +47,15 @@ const llenarPago = async (planPagos, pagosRealizados, garantia, pago) => {
         pagosRealizados[indexpp + index] = { garantia: element };
       }
     });
-
-
   } else {
-    
     if (planPagos[0].couta_cliente > 0) {
       const arrClientes = await pagosRealizados.filter(pago => {
-        if(pago.cliente){
-          return 1
+        if (pago.cliente) {
+          return 1;
         }
-      })
-      if(arrClientes.length > 0){
-        indexpp=arrClientes.length - 1
+      });
+      if (arrClientes.length > 0) {
+        indexpp = arrClientes.length - 1;
       }
 
       if (pagosRealizados[indexpp]) {
@@ -101,10 +101,10 @@ const checkPP = async (planPagos, pagosRealizados) => {
   let saldoCliente = [];
   let saldoGarantia = [];
   const cuotaTotal = planPagos[0].couta_cliente + planPagos[0].couta_garantia;
-  let retencionGarantia = 0
+  let retencionGarantia = 0;
 
-  if(planPagos[0].couta_cliente == 0){
-    retencionGarantia = parseInt((planPagos[0].couta_garantia)*0.07)
+  if (planPagos[0].couta_cliente == 0) {
+    retencionGarantia = parseInt(planPagos[0].couta_garantia * 0.07);
   }
 
   planPagos.forEach((element, index) => {
@@ -134,21 +134,28 @@ const checkPP = async (planPagos, pagosRealizados) => {
       arrCheckCliente[index] = "";
     }
     if (pagosRealizados[index]) {
-      if (element.couta_garantia - retencionGarantia === pagosRealizados[index].garantia) {
+      if (
+        element.couta_garantia - retencionGarantia ===
+        pagosRealizados[index].garantia
+      ) {
         saldoGarantia[index] =
-          element.couta_garantia - pagosRealizados[index].garantia - retencionGarantia;
+          element.couta_garantia -
+          pagosRealizados[index].garantia -
+          retencionGarantia;
         arrCheckGarantia[index] = "checked";
       } else {
         if (pagosRealizados[index].garantia) {
           saldoGarantia[index] =
-            element.couta_garantia - pagosRealizados[index].garantia - retencionGarantia;
+            element.couta_garantia -
+            pagosRealizados[index].garantia -
+            retencionGarantia;
         } else {
-          saldoGarantia[index] = element.couta_garantia -retencionGarantia;
+          saldoGarantia[index] = element.couta_garantia - retencionGarantia;
         }
         arrCheckGarantia[index] = "";
       }
     } else {
-      saldoGarantia[index] = element.couta_garantia -retencionGarantia;
+      saldoGarantia[index] = element.couta_garantia - retencionGarantia;
       arrCheckGarantia[index] = "";
     }
   });
@@ -576,7 +583,7 @@ ifnfCtrl.agregarPagoFnf = async (req, res) => {
     destino: destino
   });
   newPagoRealizado[0].historial = historial;
-  ifnf.pago_realizado_intereses =  newPagoRealizado;
+  ifnf.pago_realizado_intereses = newPagoRealizado;
 
   await Ifnf.findOneAndUpdate({ _id: ifnf.id }, ifnf);
   res.redirect("/edit-plan_pagos/" + ifnf.id + "/fnf");
@@ -586,18 +593,35 @@ ifnfCtrl.editarPPFnf = async (req, res) => {
   res.send("Actualizar PP");
 };
 
-ifnfCtrl.generarInforme = (req, res) => {
-  const nombre = 'informe' 
-  let promesa = new Promise((res,rej)=>{ 
-  let response = generarPdf(nombre,'hola','como','estas')
-    resolve(response)
-  })
-  promesa.then((response)=>{
-    console.log(response)
-    res.redirect('/informes/informe.pdf')
-  })
-
+ifnfCtrl.generarInforme = async (req, res) => {
+  function addZero(i) {
+    if (i < 10) {
+        i = '0' + i;
+    }
+    return i;
 }
-
+  function hoyFecha(){
+    var hoy = new Date();
+        var dd = hoy.getDate();
+        var mm = hoy.getMonth()+1;
+        var yyyy = hoy.getFullYear();
+        
+        dd = addZero(dd);
+        mm = addZero(mm);
+ 
+        return yyyy+'-'+mm+'-'+dd;
+}
+  const ifnf = await Ifnf.findById(req.params.id);
+  const inversionista = await Inversionista.findById(ifnf.inver_id);
+  const fecha = hoyFecha()
+  const valorActual = req.body.valorActual
+  const nombre = uuidv4()
+  generarPdf(nombre,ifnf,inversionista,fecha,valorActual);
+  console.log(nombre)
+    setTimeout(() => {
+      res.redirect('/informes/'+nombre+'.pdf');
+    }, 2000);
+   
+};
 
 module.exports = ifnfCtrl;

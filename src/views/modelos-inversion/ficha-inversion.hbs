@@ -336,7 +336,7 @@
                     <p> <span class="highlight">Porcentaje garantía: </span>{{ifnf.porcentaje_garantia}} %</p>
                 </li>
                 <li>
-                    <p> <span class="highlight">Obervaciones: </span>{{ifnf.observaciones}}</p>
+                    <p> <span class="highlight">Observaciones: </span>{{ifnf.observaciones}}</p>
                 </li>
             </ul>
         </div>
@@ -389,6 +389,7 @@
                 <a class="btn-inversion" href="/asociar-inversionista/{{ifnf._id}}/fnf" type="submit">
                     Asociar co-inversionista
                 </a>
+
                 <form action="/eliminar-inversion/{{ifnf._id}}/fnf?_method=DELETE" method="POST" name="form-delete">
                     <input type="hidden" name="_method" value="DELETE">
                     <button class="btn btn-danger delete" type="submit">Eliminar inversión</button>
@@ -423,13 +424,19 @@
         </div>
 
     </section>
-
+        <form action="/generar-informe/{{ifnf._id}}/fnf" method="POST" name="form-informe" class="form-informe">
+        <p>Ingresa el valor actual del apartamento </p>
+        <input type="number" placeholder="Ingresa el valor sin puntos ni comas" name="valorActual">
+            <button class="btn-informe" type="submit" formtarget="_blank">Generar informe</button>
+        </form>
     {{/if}}
 </section>
 
 {{!-- ------------------------------------------------------------------------------------------------------ --}}
 
 <section class="pagos">
+
+
     {{#if ifnf}}
     <h2>Plan de pago de intereses</h2>
     <ul>
@@ -470,7 +477,7 @@
             Agregar pagos
         </a>
     </div>
-    
+
 
     {{/if}}
     {{/if}}

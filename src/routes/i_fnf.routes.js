@@ -45,6 +45,6 @@ router.get("/pago/add/:id/fnf", isAuthenticated, renderAgregarPagoFnf);
 router.put("/pago/add/:id/fnf", isAuthenticated, agregarPagoFnf);
 
 //generar informe
-router.get("/generar-informe/:id/fnf", isAuthenticated, generarInforme);
+router.post("/generar-informe/:id/fnf", isAuthenticated, generarInforme);
 
 module.exports = router;

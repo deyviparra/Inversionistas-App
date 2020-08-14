@@ -739,6 +739,44 @@ input:checked + .slider:before {
       .info-inversion .info-ppal .alerta-cumplimiento p span {
         color: #272727; }
 
+.btn-informe {
+  border-radius: 50px;
+  background: #cfde00;
+  box-shadow: 15px 15px 30px #b4c100, -15px -15px 30px #eafb00;
+  text-decoration: none;
+  color: black;
+  margin: 15px;
+  padding: 20px;
+  border: none;
+  width: 200px;
+  text-align: center;
+  align-self: center; }
+
+.form-informe {
+  width: 40%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center; }
+  .form-informe p {
+    color: #272727;
+    font-size: 24px; }
+  .form-informe input {
+    width: 60%;
+    margin-bottom: 20px;
+    color: #272727; }
+    .form-informe input::placeholder {
+      color: #424242; }
+
+.btn-informe:hover {
+  border-radius: 50px;
+  background: #cfde00;
+  box-shadow: inset 15px 15px 30px #b4c100, inset -15px -15px 30px #eafb00;
+  font-weight: lighter;
+  text-decoration: none;
+  color: black; }
+
 .pagos,
 .pp-fnf {
   margin-top: 20px;
