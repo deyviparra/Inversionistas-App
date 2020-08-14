@@ -3,7 +3,7 @@ var path = require('path');
 
 const generarPdf = (nombre, ifnf, inversionista, fecha, valorActual) => {
   var options = {
-      "format":"A4"
+      format:"Letter"
   };
 
   let totalAportes, totalAlCierre, utilidad;
@@ -41,15 +41,11 @@ const generarPdf = (nombre, ifnf, inversionista, fecha, valorActual) => {
           * {
               margin: 0;
               padding: 0;
-              font-size:12px
+              font-size:12px;
           }
   
           body {
               margin: 0px 15px;
-          }
-          p{
-              padding-left:5px;
-              padding-right:5px;
           }
           h1 {
               color: green;
@@ -74,13 +70,20 @@ const generarPdf = (nombre, ifnf, inversionista, fecha, valorActual) => {
           }
   
           .cajon div {
-              width: 49%;
+              width: 60%;
               display: inline-block;
+
+          }
+          .cajon .der {
+              width:38%;
           }
   
           .cajon div p,
           .datos div p {
               margin-top: 5px;
+          }
+          .cajon div p {
+            font-size: 10px;
           }
           
   
@@ -94,13 +97,16 @@ const generarPdf = (nombre, ifnf, inversionista, fecha, valorActual) => {
   
           .datos {
               border: 1px solid black;
-              width:60%;
+              width:80%;
               display:inline-block;
           }
           
           .datos div {
               display:inline-block;
-              width: 49%;
+              width: 58%;
+          }
+          .datos .der {
+              width:40%;
           }
           .contenedor-detalles {
               display: flex;
