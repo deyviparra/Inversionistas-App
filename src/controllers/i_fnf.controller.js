@@ -7,7 +7,7 @@ const Proyecto = require("../models/Proyecto");
 const Ifnf = require("../models/I_fnf");
 const { resolve } = require("path");
 const { v4: uuidv4 } = require('uuid');
- 
+
 
 
 const llenarPago = async (planPagos, pagosRealizados, garantia, pago) => {
@@ -68,19 +68,19 @@ const llenarPago = async (planPagos, pagosRealizados, garantia, pago) => {
         pago >
         (Number(planPagos[0].couta_cliente) +
           Number(planPagos[0].couta_garantia)) *
-          0.43
+        0.43
       ) {
         completos.push(
           (Number(planPagos[0].couta_cliente) +
             Number(planPagos[0].couta_garantia)) *
-            0.43
+          0.43
         );
         // Revisar con el cliente si si es así el comportamiento del Plan de pagos para los pagos a el inversionista
         pago =
           pago -
           (Number(planPagos[0].couta_cliente) +
             Number(planPagos[0].couta_garantia)) *
-            0.43;
+          0.43;
       }
       completos.push(pago);
       completos.forEach((element, index) => {
@@ -284,6 +284,10 @@ ifnfCtrl.renderFichaInvFnf = async (req, res) => {
     const proyecto = await Proyecto.findById(ifnf.proyecto.id);
     const inversionista = await Inversionista.findById(ifnf.inver_id);
     const backUrl = "/ficha-i/" + ifnf.inver_id;
+    let pagadoInversionista = 0;
+    let pagadoGarantia = 0;
+    let saldoInversionista = 0;
+    let saldoGarantia = 0;
 
     const arrsCheck = await checkPP(
       ifnf.plan_pago_intereses,
@@ -305,13 +309,28 @@ ifnfCtrl.renderFichaInvFnf = async (req, res) => {
     } else {
       var porcentajeCumplimiento = "Debes asociar un inmueble a esta inversión";
     }
+    if (ifnf.pago_realizado_intereses) {
+      ifnf.pago_realizado_intereses[0].historial.forEach(element => {
+        if (element.destino == "garantia") {
+          pagadoGarantia += parseInt(element.valor);
+        } else {
+          pagadoInversionista += parseInt(element.valor);
+        }
+      });
+    }
+    saldoInversionista = (ifnf.plan_pago_intereses[0].couta_cliente *24) - pagadoInversionista;
+    saldoGarantia = (ifnf.plan_pago_intereses[0].couta_garantia *24) - pagadoGarantia;
     res.render("modelos-inversion/ficha-inversion", {
       inversionista,
       ifnf,
       backUrl,
       proyecto,
       porcentajeCumplimiento,
-      meta
+      meta,
+      pagadoInversionista,
+      pagadoGarantia,
+      saldoInversionista,
+      saldoGarantia
     });
   } catch (e) {
     const ifnf = await Ifnf.findById(req.params.id);
@@ -596,32 +615,32 @@ ifnfCtrl.editarPPFnf = async (req, res) => {
 ifnfCtrl.generarInforme = async (req, res) => {
   function addZero(i) {
     if (i < 10) {
-        i = '0' + i;
+      i = '0' + i;
     }
     return i;
-}
-  function hoyFecha(){
+  }
+  function hoyFecha() {
     var hoy = new Date();
-        var dd = hoy.getDate();
-        var mm = hoy.getMonth()+1;
-        var yyyy = hoy.getFullYear();
-        
-        dd = addZero(dd);
-        mm = addZero(mm);
- 
-        return yyyy+'-'+mm+'-'+dd;
-}
+    var dd = hoy.getDate();
+    var mm = hoy.getMonth() + 1;
+    var yyyy = hoy.getFullYear();
+
+    dd = addZero(dd);
+    mm = addZero(mm);
+
+    return yyyy + '-' + mm + '-' + dd;
+  }
   const ifnf = await Ifnf.findById(req.params.id);
   const inversionista = await Inversionista.findById(ifnf.inver_id);
   const fecha = hoyFecha()
   const valorActual = req.body.valorActual
   const nombre = uuidv4()
-  generarPdf(nombre,ifnf,inversionista,fecha,valorActual);
+  generarPdf(nombre, ifnf, inversionista, fecha, valorActual);
   console.log(nombre)
-    setTimeout(() => {
-      res.redirect('/informes/'+nombre+'.pdf');
-    }, 2000);
-   
+  setTimeout(() => {
+    res.redirect('/informes/' + nombre + '.pdf');
+  }, 3000);
+
 };
 
 module.exports = ifnfCtrl;

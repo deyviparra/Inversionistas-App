@@ -422,13 +422,26 @@
             </div>
             {{/if}}
         </div>
+        <div class="cuadro-resumen">
+            <h3>Resumen financiero de la inversión</h3>
+            <div class="resumen-contenido">
+            <div class="resumen-inver">
+            <p><span class="highlight"> Pagado a inversionista: </span>{{formatNumber pagadoInversionista style="currency" currency="COP"}}</p>
+            <p><span class="highlight"> Saldo a inversionista: </span>{{formatNumber saldoInversionista style="currency" currency="COP"}}</p>
+            </div>
+            <div class="resumen-garantia">
+            <p><span class="highlight"> Pagado a la garantía: </span>{{formatNumber pagadoGarantia style="currency" currency="COP"}}</p>
+            <p><span class="highlight"> Saldo a la garantía: </span>{{formatNumber saldoGarantia style="currency" currency="COP"}}</p>
+            </div>
+            </div>
 
+        </div>
     </section>
-        <form action="/generar-informe/{{ifnf._id}}/fnf" method="POST" name="form-informe" class="form-informe">
+    <form action="/generar-informe/{{ifnf._id}}/fnf" method="POST" name="form-informe" class="form-informe">
         <p>Ingresa el valor actual del apartamento </p>
-        <input type="number" placeholder="Ingresa el valor sin puntos ni comas" name="valorActual">
-            <button class="btn-informe" type="submit" formtarget="_blank">Generar informe</button>
-        </form>
+        <input type="number" placeholder="Ingresa el valor sin puntos ni comas" name="valorActual" required>
+        <button class="btn-informe" type="submit" formtarget="_blank">Generar informe</button>
+    </form>
     {{/if}}
 </section>
 

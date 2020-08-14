@@ -738,6 +738,28 @@ input:checked + .slider:before {
           color: #f3f3f3; }
       .info-inversion .info-ppal .alerta-cumplimiento p span {
         color: #272727; }
+    .info-inversion .info-ppal .cuadro-resumen {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+      margin-top: 20px;
+      align-self: center;
+      border-radius: 8px;
+      background: #cfde00;
+      box-shadow: inset 9px 9px 18px #acb800, inset -9px -9px 18px #f2ff00; }
+      .info-inversion .info-ppal .cuadro-resumen h3 {
+        color: #272727; }
+      .info-inversion .info-ppal .cuadro-resumen p span {
+        color: #272727; }
+      .info-inversion .info-ppal .cuadro-resumen .resumen-contenido {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between; }
 
 .btn-informe {
   border-radius: 50px;
